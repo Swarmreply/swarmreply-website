@@ -1,0 +1,1154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SwarmReply — AI-Powered Reputation Management for Local Businesses</title>
+<meta name="description" content="SwarmReply is the complete reputation management platform for local businesses. AI review replies, NPS surveys, listings sync, Google Posts. No annual contracts. From $79/mo.">
+<meta name="keywords" content="reputation management software, online review management, AI review replies, NPS survey software, Google review management, local business reputation, review monitoring, business listing management, reputation management platform">
+<meta property="og:title" content="SwarmReply — AI-Powered Reputation Management">
+<meta property="og:description" content="Complete reputation management for every local business. AI review replies, NPS surveys, listings sync, and more. From $79/mo. No annual contracts.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://swarmreply.com">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="SwarmReply — AI-Powered Reputation Management">
+<meta name="twitter:description" content="Complete reputation management for every local business. From $79/mo. No annual contracts.">
+<link rel="canonical" href="https://swarmreply.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --k:#0a0a0a;--w:#fff;--g:#f5c842;--gd:#d4a515;--of:#f8f7f4;--bd:#e4e0d8;
+  --mu:#7a7670;--tx:#1a1a18;--gr:#1a6b45;--re:#c0392b;
+  --max:1140px;
+}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:'DM Sans',sans-serif;background:var(--w);color:var(--tx);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{text-decoration:none;color:inherit}
+button{font-family:inherit;cursor:pointer}
+img{display:block;max-width:100%}
+
+/* ── HONEYCOMB BG ── */
+.hc-bg{position:absolute;inset:0;overflow:hidden;pointer-events:none;opacity:.045;z-index:0}
+.hc-bg svg{width:100%;height:100%}
+.hc-mid{opacity:.06}
+.hc-dark .hc-bg{opacity:.07;filter:invert(1)}
+.rel{position:relative}
+.inner{position:relative;z-index:1}
+
+/* ── LAYOUT ── */
+.wrap{max-width:var(--max);margin:0 auto;padding:0 28px}
+.section{padding:100px 0}
+.section-sm{padding:64px 0}
+.bg-off{background:var(--of)}
+.bg-k{background:var(--k)}
+.bg-g{background:var(--g)}
+.center{text-align:center}
+
+/* ── TYPE ── */
+.serif{font-family:'Playfair Display',serif}
+.eyebrow{font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--mu);margin-bottom:12px}
+.eyebrow.gold{color:var(--gd)}
+.eyebrow.white{color:rgba(255,255,255,.45)}
+h1.hero-hed{font-family:'Playfair Display',serif;font-size:clamp(2.8rem,6vw,5rem);font-weight:900;line-height:1.05;letter-spacing:-.03em;color:var(--k)}
+h1.hero-hed em{font-style:italic;color:var(--gd)}
+h2.sec-hed{font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,3rem);font-weight:900;line-height:1.1;letter-spacing:-.02em}
+h3.card-hed{font-family:'Playfair Display',serif;font-size:1.35rem;font-weight:700;line-height:1.2}
+.lead{font-size:1.1rem;color:var(--mu);line-height:1.8;font-weight:300;max-width:640px}
+.lead.center{margin:0 auto}
+.white-text,.bg-k *{color:rgba(255,255,255,.85)}
+.bg-k h2,.bg-k h3,.bg-k strong{color:#fff}
+.bg-k .eyebrow{color:rgba(255,255,255,.4)}
+
+/* ── NAV ── */
+.nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(255,255,255,.95);backdrop-filter:blur(12px);border-bottom:1px solid rgba(228,224,216,.5);transition:box-shadow .2s}
+.nav.scrolled{box-shadow:0 2px 24px rgba(0,0,0,.06)}
+.nav-inner{max-width:var(--max);margin:0 auto;padding:0 28px;height:66px;display:flex;align-items:center;justify-content:space-between}
+.nav-logo{display:flex;align-items:center;gap:10px;font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:900;color:var(--k)}
+.nav-links{display:flex;align-items:center;gap:28px}
+.nav-links a{font-size:.875rem;font-weight:500;color:var(--mu);transition:color .15s}.nav-links a:hover{color:var(--k)}
+.nav-cta{display:flex;align-items:center;gap:10px}
+
+/* ── BUTTONS ── */
+.btn{display:inline-flex;align-items:center;gap:8px;padding:13px 28px;border-radius:50px;font-size:.9rem;font-weight:700;border:none;cursor:pointer;transition:all .18s;white-space:nowrap}
+.btn-primary{background:var(--k);color:#fff}.btn-primary:hover{background:#1a1a18;transform:translateY(-1px);box-shadow:0 8px 24px rgba(0,0,0,.18)}
+.btn-gold{background:var(--g);color:var(--k)}.btn-gold:hover{background:var(--gd);transform:translateY(-1px);box-shadow:0 8px 24px rgba(245,200,66,.35)}
+.btn-outline{background:transparent;border:1.5px solid var(--bd);color:var(--tx)}.btn-outline:hover{border-color:var(--k);color:var(--k)}
+.btn-sm{padding:9px 20px;font-size:.82rem}
+.btn-ghost{background:transparent;border:1.5px solid rgba(255,255,255,.25);color:#fff}.btn-ghost:hover{border-color:#fff;background:rgba(255,255,255,.08)}
+
+/* ── HERO ── */
+.hero{padding:148px 0 100px;overflow:hidden}
+.hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:var(--of);border:1px solid var(--bd);border-radius:50px;padding:6px 16px 6px 8px;margin-bottom:28px}
+.hero-badge-dot{width:8px;height:8px;border-radius:50%;background:var(--gr);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.6;transform:scale(.85)}}
+.hero-badge span{font-size:.78rem;font-weight:600;color:var(--tx)}
+.hero-sub{font-size:1.15rem;color:var(--mu);line-height:1.75;font-weight:300;margin:20px 0 36px;max-width:520px}
+.hero-ctas{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+.hero-note{font-size:.78rem;color:var(--mu);margin-top:14px}
+.hero-note strong{color:var(--tx)}
+.hero-visual{position:relative}
+.hero-card{background:#fff;border:1px solid var(--bd);border-radius:18px;padding:20px 22px;box-shadow:0 20px 60px rgba(0,0,0,.09)}
+.hero-card-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px}
+.hc-label{font-size:.68rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--mu)}
+.hc-badge{display:inline-flex;align-items:center;gap:5px;background:#e8f5ef;color:#1a6b45;font-size:.68rem;font-weight:700;padding:3px 9px;border-radius:50px}
+.rv-row{display:flex;gap:10px;align-items:flex-start;padding:10px 0;border-bottom:1px solid var(--of)}
+.rv-row:last-child{border-bottom:none}
+.rv-av{width:32px;height:32px;border-radius:50%;background:var(--of);display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:700;color:var(--mu);flex-shrink:0}
+.rv-stars{color:var(--gd);font-size:.72rem;letter-spacing:1px}
+.rv-text{font-size:.8rem;color:#4a4a48;font-style:italic;line-height:1.5;margin-top:2px}
+.rv-reply{font-size:.75rem;color:var(--mu);background:var(--of);border-left:2px solid var(--g);padding:5px 8px;border-radius:0 5px 5px 0;margin-top:5px;line-height:1.5}
+.float-card{position:absolute;background:#fff;border:1px solid var(--bd);border-radius:14px;padding:12px 16px;box-shadow:0 12px 36px rgba(0,0,0,.1)}
+.fc-1{bottom:-24px;left:-32px;min-width:180px}
+.fc-2{top:-20px;right:-20px;min-width:160px}
+.fc-val{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:900;color:var(--k)}
+.fc-lab{font-size:.72rem;color:var(--mu);margin-top:2px}
+
+/* ── STAT BAR ── */
+.stat-bar{padding:40px 0;border-top:1px solid var(--bd);border-bottom:1px solid var(--bd)}
+.stat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;text-align:center}
+.stat-item{padding:8px 24px;border-right:1px solid var(--bd)}
+.stat-item:last-child{border-right:none}
+.stat-num{font-family:'Playfair Display',serif;font-size:2.2rem;font-weight:900;color:var(--k);line-height:1}
+.stat-num span{color:var(--gd)}
+.stat-lab{font-size:.78rem;color:var(--mu);margin-top:6px;line-height:1.4}
+
+/* ── PRODUCT SLIDER ── */
+.slider-wrap{overflow-x:auto;cursor:grab;user-select:none;scrollbar-width:none;-webkit-overflow-scrolling:touch;padding-bottom:8px}
+.slider-wrap::-webkit-scrollbar{display:none}
+.slider-wrap:active{cursor:grabbing}
+.slider-track{display:flex;gap:20px;padding:4px 2px}
+.slide-card{width:min(720px,85vw);background:#fff;border:1px solid var(--bd);border-radius:20px;overflow:hidden;flex-shrink:0}
+.slide-topbar{background:var(--k);padding:12px 18px;display:flex;align-items:center;gap:8px}
+.slide-dot{width:10px;height:10px;border-radius:50%}
+.slide-title{color:rgba(255,255,255,.6);font-size:.78rem;margin-left:8px;font-weight:500}
+.slide-body{padding:22px}
+
+
+/* ── FEATURE GRID ── */
+.feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.feat-card{background:#fff;border:1px solid var(--bd);border-radius:18px;padding:28px;transition:all .2s}
+.feat-card:hover{border-color:var(--gd);box-shadow:0 8px 32px rgba(245,200,66,.12);transform:translateY(-2px)}
+.feat-icon{width:44px;height:44px;border-radius:12px;background:var(--of);display:flex;align-items:center;justify-content:center;font-size:1.15rem;margin-bottom:16px;border:1px solid var(--bd)}
+.feat-name{font-weight:600;font-size:.95rem;margin-bottom:6px}
+.feat-desc{font-size:.83rem;color:var(--mu);line-height:1.65}
+
+/* ── MISSION ── */
+.mission-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start}
+.mission-text h2{margin-bottom:20px}
+.mission-text p{font-size:.95rem;color:rgba(255,255,255,.65);line-height:1.85;margin-bottom:16px}
+.compare-table{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:18px;overflow:hidden}
+.ct-head{display:grid;grid-template-columns:1fr 80px 80px;gap:0;padding:14px 20px;border-bottom:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.04)}
+.ct-head span{font-size:.68rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.35);text-align:center}
+.ct-head span:first-child{text-align:left;color:rgba(255,255,255,.5)}
+.ct-row{display:grid;grid-template-columns:1fr 80px 80px;gap:0;padding:13px 20px;border-bottom:1px solid rgba(255,255,255,.06);align-items:center}
+.ct-row:last-child{border-bottom:none}
+.ct-row:hover{background:rgba(255,255,255,.03)}
+.ct-feat{font-size:.85rem;color:rgba(255,255,255,.7)}
+.ct-val{text-align:center;font-size:.85rem;font-weight:600}
+.ct-y{color:var(--g)}.ct-n{color:rgba(255,255,255,.2)}.ct-p{color:rgba(255,255,255,.35);font-size:.75rem}
+
+/* ── INDUSTRY SLIDER ── */
+.ind-slider-wrap{overflow:hidden;cursor:grab;user-select:none;padding:4px 0 20px}
+.ind-slider-wrap:active{cursor:grabbing}
+.ind-track{display:flex;gap:16px;width:max-content}
+.ind-card{width:300px;flex-shrink:0;background:#fff;border:1px solid var(--bd);border-radius:18px;padding:26px;transition:all .25s}
+.ind-card:hover,.ind-card.active{border-color:var(--gd);box-shadow:0 8px 32px rgba(245,200,66,.15)}
+.ind-icon{font-size:1.8rem;margin-bottom:14px}
+.ind-name{font-weight:700;font-size:.95rem;margin-bottom:8px;color:var(--k)}
+.ind-use{font-size:.82rem;color:var(--mu);line-height:1.65}
+.ind-tag{display:inline-block;margin-top:12px;background:var(--of);border:1px solid var(--bd);color:var(--mu);font-size:.68rem;font-weight:600;padding:3px 10px;border-radius:50px}
+
+/* ── PLANS ── */
+.plans-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.plan-card{background:#fff;border:1.5px solid var(--bd);border-radius:22px;padding:32px;position:relative;transition:all .2s}
+.plan-card.feat{border-color:var(--k);box-shadow:0 16px 48px rgba(0,0,0,.1)}
+.plan-pop{position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:var(--g);color:var(--k);font-size:.7rem;font-weight:700;padding:4px 14px;border-radius:50px;letter-spacing:.06em;text-transform:uppercase;white-space:nowrap}
+.plan-name{font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--mu);margin-bottom:8px}
+.plan-price{font-family:'Playfair Display',serif;font-size:3rem;font-weight:900;color:var(--k);line-height:1}
+.plan-price span{font-size:1.1rem;font-weight:400;color:var(--mu)}
+.plan-loc{font-size:.82rem;color:var(--mu);margin:8px 0 6px;font-weight:500}
+.plan-sub{font-size:.78rem;color:var(--mu);margin-bottom:22px;padding-bottom:22px;border-bottom:1px solid var(--bd);line-height:1.5}
+.plan-features{display:flex;flex-direction:column;gap:9px;margin-bottom:28px}
+.pf{display:flex;align-items:flex-start;gap:9px;font-size:.83rem;color:var(--tx);line-height:1.45}
+.pf-check{color:var(--gr);font-size:.8rem;flex-shrink:0;margin-top:1px}
+.btn-plan{display:block;text-align:center;padding:14px;border-radius:50px;font-weight:700;font-size:.9rem;transition:all .18s;border:none;cursor:pointer}
+.btn-plan-k{background:var(--k);color:#fff}.btn-plan-k:hover{background:#222;transform:translateY(-1px);box-shadow:0 8px 24px rgba(0,0,0,.18)}
+.btn-plan-g{background:var(--g);color:var(--k)}.btn-plan-g:hover{background:var(--gd);transform:translateY(-1px);box-shadow:0 8px 24px rgba(245,200,66,.35)}
+.btn-plan-o{background:transparent;border:1.5px solid var(--bd);color:var(--tx)}.btn-plan-o:hover{border-color:var(--k);color:var(--k)}
+
+/* ── ONBOARDING ── */
+.ob-steps{display:flex;flex-direction:column;gap:0}
+.ob-step{display:flex;gap:16px;align-items:flex-start;padding:20px 0;border-bottom:1px solid var(--bd)}
+.ob-step:last-child{border-bottom:none}
+.ob-n{font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:900;color:var(--gd);line-height:1;flex-shrink:0;width:44px}
+.ob-title{font-weight:600;font-size:.95rem;margin-bottom:4px}
+.ob-desc{font-size:.83rem;color:var(--mu);line-height:1.65}
+.form-card{background:#fff;border:1px solid var(--bd);border-radius:22px;padding:32px}
+.fl{display:block;font-size:.68rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--mu);margin-bottom:6px}
+.fi{width:100%;padding:11px 14px;border:1.5px solid var(--bd);border-radius:11px;font-size:.875rem;color:var(--tx);outline:none;font-family:inherit;transition:border-color .15s;background:#fff}
+.fi:focus{border-color:var(--k)}
+.fsel{width:100%;padding:11px 14px;border:1.5px solid var(--bd);border-radius:11px;font-size:.875rem;color:var(--tx);outline:none;font-family:inherit;background:#fff;cursor:pointer;appearance:none}
+.frow{margin-bottom:14px}
+.fg2{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px}
+.form-note{font-size:.75rem;color:var(--mu);text-align:center;margin-top:12px;line-height:1.6}
+
+/* ── INTEGRATIONS ── */
+.int-grid{display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
+.int-pill{display:flex;align-items:center;gap:9px;background:#fff;border:1px solid var(--bd);border-radius:50px;padding:10px 20px;font-size:.85rem;font-weight:500;transition:all .18s}
+.int-pill:hover{border-color:var(--gd);box-shadow:0 4px 16px rgba(245,200,66,.15)}
+.int-ic{font-size:1.1rem}
+
+/* ── TESTIMONIALS ── */
+.test-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.test-card{background:#fff;border:1px solid var(--bd);border-radius:18px;padding:26px}
+.test-stars{color:var(--gd);font-size:.85rem;letter-spacing:2px;margin-bottom:12px}
+.test-q{font-size:.9rem;line-height:1.75;color:var(--tx);font-style:italic;margin-bottom:16px}
+.test-author{font-size:.8rem;font-weight:600;color:var(--k)}
+.test-role{font-size:.75rem;color:var(--mu);margin-top:2px}
+
+/* ── CTA FOOTER ── */
+.cta-section{padding:100px 0;text-align:center;overflow:hidden}
+.cta-section h2{margin-bottom:16px;color:#fff}
+.cta-section p{color:rgba(255,255,255,.55);font-size:1rem;margin-bottom:36px}
+
+/* ── FOOTER ── */
+.footer{background:var(--k);border-top:1px solid rgba(255,255,255,.06);padding:48px 0 32px}
+.footer-grid{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:40px;margin-bottom:40px}
+.footer-brand p{font-size:.82rem;color:rgba(255,255,255,.4);margin-top:10px;line-height:1.65;max-width:220px}
+.footer-col h4{font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:14px}
+.footer-col a{display:block;font-size:.83rem;color:rgba(255,255,255,.5);margin-bottom:8px;transition:color .15s}.footer-col a:hover{color:#fff}
+.footer-bot{border-top:1px solid rgba(255,255,255,.06);padding-top:24px;display:flex;justify-content:space-between;align-items:center}
+.footer-bot p{font-size:.78rem;color:rgba(255,255,255,.3)}
+
+/* ── HONEYCOMB SVG PATTERN ── */
+@keyframes hc-drift{0%{transform:translateY(0)}100%{transform:translateY(-60px)}}
+
+/* ── UTIL ── */
+.mt8{margin-top:8px}.mt12{margin-top:12px}.mt16{margin-top:16px}.mt24{margin-top:24px}.mt32{margin-top:32px}.mt48{margin-top:48px}
+.mb8{margin-bottom:8px}.mb16{margin-bottom:16px}.mb24{margin-bottom:24px}.mb32{margin-bottom:32px}.mb48{margin-bottom:48px}.mb64{margin-bottom:64px}
+.flex-center{display:flex;align-items:center;justify-content:center;gap:12px}
+.tag{display:inline-flex;align-items:center;gap:4px;padding:2px 9px;border-radius:50px;font-size:.68rem;font-weight:700}
+.tag-g{background:#e8f5ef;color:#1a6b45}
+
+/* ── RESPONSIVE ── */
+@media(max-width:900px){
+  .hero-grid,.mission-grid,.plans-grid,.feat-grid,.test-grid{grid-template-columns:1fr}
+  .hero-visual{display:none}
+  .stat-grid{grid-template-columns:1fr 1fr}
+  .stat-item:nth-child(2){border-right:none}
+  .footer-grid{grid-template-columns:1fr 1fr}
+  .nav-links{display:none}
+}
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "SwarmReply",
+  "applicationCategory": "BusinessApplication",
+  "description": "AI-powered reputation management software for local businesses. Includes automated review replies, NPS surveys, business listings sync, Google Posts auto-publisher, and competitor benchmarking.",
+  "offers": {
+    "@type": "AggregateOffer",
+    "lowPrice": "79",
+    "highPrice": "289",
+    "priceCurrency": "USD",
+    "offerCount": "3"
+  },
+  "url": "https://swarmreply.com",
+  "operatingSystem": "Web",
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.9",
+    "reviewCount": "47"
+  }
+}
+</script>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════════
+     NAV
+══════════════════════════════════════════════ -->
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="/" class="nav-logo">
+      <svg width="26" height="26" viewBox="0 0 100 100" fill="none">
+        <ellipse cx="50" cy="60" rx="21" ry="26" fill="#0a0a0a"/>
+        <rect x="29" y="52" width="42" height="8" rx="2" fill="#f5c842" opacity=".95"/>
+        <rect x="29" y="65" width="42" height="7" rx="2" fill="#f5c842" opacity=".7"/>
+        <circle cx="50" cy="31" r="15" fill="#0a0a0a"/>
+        <circle cx="43.5" cy="29" r="4" fill="#fff"/><circle cx="56.5" cy="29" r="4" fill="#fff"/>
+        <circle cx="44.5" cy="29" r="2.2" fill="#0a0a0a"/><circle cx="57.5" cy="29" r="2.2" fill="#0a0a0a"/>
+        <path d="M44 36 Q50 41 56 36" stroke="#fff" stroke-width="2" stroke-linecap="round" fill="none"/>
+        <ellipse cx="23" cy="46" rx="15" ry="7.5" fill="rgba(245,200,66,.55)" transform="rotate(-28 23 46)"/>
+        <ellipse cx="77" cy="46" rx="15" ry="7.5" fill="rgba(245,200,66,.55)" transform="rotate(28 77 46)"/>
+        <polygon points="50,86 46,95 54,95" fill="#0a0a0a"/>
+        <ellipse cx="50" cy="18" rx="21" ry="5" fill="#f5c842"/>
+        <path d="M32 18 Q33 6 50 6 Q67 6 68 18 Z" fill="#f5c842"/>
+      </svg>
+      SwarmReply
+    </a>
+    <div class="nav-links">
+      <a href="#features">Features</a>
+      <a href="#how-it-works">How it works</a>
+      <a href="#industries">Industries</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#mission">Our mission</a>
+    </div>
+    <div class="nav-cta">
+      <a href="/login.html" class="btn btn-outline btn-sm">Log in</a>
+      <a href="/signup.html" class="btn btn-gold btn-sm">Get started</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ══════════════════════════════════════════════
+     HERO
+══════════════════════════════════════════════ -->
+<section class="hero rel">
+  <div class="hc-bg">
+    <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+      <defs><pattern id="hc" x="0" y="0" width="60" height="52" patternUnits="userSpaceOnUse">
+        <polygon points="30,2 56,16 56,44 30,58 4,44 4,16" fill="none" stroke="#0a0a0a" stroke-width="1.5"/>
+        <polygon points="60,28 86,42 86,70 60,84 34,70 34,42" fill="none" stroke="#0a0a0a" stroke-width="1.5"/>
+      </pattern></defs>
+      <rect width="100%" height="100%" fill="url(#hc)"/>
+    </svg>
+  </div>
+  <div class="wrap inner">
+    <div class="hero-grid">
+      <div>
+        <div class="hero-badge">
+          <div class="hero-badge-dot"></div>
+          <span>Full reputation suite · No annual contracts · From $79/mo</span>
+        </div>
+        <h1 class="hero-hed">Your complete<br>reputation,<br><em>on autopilot.</em></h1>
+        <p class="hero-sub">Reviews replied to within hours. Surveys sent after every visit. Listings synced across the web. Built for every business — without the enterprise price tag or 12-month lock-in.</p>
+        <div class="hero-ctas">
+          <a href="/signup.html" class="btn btn-gold">Get started — set up in minutes ›</a>
+          <a href="#see-it-work" class="btn btn-outline">See it in action</a>
+        </div>
+        <p class="hero-note">No setup fees · No credit card games · <strong>Cancel anytime</strong></p>
+      </div>
+      <div class="hero-visual">
+        <div style="position:relative;padding:24px 0">
+          <div class="hero-card">
+            <div class="hero-card-top">
+              <span class="hc-label">Latest reviews</span>
+              <span class="hc-badge">✓ 100% replied</span>
+            </div>
+            <div class="rv-row">
+              <div class="rv-av">S</div>
+              <div style="flex:1">
+                <div style="display:flex;justify-content:space-between;align-items:center"><strong style="font-size:.84rem">Sarah M.</strong><span class="rv-stars">★★★★★</span></div>
+                <div class="rv-text">"Best pasta I've had in the city. Perfect for our anniversary."</div>
+                <div class="rv-reply"><strong>Owner:</strong> Thank you, Sarah! Anniversary dinners are our most treasured moments. 🙏</div>
+              </div>
+            </div>
+            <div class="rv-row">
+              <div class="rv-av">R</div>
+              <div style="flex:1">
+                <div style="display:flex;justify-content:space-between;align-items:center"><strong style="font-size:.84rem">Robert K.</strong><span class="rv-stars">★★★★★</span></div>
+                <div class="rv-text">"The tiramisu is the best I've ever had. Been coming 3 years."</div>
+                <div class="rv-reply"><strong>Owner:</strong> Robert, your loyalty means the world to us. See you at the next visit! 😊</div>
+              </div>
+            </div>
+            <div class="rv-row">
+              <div class="rv-av">J</div>
+              <div style="flex:1">
+                <div style="display:flex;justify-content:space-between;align-items:center"><strong style="font-size:.84rem">James T.</strong><span style="font-size:.72rem;color:#c0392b;font-weight:600">★★ · Alert sent</span></div>
+                <div class="rv-text">"Food arrived cold and 45 minutes late."</div>
+                <div class="rv-reply"><strong>Owner:</strong> James, completely unacceptable. Please email us directly — we'll make it right immediately.</div>
+              </div>
+            </div>
+          </div>
+          <div class="float-card fc-1">
+            <div class="fc-val" style="color:#1a6b45">+62</div>
+            <div class="fc-lab">NPS Score this month</div>
+            <div style="font-size:.68rem;color:#1a6b45;margin-top:4px;font-weight:600">↑ 8 pts vs last month</div>
+          </div>
+          <div class="float-card fc-2">
+            <div class="fc-val">4.8★</div>
+            <div class="fc-lab">Avg rating · 247 reviews</div>
+            <div style="font-size:.68rem;color:#1a6b45;margin-top:4px;font-weight:600">↑ +0.3 over 12 months</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════
+     STAT BAR
+══════════════════════════════════════════════ -->
+<div class="stat-bar">
+  <div class="wrap">
+    <div class="stat-grid">
+      <div class="stat-item">
+        <div class="stat-num">4.8<span>★</span></div>
+        <div class="stat-lab">Average Google rating<br>maintained by our customers</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">+<span>0.6</span></div>
+        <div class="stat-lab">Average rating improvement<br>within 90 days of joining</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">68<span>%</span></div>
+        <div class="stat-lab">Of consumers read reviews<br>before choosing a business</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">3<span>×</span></div>
+        <div class="stat-lab">More likely customers choose<br>a business with active replies</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     SEE IT WORK — PRODUCT SLIDER
+══════════════════════════════════════════════ -->
+<section class="section bg-off rel" id="see-it-work">
+  <div class="hc-bg hc-mid">
+    <svg viewBox="0 0 1200 600" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+      <defs><pattern id="hc2" x="0" y="0" width="60" height="52" patternUnits="userSpaceOnUse">
+        <polygon points="30,2 56,16 56,44 30,58 4,44 4,16" fill="none" stroke="#0a0a0a" stroke-width="1.5"/>
+      </pattern></defs>
+      <rect width="100%" height="100%" fill="url(#hc2)"/>
+    </svg>
+  </div>
+  <div class="wrap inner">
+    <div class="center mb48">
+      <div class="eyebrow">See it in action</div>
+      <h2 class="sec-hed">Every tool. One dashboard.</h2>
+      <p class="lead center mt16">Drag or click the arrows to explore SwarmReply in action — from AI replies to live survey pages to listings sync.</p>
+    </div>
+    <div class="slider-wrap" id="product-slider">
+      <div class="slider-track" id="slider-track">
+
+        <!-- SLIDE 1: Reviews + AI Replies -->
+        <div class="slide-card">
+          <div class="slide-topbar">
+            <div class="slide-dot" style="background:#ff5f57"></div>
+            <div class="slide-dot" style="background:#febc2e"></div>
+            <div class="slide-dot" style="background:#28c840"></div>
+            <span class="slide-title">SwarmReply — Reviews</span>
+          </div>
+          <div class="slide-body">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px">
+              <div><div style="font-weight:700;font-size:.95rem">AI Review Replies</div><div style="font-size:.78rem;color:#7a7670;margin-top:2px">Replied to 247 of 247 Google reviews · 100%</div></div>
+              <div style="display:inline-flex;align-items:center;gap:6px;background:#e8f5ef;color:#1a6b45;padding:5px 12px;border-radius:50px;font-size:.75rem;font-weight:700">✓ All caught up</div>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:0;border:1px solid #e4e0d8;border-radius:12px;overflow:hidden">
+              <div style="padding:14px 16px;border-bottom:1px solid #f0eeea;display:flex;gap:10px">
+                <div style="width:30px;height:30px;border-radius:50%;background:#f0eeea;display:flex;align-items:center;justify-content:center;font-size:.7rem;font-weight:700;color:#7a7670;flex-shrink:0">S</div>
+                <div style="flex:1"><div style="display:flex;justify-content:space-between;font-size:.82rem"><strong>Sarah M.</strong><span style="color:#d4a515">★★★★★ · May 20</span></div><div style="font-size:.8rem;color:#4a4a48;font-style:italic;margin-top:3px">"Best pasta in the city. Perfect for our anniversary."</div><div style="font-size:.77rem;color:#7a7670;background:#f8f7f4;border-left:2px solid #f5c842;padding:5px 8px;border-radius:0 5px 5px 0;margin-top:6px"><strong>Owner:</strong> Thank you, Sarah! We're so glad we could be part of your anniversary. 🙏</div></div>
+              </div>
+              <div style="padding:14px 16px;display:flex;gap:10px">
+                <div style="width:30px;height:30px;border-radius:50%;background:#f0eeea;display:flex;align-items:center;justify-content:center;font-size:.7rem;font-weight:700;color:#7a7670;flex-shrink:0">R</div>
+                <div style="flex:1"><div style="display:flex;justify-content:space-between;font-size:.82rem"><strong>Robert K.</strong><span style="color:#d4a515">★★★★★ · May 19</span></div><div style="font-size:.8rem;color:#4a4a48;font-style:italic;margin-top:3px">"Tiramisu is the best I've ever had. 3 years and counting."</div><div style="font-size:.77rem;color:#7a7670;background:#f8f7f4;border-left:2px solid #f5c842;padding:5px 8px;border-radius:0 5px 5px 0;margin-top:6px"><strong>Owner:</strong> Robert, 3 years of loyalty means everything. Our tiramisu is made fresh every morning — see you soon! 😊</div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- SLIDE 2: NPS Survey Page -->
+        <div class="slide-card">
+          <div class="slide-topbar">
+            <div class="slide-dot" style="background:#ff5f57"></div>
+            <div class="slide-dot" style="background:#febc2e"></div>
+            <div class="slide-dot" style="background:#28c840"></div>
+            <span class="slide-title">swarmreply.com/survey/abc123 — Customer View</span>
+          </div>
+          <div class="slide-body">
+            <div style="background:#f8f7f4;border-radius:14px;padding:28px;text-align:center;max-width:380px;margin:0 auto;border:1px solid #e4e0d8">
+              <div style="width:44px;height:44px;border-radius:50%;background:#f5c842;display:inline-flex;align-items:center;justify-content:center;font-size:1.1rem;font-weight:700;color:#0a0a0a;margin-bottom:10px">B</div>
+              <div style="font-family:'Playfair Display',serif;font-size:.95rem;font-weight:700;margin-bottom:4px">Bella's Kitchen</div>
+              <p style="font-size:.85rem;font-weight:500;margin-bottom:4px">Hi Sarah 👋</p>
+              <p style="font-size:.88rem;color:#4a4a48;line-height:1.5;margin-bottom:18px">How likely are you to recommend us to a friend or family member?</p>
+              <div style="display:flex;flex-wrap:wrap;gap:6px;justify-content:center;margin-bottom:10px">
+                <div style="width:38px;height:38px;border-radius:9px;border:1.5px solid #e4e0d8;display:flex;align-items:center;justify-content:center;font-size:.85rem;font-weight:600;cursor:pointer">0</div>
+                <div style="width:38px;height:38px;border-radius:9px;border:1.5px solid #e4e0d8;display:flex;align-items:center;justify-content:center;font-size:.85rem;font-weight:600">1</div>
+                <div style="width:38px;height:38px;border-radius:9px;border:1.5px solid #e4e0d8;display:flex;align-items:center;justify-content:center;font-size:.85rem;font-weight:600">2</div>
+                <div style="width:38px;height:38px;border-radius:9px;border:1.5px solid #e4e0d8;display:flex;align-items:center;justify-content:center;font-size:.85rem;font-weight:600">3</div>
+                <div style="width:38px;height:38px;border-radius:9px;border:1.5px solid #e4e0d8;display:flex;align-items:center;justify-content:center;font-size:.85rem;font-weight:600">4</div>
+                <div style="width:38px;height:38px;border-radius:9px;border:1.5px solid #e4e0d8;display:flex;align-items:center;justify-content:center;font-size:.85rem;font-weight:600">5</div>
+                <div style="width:38px;height:38px;border-radius:9px;border:1.5px solid #e4e0d8;display:flex;align-items:center;justify-content:center;font-size:.85rem;font-weight:600">6</div>
+                <div style="width:38px;height:38px;border-radius:9px;border:1.5px solid #e4e0d8;display:flex;align-items:center;justify-content:center;font-size:.85rem;font-weight:600">7</div>
+                <div style="width:38px;height:38px;border-radius:9px;border:1.5px solid #e4e0d8;display:flex;align-items:center;justify-content:center;font-size:.85rem;font-weight:600">8</div>
+                <div style="width:38px;height:38px;border-radius:9px;border:2px solid #f5c842;background:#f5c842;display:flex;align-items:center;justify-content:center;font-size:.85rem;font-weight:700;color:#0a0a0a">9</div>
+                <div style="width:38px;height:38px;border-radius:9px;border:1.5px solid #e4e0d8;display:flex;align-items:center;justify-content:center;font-size:.85rem;font-weight:600">10</div>
+              </div>
+              <div style="display:flex;justify-content:space-between;font-size:.7rem;color:#7a7670;margin-bottom:14px"><span>Not likely</span><span>Very likely</span></div>
+              <div style="font-size:.78rem;color:#1a6b45;font-weight:600">Score 9 → "Leave a Google review?" ⭐</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- SLIDE 3: Listings Sync -->
+        <div class="slide-card">
+          <div class="slide-topbar">
+            <div class="slide-dot" style="background:#ff5f57"></div>
+            <div class="slide-dot" style="background:#febc2e"></div>
+            <div class="slide-dot" style="background:#28c840"></div>
+            <span class="slide-title">SwarmReply — Listings Sync</span>
+          </div>
+          <div class="slide-body">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px">
+              <div><div style="font-weight:700;font-size:.95rem">Listings Consistency</div><div style="font-size:.78rem;color:#7a7670;margin-top:2px">Name, address & phone synced across all platforms</div></div>
+              <div style="font-family:'Playfair Display',serif;font-size:2rem;font-weight:900;color:#1a6b45">92</div>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:10px">
+              <div style="border:1px solid #e4e0d8;border-radius:11px;padding:13px 16px;display:flex;align-items:center;justify-content:space-between"><div style="display:flex;align-items:center;gap:10px"><span style="font-size:1.1rem">🔍</span><div><div style="font-weight:600;font-size:.85rem">Google Business Profile</div><div style="font-size:.72rem;color:#7a7670">Critical · Maps ranking</div></div></div><span style="background:#e8f5ef;color:#1a6b45;font-size:.68rem;font-weight:700;padding:3px 9px;border-radius:50px">✓ Synced</span></div>
+              <div style="border:1px solid #e4e0d8;border-radius:11px;padding:13px 16px;display:flex;align-items:center;justify-content:space-between"><div style="display:flex;align-items:center;gap:10px"><span style="font-size:1.1rem">🍎</span><div><div style="font-weight:600;font-size:.85rem">Apple Maps</div><div style="font-size:.72rem;color:#7a7670">23% of local searches</div></div></div><span style="background:#e8f5ef;color:#1a6b45;font-size:.68rem;font-weight:700;padding:3px 9px;border-radius:50px">✓ Synced</span></div>
+              <div style="border:1px solid #e4e0d8;border-radius:11px;padding:13px 16px;display:flex;align-items:center;justify-content:space-between"><div style="display:flex;align-items:center;gap:10px"><span style="font-size:1.1rem">🔷</span><div><div style="font-weight:600;font-size:.85rem">Bing Places</div><div style="font-size:.72rem;color:#7a7670">6% of local searches</div></div></div><span style="background:#e8f5ef;color:#1a6b45;font-size:.68rem;font-weight:700;padding:3px 9px;border-radius:50px">✓ Synced</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- SLIDE 4: Data Dashboard -->
+        <div class="slide-card">
+          <div class="slide-topbar">
+            <div class="slide-dot" style="background:#ff5f57"></div>
+            <div class="slide-dot" style="background:#febc2e"></div>
+            <div class="slide-dot" style="background:#28c840"></div>
+            <span class="slide-title">SwarmReply — Data & Insights</span>
+          </div>
+          <div class="slide-body">
+            <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:16px">
+              <div style="background:#f8f7f4;border:1px solid #e4e0d8;border-radius:10px;padding:12px;text-align:center"><div style="font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:900;color:#1a6b45">78</div><div style="font-size:.67rem;color:#7a7670;margin-top:2px">Sentiment</div></div>
+              <div style="background:#f8f7f4;border:1px solid #e4e0d8;border-radius:10px;padding:12px;text-align:center"><div style="font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:900">+62</div><div style="font-size:.67rem;color:#7a7670;margin-top:2px">NPS Score</div></div>
+              <div style="background:#f8f7f4;border:1px solid #e4e0d8;border-radius:10px;padding:12px;text-align:center"><div style="font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:900;color:#d4a515">4.8★</div><div style="font-size:.67rem;color:#7a7670;margin-top:2px">Rating</div></div>
+              <div style="background:#f8f7f4;border:1px solid #e4e0d8;border-radius:10px;padding:12px;text-align:center"><div style="font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:900;color:#1a6b45">+31%</div><div style="font-size:.67rem;color:#7a7670;margin-top:2px">Velocity</div></div>
+            </div>
+            <div style="background:#f8f7f4;border:1px solid #e4e0d8;border-radius:11px;padding:14px">
+              <div style="font-weight:600;font-size:.85rem;margin-bottom:12px">Top keywords this month</div>
+              <div style="display:flex;flex-direction:column;gap:8px">
+                <div style="display:flex;align-items:center;gap:8px"><span style="width:80px;font-size:.8rem">pasta</span><div style="flex:1;height:7px;background:#e4e0d8;border-radius:50px;overflow:hidden"><div style="width:88%;height:100%;background:#1a6b45;border-radius:50px"></div></div><span style="font-size:.72rem;color:#7a7670">18</span></div>
+                <div style="display:flex;align-items:center;gap:8px"><span style="width:80px;font-size:.8rem">wait time</span><div style="flex:1;height:7px;background:#e4e0d8;border-radius:50px;overflow:hidden"><div style="width:44%;height:100%;background:#c0392b;border-radius:50px"></div></div><span style="font-size:.72rem;color:#7a7670">8</span></div>
+                <div style="display:flex;align-items:center;gap:8px"><span style="width:80px;font-size:.8rem">atmosphere</span><div style="flex:1;height:7px;background:#e4e0d8;border-radius:50px;overflow:hidden"><div style="width:72%;height:100%;background:#1a6b45;border-radius:50px"></div></div><span style="font-size:.72rem;color:#7a7670">12</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- SLIDE 5: Google Posts -->
+        <div class="slide-card">
+          <div class="slide-topbar">
+            <div class="slide-dot" style="background:#ff5f57"></div>
+            <div class="slide-dot" style="background:#febc2e"></div>
+            <div class="slide-dot" style="background:#28c840"></div>
+            <span class="slide-title">SwarmReply — Google Posts Auto-Publisher</span>
+          </div>
+          <div class="slide-body">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px">
+              <div><div style="font-weight:700;font-size:.95rem">Google Posts</div><div style="font-size:.78rem;color:#7a7670;margin-top:2px">Auto-posts weekly from your best reviews</div></div>
+              <div style="display:inline-flex;align-items:center;gap:6px;background:#e8f5ef;color:#1a6b45;padding:5px 12px;border-radius:50px;font-size:.75rem;font-weight:700">● Auto-posting ON</div>
+            </div>
+            <div style="background:#0a0a0a;border-radius:14px;padding:18px;margin-bottom:14px">
+              <div style="font-size:.68rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:10px">Generated this Wednesday · 9:00 AM</div>
+              <div style="font-size:.9rem;line-height:1.75;color:rgba(255,255,255,.85)">"Best pasta I've had in the city." — Sarah ⭐<br><br>Thank you, Sarah! Anniversary dinners are our most treasured moments. Come visit us this weekend!</div>
+              <div style="margin-top:12px;display:inline-block;background:#f5c842;color:#0a0a0a;padding:7px 18px;border-radius:50px;font-size:.8rem;font-weight:700">Learn more</div>
+            </div>
+            <div style="background:#f8f7f4;border:1px solid #e4e0d8;border-radius:11px;padding:12px;font-size:.8rem;color:#7a7670">Next post: <strong style="color:#0a0a0a">Wednesday May 28 · 9:00 AM</strong> · Weekly schedule active</div>
+          </div>
+        </div>
+
+        <!-- SLIDE 6: Widget Embed -->
+        <div class="slide-card">
+          <div class="slide-topbar">
+            <div class="slide-dot" style="background:#ff5f57"></div>
+            <div class="slide-dot" style="background:#febc2e"></div>
+            <div class="slide-dot" style="background:#28c840"></div>
+            <span class="slide-title">yourbusiness.com — Review Widget</span>
+          </div>
+          <div class="slide-body">
+            <div style="background:#f8f7f4;border-radius:14px;padding:18px;border:1px solid #e4e0d8">
+              <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px"><span style="font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:900">4.8</span><span style="color:#d4a515;font-size:1.1rem;letter-spacing:1px">★★★★★</span><span style="font-size:.78rem;color:#7a7670">247 Google reviews</span></div>
+              <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px">
+                <div style="background:#fff;border:1px solid #e4e0d8;border-radius:10px;padding:12px"><div style="font-weight:600;font-size:.78rem;margin-bottom:4px">Sarah M.</div><div style="color:#d4a515;font-size:.7rem;margin-bottom:6px">★★★★★</div><div style="font-size:.77rem;color:#4a4a48;font-style:italic">"Best pasta in the city."</div></div>
+                <div style="background:#fff;border:1px solid #e4e0d8;border-radius:10px;padding:12px"><div style="font-weight:600;font-size:.78rem;margin-bottom:4px">Robert K.</div><div style="color:#d4a515;font-size:.7rem;margin-bottom:6px">★★★★★</div><div style="font-size:.77rem;color:#4a4a48;font-style:italic">"Tiramisu is the best ever."</div></div>
+                <div style="background:#fff;border:1px solid #e4e0d8;border-radius:10px;padding:12px"><div style="font-weight:600;font-size:.78rem;margin-bottom:4px">Lisa P.</div><div style="color:#d4a515;font-size:.7rem;margin-bottom:6px">★★★★★</div><div style="font-size:.77rem;color:#4a4a48;font-style:italic">"Brought 8 for a birthday — perfect!"</div></div>
+              </div>
+              <div style="margin-top:12px;text-align:center;background:#f5c842;color:#0a0a0a;padding:9px;border-radius:50px;font-weight:700;font-size:.82rem">Leave us a review →</div>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /slider-track -->
+    </div>
+    <p style="text-align:center;margin-top:16px;font-size:.78rem;color:var(--mu)">← Drag to explore all products →</p>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════
+     FEATURES
+══════════════════════════════════════════════ -->
+<section class="section rel" id="features">
+  <div class="hc-bg" style="opacity:.03">
+    <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+      <defs><pattern id="hc3" x="0" y="0" width="60" height="52" patternUnits="userSpaceOnUse">
+        <polygon points="30,2 56,16 56,44 30,58 4,44 4,16" fill="none" stroke="#0a0a0a" stroke-width="1.5"/>
+      </pattern></defs>
+      <rect width="100%" height="100%" fill="url(#hc3)"/>
+    </svg>
+  </div>
+  <div class="wrap inner">
+    <div class="center mb48">
+      <div class="eyebrow">Everything included</div>
+      <h2 class="sec-hed">One platform.<br>No feature tiers.</h2>
+      <p class="lead center mt16">Every tool in your plan. No "AI replies are an add-on." No "listings sync is enterprise only." The full suite, the moment you sign up.</p>
+    </div>
+    <div class="feat-grid">
+      <div class="feat-card">
+        <div class="feat-icon">★</div>
+        <div class="feat-name">AI Review Replies</div>
+        <div class="feat-desc">Every review replied to within hours — in your brand voice, on brand, every time. Never miss a review again.</div>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">📊</div>
+        <div class="feat-name">Post-Visit Surveys & NPS</div>
+        <div class="feat-desc">Send after every visit. Promoters go straight to your Google review link. Detractors stay private — protecting your public rating.</div>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">📍</div>
+        <div class="feat-name">Business Listings Sync</div>
+        <div class="feat-desc">Your name, address, and phone synced across Google, Apple Maps, and Bing. NAP consistency — included, not a $300/mo add-on.</div>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">📮</div>
+        <div class="feat-name">Google Posts Auto-Publisher</div>
+        <div class="feat-desc">Weekly posts written from your best reviews and auto-published to Google Business Profile. Boosts Maps ranking — on autopilot.</div>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">◎</div>
+        <div class="feat-name">Reputation Analytics</div>
+        <div class="feat-desc">Sentiment score, keyword tracker, rating history by platform, review velocity, reply quality score, hour-of-day patterns — all in one data section.</div>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">↑</div>
+        <div class="feat-name">Review Request Campaigns</div>
+        <div class="feat-desc">Send via email or SMS after every visit. Import any CSV from any PMS or CRM. Auto-schedule with configurable delay — zero manual work.</div>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">❒</div>
+        <div class="feat-name">Embeddable Review Widget</div>
+        <div class="feat-desc">One script tag. Your best reviews displayed on your website in a carousel, grid, list, or badge — always fresh, zero maintenance.</div>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">⟳</div>
+        <div class="feat-name">Competitor Benchmarking</div>
+        <div class="feat-desc">See exactly how your rating, review volume, and response rate compare to the 5 nearest businesses — without leaving your dashboard.</div>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">⚡</div>
+        <div class="feat-name">Zapier & CSV Integrations</div>
+        <div class="feat-desc">Connect to 7,000+ apps via Zapier. Import contacts from any PMS, CRM, or spreadsheet. Works with everything your business already uses.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════
+     HOW IT WORKS — ONBOARDING
+══════════════════════════════════════════════ -->
+<section class="section bg-off rel" id="how-it-works">
+  <div class="hc-bg hc-mid">
+    <svg viewBox="0 0 1200 600" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+      <defs><pattern id="hc4" x="0" y="0" width="60" height="52" patternUnits="userSpaceOnUse">
+        <polygon points="30,2 56,16 56,44 30,58 4,44 4,16" fill="none" stroke="#0a0a0a" stroke-width="1.5"/>
+      </pattern></defs>
+      <rect width="100%" height="100%" fill="url(#hc4)"/>
+    </svg>
+  </div>
+  <div class="wrap inner">
+    <div class="center mb48">
+      <div class="eyebrow">Built for business owners, not IT teams</div>
+      <h2 class="sec-hed">Set yourself up<br>in minutes.</h2>
+      <p class="lead center mt16">No onboarding call required. No implementation specialist. SwarmReply is designed to be self-explanatory — because your time is worth more than a 3-week setup process.</p>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start">
+      <div>
+        <div class="ob-steps">
+          <div class="ob-step">
+            <div class="ob-n">01</div>
+            <div>
+              <div class="ob-title">Tell us about your business</div>
+              <div class="ob-desc">Fill in your business details — name, industry, contact info, preferred tone. Takes 3 minutes. No technical knowledge needed.</div>
+            </div>
+          </div>
+          <div class="ob-step">
+            <div class="ob-n">02</div>
+            <div>
+              <div class="ob-title">Choose your plan and pay</div>
+              <div class="ob-desc">Starter (1 location) or Growth (5 locations). No annual contract, no setup fee. Your account is created the moment payment processes.</div>
+            </div>
+          </div>
+          <div class="ob-step">
+            <div class="ob-n">03</div>
+            <div>
+              <div class="ob-title">Connect Google in one click</div>
+              <div class="ob-desc">Log in, hit "Connect Google Business Profile." One OAuth click — done. SwarmReply starts monitoring and replying within minutes.</div>
+            </div>
+          </div>
+          <div class="ob-step">
+            <div class="ob-n">04</div>
+            <div>
+              <div class="ob-title">Your swarm goes live</div>
+              <div class="ob-desc">Reviews get replied to automatically. Surveys go out after every visit. Listings sync across platforms. You just run your business.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div style="background:#fff;border:1px solid var(--bd);border-radius:18px;padding:28px">
+          <div style="display:flex;flex-direction:column;gap:14px">
+            <div style="display:flex;align-items:center;gap:14px;padding:14px;background:var(--of);border-radius:12px;border:1px solid var(--bd)">
+              <div style="width:40px;height:40px;border-radius:50%;background:#e8f5ef;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0">✓</div>
+              <div><div style="font-weight:600;font-size:.875rem">No onboarding calls required</div><div style="font-size:.78rem;color:var(--mu);margin-top:2px">Dashboard explains itself. Seriously.</div></div>
+            </div>
+            <div style="display:flex;align-items:center;gap:14px;padding:14px;background:var(--of);border-radius:12px;border:1px solid var(--bd)">
+              <div style="width:40px;height:40px;border-radius:50%;background:#e8f5ef;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0">✓</div>
+              <div><div style="font-weight:600;font-size:.875rem">Live within minutes, not weeks</div><div style="font-size:.78rem;color:var(--mu);margin-top:2px">From sign-up to first reply — under an hour.</div></div>
+            </div>
+            <div style="display:flex;align-items:center;gap:14px;padding:14px;background:var(--of);border-radius:12px;border:1px solid var(--bd)">
+              <div style="width:40px;height:40px;border-radius:50%;background:#e8f5ef;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0">✓</div>
+              <div><div style="font-weight:600;font-size:.875rem">Designed for the person running it</div><div style="font-size:.78rem;color:var(--mu);margin-top:2px">Not the IT department. The owner. The manager.</div></div>
+            </div>
+            <div style="display:flex;align-items:center;gap:14px;padding:14px;background:var(--of);border-radius:12px;border:1px solid var(--bd)">
+              <div style="width:40px;height:40px;border-radius:50%;background:#e8f5ef;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0">✓</div>
+              <div><div style="font-weight:600;font-size:.875rem">Cancel anytime — no questions asked</div><div style="font-size:.78rem;color:var(--mu);margin-top:2px">Month-to-month. Your data is yours.</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════
+     INDUSTRIES
+══════════════════════════════════════════════ -->
+<section class="section rel" id="industries">
+  <div class="wrap inner">
+    <div class="center mb48">
+      <div class="eyebrow">Built for every local business</div>
+      <h2 class="sec-hed">Your industry.<br>Your use case.</h2>
+      <p class="lead center mt16">Drag to explore how SwarmReply works across every industry we support.</p>
+    </div>
+    <div class="ind-slider-wrap" id="ind-slider">
+      <div class="ind-track" id="ind-track">
+        <div class="ind-card">
+          <div class="ind-icon">🦷</div>
+          <div class="ind-name">Dental Practices</div>
+          <div class="ind-use">Import patient lists from Dentrix, Eaglesoft, or Open Dental. Send post-visit surveys after every appointment. HIPAA-safe replies. Route happy patients to Google reviews, unhappy ones to private feedback.</div>
+          <span class="ind-tag">HIPAA mode included</span>
+        </div>
+        <div class="ind-card">
+          <div class="ind-icon">🏥</div>
+          <div class="ind-name">Medical & Healthcare</div>
+          <div class="ind-use">Protect patient privacy in every reply. Collect NPS scores after visits — privately route any concern before it becomes a public review. Monitor sentiment across all reviews.</div>
+          <span class="ind-tag">HIPAA mode included</span>
+        </div>
+        <div class="ind-card">
+          <div class="ind-icon">🍽️</div>
+          <div class="ind-name">Restaurants</div>
+          <div class="ind-use">Reply to every Google review in your restaurant's voice — within hours of it posting. Post auto-generated Google Posts from your best reviews weekly. Track wait time sentiment and staff mentions.</div>
+          <span class="ind-tag">Google Posts included</span>
+        </div>
+        <div class="ind-card">
+          <div class="ind-icon">💇</div>
+          <div class="ind-name">Salons & Beauty</div>
+          <div class="ind-use">Send review requests via SMS immediately after a booking. Let promoters post to Google in 2 taps. Display your 5-star reviews on your booking page with the widget embed.</div>
+          <span class="ind-tag">SMS surveys included</span>
+        </div>
+        <div class="ind-card">
+          <div class="ind-icon">🔧</div>
+          <div class="ind-name">Auto Shops</div>
+          <div class="ind-use">Import repair records from any shop management system. Auto-send review requests after service completion. Keep your Google Business Profile 100% replied — builds trust with new customers.</div>
+          <span class="ind-tag">CSV import any system</span>
+        </div>
+        <div class="ind-card">
+          <div class="ind-icon">💪</div>
+          <div class="ind-name">Gyms & Fitness</div>
+          <div class="ind-use">Track member sentiment over time. Catch unhappy members before they cancel or leave a negative review. Auto-reply to every review with energetic, on-brand responses.</div>
+          <span class="ind-tag">Sentiment tracking</span>
+        </div>
+        <div class="ind-card">
+          <div class="ind-icon">⚖️</div>
+          <div class="ind-name">Law Firms</div>
+          <div class="ind-use">Professional, measured AI replies that reflect your firm's brand. Sync your office details across Google, Apple Maps, and Bing. Track your reputation score against nearby firms.</div>
+          <span class="ind-tag">Competitor benchmarking</span>
+        </div>
+        <div class="ind-card">
+          <div class="ind-icon">🏠</div>
+          <div class="ind-name">Home Services</div>
+          <div class="ind-use">Send a survey immediately after job completion — catch dissatisfied customers before they post publicly. Route 5-star ratings directly to your Google review link with one tap.</div>
+          <span class="ind-tag">Post-visit surveys</span>
+        </div>
+        <div class="ind-card">
+          <div class="ind-icon">🛍️</div>
+          <div class="ind-name">Retail</div>
+          <div class="ind-use">Display your best reviews on your website with the embeddable widget. Keep your store info consistent across all map platforms. Track keywords customers use to describe your products.</div>
+          <span class="ind-tag">Widget embed included</span>
+        </div>
+        <div class="ind-card">
+          <div class="ind-icon">🏨</div>
+          <div class="ind-name">Hotels & Hospitality</div>
+          <div class="ind-use">Reply to every review across Google — in multiple languages. Post weekly highlights to your Google Business Profile. Track which amenities guests mention most.</div>
+          <span class="ind-tag">15-language replies</span>
+        </div>
+        <div class="ind-card">
+          <div class="ind-icon">🐾</div>
+          <div class="ind-name">Veterinary Clinics</div>
+          <div class="ind-use">Build trust with pet owners through warm, personal AI replies. Send post-visit surveys after every appointment. Keep your clinic details synced across all map platforms.</div>
+          <span class="ind-tag">Listings sync included</span>
+        </div>
+        <div class="ind-card">
+          <div class="ind-icon">🏢</div>
+          <div class="ind-name">Agencies</div>
+          <div class="ind-use">Manage reputation for all your clients from one dashboard. White-label reports. Team access controls. Branded monthly client reports. Contact us for custom enterprise pricing.</div>
+          <span class="ind-tag">White-label available</span>
+        </div>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:20px;font-size:.78rem;color:var(--mu)">← Drag to explore all industries →</div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════
+     MISSION
+══════════════════════════════════════════════ -->
+<section class="section bg-k rel hc-dark" id="mission">
+  <div class="hc-bg">
+    <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+      <defs><pattern id="hc5" x="0" y="0" width="60" height="52" patternUnits="userSpaceOnUse">
+        <polygon points="30,2 56,16 56,44 30,58 4,44 4,16" fill="none" stroke="#fff" stroke-width="1.5"/>
+      </pattern></defs>
+      <rect width="100%" height="100%" fill="url(#hc5)"/>
+    </svg>
+  </div>
+  <div class="wrap inner">
+    <div class="mission-grid">
+      <div class="mission-text">
+        <div class="eyebrow white">Our mission</div>
+        <h2 class="sec-hed mt12" style="color:#fff">Reputation management<br><em style="color:var(--g)">shouldn't cost an arm and a leg.</em></h2>
+        <p class="mt24">The tools that protect and grow your business reputation used to cost $300–900 per month per location. Annual contracts. Setup fees. Onboarding calls. A dedicated rep you'd never hear from.</p>
+        <p>We built SwarmReply because that's wrong. A restaurant owner in Sacramento, a dental practice in Ohio, a home services company in Texas — they all deserve enterprise-grade reputation tools without enterprise pricing or enterprise complexity.</p>
+        <p>Every feature in SwarmReply is something you'd normally pay multiple vendors for — AI replies, NPS surveys, listings sync, Google Posts, competitor benchmarking, Zapier integration, an embeddable widget. We built them all into one platform, kept it self-serve, and priced it like it should have been all along.</p>
+        <div class="mt32">
+          <a href="/signup.html" class="btn btn-gold">Start building your reputation →</a>
+        </div>
+      </div>
+      <div>
+        <div class="eyebrow white mb16">What you get vs what others charge for separately</div>
+        <div class="compare-table">
+          <div class="ct-head">
+            <span>Feature</span>
+            <span>SwarmReply</span>
+            <span>Elsewhere</span>
+          </div>
+          <div class="ct-row"><span class="ct-feat">AI review replies</span><span class="ct-val ct-y">Included</span><span class="ct-val ct-p">Add-on</span></div>
+          <div class="ct-row"><span class="ct-feat">Post-visit NPS surveys</span><span class="ct-val ct-y">Included</span><span class="ct-val ct-p">Separate tool</span></div>
+          <div class="ct-row"><span class="ct-feat">Business listings sync</span><span class="ct-val ct-y">Included</span><span class="ct-val ct-p">$300–500/mo</span></div>
+          <div class="ct-row"><span class="ct-feat">Google Posts auto-publisher</span><span class="ct-val ct-y">Included</span><span class="ct-val ct-n">Not available</span></div>
+          <div class="ct-row"><span class="ct-feat">Competitor benchmarking</span><span class="ct-val ct-y">Included</span><span class="ct-val ct-p">Enterprise only</span></div>
+          <div class="ct-row"><span class="ct-feat">Zapier integration</span><span class="ct-val ct-y">Included</span><span class="ct-val ct-p">Enterprise only</span></div>
+          <div class="ct-row"><span class="ct-feat">Review widget embed</span><span class="ct-val ct-y">Included</span><span class="ct-val ct-p">Separate tool</span></div>
+          <div class="ct-row"><span class="ct-feat">CSV import any system</span><span class="ct-val ct-y">Included</span><span class="ct-val ct-p">Custom setup</span></div>
+          <div class="ct-row"><span class="ct-feat">Annual contract required</span><span class="ct-val ct-y" style="color:#1a6b45">Never</span><span class="ct-val ct-n">Usually</span></div>
+          <div class="ct-row" style="border-top:1px solid rgba(255,255,255,.1)"><span class="ct-feat" style="color:#fff;font-weight:600">Starting price</span><span class="ct-val" style="color:var(--g);font-size:1rem;font-weight:700">$79/mo</span><span class="ct-val ct-p">$300–900/mo</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════
+     PRICING
+══════════════════════════════════════════════ -->
+<section class="section rel" id="pricing">
+  <div class="hc-bg" style="opacity:.03">
+    <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+      <defs><pattern id="hc6" x="0" y="0" width="60" height="52" patternUnits="userSpaceOnUse">
+        <polygon points="30,2 56,16 56,44 30,58 4,44 4,16" fill="none" stroke="#0a0a0a" stroke-width="1.5"/>
+      </pattern></defs>
+      <rect width="100%" height="100%" fill="url(#hc6)"/>
+    </svg>
+  </div>
+  <div class="wrap inner">
+    <div class="center mb48">
+      <div class="eyebrow">Simple, honest pricing</div>
+      <h2 class="sec-hed">Pay for locations.<br>Get everything.</h2>
+      <p class="lead center mt16">No feature tiers. No add-ons. Every plan includes the full suite. Pick the number of locations that fits your business.</p>
+    </div>
+    <div class="plans-grid">
+
+      <!-- STARTER -->
+      <div class="plan-card">
+        <div class="plan-name">Starter</div>
+        <div class="plan-price">$79<span>/mo</span></div>
+        <div class="plan-loc">1 location</div>
+        <div class="plan-sub">For single-location businesses ready to put reputation on autopilot. Month-to-month. Cancel anytime.</div>
+        <div class="plan-features">
+          <div class="pf"><span class="pf-check">✓</span><span>AI replies to every Google review</span></div>
+          <div class="pf"><span class="pf-check">✓</span><span>Post-visit NPS surveys (email & SMS)</span></div>
+          <div class="pf"><span class="pf-check">✓</span><span>Business listings sync — Google, Apple, Bing</span></div>
+          <div class="pf"><span class="pf-check">✓</span><span>Google Posts auto-publisher</span></div>
+          <div class="pf"><span class="pf-check">✓</span><span>Sentiment analysis & keyword tracker</span></div>
+          <div class="pf"><span class="pf-check">✓</span><span>Review requests — email & SMS</span></div>
+          <div class="pf"><span class="pf-check">✓</span><span>CSV import from any PMS or CRM</span></div>
+          <div class="pf"><span class="pf-check">✓</span><span>Embeddable review widget</span></div>
+          <div class="pf"><span class="pf-check">✓</span><span>Instant negative review alerts</span></div>
+          <div class="pf"><span class="pf-check">✓</span><span>Monthly reputation report</span></div>
+          <div class="pf"><span class="pf-check">✓</span><span>Zapier integration (7,000+ apps)</span></div>
+        </div>
+        <button class="btn-plan btn-plan-k" onclick="window.location.href='/signup.html?plan=starter'">Get started — $79/mo</button>
+      </div>
+
+      <!-- GROWTH -->
+      <div class="plan-card feat">
+        <div class="plan-pop">Most Popular</div>
+        <div class="plan-name">Growth</div>
+        <div class="plan-price">$139<span>/mo</span></div>
+        <div class="plan-loc">Up to 5 locations</div>
+        <div class="plan-sub">For growing businesses and small chains managing multiple locations from one dashboard. Month-to-month.</div>
+        <div class="plan-features">
+          <div class="pf"><span class="pf-check">✓</span><span>Everything in Starter</span></div>
+          <div class="pf"><span class="pf-check">✓</span><span>Up to 5 locations — one dashboard</span></div>
+          <div class="pf"><span class="pf-check">✓</span><span>Competitor benchmarking (5 nearby)</span></div>
+          <div class="pf"><span class="pf-check">✓</span><span>Multi-language replies — 15 languages</span></div>
+          <div class="pf"><span class="pf-check">✓</span><span>Reply variation engine</span></div>
+          <div class="pf"><span class="pf-check">✓</span><span>Review volume calendar & heatmap</span></div>
+          <div class="pf"><span class="pf-check">✓</span><span>Priority email support</span></div>
+        </div>
+        <button class="btn-plan btn-plan-g" onclick="window.location.href='/signup.html?plan=growth'">Get started — $139/mo</button>
+      </div>
+
+      <!-- AGENCY -->
+      <div class="plan-card">
+        <div class="plan-name">Agency</div>
+        <div class="plan-price" style="font-size:2.2rem">Contact<span style="font-size:1rem"> sales</span></div>
+        <div class="plan-loc">Unlimited locations</div>
+        <div class="plan-sub">For agencies managing reputation across all their clients. White-label, team controls, branded client reports.</div>
+        <div class="plan-features">
+          <div class="pf"><span class="pf-check">✓</span><span>Everything in Growth</span></div>
+          <div class="pf"><span class="pf-check">✓</span><span>Unlimited client locations</span></div>
+          <div class="pf"><span class="pf-check">✓</span><span>White-label dashboard</span></div>
+          <div class="pf"><span class="pf-check">✓</span><span>Branded monthly client reports</span></div>
+          <div class="pf"><span class="pf-check">✓</span><span>Team access controls</span></div>
+          <div class="pf"><span class="pf-check">✓</span><span>Dedicated account manager</span></div>
+          <div class="pf"><span class="pf-check">✓</span><span>Custom integrations available</span></div>
+        </div>
+        <a href="mailto:hello@swarmreply.com?subject=Agency Plan Inquiry" class="btn-plan btn-plan-o" style="display:block;text-align:center;padding:14px;border-radius:50px;font-weight:700;font-size:.9rem;border:1.5px solid var(--bd);color:var(--tx);cursor:pointer">Contact sales →</a>
+      </div>
+
+    </div>
+    <p style="text-align:center;margin-top:24px;font-size:.82rem;color:var(--mu)">No setup fees · No annual contracts · Cancel anytime · All features included from day one</p>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════
+     INTEGRATIONS
+══════════════════════════════════════════════ -->
+<section class="section-sm bg-off rel">
+  <div class="hc-bg hc-mid">
+    <svg viewBox="0 0 1200 400" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+      <defs><pattern id="hc7" x="0" y="0" width="60" height="52" patternUnits="userSpaceOnUse">
+        <polygon points="30,2 56,16 56,44 30,58 4,44 4,16" fill="none" stroke="#0a0a0a" stroke-width="1.5"/>
+      </pattern></defs>
+      <rect width="100%" height="100%" fill="url(#hc7)"/>
+    </svg>
+  </div>
+  <div class="wrap inner">
+    <div class="center mb32">
+      <div class="eyebrow">Integrations</div>
+      <h2 class="sec-hed" style="font-size:2rem">Works with everything<br>your business already uses.</h2>
+    </div>
+    <div class="int-grid">
+      <div class="int-pill">Google Business Profile</div>
+      <div class="int-pill">Apple Maps</div>
+      <div class="int-pill">Bing Places</div>
+      <div class="int-pill">Zapier — 7,000+ apps</div>
+      <div class="int-pill">CSV Import — any PMS or CRM</div>
+      <div class="int-pill" style="background:var(--of);border-style:dashed;color:var(--mu);font-weight:400">+ many more coming soon</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════
+     TESTIMONIALS
+══════════════════════════════════════════════ -->
+<section class="section rel">
+  <div class="wrap inner">
+    <div class="center mb48">
+      <div class="eyebrow">What customers say</div>
+      <h2 class="sec-hed">Real results.<br>Real businesses.</h2>
+    </div>
+    <div class="test-grid">
+      <div class="test-card">
+        <div class="test-stars">★★★★★</div>
+        <div class="test-q">"Set up in 20 minutes. Within 48 hours every review had a reply. I'd been ignoring reviews for months — SwarmReply fixed that problem permanently."</div>
+        <div class="test-author">Marcus T.</div>
+        <div class="test-role">Owner · Southside Auto Service · Atlanta, GA</div>
+      </div>
+      <div class="test-card">
+        <div class="test-stars">★★★★★</div>
+        <div class="test-q">"The NPS survey feature alone is worth every dollar. We catch unhappy patients before they post publicly. Our Google rating went from 4.2 to 4.8 in 90 days."</div>
+        <div class="test-author">Dr. Rachel M.</div>
+        <div class="test-role">Owner · Lakewood Family Dental · Columbus, OH</div>
+      </div>
+      <div class="test-card">
+        <div class="test-stars">★★★★★</div>
+        <div class="test-q">"I manage 8 client locations. The dashboard is the cleanest I've used. White-label reports make me look like a genius in every client meeting."</div>
+        <div class="test-author">Jordan K.</div>
+        <div class="test-role">Director · Prestige Local Marketing · Denver, CO</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════
+     FINAL CTA
+══════════════════════════════════════════════ -->
+<section class="cta-section bg-k rel hc-dark">
+  <div class="hc-bg">
+    <svg viewBox="0 0 1200 600" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+      <defs><pattern id="hc9" x="0" y="0" width="60" height="52" patternUnits="userSpaceOnUse">
+        <polygon points="30,2 56,16 56,44 30,58 4,44 4,16" fill="none" stroke="#fff" stroke-width="1.5"/>
+      </pattern></defs>
+      <rect width="100%" height="100%" fill="url(#hc9)"/>
+    </svg>
+  </div>
+  <div class="wrap inner">
+    <div style="font-size:3rem;margin-bottom:16px">🐝</div>
+    <h2 class="sec-hed" style="font-size:clamp(2rem,5vw,3.5rem);margin-bottom:16px">Your reputation is<br>already being built.<br><em style="color:var(--g)">Take control of it.</em></h2>
+    <p style="color:rgba(255,255,255,.5);font-size:1rem;margin-bottom:36px;max-width:520px;margin-left:auto;margin-right:auto;line-height:1.75">Every day without a reply is a missed opportunity. Every unanswered negative review costs you customers. Start today — it takes minutes.</p>
+    <a href="/signup.html" class="btn btn-gold" style="font-size:1rem;padding:16px 36px">Get started — set up in minutes ›</a>
+    <p style="color:rgba(255,255,255,.3);font-size:.78rem;margin-top:16px">No setup fees · No annual contracts · Cancel anytime</p>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════
+     FOOTER
+══════════════════════════════════════════════ -->
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div style="display:flex;align-items:center;gap:10px;font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:900;color:#fff">
+          <svg width="22" height="22" viewBox="0 0 100 100" fill="none"><ellipse cx="50" cy="60" rx="21" ry="26" fill="white"/><rect x="29" y="52" width="42" height="8" rx="2" fill="#f5c842" opacity=".95"/><rect x="29" y="65" width="42" height="7" rx="2" fill="#f5c842" opacity=".7"/><circle cx="50" cy="31" r="15" fill="white"/><ellipse cx="50" cy="18" rx="21" ry="5" fill="#f5c842"/><path d="M32 18 Q33 6 50 6 Q67 6 68 18 Z" fill="#f5c842"/></svg>
+          SwarmReply
+        </div>
+        <p>Complete reputation management for every business — without the enterprise price tag.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Product</h4>
+        <a href="#features">Features</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#how-it-works">How it works</a>
+        <a href="#industries">Industries</a>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <a href="#mission">Our mission</a>
+        <a href="mailto:hello@swarmreply.com">Contact us</a>
+        <a href="/login.html">Log in</a>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <a href="mailto:hello@swarmreply.com">Contact us</a>
+        <a href="/signup.html">Get started</a>
+        <a href="mailto:hello@swarmreply.com?subject=Agency Plan Inquiry">Agency sales</a>
+      </div>
+    </div>
+    <div class="footer-bot">
+      <p>© 2026 SwarmReply, LLC. All rights reserved. · <a href="/terms.html" style="color:rgba(255,255,255,.45)">Terms of Service</a> · <a href="/privacy.html" style="color:rgba(255,255,255,.45)">Privacy Policy</a></p>
+      <p>Built for the businesses that keep communities running. 🐝</p>
+    </div>
+  </div>
+</footer>
+
+<!-- ══════════════════════════════════════════════
+     JAVASCRIPT
+══════════════════════════════════════════════ -->
+<script>
+// ── STRIPE LINKS ──
+const STRIPE = {
+  starter: 'https://buy.stripe.com/8x29ATa118yl32GbvebfO04',
+  growth:  'https://buy.stripe.com/4gM3cv6OP01PcDg2YIbfO05'
+};
+
+// ── NAV SCROLL ──
+window.addEventListener('scroll', () => {
+  document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 40);
+});
+
+// Plan selection handled on /signup.html
+
+// ── PRODUCT SLIDER — native scroll drag (same pattern as industry slider) ──
+(function() {
+  const slider = document.getElementById('product-slider');
+  if (!slider) return;
+  let isDown = false, startX = 0, scrollLeft = 0;
+
+  slider.addEventListener('mousedown', e => {
+    isDown = true;
+    slider.style.cursor = 'grabbing';
+    startX = e.pageX - slider.offsetLeft;
+    scrollLeft = slider.scrollLeft;
+    e.preventDefault();
+  });
+  window.addEventListener('mouseup', () => {
+    isDown = false;
+    slider.style.cursor = 'grab';
+  });
+  slider.addEventListener('mouseleave', () => {
+    isDown = false;
+    slider.style.cursor = 'grab';
+  });
+  slider.addEventListener('mousemove', e => {
+    if (!isDown) return;
+    const x = e.pageX - slider.offsetLeft;
+    const walk = (x - startX) * 1.2;
+    slider.scrollLeft = scrollLeft - walk;
+  });
+  // Touch support
+  slider.addEventListener('touchstart', e => {
+    startX = e.touches[0].pageX;
+    scrollLeft = slider.scrollLeft;
+  }, {passive: true});
+  slider.addEventListener('touchmove', e => {
+    const x = e.touches[0].pageX;
+    slider.scrollLeft = scrollLeft - (x - startX);
+  }, {passive: true});
+})();
+
+// ── INDUSTRY DRAG SLIDER ──
+(function() {
+  const slider = document.getElementById('ind-slider');
+  const track  = document.getElementById('ind-track');
+  let isDown = false, startX = 0, scrollLeft = 0;
+  slider.addEventListener('mousedown', e => { isDown = true; slider.style.cursor = 'grabbing'; startX = e.pageX - slider.offsetLeft; scrollLeft = slider.scrollLeft; e.preventDefault(); });
+  window.addEventListener('mouseup', () => { isDown = false; slider.style.cursor = 'grab'; });
+  slider.addEventListener('mousemove', e => { if (!isDown) return; const x = e.pageX - slider.offsetLeft; slider.scrollLeft = scrollLeft - (x - startX); });
+  slider.addEventListener('touchstart', e => { startX = e.touches[0].pageX; scrollLeft = slider.scrollLeft; }, {passive:true});
+  slider.addEventListener('touchmove', e => { const x = e.touches[0].pageX; slider.scrollLeft = scrollLeft - (x - startX); }, {passive:true});
+  // Make it actually scrollable
+  slider.style.overflowX = 'auto';
+  slider.style.scrollbarWidth = 'none';
+  slider.style.webkitOverflowScrolling = 'touch';
+})();
+
+// ── SMOOTH SCROLL NAV LINKS ──
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const target = document.querySelector(a.getAttribute('href'));
+    if (target) { e.preventDefault(); target.scrollIntoView({behavior:'smooth', block:'start'}); }
+  });
+});
+</script>
+</body>
+</html>

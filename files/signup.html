@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Get Started — SwarmReply</title>
+<meta name="description" content="Set up your SwarmReply reputation management account. Takes under 3 minutes.">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--k:#0a0a0a;--w:#fff;--g:#f5c842;--gd:#d4a515;--of:#f8f7f4;--bd:#e4e0d8;--mu:#7a7670;--tx:#1a1a18;--gr:#1a6b45;}
+body{font-family:'DM Sans',sans-serif;background:var(--of);color:var(--tx);-webkit-font-smoothing:antialiased;min-height:100vh}
+a{text-decoration:none;color:inherit}
+
+/* ── HONEYCOMB ── */
+.hc-bg{position:fixed;inset:0;opacity:.04;pointer-events:none;z-index:0}
+.hc-bg svg{width:100%;height:100%}
+
+/* ── NAV ── */
+.nav{background:#fff;border-bottom:1px solid var(--bd);padding:0 28px;height:62px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100}
+.nav-logo{display:flex;align-items:center;gap:9px;font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:900;color:var(--k)}
+.nav-back{font-size:.82rem;color:var(--mu);display:flex;align-items:center;gap:6px;transition:color .15s}
+.nav-back:hover{color:var(--k)}
+
+/* ── LAYOUT ── */
+.page{position:relative;z-index:1;min-height:calc(100vh - 62px);display:flex;align-items:flex-start;justify-content:center;padding:48px 20px 80px}
+.container{width:100%;max-width:560px}
+
+/* ── STEPS INDICATOR ── */
+.steps{display:flex;align-items:center;gap:0;margin-bottom:36px}
+.step-item{display:flex;align-items:center;gap:8px;font-size:.78rem;font-weight:500;color:var(--mu)}
+.step-item.active{color:var(--k);font-weight:600}
+.step-item.done{color:var(--gr)}
+.step-n{width:26px;height:26px;border-radius:50%;border:1.5px solid var(--bd);display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:700;background:#fff;flex-shrink:0}
+.step-item.active .step-n{background:var(--k);color:#fff;border-color:var(--k)}
+.step-item.done .step-n{background:var(--gr);color:#fff;border-color:var(--gr)}
+.step-line{flex:1;height:1px;background:var(--bd);margin:0 8px}
+
+/* ── FORM CARD ── */
+.form-card{background:#fff;border:1px solid var(--bd);border-radius:22px;padding:36px;box-shadow:0 4px 32px rgba(0,0,0,.06)}
+.form-hed{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:900;color:var(--k);margin-bottom:6px;line-height:1.1}
+.form-sub{font-size:.875rem;color:var(--mu);margin-bottom:28px;line-height:1.6}
+.fl{display:block;font-size:.67rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--mu);margin-bottom:5px}
+.fi{width:100%;padding:11px 14px;border:1.5px solid var(--bd);border-radius:11px;font-size:.9rem;color:var(--tx);outline:none;font-family:inherit;transition:border-color .15s;background:#fff}
+.fi:focus{border-color:var(--k)}
+.fsel{width:100%;padding:11px 14px;border:1.5px solid var(--bd);border-radius:11px;font-size:.9rem;color:var(--tx);outline:none;font-family:inherit;background:#fff;cursor:pointer;appearance:none}
+.frow{margin-bottom:16px}
+.fg2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.req{color:var(--re)}
+
+.btn-submit{width:100%;padding:15px;border:none;border-radius:50px;background:var(--g);color:var(--k);font-size:.95rem;font-weight:700;cursor:pointer;font-family:inherit;transition:all .18s;margin-top:8px}
+.btn-submit:hover{background:var(--gd);transform:translateY(-1px);box-shadow:0 8px 24px rgba(245,200,66,.35)}
+.btn-submit:disabled{background:var(--bd);color:var(--mu);cursor:not-allowed;transform:none;box-shadow:none}
+
+.form-note{font-size:.75rem;color:var(--mu);text-align:center;margin-top:14px;line-height:1.65}
+
+/* ── PLAN SELECTOR ── */
+.plan-opts{display:flex;flex-direction:column;gap:10px;margin-bottom:20px}
+.plan-opt{border:1.5px solid var(--bd);border-radius:13px;padding:14px 16px;cursor:pointer;transition:all .18s;display:flex;align-items:center;justify-content:space-between}
+.plan-opt:hover{border-color:var(--gd)}
+.plan-opt.selected{border-color:var(--k);background:var(--of)}
+.plan-opt-left h3{font-size:.9rem;font-weight:600;margin-bottom:2px}
+.plan-opt-left p{font-size:.78rem;color:var(--mu)}
+.plan-opt-right{text-align:right;flex-shrink:0;margin-left:16px}
+.plan-price{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:900;color:var(--k)}
+.plan-price span{font-size:.78rem;font-weight:400;color:var(--mu)}
+.plan-check{width:20px;height:20px;border-radius:50%;border:1.5px solid var(--bd);display:flex;align-items:center;justify-content:center;font-size:.72rem;margin-top:4px;margin-left:auto}
+.plan-opt.selected .plan-check{background:var(--k);border-color:var(--k);color:#fff}
+
+/* ── AGENCY MESSAGE ── */
+.agency-msg{background:var(--k);border-radius:18px;padding:32px;text-align:center;display:none}
+.agency-msg h2{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:900;color:#fff;margin-bottom:12px}
+.agency-msg p{font-size:.9rem;color:rgba(255,255,255,.65);line-height:1.75;margin-bottom:20px}
+.agency-msg a{display:inline-block;padding:13px 28px;background:var(--g);color:var(--k);border-radius:50px;font-weight:700;font-size:.9rem}
+
+/* ── LOC INPUT ── */
+.loc-note{font-size:.75rem;color:var(--mu);margin-top:5px;line-height:1.5}
+.plan-badge{display:inline-block;font-size:.7rem;font-weight:700;padding:2px 8px;border-radius:50px;margin-left:6px;vertical-align:middle}
+.pb-starter{background:#e8f5ef;color:#1a6b45}
+.pb-growth{background:#e8f0fe;color:#1a4baa}
+.pb-agency{background:#fef3cd;color:#92690a}
+
+@media(max-width:600px){.fg2{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<div class="hc-bg">
+  <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+    <defs><pattern id="hc" x="0" y="0" width="60" height="52" patternUnits="userSpaceOnUse">
+      <polygon points="30,2 56,16 56,44 30,58 4,44 4,16" fill="none" stroke="#0a0a0a" stroke-width="1.5"/>
+    </pattern></defs>
+    <rect width="100%" height="100%" fill="url(#hc)"/>
+  </svg>
+</div>
+
+<nav class="nav">
+  <a href="/" class="nav-logo">
+    <svg width="24" height="24" viewBox="0 0 100 100" fill="none">
+      <ellipse cx="50" cy="60" rx="21" ry="26" fill="#0a0a0a"/>
+      <rect x="29" y="52" width="42" height="8" rx="2" fill="#f5c842" opacity=".95"/>
+      <rect x="29" y="65" width="42" height="7" rx="2" fill="#f5c842" opacity=".7"/>
+      <circle cx="50" cy="31" r="15" fill="#0a0a0a"/>
+      <ellipse cx="50" cy="18" rx="21" ry="5" fill="#f5c842"/>
+      <path d="M32 18 Q33 6 50 6 Q67 6 68 18 Z" fill="#f5c842"/>
+    </svg>
+    SwarmReply
+  </a>
+  <a href="/" class="nav-back">← Back to site</a>
+</nav>
+
+<div class="page">
+  <div class="container">
+
+    <!-- Steps -->
+    <div class="steps">
+      <div class="step-item active" id="step1-ind"><div class="step-n">1</div>Business Info</div>
+      <div class="step-line"></div>
+      <div class="step-item" id="step2-ind"><div class="step-n">2</div>Payment</div>
+      <div class="step-line"></div>
+      <div class="step-item" id="step3-ind"><div class="step-n">3</div>You're live</div>
+    </div>
+
+    <!-- Step 1: Business Info Form -->
+    <div id="step1">
+      <div class="form-card">
+        <h1 class="form-hed">Let's set up<br><em style="font-style:italic;color:#d4a515">your swarm.</em></h1>
+        <p class="form-sub">Tell us about your business — takes under 3 minutes. You'll choose your plan and complete payment on the next screen.</p>
+
+        <form id="signup-form" onsubmit="handleSubmit(event)">
+          <div class="fg2">
+            <div class="frow"><label class="fl">Full Name <span class="req">*</span></label><input class="fi" type="text" name="name" id="f-name" placeholder="Jane Smith" required></div>
+            <div class="frow"><label class="fl">Business Name <span class="req">*</span></label><input class="fi" type="text" name="business" id="f-business" placeholder="Bella's Kitchen" required></div>
+          </div>
+          <div class="fg2">
+            <div class="frow"><label class="fl">Email Address <span class="req">*</span></label><input class="fi" type="email" name="email" id="f-email" placeholder="you@yourbusiness.com" required></div>
+            <div class="frow"><label class="fl">Phone Number</label><input class="fi" type="tel" name="phone" id="f-phone" placeholder="+1 (555) 000-0000"></div>
+          </div>
+          <div class="frow">
+            <label class="fl">Industry <span class="req">*</span></label>
+            <select class="fsel" name="industry" id="f-industry" required>
+              <option value="">Select your industry...</option>
+              <option>Dental Practice</option>
+              <option>Medical / Healthcare</option>
+              <option>Restaurant / Food &amp; Beverage</option>
+              <option>Salon / Beauty / Med Spa</option>
+              <option>Auto Shop / Dealership</option>
+              <option>Gym / Fitness</option>
+              <option>Law Firm</option>
+              <option>Home Services</option>
+              <option>Retail</option>
+              <option>Hotel / Hospitality</option>
+              <option>Veterinary Clinic</option>
+              <option>Marketing Agency</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="frow">
+            <label class="fl" for="f-locations">Number of Locations <span class="req">*</span></label>
+            <input class="fi" type="number" name="locations" id="f-locations" min="1" max="99" placeholder="e.g. 1" required oninput="updatePlanHint(this.value)">
+            <div class="loc-note" id="plan-hint">Enter a number from 1 to 99.</div>
+          </div>
+          <div class="frow">
+            <label class="fl">Preferred Reply Tone</label>
+            <select class="fsel" name="tone" id="f-tone">
+              <option>Warm &amp; Friendly</option>
+              <option>Professional</option>
+              <option>Casual &amp; Conversational</option>
+              <option>Empathetic &amp; Caring</option>
+            </select>
+          </div>
+
+          <button type="submit" class="btn-submit" id="submit-btn">Continue to payment →</button>
+          <p class="form-note">No payment taken on this page. By continuing you agree to our <a href="/terms.html" style="color:var(--k);font-weight:600">Terms of Service</a> and <a href="/privacy.html" style="color:var(--k);font-weight:600">Privacy Policy</a>.</p>
+        </form>
+      </div>
+    </div>
+
+    <!-- Agency thank-you (shown when > 5 locations) -->
+    <div id="agency-block" style="display:none">
+      <div class="agency-msg" style="display:block;background:#0a0a0a;border-radius:22px;padding:44px;text-align:center">
+        <div style="font-size:2.5rem;margin-bottom:16px">🐝</div>
+        <h2 style="font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:900;color:#fff;margin-bottom:12px">Thank you — we'll be in touch shortly.</h2>
+        <p style="font-size:.95rem;color:rgba(255,255,255,.6);line-height:1.75;margin-bottom:28px;max-width:400px;margin-left:auto;margin-right:auto">Your information has been sent to our team. A member of staff will reach out to you within one business day to get your account set up.</p>
+        <a href="/" style="display:inline-block;padding:13px 28px;background:var(--g);color:var(--k);border-radius:50px;font-weight:700;font-size:.9rem">← Back to SwarmReply</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+// Stripe payment links
+const STRIPE = {
+  starter: 'https://buy.stripe.com/8x29ATa118yl32GbvebfO04',
+  growth:  'https://buy.stripe.com/4gM3cv6OP01PcDg2YIbfO05'
+};
+
+// Formspree endpoint
+const FORMSPREE = 'https://formspree.io/f/mnjrpvab';
+
+function updatePlanHint(val) {
+  const n = parseInt(val);
+  const hint = document.getElementById('plan-hint');
+  const btn  = document.getElementById('submit-btn');
+  if (!val || isNaN(n) || n < 1) {
+    hint.innerHTML = 'Enter a number from 1 to 99.';
+    hint.style.color = 'var(--mu)';
+    btn.textContent = 'Continue to payment →';
+  } else if (n === 1) {
+    hint.innerHTML = 'Plan: <span class="plan-badge pb-starter">Starter — $79/mo</span> · 1 location, full suite included.';
+    hint.style.color = '#1a6b45';
+    btn.textContent = 'Continue to payment — $79/mo →';
+  } else if (n <= 5) {
+    hint.innerHTML = 'Plan: <span class="plan-badge pb-growth">Growth — $139/mo</span> · Up to 5 locations, full suite included.';
+    hint.style.color = '#1a4baa';
+    btn.textContent = 'Continue to payment — $139/mo →';
+  } else {
+    hint.innerHTML = '<span style="color:#92690a;font-weight:600">6+ locations → Agency plan.</span> Our team will contact you with custom pricing.';
+    hint.style.color = '#92690a';
+    btn.textContent = 'Submit — our team will reach out →';
+  }
+}
+
+async function handleSubmit(e) {
+  e.preventDefault();
+  const btn = document.getElementById('submit-btn');
+  btn.disabled = true;
+  btn.textContent = 'Sending...';
+
+  const n = parseInt(document.getElementById('f-locations').value);
+  const plan = n === 1 ? 'Starter ($79/mo)' : n <= 5 ? 'Growth ($139/mo)' : 'Agency (6+ locations)';
+
+  // Build form data for Formspree → sends to nick@swarmreply.com
+  const data = {
+    _subject: `New SwarmReply Signup — ${plan}`,
+    name:      document.getElementById('f-name').value,
+    business:  document.getElementById('f-business').value,
+    email:     document.getElementById('f-email').value,
+    phone:     document.getElementById('f-phone').value,
+    industry:  document.getElementById('f-industry').value,
+    locations: document.getElementById('f-locations').value,
+    tone:      document.getElementById('f-tone').value,
+    plan:      plan,
+    _replyto:  document.getElementById('f-email').value,
+  };
+
+  try {
+    const res = await fetch(FORMSPREE, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify(data)
+    });
+
+    if (res.ok) {
+      if (n > 5) {
+        // Agency → show thank you
+        document.getElementById('step1').style.display = 'none';
+        document.getElementById('agency-block').style.display = 'block';
+        document.getElementById('step2-ind').style.opacity = '.3';
+      } else {
+        // Redirect to Stripe
+        const stripeUrl = n === 1 ? STRIPE.starter : STRIPE.growth;
+        // Append email as prefill if possible
+        const email = encodeURIComponent(document.getElementById('f-email').value);
+        window.location.href = stripeUrl;
+      }
+    } else {
+      throw new Error('Form submission failed');
+    }
+  } catch (err) {
+    btn.disabled = false;
+    btn.textContent = 'Continue to payment →';
+    alert('Something went wrong. Please try again or email hello@swarmreply.com');
+  }
+}
+</script>
+</body>
+</html>

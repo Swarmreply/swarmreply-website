@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Log In — SwarmReply</title>
+<meta name="robots" content="noindex">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --black:#0a0a0a;--white:#fff;--gold:#f5c842;--gold-dk:#d4a515;
+  --off:#f8f7f4;--mid:#f0eeea;--border:#e4e0d8;--muted:#7a7670;
+}
+html{height:100%;-webkit-text-size-adjust:100%}
+body{font-family:'DM Sans',sans-serif;background:var(--off);min-height:100%;display:flex;flex-direction:column;-webkit-font-smoothing:antialiased}
+/* Honeycomb bg */
+.hc-bg{position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.045}
+/* Layout */
+.page{flex:1;display:flex;align-items:center;justify-content:center;padding:60px 24px;position:relative;z-index:1}
+/* Left brand panel (desktop only) */
+.login-wrap{display:grid;grid-template-columns:1fr 1fr;max-width:920px;width:100%;border-radius:24px;overflow:hidden;box-shadow:0 24px 80px rgba(0,0,0,.1),0 4px 16px rgba(0,0,0,.06);border:1px solid var(--border)}
+.brand-panel{background:var(--black);padding:52px 44px;display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden}
+.brand-hc{position:absolute;inset:0;opacity:.05;pointer-events:none}
+.brand-logo{display:flex;align-items:center;gap:10px;margin-bottom:40px;position:relative}
+.brand-wm{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:900;color:var(--white)}
+.brand-tagline{font-family:'Playfair Display',serif;font-size:2rem;font-weight:900;line-height:1.1;letter-spacing:-.03em;color:var(--white);margin-bottom:16px;position:relative}
+.brand-tagline em{font-style:italic;font-weight:400;color:var(--gold)}
+.brand-sub{font-size:.85rem;color:rgba(255,255,255,.4);line-height:1.7;font-weight:300;position:relative}
+.brand-features{list-style:none;display:flex;flex-direction:column;gap:12px;position:relative;margin-top:auto}
+.brand-features li{display:flex;align-items:center;gap:10px;font-size:.82rem;color:rgba(255,255,255,.55)}
+.bf-dot{width:7px;height:7px;clip-path:polygon(50% 0%,100% 25%,100% 75%,50% 100%,0 75%,0 25%);background:var(--gold);flex-shrink:0}
+.bf-dot.dim{background:rgba(245,200,66,.3)}
+/* Form panel */
+.form-panel{background:var(--white);padding:52px 44px}
+.form-panel h2{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:900;color:var(--black);margin-bottom:6px;letter-spacing:-.02em}
+.form-panel p{font-size:.875rem;color:var(--muted);margin-bottom:32px;line-height:1.6}
+.fl{display:block;font-size:.7rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:7px}
+.fi{width:100%;padding:13px 15px;border:1.5px solid var(--border);border-radius:10px;font-size:.9rem;font-family:'DM Sans',sans-serif;color:var(--black);outline:none;transition:border-color .15s;background:var(--white)}
+.fi:focus{border-color:var(--black)}
+.btn-login{width:100%;padding:14px;border-radius:50px;background:var(--black);color:var(--white);border:none;font-size:.95rem;font-weight:700;font-family:'DM Sans',sans-serif;cursor:pointer;transition:opacity .15s;margin-top:18px}
+.btn-login:hover{opacity:.85}
+.btn-login:disabled{opacity:.5;cursor:not-allowed}
+.divider{display:flex;align-items:center;gap:14px;margin:24px 0}
+.divider::before,.divider::after{content:'';flex:1;height:1px;background:var(--border)}
+.divider span{font-size:.75rem;color:var(--muted)}
+.btn-signup{display:block;text-align:center;width:100%;padding:13px;border-radius:50px;background:var(--gold);color:var(--black);border:none;font-size:.9rem;font-weight:700;font-family:'DM Sans',sans-serif;cursor:pointer;text-decoration:none;transition:all .15s}
+.btn-signup:hover{background:var(--gold-dk)}
+#err-box{display:none;background:#fef2f2;border:1px solid #fecaca;border-radius:8px;padding:11px 14px;font-size:.82rem;color:#dc2626;margin-bottom:14px;line-height:1.5}
+#success-box{display:none;background:#f0fdf4;border:1px solid #bbf7d0;border-radius:8px;padding:11px 14px;font-size:.82rem;color:#15803d;margin-bottom:14px;line-height:1.5}
+.back-link{display:flex;align-items:center;gap:6px;font-size:.78rem;color:var(--muted);text-decoration:none;margin-top:24px;transition:color .15s;justify-content:center}
+.back-link:hover{color:var(--black)}
+@media(max-width:700px){
+  .login-wrap{grid-template-columns:1fr}
+  .brand-panel{display:none}
+  .form-panel{padding:36px 28px}
+  .page{padding:40px 20px}
+}
+/* Bee bounce */
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+.bee-anim{display:inline-block;animation:bob 3s ease-in-out infinite}
+</style>
+</head>
+<body>
+
+<!-- Honeycomb background -->
+<div class="hc-bg">
+  <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+    <defs><pattern id="hcp" x="0" y="0" width="54" height="94" patternUnits="userSpaceOnUse">
+      <polygon points="27,1 53,15 53,42 27,56 1,42 1,15" fill="none" stroke="#0a0a0a" stroke-width="1.2"/>
+      <polygon points="54,48 80,62 80,89 54,103 28,89 28,62" fill="none" stroke="#0a0a0a" stroke-width="1.2"/>
+    </pattern></defs>
+    <rect width="100%" height="100%" fill="url(#hcp)"/>
+  </svg>
+</div>
+
+<div class="page">
+  <div class="login-wrap">
+
+    <!-- Brand panel -->
+    <div class="brand-panel">
+      <div class="brand-hc">
+        <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+          <defs><pattern id="hcb" x="0" y="0" width="54" height="94" patternUnits="userSpaceOnUse">
+            <polygon points="27,1 53,15 53,42 27,56 1,42 1,15" fill="none" stroke="white" stroke-width="1"/>
+          </pattern></defs>
+          <rect width="100%" height="100%" fill="url(#hcb)"/>
+        </svg>
+      </div>
+      <div>
+        <div class="brand-logo">
+          <span class="bee-anim">
+            <svg width="32" height="32" viewBox="0 0 100 100" fill="none" aria-hidden="true">
+              <ellipse cx="50" cy="60" rx="21" ry="26" fill="white"/>
+              <rect x="29" y="52" width="42" height="8" rx="2" fill="#f5c842" opacity=".95"/>
+              <rect x="29" y="65" width="42" height="7" rx="2" fill="#f5c842" opacity=".7"/>
+              <circle cx="50" cy="31" r="15" fill="white"/>
+              <circle cx="43.5" cy="29" r="4" fill="#0a0a0a"/><circle cx="56.5" cy="29" r="4" fill="#0a0a0a"/>
+              <circle cx="44.5" cy="29" r="2.2" fill="white"/><circle cx="57.5" cy="29" r="2.2" fill="white"/>
+              <path d="M44 36 Q50 41 56 36" stroke="#0a0a0a" stroke-width="2" stroke-linecap="round" fill="none"/>
+              <ellipse cx="23" cy="46" rx="15" ry="7.5" fill="rgba(245,200,66,.6)" transform="rotate(-28 23 46)"/>
+              <ellipse cx="77" cy="46" rx="15" ry="7.5" fill="rgba(245,200,66,.6)" transform="rotate(28 77 46)"/>
+              <polygon points="50,86 46,95 54,95" fill="white"/>
+              <ellipse cx="50" cy="18" rx="21" ry="5" fill="#f5c842"/>
+              <path d="M32 18 Q33 6 50 6 Q67 6 68 18 Z" fill="#f5c842"/>
+              <rect x="32" y="17" width="36" height="3" rx="1.5" fill="#d4a515" opacity=".7"/>
+            </svg>
+          </span>
+          <span class="brand-wm">SwarmReply</span>
+        </div>
+        <div class="brand-tagline">Your reputation<br>dashboard.<br><em>Always on.</em></div>
+        <p class="brand-sub">Log in to see every review, every reply, your sentiment score, keyword insights, competitor data, and monthly reports — all in one place.</p>
+      </div>
+      <ul class="brand-features">
+        <li><span class="bf-dot"></span>Live review feed & auto-replies</li>
+        <li><span class="bf-dot"></span>Sentiment analysis & keyword tracker</li>
+        <li><span class="bf-dot"></span>Review request sending & CSV import</li>
+        <li><span class="bf-dot"></span>Competitor benchmarking</li>
+        <li><span class="bf-dot dim"></span>Monthly reputation reports</li>
+        <li><span class="bf-dot dim"></span>Multi-language reply coverage</li>
+      </ul>
+    </div>
+
+    <!-- Form panel -->
+    <div class="form-panel">
+      <h2>Welcome back.</h2>
+      <p>Enter the email address you used when subscribing to access your dashboard.</p>
+
+      <div id="err-box"></div>
+      <div id="success-box"></div>
+
+      <form id="loginForm">
+        <div style="margin-bottom:16px">
+          <label class="fl" for="email">Email address</label>
+          <input class="fi" type="email" id="email" name="email" placeholder="you@yourbusiness.com" autocomplete="email" required>
+        </div>
+        <button type="submit" class="btn-login" id="loginBtn">Sign In to Dashboard →</button>
+      </form>
+
+      <div class="divider"><span>New to SwarmReply?</span></div>
+      <a href="/#pricing" class="btn-signup">View plans &amp; start free trial</a>
+
+      <a href="/" class="back-link">← Back to swarmreply.com</a>
+    </div>
+
+  </div>
+</div>
+
+<script>
+document.getElementById('loginForm').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  const email = document.getElementById('email').value.trim();
+  const btn = document.getElementById('loginBtn');
+  const errBox = document.getElementById('err-box');
+  const sucBox = document.getElementById('success-box');
+  if (!email) return;
+
+  btn.textContent = 'Signing in...';
+  btn.disabled = true;
+  errBox.style.display = 'none';
+  sucBox.style.display = 'none';
+
+  try {
+    const API_URL = 'https://your-railway-url.up.railway.app/api';
+    const res = await fetch(API_URL + '/customers/login', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email })
+    });
+
+    if (res.ok) {
+      const data = await res.json();
+      localStorage.setItem('swarmreply_customer_id', data.customer.id);
+      if (data.token) localStorage.setItem('swarmreply_token', data.token);
+      sucBox.textContent = 'Logging you in...';
+      sucBox.style.display = 'block';
+      window.location.href = '/dashboard';
+    } else if (res.status === 404) {
+      errBox.innerHTML = 'No account found with that email address. <a href="/#pricing" style="color:var(--black);font-weight:600;text-decoration:underline">Start a free trial →</a>';
+      errBox.style.display = 'block';
+    } else {
+      errBox.textContent = 'Something went wrong. Please try again or email hello@swarmreply.com';
+      errBox.style.display = 'block';
+    }
+  } catch (err) {
+    errBox.textContent = 'Unable to connect right now. Please check your connection and try again.';
+    errBox.style.display = 'block';
+  } finally {
+    btn.textContent = 'Sign In to Dashboard →';
+    btn.disabled = false;
+  }
+});
+</script>
+</body>
+</html>
