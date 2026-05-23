@@ -242,6 +242,18 @@ h3.card-hed{font-family:'Playfair Display',serif;font-size:1.35rem;font-weight:7
   .footer-grid{grid-template-columns:1fr 1fr}
   .nav-links{display:none}
 }
+/* ── PWA INSTALL BANNER ── */
+#pwa-banner{position:fixed;bottom:0;left:0;right:0;z-index:9999;background:#0a0a0a;border-top:2px solid #f5c842;padding:16px 20px;padding-bottom:max(20px,env(safe-area-inset-bottom));display:flex;align-items:center;gap:14px;transform:translateY(100%);transition:transform .4s cubic-bezier(.25,.46,.45,.94);box-shadow:0 -8px 40px rgba(0,0,0,.4)}
+#pwa-banner.show{transform:translateY(0)}
+#pwa-banner .pwa-icon{width:48px;height:48px;border-radius:12px;background:#f5c842;display:flex;align-items:center;justify-content:center;font-size:1.5rem;flex-shrink:0}
+#pwa-banner .pwa-text{flex:1;min-width:0}
+#pwa-banner .pwa-text strong{display:block;font-size:.95rem;font-weight:700;color:#fff;margin-bottom:3px;line-height:1.2}
+#pwa-banner .pwa-text span{font-size:.78rem;color:rgba(255,255,255,.55);line-height:1.4;display:block}
+#pwa-install-btn{background:#f5c842;color:#0a0a0a;border:none;border-radius:50px;padding:11px 22px;font-size:.88rem;font-weight:700;cursor:pointer;font-family:inherit;white-space:nowrap;flex-shrink:0;-webkit-tap-highlight-color:transparent}
+#pwa-install-btn:active{background:#d4a515}
+#pwa-dismiss{background:transparent;border:none;color:rgba(255,255,255,.4);font-size:1.4rem;cursor:pointer;padding:8px;flex-shrink:0;line-height:1;-webkit-tap-highlight-color:transparent}
+#pwa-dismiss:active{color:#fff}
+
 </style>
 <script type="application/ld+json">
 {
