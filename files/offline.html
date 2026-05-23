@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>You're offline — SwarmReply</title>
+<link rel="manifest" href="/manifest.json">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'DM Sans',system-ui,sans-serif;background:#0a0a0a;color:#fff;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px;text-align:center;-webkit-font-smoothing:antialiased}
+.wrap{max-width:380px}
+.icon{font-size:3.5rem;margin-bottom:24px;display:block}
+h1{font-size:1.6rem;font-weight:700;margin-bottom:12px;letter-spacing:-.02em}
+p{font-size:.9rem;color:rgba(255,255,255,.5);line-height:1.75;margin-bottom:28px}
+.btn{display:inline-block;padding:13px 28px;background:#f5c842;color:#0a0a0a;border-radius:50px;font-weight:700;font-size:.9rem;text-decoration:none;cursor:pointer;border:none;font-family:inherit}
+.btn:hover{background:#d4a515}
+.hc{position:fixed;inset:0;opacity:.05;pointer-events:none;z-index:0}
+.content{position:relative;z-index:1}
+</style>
+</head>
+<body>
+<div class="hc">
+  <svg width="100%" height="100%" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
+    <defs><pattern id="hc" x="0" y="0" width="60" height="52" patternUnits="userSpaceOnUse">
+      <polygon points="30,2 56,16 56,44 30,58 4,44 4,16" fill="none" stroke="#fff" stroke-width="1.5"/>
+    </pattern></defs>
+    <rect width="100%" height="100%" fill="url(#hc)"/>
+  </svg>
+</div>
+<div class="wrap content">
+  <span class="icon">🐝</span>
+  <h1>You're offline</h1>
+  <p>SwarmReply needs an internet connection to load. Check your connection and try again — your swarm is waiting.</p>
+  <button class="btn" onclick="window.location.reload()">Try again</button>
+</div>
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/sw.js')
+      .then(reg => console.log('SW registered:', reg.scope))
+      .catch(err => console.log('SW failed:', err));
+  });
+}
+</script>
+</body>
+</html>

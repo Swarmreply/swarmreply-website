@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="192" height="192" viewBox="0 0 192 192">
+  <rect width="192" height="192" rx="42.24" fill="#0a0a0a"/>
+  <!-- honeycomb background dots -->
+  <circle cx="34.56" cy="34.56" r="7.68" fill="rgba(245,200,66,.15)"/>
+  <circle cx="157.44" cy="34.56" r="7.68" fill="rgba(245,200,66,.15)"/>
+  <circle cx="34.56" cy="157.44" r="7.68" fill="rgba(245,200,66,.15)"/>
+  <circle cx="157.44" cy="157.44" r="7.68" fill="rgba(245,200,66,.15)"/>
+  <!-- bee body -->
+  <ellipse cx="96.0" cy="119.03999999999999" rx="36.480000000000004" ry="46.08" fill="white"/>
+  <rect x="59.519999999999996" y="105.60000000000001" width="72.96000000000001" height="13.440000000000001" rx="3.84" fill="#f5c842"/>
+  <rect x="59.519999999999996" y="124.80000000000001" width="72.96000000000001" height="11.52" rx="3.84" fill="#f5c842" opacity=".7"/>
+  <!-- bee head -->
+  <circle cx="96.0" cy="65.28" r="28.799999999999997" fill="white"/>
+  <!-- eyes -->
+  <circle cx="83.52" cy="61.44" r="7.68" fill="#0a0a0a"/>
+  <circle cx="108.47999999999999" cy="61.44" r="7.68" fill="#0a0a0a"/>
+  <circle cx="84.48" cy="60.480000000000004" r="3.84" fill="white"/>
+  <circle cx="110.39999999999999" cy="60.480000000000004" r="3.84" fill="white"/>
+  <!-- smile -->
+  <path d="M 84.48 72.96000000000001 Q 96.0 82.56 107.52000000000001 72.96000000000001" stroke="#0a0a0a" stroke-width="3.84" stroke-linecap="round" fill="none"/>
+  <!-- wings -->
+  <ellipse cx="49.92" cy="92.16" rx="24.96" ry="12.48" fill="rgba(245,200,66,.6)" transform="rotate(-28 49.92 92.16)"/>
+  <ellipse cx="142.07999999999998" cy="92.16" rx="24.96" ry="12.48" fill="rgba(245,200,66,.6)" transform="rotate(28 142.07999999999998 92.16)"/>
+  <!-- crown/antennae -->
+  <ellipse cx="96.0" cy="40.32" rx="36.480000000000004" ry="8.64" fill="#f5c842"/>
+  <path d="M 63.36 40.32 Q 65.28 19.200000000000003 96.0 19.200000000000003 Q 126.72 19.200000000000003 128.64000000000001 40.32 Z" fill="#f5c842"/>
+  <!-- stinger -->
+  <polygon points="96.0,168.96 90.24,184.32 101.76,184.32" fill="white"/>
+</svg>

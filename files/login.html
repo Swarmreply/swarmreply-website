@@ -60,6 +60,14 @@ body{font-family:'DM Sans',sans-serif;background:var(--off);min-height:100%;disp
 @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
 .bee-anim{display:inline-block;animation:bob 3s ease-in-out infinite}
 </style>
+<link rel="manifest" href="/manifest.json">
+<meta name="theme-color" content="#f5c842">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="SwarmReply">
+<link rel="apple-touch-icon" href="/icons/icon-192.svg">
+<link rel="apple-touch-startup-image" href="/icons/icon-512.svg">
 </head>
 <body>
 
@@ -190,6 +198,15 @@ document.getElementById('loginForm').addEventListener('submit', async function(e
     btn.disabled = false;
   }
 });
+</script>
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/sw.js')
+      .then(reg => console.log('SW registered:', reg.scope))
+      .catch(err => console.log('SW failed:', err));
+  });
+}
 </script>
 </body>
 </html>

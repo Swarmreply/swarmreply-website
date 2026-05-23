@@ -84,6 +84,14 @@ a{text-decoration:none;color:inherit}
 
 @media(max-width:600px){.fg2{grid-template-columns:1fr}}
 </style>
+<link rel="manifest" href="/manifest.json">
+<meta name="theme-color" content="#f5c842">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="SwarmReply">
+<link rel="apple-touch-icon" href="/icons/icon-192.svg">
+<link rel="apple-touch-startup-image" href="/icons/icon-512.svg">
 </head>
 <body>
 
@@ -275,6 +283,15 @@ async function handleSubmit(e) {
     btn.textContent = 'Continue to payment →';
     alert('Something went wrong. Please try again or email hello@swarmreply.com');
   }
+}
+</script>
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/sw.js')
+      .then(reg => console.log('SW registered:', reg.scope))
+      .catch(err => console.log('SW failed:', err));
+  });
 }
 </script>
 </body>

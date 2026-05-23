@@ -266,12 +266,31 @@ h3.card-hed{font-family:'Playfair Display',serif;font-size:1.35rem;font-weight:7
   }
 }
 </script>
+<link rel="manifest" href="/manifest.json">
+<meta name="theme-color" content="#f5c842">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="SwarmReply">
+<link rel="apple-touch-icon" href="/icons/icon-192.svg">
+<link rel="apple-touch-startup-image" href="/icons/icon-512.svg">
 </head>
 <body>
 
 <!-- ══════════════════════════════════════════════
      NAV
 ══════════════════════════════════════════════ -->
+<!-- PWA Install Banner -->
+<div class="pwa-banner" id="pwa-banner">
+  <div class="pwa-icon">🐝</div>
+  <div class="pwa-text">
+    <strong>Add SwarmReply to your home screen</strong>
+    <span>Instant access — works like a native app</span>
+  </div>
+  <button class="pwa-btn" id="pwa-install-btn">Install</button>
+  <button class="pwa-dismiss" id="pwa-dismiss" aria-label="Dismiss">✕</button>
+</div>
+
 <nav class="nav" id="nav">
   <div class="nav-inner">
     <a href="/" class="nav-logo">
@@ -1149,6 +1168,73 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
     if (target) { e.preventDefault(); target.scrollIntoView({behavior:'smooth', block:'start'}); }
   });
 });
+</script>
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/sw.js')
+      .then(reg => console.log('SW registered:', reg.scope))
+      .catch(err => console.log('SW failed:', err));
+  });
+}
+
+// ── PWA INSTALL PROMPT ──────────────────────────────────────────────────────
+let deferredPrompt = null;
+const banner = document.getElementById('pwa-banner');
+const installBtn = document.getElementById('pwa-install-btn');
+const dismissBtn = document.getElementById('pwa-dismiss');
+
+window.addEventListener('beforeinstallprompt', e => {
+  e.preventDefault();
+  deferredPrompt = e;
+  // Show banner after 8 seconds if not already installed
+  setTimeout(() => {
+    if (!window.matchMedia('(display-mode: standalone)').matches) {
+      banner.classList.add('show');
+    }
+  }, 8000);
+});
+
+if (installBtn) {
+  installBtn.addEventListener('click', async () => {
+    if (!deferredPrompt) return;
+    deferredPrompt.prompt();
+    const { outcome } = await deferredPrompt.userChoice;
+    deferredPrompt = null;
+    banner.classList.remove('show');
+    if (outcome === 'accepted') {
+      console.log('PWA installed');
+    }
+  });
+}
+
+if (dismissBtn) {
+  dismissBtn.addEventListener('click', () => {
+    banner.classList.remove('show');
+    sessionStorage.setItem('pwa-dismissed', '1');
+  });
+}
+
+// Don't show if already dismissed this session or if running as installed PWA
+if (sessionStorage.getItem('pwa-dismissed') ||
+    window.matchMedia('(display-mode: standalone)').matches) {
+  if (banner) banner.style.display = 'none';
+}
+
+// iOS Safari doesn't support beforeinstallprompt — show manual instructions
+const isIOS = /iphone|ipad|ipod/i.test(navigator.userAgent);
+const isInStandaloneMode = window.navigator.standalone;
+if (isIOS && !isInStandaloneMode && !sessionStorage.getItem('pwa-dismissed')) {
+  setTimeout(() => {
+    if (banner) {
+      banner.querySelector('.pwa-text strong').textContent = 'Add to your home screen';
+      banner.querySelector('.pwa-text span').textContent = 'Tap the share icon ↑ then "Add to Home Screen"';
+      if (installBtn) installBtn.style.display = 'none';
+      banner.classList.add('show');
+    }
+  }, 8000);
+}
+
 </script>
 </body>
 </html>
