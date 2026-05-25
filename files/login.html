@@ -146,7 +146,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--off);min-height:100%;disp
       </form>
 
       <div class="divider"><span>New to SwarmReply?</span></div>
-      <a href="/#pricing" class="btn-signup">View plans &amp; start free trial</a>
+      <a href="/#pricing" class="btn-signup">Sign up today</a>
 
       <a href="/" class="back-link">← Back to swarmreply.com</a>
     </div>
@@ -184,7 +184,7 @@ document.getElementById('loginForm').addEventListener('submit', async function(e
       sucBox.style.display = 'block';
       window.location.href = '/dashboard';
     } else if (res.status === 404) {
-      errBox.innerHTML = 'No account found with that email address. <a href="/#pricing" style="color:var(--black);font-weight:600;text-decoration:underline">Start a free trial →</a>';
+      errBox.innerHTML = 'No account found with that email address. <a href="/#pricing" style="color:var(--black);font-weight:600;text-decoration:underline">Sign up today →</a>';
       errBox.style.display = 'block';
     } else {
       errBox.textContent = 'Something went wrong. Please try again or email hello@swarmreply.com';

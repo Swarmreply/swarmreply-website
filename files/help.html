@@ -1,0 +1,865 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Help Center — SwarmReply</title>
+<meta name="description" content="Everything you need to get the most out of SwarmReply. Guides, tutorials, and answers to your questions.">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://swarmreply.com/help">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="manifest" href="/manifest.json">
+<meta name="theme-color" content="#f5c842">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --k:#0a0a0a;--w:#fff;--g:#f5c842;--gd:#d4a515;
+  --of:#f8f7f4;--bd:#e4e0d8;--mu:#7a7670;--tx:#1a1a18;
+  --gr:#1a6b45;--re:#c0392b;--max:1100px;
+}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--w);color:var(--tx);-webkit-font-smoothing:antialiased}
+a{text-decoration:none;color:inherit}
+button{font-family:inherit;cursor:pointer}
+
+/* ── NAV ── */
+.nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(255,255,255,.96);backdrop-filter:blur(12px);border-bottom:1px solid rgba(228,224,216,.6)}
+.nav-inner{max-width:var(--max);margin:0 auto;padding:0 28px;height:64px;display:flex;align-items:center;justify-content:space-between}
+.nav-logo{display:flex;align-items:center;gap:10px;font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:900;color:var(--k)}
+.nav-right{display:flex;align-items:center;gap:20px}
+.nav-right a{font-size:.85rem;font-weight:500;color:var(--mu);transition:color .15s}
+.nav-right a:hover{color:var(--k)}
+.btn-nav{padding:8px 18px;border-radius:50px;font-size:.82rem;font-weight:700;background:var(--g);color:var(--k);border:none;transition:all .15s}
+.btn-nav:hover{background:var(--gd)}
+
+/* ── HERO ── */
+.help-hero{background:var(--k);padding:120px 28px 64px;text-align:center;position:relative;overflow:hidden}
+.hc-bg{position:absolute;inset:0;opacity:.06;pointer-events:none}
+.hc-bg svg{width:100%;height:100%}
+.hero-inner{position:relative;z-index:1;max-width:640px;margin:0 auto}
+.help-hero .eyebrow{font-size:.68rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:14px}
+.help-hero h1{font-family:'Playfair Display',serif;font-size:clamp(2.2rem,5vw,3.2rem);font-weight:900;color:#fff;line-height:1.1;letter-spacing:-.02em;margin-bottom:10px}
+.help-hero h1 em{font-style:italic;color:var(--g)}
+.help-hero p{font-size:.95rem;color:rgba(255,255,255,.5);line-height:1.7;margin-bottom:28px}
+
+/* ── SEARCH ── */
+.search-wrap{position:relative;max-width:560px;margin:0 auto}
+.search-wrap input{width:100%;padding:16px 56px 16px 52px;border-radius:14px;border:none;font-size:.95rem;font-family:inherit;color:var(--tx);outline:none;background:#fff;box-shadow:0 8px 40px rgba(0,0,0,.25)}
+.search-icon{position:absolute;left:18px;top:50%;transform:translateY(-50%);font-size:1.1rem;opacity:.4}
+.search-clear{position:absolute;right:16px;top:50%;transform:translateY(-50%);background:var(--of);border:none;border-radius:50%;width:24px;height:24px;font-size:.75rem;color:var(--mu);display:none;align-items:center;justify-content:center;cursor:pointer}
+.search-clear.show{display:flex}
+.search-results{position:absolute;top:calc(100% + 8px);left:0;right:0;background:#fff;border-radius:14px;border:1px solid var(--bd);box-shadow:0 12px 48px rgba(0,0,0,.12);overflow:hidden;display:none;z-index:100}
+.search-results.show{display:block}
+.sr-item{padding:13px 18px;display:flex;align-items:center;gap:12px;cursor:pointer;transition:background .1s;border-bottom:1px solid var(--of)}
+.sr-item:last-child{border-bottom:none}
+.sr-item:hover{background:var(--of)}
+.sr-icon{width:32px;height:32px;border-radius:8px;background:var(--of);display:flex;align-items:center;justify-content:center;font-size:.9rem;flex-shrink:0}
+.sr-title{font-size:.875rem;font-weight:600;color:var(--tx);margin-bottom:2px}
+.sr-meta{font-size:.75rem;color:var(--mu)}
+.sr-empty{padding:24px;text-align:center;color:var(--mu);font-size:.875rem}
+.search-hint{margin-top:14px;font-size:.78rem;color:rgba(255,255,255,.3)}
+.search-hint span{color:rgba(255,255,255,.55);font-weight:500;cursor:pointer;transition:color .15s}
+.search-hint span:hover{color:#fff}
+
+/* ── LAYOUT ── */
+.wrap{max-width:var(--max);margin:0 auto;padding:0 28px}
+.help-body{padding:56px 0 80px}
+.help-grid{display:grid;grid-template-columns:240px 1fr;gap:40px;align-items:start}
+
+/* ── SIDEBAR ── */
+.sidebar{position:sticky;top:84px}
+.sidebar-section{margin-bottom:6px}
+.sidebar-title{font-size:.62rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--mu);padding:8px 12px 4px}
+.sidebar-link{display:flex;align-items:center;gap:8px;padding:8px 12px;border-radius:9px;font-size:.84rem;font-weight:500;color:var(--mu);transition:all .12s;cursor:pointer}
+.sidebar-link:hover{background:var(--of);color:var(--tx)}
+.sidebar-link.active{background:var(--of);color:var(--k);font-weight:600}
+.sidebar-link .sl-ic{font-size:.85rem;width:18px;text-align:center;flex-shrink:0}
+.sidebar-link .sl-count{margin-left:auto;background:var(--bd);color:var(--mu);font-size:.65rem;font-weight:700;padding:2px 7px;border-radius:50px}
+
+/* ── MAIN CONTENT ── */
+.section-intro{margin-bottom:32px}
+.section-intro h2{font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:900;color:var(--k);margin-bottom:6px}
+.section-intro p{font-size:.875rem;color:var(--mu);line-height:1.7}
+
+/* ── CATEGORY CARDS ── (home view) */
+.cat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:48px}
+.cat-card{background:#fff;border:1px solid var(--bd);border-radius:18px;padding:24px;cursor:pointer;transition:all .2s}
+.cat-card:hover{border-color:var(--gd);box-shadow:0 6px 28px rgba(245,200,66,.14);transform:translateY(-2px)}
+.cat-card.active{border-color:var(--k);background:var(--of)}
+.cat-icon{width:44px;height:44px;border-radius:12px;background:var(--of);border:1px solid var(--bd);display:flex;align-items:center;justify-content:center;font-size:1.15rem;margin-bottom:14px}
+.cat-name{font-weight:700;font-size:.9rem;color:var(--k);margin-bottom:4px}
+.cat-desc{font-size:.78rem;color:var(--mu);line-height:1.55;margin-bottom:10px}
+.cat-count{font-size:.7rem;font-weight:600;color:var(--mu)}
+
+/* ── ARTICLE LIST ── */
+.article-list{display:flex;flex-direction:column;gap:0}
+.article-row{display:flex;align-items:center;gap:12px;padding:14px 18px;border-radius:12px;cursor:pointer;transition:all .15s;border:1px solid transparent}
+.article-row:hover{background:var(--of);border-color:var(--bd)}
+.article-row .ar-icon{width:36px;height:36px;border-radius:9px;background:var(--of);border:1px solid var(--bd);display:flex;align-items:center;justify-content:center;font-size:.9rem;flex-shrink:0}
+.article-row:hover .ar-icon{background:var(--g);border-color:var(--gd)}
+.article-row .ar-title{font-size:.875rem;font-weight:600;color:var(--tx);margin-bottom:2px}
+.article-row .ar-meta{font-size:.73rem;color:var(--mu)}
+.article-row .ar-arrow{margin-left:auto;font-size:.9rem;color:var(--bd);transition:color .15s;flex-shrink:0}
+.article-row:hover .ar-arrow{color:var(--mu)}
+
+/* ── ARTICLE VIEW ── */
+.article-view{display:none}
+.article-back{display:inline-flex;align-items:center;gap:7px;font-size:.82rem;font-weight:600;color:var(--mu);margin-bottom:20px;cursor:pointer;transition:color .15s}
+.article-back:hover{color:var(--k)}
+.article-header{margin-bottom:28px;padding-bottom:20px;border-bottom:1px solid var(--bd)}
+.article-header h2{font-family:'Playfair Display',serif;font-size:1.7rem;font-weight:900;color:var(--k);margin-bottom:10px;line-height:1.2}
+.article-meta{display:flex;align-items:center;gap:14px;font-size:.75rem;color:var(--mu)}
+.article-tag{background:var(--of);border:1px solid var(--bd);padding:2px 9px;border-radius:50px;font-weight:600;font-size:.68rem}
+.article-body{font-size:.9rem;line-height:1.85;color:#2a2a28}
+.article-body h3{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:700;color:var(--k);margin:28px 0 10px}
+.article-body h3:first-child{margin-top:0}
+.article-body p{margin-bottom:14px;color:#3a3a38}
+.article-body ul,.article-body ol{margin:0 0 14px 20px}
+.article-body li{margin-bottom:6px;color:#3a3a38}
+.article-body .tip{background:#e8f5ef;border-left:3px solid var(--gr);border-radius:0 10px 10px 0;padding:12px 16px;margin:16px 0;font-size:.85rem;color:var(--gr)}
+.article-body .warn{background:#fff8e8;border-left:3px solid var(--gd);border-radius:0 10px 10px 0;padding:12px 16px;margin:16px 0;font-size:.85rem;color:#7a5900}
+.article-body .step{display:flex;gap:14px;align-items:flex-start;margin-bottom:16px}
+.article-body .step-n{width:28px;height:28px;border-radius:50%;background:var(--k);color:#fff;display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:700;flex-shrink:0;margin-top:1px}
+.article-body .step-n.gold{background:var(--g);color:var(--k)}
+.article-feedback{margin-top:40px;padding-top:24px;border-top:1px solid var(--bd);text-align:center}
+.article-feedback p{font-size:.875rem;color:var(--mu);margin-bottom:12px}
+.fb-btns{display:flex;justify-content:center;gap:10px}
+.fb-btn{padding:8px 20px;border-radius:50px;border:1.5px solid var(--bd);font-size:.82rem;font-weight:600;color:var(--mu);transition:all .15s}
+.fb-btn:hover{border-color:var(--k);color:var(--k)}
+.fb-btn.yes:hover{border-color:var(--gr);color:var(--gr);background:#e8f5ef}
+.fb-btn.no:hover{border-color:var(--re);color:var(--re)}
+
+/* ── POPULAR ── */
+.popular-strip{background:var(--of);border:1px solid var(--bd);border-radius:16px;padding:22px 24px;margin-bottom:32px}
+.popular-strip h3{font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--mu);margin-bottom:14px}
+.popular-links{display:flex;flex-wrap:wrap;gap:8px}
+.popular-link{font-size:.82rem;font-weight:500;color:var(--tx);background:#fff;border:1px solid var(--bd);padding:6px 14px;border-radius:50px;transition:all .15s;cursor:pointer}
+.popular-link:hover{border-color:var(--gd);color:var(--k);box-shadow:0 3px 12px rgba(245,200,66,.15)}
+
+/* ── CONTACT BANNER ── */
+.contact-banner{background:var(--k);border-radius:18px;padding:28px 32px;display:flex;align-items:center;justify-content:space-between;gap:24px;margin-top:48px}
+.contact-banner h3{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:900;color:#fff;margin-bottom:4px}
+.contact-banner p{font-size:.82rem;color:rgba(255,255,255,.5);line-height:1.5}
+.contact-banner .cb-btns{display:flex;gap:10px;flex-shrink:0}
+.cb-btn{padding:10px 20px;border-radius:50px;font-size:.82rem;font-weight:700;border:none;cursor:pointer;transition:all .15s}
+.cb-btn.gold{background:var(--g);color:var(--k)}
+.cb-btn.gold:hover{background:var(--gd)}
+.cb-btn.ghost{background:transparent;border:1.5px solid rgba(255,255,255,.2);color:#fff}
+.cb-btn.ghost:hover{border-color:#fff}
+
+/* ── FOOTER ── */
+.help-footer{background:var(--k);padding:40px 0 28px;margin-top:80px}
+.hf-inner{max-width:var(--max);margin:0 auto;padding:0 28px}
+.hf-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:28px}
+.hf-logo{display:flex;align-items:center;gap:9px;font-family:'Playfair Display',serif;font-size:1rem;font-weight:900;color:#fff}
+.hf-links{display:flex;gap:24px}
+.hf-links a{font-size:.8rem;color:rgba(255,255,255,.4);transition:color .15s}
+.hf-links a:hover{color:#fff}
+.hf-bot{border-top:1px solid rgba(255,255,255,.08);padding-top:20px;display:flex;justify-content:space-between;align-items:center}
+.hf-bot p{font-size:.75rem;color:rgba(255,255,255,.25)}
+
+/* ── RESPONSIVE ── */
+@media(max-width:820px){
+  .help-grid{grid-template-columns:1fr}
+  .sidebar{display:none}
+  .cat-grid{grid-template-columns:1fr 1fr}
+  .contact-banner{flex-direction:column;text-align:center}
+  .contact-banner .cb-btns{justify-content:center}
+}
+@media(max-width:560px){
+  .cat-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="/" class="nav-logo">
+      <svg width="22" height="22" viewBox="0 0 100 100" fill="none">
+        <ellipse cx="50" cy="60" rx="21" ry="26" fill="#0a0a0a"/>
+        <rect x="29" y="52" width="42" height="8" rx="2" fill="#f5c842" opacity=".95"/>
+        <rect x="29" y="65" width="42" height="7" rx="2" fill="#f5c842" opacity=".7"/>
+        <circle cx="50" cy="31" r="15" fill="#0a0a0a"/>
+        <circle cx="43.5" cy="29" r="4" fill="#fff"/><circle cx="56.5" cy="29" r="4" fill="#fff"/>
+        <circle cx="44.5" cy="29" r="2.2" fill="#0a0a0a"/><circle cx="57.5" cy="29" r="2.2" fill="#0a0a0a"/>
+        <path d="M44 36 Q50 41 56 36" stroke="#fff" stroke-width="2" stroke-linecap="round" fill="none"/>
+        <ellipse cx="23" cy="46" rx="15" ry="7.5" fill="rgba(245,200,66,.55)" transform="rotate(-28 23 46)"/>
+        <ellipse cx="77" cy="46" rx="15" ry="7.5" fill="rgba(245,200,66,.55)" transform="rotate(28 77 46)"/>
+        <polygon points="50,86 46,95 54,95" fill="#0a0a0a"/>
+        <ellipse cx="50" cy="18" rx="21" ry="5" fill="#f5c842"/>
+        <path d="M32 18 Q33 6 50 6 Q67 6 68 18 Z" fill="#f5c842"/>
+      </svg>
+      SwarmReply
+    </a>
+    <div class="nav-right">
+      <a href="/">Home</a>
+      <a href="/#pricing">Pricing</a>
+      <a href="mailto:hello@swarmreply.com">Contact</a>
+      <a href="/login.html" style="color:var(--tx)">Log in</a>
+      <a href="/signup.html"><button class="btn-nav">Sign up today</button></a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="help-hero">
+  <div class="hc-bg">
+    <svg viewBox="0 0 1200 400" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+      <defs><pattern id="hc" x="0" y="0" width="60" height="52" patternUnits="userSpaceOnUse">
+        <polygon points="30,2 56,16 56,44 30,58 4,44 4,16" fill="none" stroke="#fff" stroke-width="1.5"/>
+      </pattern></defs>
+      <rect width="100%" height="100%" fill="url(#hc)"/>
+    </svg>
+  </div>
+  <div class="hero-inner">
+    <div class="eyebrow">SwarmReply Help Center</div>
+    <h1>How can we<br><em>help you?</em></h1>
+    <p>Guides, tutorials, and answers — everything you need to get the most out of SwarmReply.</p>
+    <div class="search-wrap" id="search-wrap">
+      <span class="search-icon">🔍</span>
+      <input type="text" id="search-input" placeholder="Search for anything — reviews, campaigns, billing…" autocomplete="off" oninput="handleSearch(this.value)" onkeydown="handleSearchKey(event)">
+      <button class="search-clear" id="search-clear" onclick="clearSearch()">✕</button>
+      <div class="search-results" id="search-results"></div>
+    </div>
+    <p class="search-hint">Popular: <span onclick="doSearch('connect google')">Connect Google</span> · <span onclick="doSearch('review request')">Send review requests</span> · <span onclick="doSearch('billing')">Billing</span> · <span onclick="doSearch('webchat')">Webchat setup</span></p>
+  </div>
+</div>
+
+<!-- BODY -->
+<div class="help-body">
+  <div class="wrap">
+    <div class="help-grid">
+
+      <!-- SIDEBAR -->
+      <aside class="sidebar">
+        <div class="sidebar-section">
+          <div class="sidebar-title">Getting started</div>
+          <div class="sidebar-link active" onclick="showCategory('start')"><span class="sl-ic">🚀</span>Getting started<span class="sl-count">6</span></div>
+        </div>
+        <div class="sidebar-section">
+          <div class="sidebar-title">Features</div>
+          <div class="sidebar-link" onclick="showCategory('reviews')"><span class="sl-ic">★</span>AI Review Replies<span class="sl-count">8</span></div>
+          <div class="sidebar-link" onclick="showCategory('requests')"><span class="sl-ic">↑</span>Review Generation<span class="sl-count">7</span></div>
+          <div class="sidebar-link" onclick="showCategory('surveys')"><span class="sl-ic">📊</span>Surveys & NPS<span class="sl-count">5</span></div>
+          <div class="sidebar-link" onclick="showCategory('webchat')"><span class="sl-ic">💬</span>Webchat & Inbox<span class="sl-count">8</span></div>
+          <div class="sidebar-link" onclick="showCategory('campaigns')"><span class="sl-ic">📣</span>SMS Campaigns<span class="sl-count">7</span></div>
+          <div class="sidebar-link" onclick="showCategory('listings')"><span class="sl-ic">📍</span>Listings Sync<span class="sl-count">4</span></div>
+          <div class="sidebar-link" onclick="showCategory('insights')"><span class="sl-ic">◎</span>Insights & Analytics<span class="sl-count">6</span></div>
+          <div class="sidebar-link" onclick="showCategory('llm')"><span class="sl-ic">✦</span>AI Visibility<span class="sl-count">4</span></div>
+          <div class="sidebar-link" onclick="showCategory('integrations')"><span class="sl-ic">⊕</span>Integrations<span class="sl-count">5</span></div>
+        </div>
+        <div class="sidebar-section">
+          <div class="sidebar-title">Account</div>
+          <div class="sidebar-link" onclick="showCategory('billing')"><span class="sl-ic">💳</span>Billing & Plans<span class="sl-count">5</span></div>
+          <div class="sidebar-link" onclick="showCategory('settings')"><span class="sl-ic">⚙</span>Settings<span class="sl-count">4</span></div>
+        </div>
+      </aside>
+
+      <!-- MAIN -->
+      <main id="help-main">
+
+        <!-- HOME VIEW -->
+        <div id="view-home">
+          <div class="popular-strip">
+            <h3>Popular articles</h3>
+            <div class="popular-links">
+              <span class="popular-link" onclick="showArticle('connect-google')">How to connect Google Business Profile</span>
+              <span class="popular-link" onclick="showArticle('first-review-request')">Sending your first review request</span>
+              <span class="popular-link" onclick="showArticle('ai-tone')">Setting your AI reply tone</span>
+              <span class="popular-link" onclick="showArticle('embed-webchat')">Adding webchat to your website</span>
+              <span class="popular-link" onclick="showArticle('sms-campaign')">Creating an SMS campaign</span>
+              <span class="popular-link" onclick="showArticle('billing-faq')">Billing FAQ</span>
+            </div>
+          </div>
+
+          <div class="section-intro">
+            <h2>All topics</h2>
+            <p>Browse by category or use search to find exactly what you need.</p>
+          </div>
+
+          <div class="cat-grid">
+            <div class="cat-card" onclick="showCategory('start')">
+              <div class="cat-icon">🚀</div>
+              <div class="cat-name">Getting started</div>
+              <div class="cat-desc">Set up your account, connect Google, send your first review request in under 10 minutes.</div>
+              <div class="cat-count">6 articles</div>
+            </div>
+            <div class="cat-card" onclick="showCategory('reviews')">
+              <div class="cat-icon">★</div>
+              <div class="cat-name">AI Review Replies</div>
+              <div class="cat-desc">Customise your tone, set approval mode, reply to Google and Facebook reviews automatically.</div>
+              <div class="cat-count">8 articles</div>
+            </div>
+            <div class="cat-card" onclick="showCategory('requests')">
+              <div class="cat-icon">↑</div>
+              <div class="cat-name">Review Generation</div>
+              <div class="cat-desc">Send review requests by email and SMS, import contacts, schedule campaigns.</div>
+              <div class="cat-count">7 articles</div>
+            </div>
+            <div class="cat-card" onclick="showCategory('surveys')">
+              <div class="cat-icon">📊</div>
+              <div class="cat-name">Surveys & NPS</div>
+              <div class="cat-desc">Post-visit surveys that route happy customers to Google and capture private feedback.</div>
+              <div class="cat-count">5 articles</div>
+            </div>
+            <div class="cat-card" onclick="showCategory('webchat')">
+              <div class="cat-icon">💬</div>
+              <div class="cat-name">Webchat & Inbox</div>
+              <div class="cat-desc">Add a chat widget to your website, manage conversations, set up the AI agent.</div>
+              <div class="cat-count">8 articles</div>
+            </div>
+            <div class="cat-card" onclick="showCategory('campaigns')">
+              <div class="cat-icon">📣</div>
+              <div class="cat-name">SMS Campaigns</div>
+              <div class="cat-desc">Send targeted SMS to your contact list, manage segments, stay TCPA-compliant.</div>
+              <div class="cat-count">7 articles</div>
+            </div>
+            <div class="cat-card" onclick="showCategory('listings')">
+              <div class="cat-icon">📍</div>
+              <div class="cat-name">Listings Sync</div>
+              <div class="cat-desc">Keep your business info consistent across Google, Apple Maps, and Bing.</div>
+              <div class="cat-count">4 articles</div>
+            </div>
+            <div class="cat-card" onclick="showCategory('insights')">
+              <div class="cat-icon">◎</div>
+              <div class="cat-name">Insights & Analytics</div>
+              <div class="cat-desc">Understand your sentiment score, keyword trends, rating velocity, and competitor data.</div>
+              <div class="cat-count">6 articles</div>
+            </div>
+            <div class="cat-card" onclick="showCategory('llm')">
+              <div class="cat-icon">✦</div>
+              <div class="cat-name">AI Visibility</div>
+              <div class="cat-desc">Track what ChatGPT, Gemini, and Perplexity say about your business in local searches.</div>
+              <div class="cat-count">4 articles</div>
+            </div>
+            <div class="cat-card" onclick="showCategory('integrations')">
+              <div class="cat-icon">⊕</div>
+              <div class="cat-name">Integrations</div>
+              <div class="cat-desc">Connect Google, Facebook, Zapier, and import from any PMS or CRM system.</div>
+              <div class="cat-count">5 articles</div>
+            </div>
+            <div class="cat-card" onclick="showCategory('billing')">
+              <div class="cat-icon">💳</div>
+              <div class="cat-name">Billing & Plans</div>
+              <div class="cat-desc">Manage your subscription, update your card, upgrade or cancel your plan.</div>
+              <div class="cat-count">5 articles</div>
+            </div>
+            <div class="cat-card" onclick="showCategory('settings')">
+              <div class="cat-icon">⚙</div>
+              <div class="cat-name">Settings</div>
+              <div class="cat-desc">Configure your account, alert preferences, team members, and notification settings.</div>
+              <div class="cat-count">4 articles</div>
+            </div>
+          </div>
+
+          <div class="contact-banner">
+            <div>
+              <h3>Can't find what you're looking for?</h3>
+              <p>Our team is here to help. Usually responds within a few hours on business days.</p>
+            </div>
+            <div class="cb-btns">
+              <a href="mailto:hello@swarmreply.com"><button class="cb-btn gold">Email support</button></a>
+              <a href="mailto:hello@swarmreply.com?subject=Help Center Feedback"><button class="cb-btn ghost">Send feedback</button></a>
+            </div>
+          </div>
+        </div>
+
+        <!-- CATEGORY VIEW -->
+        <div id="view-category" style="display:none">
+          <div class="article-back" onclick="showHome()">← Back to all topics</div>
+          <div class="section-intro">
+            <h2 id="cat-title"></h2>
+            <p id="cat-desc"></p>
+          </div>
+          <div class="article-list" id="cat-articles"></div>
+          <div class="contact-banner" style="margin-top:40px">
+            <div>
+              <h3>Still have questions?</h3>
+              <p>Email us at hello@swarmreply.com — we read and reply to every message.</p>
+            </div>
+            <div class="cb-btns">
+              <a href="mailto:hello@swarmreply.com"><button class="cb-btn gold">Email support</button></a>
+            </div>
+          </div>
+        </div>
+
+        <!-- ARTICLE VIEW -->
+        <div id="view-article" style="display:none">
+          <div class="article-back" id="article-back-btn" onclick="goBack()">← Back</div>
+          <div class="article-view" id="article-content"></div>
+          <div class="article-feedback">
+            <p>Was this article helpful?</p>
+            <div class="fb-btns">
+              <button class="fb-btn yes" onclick="articleFeedback(true)">👍 Yes, it helped</button>
+              <button class="fb-btn no" onclick="articleFeedback(false)">👎 Not really</button>
+            </div>
+          </div>
+          <div class="contact-banner" style="margin-top:40px">
+            <div>
+              <h3>Still need help?</h3>
+              <p>Email us at hello@swarmreply.com and we'll get back to you.</p>
+            </div>
+            <div class="cb-btns">
+              <a href="mailto:hello@swarmreply.com"><button class="cb-btn gold">Email support</button></a>
+            </div>
+          </div>
+        </div>
+
+      </main>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="help-footer">
+  <div class="hf-inner">
+    <div class="hf-top">
+      <div class="hf-logo">
+        <svg width="20" height="20" viewBox="0 0 100 100" fill="none">
+          <ellipse cx="50" cy="60" rx="21" ry="26" fill="white"/>
+          <rect x="29" y="52" width="42" height="8" rx="2" fill="#f5c842" opacity=".95"/>
+          <ellipse cx="50" cy="18" rx="21" ry="5" fill="#f5c842"/>
+          <path d="M32 18 Q33 6 50 6 Q67 6 68 18 Z" fill="#f5c842"/>
+        </svg>
+        SwarmReply Help Center
+      </div>
+      <div class="hf-links">
+        <a href="/">swarmreply.com</a>
+        <a href="/#pricing">Pricing</a>
+        <a href="/login.html">Log in</a>
+        <a href="mailto:hello@swarmreply.com">Contact</a>
+        <a href="/terms.html">Terms</a>
+        <a href="/privacy.html">Privacy</a>
+      </div>
+    </div>
+    <div class="hf-bot">
+      <p>© 2026 SwarmReply, LLC. All rights reserved.</p>
+      <p>Built for the businesses that keep communities running. 🐝</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+// ── DATA ──────────────────────────────────────────────────────────────────────
+
+var categories = {
+  start: {
+    title: 'Getting started',
+    desc: 'Everything you need to go from sign-up to your first AI reply in under 10 minutes.',
+    icon: '🚀',
+    articles: ['welcome','connect-google','first-review-request','ai-tone','onboarding-checklist','invite-team']
+  },
+  reviews: {
+    title: 'AI Review Replies',
+    desc: 'Customise how the AI replies to your reviews — tone, style, approval settings, and more.',
+    icon: '★',
+    articles: ['ai-tone','approval-mode','reply-templates','facebook-reviews','negative-reviews','multi-language','reply-quality','edit-reply']
+  },
+  requests: {
+    title: 'Review Generation',
+    desc: 'Send review requests by email and SMS, import contacts, and automate follow-ups.',
+    icon: '↑',
+    articles: ['first-review-request','import-contacts','review-platforms','sms-requests','template-customise','review-widget','request-timing']
+  },
+  surveys: {
+    title: 'Surveys & NPS',
+    desc: 'Post-visit surveys that protect your rating by routing feedback intelligently.',
+    icon: '📊',
+    articles: ['survey-setup','nps-routing','promoter-destination','survey-link','detractor-handling']
+  },
+  webchat: {
+    title: 'Webchat & Inbox',
+    desc: 'Add a chat widget to your website and manage all conversations from your inbox.',
+    icon: '💬',
+    articles: ['embed-webchat','webchat-setup','ai-agent-setup','knowledge-base','handoff','inbox-manage','sms-bridge','webchat-notifications']
+  },
+  campaigns: {
+    title: 'SMS Campaigns',
+    desc: 'Send targeted SMS campaigns to your customer list and track results.',
+    icon: '📣',
+    articles: ['sms-campaign','contact-import','segments','campaign-limits','tcpa-compliance','opt-outs','sms-best-practices']
+  },
+  listings: {
+    title: 'Listings Sync',
+    desc: 'Keep your business name, address, and phone consistent everywhere.',
+    icon: '📍',
+    articles: ['listings-overview','fix-mismatch','apple-maps','bing-places']
+  },
+  insights: {
+    title: 'Insights & Analytics',
+    desc: 'Understand your reputation data and track what matters.',
+    icon: '◎',
+    articles: ['insights-overview','sentiment-score','keyword-tracker','competitor-benchmarking','rating-velocity','monthly-report']
+  },
+  llm: {
+    title: 'AI Visibility Monitoring',
+    desc: 'Track what AI models say about your business when people ask for recommendations.',
+    icon: '✦',
+    articles: ['llm-overview','visibility-score','improve-visibility','llm-setup']
+  },
+  integrations: {
+    title: 'Integrations',
+    desc: 'Connect SwarmReply to the tools your business already uses.',
+    icon: '⊕',
+    articles: ['connect-google','facebook-reviews','zapier-setup','csv-import','api-key']
+  },
+  billing: {
+    title: 'Billing & Plans',
+    desc: 'Everything about your subscription, payment, and plan options.',
+    icon: '💳',
+    articles: ['billing-faq','upgrade-plan','cancel','update-card','invoices']
+  },
+  settings: {
+    title: 'Settings',
+    desc: 'Configure your account, alerts, and preferences.',
+    icon: '⚙',
+    articles: ['account-settings','alert-preferences','google-posts-settings','locations']
+  }
+};
+
+var articles = {
+  'welcome': {
+    title: 'Welcome to SwarmReply',
+    category: 'Getting started',
+    readTime: '3 min read',
+    body: `
+      <h3>You're in the right place</h3>
+      <p>SwarmReply is your complete AI reputation management platform. This guide walks you through the five things to do first so your swarm starts working immediately.</p>
+      <div class="tip">💡 Most customers go from sign-up to first AI reply in under 15 minutes. No calls, no setup fees, no waiting.</div>
+      <h3>Your first 5 steps</h3>
+      <div class="step"><div class="step-n gold">1</div><div><strong>Connect Google Business Profile</strong> — This is the most important step. One OAuth click and SwarmReply starts monitoring and replying to your reviews.</div></div>
+      <div class="step"><div class="step-n gold">2</div><div><strong>Set your AI reply tone</strong> — Choose Warm, Professional, Casual, or Empathetic. This takes 30 seconds and shapes every reply the AI sends on your behalf.</div></div>
+      <div class="step"><div class="step-n gold">3</div><div><strong>Send your first review request</strong> — Pick a customer you know had a great experience and send them a request. Most get a response within an hour.</div></div>
+      <div class="step"><div class="step-n gold">4</div><div><strong>Set up your NPS survey</strong> — Add your Google review link so happy customers go straight there after scoring 9 or 10.</div></div>
+      <div class="step"><div class="step-n gold">5</div><div><strong>Add the webchat widget to your website</strong> — One script tag. Takes 2 minutes. Starts capturing leads immediately.</div></div>
+      <h3>Need help?</h3>
+      <p>Email us at <a href="mailto:hello@swarmreply.com" style="color:var(--k);font-weight:600">hello@swarmreply.com</a> — we respond to every message.</p>
+    `
+  },
+  'connect-google': {
+    title: 'How to connect Google Business Profile',
+    category: 'Getting started',
+    readTime: '2 min read',
+    body: `
+      <h3>What this does</h3>
+      <p>Connecting your Google Business Profile allows SwarmReply to monitor all incoming reviews and post AI-generated replies on your behalf. It uses Google's secure OAuth system — your Google password is never stored by SwarmReply.</p>
+      <h3>Step by step</h3>
+      <div class="step"><div class="step-n">1</div><div>In your dashboard, go to <strong>Settings → Integrations</strong></div></div>
+      <div class="step"><div class="step-n">2</div><div>Click <strong>Connect Google Business Profile</strong></div></div>
+      <div class="step"><div class="step-n">3</div><div>A Google login window opens — log in with the Google account that manages your business listing</div></div>
+      <div class="step"><div class="step-n">4</div><div>Click <strong>Allow</strong> when Google asks for permission</div></div>
+      <div class="step"><div class="step-n">5</div><div>You'll be redirected back to SwarmReply — your location is now connected</div></div>
+      <div class="tip">✓ SwarmReply requests read access to your reviews and permission to post replies. It cannot edit your business listing or billing information.</div>
+      <h3>Which Google account should I use?</h3>
+      <p>Use the Google account that has Owner or Manager access to your Google Business Profile. If you're not sure which one it is, go to business.google.com and check which account you're logged in with.</p>
+      <h3>Troubleshooting</h3>
+      <p>If the connection fails, the most common reason is that the Google account you logged in with doesn't have access to the Business Profile. Try logging into Google Business Profile directly first to confirm access, then reconnect.</p>
+    `
+  },
+  'ai-tone': {
+    title: 'Setting your AI reply tone',
+    category: 'AI Review Replies',
+    readTime: '2 min read',
+    body: `
+      <h3>Why tone matters</h3>
+      <p>The tone you choose shapes every AI reply SwarmReply writes. A dental practice sounds different from a casual restaurant — the AI adapts to whichever tone best fits your brand.</p>
+      <h3>The four tones</h3>
+      <p><strong>Warm & Friendly</strong> — Personal and caring. Uses the customer's name. Sounds like a real person who genuinely cares about your guests or clients. Best for restaurants, salons, and hospitality.</p>
+      <p><strong>Professional</strong> — Polished and clear. Respectful but not overly familiar. Best for dental practices, law firms, and medical offices.</p>
+      <p><strong>Casual</strong> — Relaxed and conversational. Short sentences, friendly energy. Best for gyms, retail, and auto shops.</p>
+      <p><strong>Empathetic</strong> — Acknowledges feelings first, then responds. Patient and reassuring. Best for healthcare, veterinary, and any service where emotions run high.</p>
+      <h3>How to change your tone</h3>
+      <div class="step"><div class="step-n">1</div><div>Go to <strong>Settings → AI Replies</strong></div></div>
+      <div class="step"><div class="step-n">2</div><div>Select your preferred tone</div></div>
+      <div class="step"><div class="step-n">3</div><div>Optionally add phrases to Always Include (e.g. "family-owned since 2012") or Never Include</div></div>
+      <div class="step"><div class="step-n">4</div><div>Click <strong>Save</strong> — changes apply to all future replies immediately</div></div>
+      <div class="warn">⚠ Changing tone does not re-generate replies that have already been posted. It only affects new replies going forward.</div>
+    `
+  },
+  'first-review-request': {
+    title: 'Sending your first review request',
+    category: 'Review Generation',
+    readTime: '3 min read',
+    body: `
+      <h3>The fastest way to get more reviews</h3>
+      <p>Review requests are short, personalised messages sent to customers after a visit or service asking them to leave a review. They work because they ask at the right moment — when the experience is still fresh.</p>
+      <div class="tip">💡 Most businesses get their first new review within an hour of sending their first request. Think of your last happy customer and start there.</div>
+      <h3>Send a single request</h3>
+      <div class="step"><div class="step-n">1</div><div>Go to <strong>Grow → Review Requests</strong></div></div>
+      <div class="step"><div class="step-n">2</div><div>Click <strong>+ Send Review Request</strong></div></div>
+      <div class="step"><div class="step-n">3</div><div>Enter the customer's name and email or phone number</div></div>
+      <div class="step"><div class="step-n">4</div><div>Choose your review destination (Google, Facebook, or Yelp)</div></div>
+      <div class="step"><div class="step-n">5</div><div>Click <strong>Send</strong></div></div>
+      <h3>Send in bulk</h3>
+      <p>To send to a list of customers, go to <strong>Grow → Import Contacts</strong> and upload a CSV file with name, email, and/or phone columns. SwarmReply will import the contacts and you can send to the entire list at once.</p>
+      <h3>Choosing which platform to send to</h3>
+      <p>Each template can be configured to send customers to a specific review platform. Go to <strong>Settings → Integrations → Template Platform Picker</strong> to set this per template. If you need Google reviews, set your default to Google. If your Yelp rating needs work, create a separate Yelp template.</p>
+    `
+  },
+  'embed-webchat': {
+    title: 'Adding the webchat widget to your website',
+    category: 'Webchat & Inbox',
+    readTime: '3 min read',
+    body: `
+      <h3>What the webchat widget does</h3>
+      <p>The webchat widget adds a chat bubble to your website. When a visitor clicks it, they enter their name and phone number and send a message. You get notified immediately by email and SMS. The conversation continues via text — meaning you capture their contact details before they leave your site.</p>
+      <h3>Get your embed code</h3>
+      <div class="step"><div class="step-n">1</div><div>Go to <strong>Settings → Webchat & AI Agent</strong></div></div>
+      <div class="step"><div class="step-n">2</div><div>Scroll to <strong>Embed code</strong></div></div>
+      <div class="step"><div class="step-n">3</div><div>Click <strong>Copy embed code</strong></div></div>
+      <h3>Add it to your website</h3>
+      <p>Paste the script tag just before the closing <code>&lt;/body&gt;</code> tag on every page of your website. It looks like this:</p>
+      <div style="background:var(--k);color:#f5c842;border-radius:10px;padding:14px 16px;font-family:monospace;font-size:.82rem;line-height:1.8;margin:12px 0">&lt;script<br>&nbsp;&nbsp;src="https://swarmreply.com/chat-widget.js"<br>&nbsp;&nbsp;data-token="your-token-here"<br>&gt;&lt;/script&gt;</div>
+      <div class="tip">✓ The widget loads asynchronously — it won't slow down your website.</div>
+      <h3>On WordPress</h3>
+      <p>Install the <strong>Insert Headers and Footers</strong> plugin, paste the code in the Footer Scripts section, and save. The widget appears on every page automatically.</p>
+      <h3>On Squarespace</h3>
+      <p>Go to Settings → Advanced → Code Injection. Paste the code in the Footer section and save.</p>
+      <h3>On Wix</h3>
+      <p>Go to Settings → Advanced → Custom Code. Add the code to the body section and apply to all pages.</p>
+    `
+  },
+  'sms-campaign': {
+    title: 'Creating your first SMS campaign',
+    category: 'SMS Campaigns',
+    readTime: '4 min read',
+    body: `
+      <h3>What SMS campaigns are for</h3>
+      <p>SMS campaigns let you send a text message to your entire contact list or a targeted segment — for promotions, seasonal offers, win-back messages, or event announcements. Response rates for SMS are typically 5–10x higher than email.</p>
+      <div class="warn">⚠ Only send to customers who have given you their phone number and a reasonable expectation of receiving texts from your business. See our TCPA compliance guide for details.</div>
+      <h3>Create a campaign</h3>
+      <div class="step"><div class="step-n">1</div><div>Go to <strong>Campaigns</strong> in the sidebar</div></div>
+      <div class="step"><div class="step-n">2</div><div>Click <strong>+ New Campaign</strong></div></div>
+      <div class="step"><div class="step-n">3</div><div>Enter a campaign name (internal only — customers don't see this)</div></div>
+      <div class="step"><div class="step-n">4</div><div>Write your message — max 160 characters. Use <strong>[name]</strong> to personalise with the recipient's first name</div></div>
+      <div class="step"><div class="step-n">5</div><div>Choose your audience: All contacts, by tag, or a saved segment</div></div>
+      <div class="step"><div class="step-n">6</div><div>Choose <strong>Send now</strong> or schedule for a specific date and time</div></div>
+      <div class="step"><div class="step-n">7</div><div>Review the preview and recipient count, then click <strong>Send campaign</strong></div></div>
+      <h3>Monthly SMS limits</h3>
+      <p>Starter plans include 500 campaign SMS per month. Growth plans include 2,000 per month. Your remaining balance is shown at the top of the Campaigns page and in the campaign composer. Limits reset on the 1st of each month.</p>
+      <div class="tip">💡 Best practice: always end your message with "Reply STOP to unsubscribe." SwarmReply handles STOP replies automatically.</div>
+    `
+  },
+  'billing-faq': {
+    title: 'Billing FAQ',
+    category: 'Billing & Plans',
+    readTime: '3 min read',
+    body: `
+      <h3>When am I charged?</h3>
+      <p>You are charged on the same date each month — the date you first subscribed. If you signed up on the 15th, you are billed on the 15th of every month.</p>
+      <h3>Can I cancel anytime?</h3>
+      <p>Yes. There are no contracts and no cancellation fees. Go to <strong>Settings → Billing → Cancel subscription</strong>. You keep full access until the end of your current billing period.</p>
+      <h3>How do I update my payment method?</h3>
+      <p>Go to <strong>Settings → Billing → Manage billing</strong>. This opens the Stripe billing portal where you can update your card securely.</p>
+      <h3>How do I upgrade from Starter to Growth?</h3>
+      <p>Go to <strong>Settings → Billing</strong> and click the Growth plan card. The change takes effect immediately and Stripe prorates the difference on your next invoice — you only pay for the days remaining in your billing period.</p>
+      <h3>Do you offer refunds?</h3>
+      <p>We don't issue refunds for partial months. If you cancel mid-month, you keep access until the end of the period. If you have an exceptional situation, email hello@swarmreply.com and we'll review it.</p>
+      <h3>Where are my invoices?</h3>
+      <p>Go to <strong>Settings → Billing</strong> and scroll to Invoice history. All invoices have a PDF download link and a hosted invoice page. You can also access them directly via the Stripe billing portal.</p>
+      <h3>What happens to my data if I cancel?</h3>
+      <p>Your data is retained for 30 days after cancellation. If you reactivate within 30 days, everything is exactly as you left it. After 30 days, data is permanently deleted.</p>
+    `
+  },
+  'llm-overview': {
+    title: 'Understanding AI Visibility Monitoring',
+    category: 'AI Visibility',
+    readTime: '4 min read',
+    body: `
+      <h3>What is AI Visibility Monitoring?</h3>
+      <p>When someone asks ChatGPT, Gemini, or Perplexity "best Italian restaurant in Sacramento" — does your business appear in the answer? AI Visibility Monitoring tracks this for you. Every week, SwarmReply queries major AI models with discovery questions about your business and your category, then scores and reports how often you appear and how positively you are described.</p>
+      <h3>Your visibility score</h3>
+      <p>The visibility score (0–100) represents the percentage of queries where your business was mentioned across all AI models monitored. A score of 73 means your business appeared in 73% of all queries run that week. The score is compared to the previous week so you can see if you are trending up or down.</p>
+      <h3>Which AI models are monitored?</h3>
+      <p>By default SwarmReply monitors Claude (included with your account), ChatGPT, Gemini, and Perplexity. ChatGPT and Gemini require separate API keys — instructions in Settings → AI Visibility → Setup.</p>
+      <h3>What queries are run?</h3>
+      <p>SwarmReply auto-generates 8 queries per location based on your business name, type, and city — including discovery queries ("best restaurants in Sacramento"), direct brand queries ("tell me about Bella's Kitchen"), and comparison queries. You can add custom queries in Settings → AI Visibility → Setup.</p>
+      <h3>How do I improve my score?</h3>
+      <p>AI models pull from Google ratings and review volume, Google Business Profile completeness, platform listings across the web, and how often your business name appears in credible online sources. The four most impactful things you can do: keep generating Google reviews, publish Google Posts weekly, keep your listings synced across all platforms, and use your business name and city consistently everywhere.</p>
+      <div class="tip">✓ The AI Visibility page includes a built-in improvement guide tailored to your specific score and missed queries.</div>
+    `
+  }
+};
+
+// Populate remaining articles as stubs
+var articleStubs = ['onboarding-checklist','invite-team','approval-mode','reply-templates','facebook-reviews','negative-reviews','multi-language','reply-quality','edit-reply','import-contacts','review-platforms','sms-requests','template-customise','review-widget','request-timing','survey-setup','nps-routing','promoter-destination','survey-link','detractor-handling','webchat-setup','ai-agent-setup','knowledge-base','handoff','inbox-manage','sms-bridge','webchat-notifications','contact-import','segments','campaign-limits','tcpa-compliance','opt-outs','sms-best-practices','listings-overview','fix-mismatch','apple-maps','bing-places','insights-overview','sentiment-score','keyword-tracker','competitor-benchmarking','rating-velocity','monthly-report','visibility-score','improve-visibility','llm-setup','zapier-setup','csv-import','api-key','upgrade-plan','cancel','update-card','invoices','account-settings','alert-preferences','google-posts-settings','locations'];
+
+var titleMap = {
+  'onboarding-checklist':'Onboarding checklist','invite-team':'Inviting team members','approval-mode':'Using approval mode','reply-templates':'Customising reply templates','facebook-reviews':'Replying to Facebook reviews','negative-reviews':'Handling negative reviews','multi-language':'Multi-language replies','reply-quality':'Understanding reply quality scores','edit-reply':'Editing a reply before it posts','import-contacts':'Importing contacts from CSV','review-platforms':'Choosing your review platform','sms-requests':'Sending review requests via SMS','template-customise':'Customising review request templates','review-widget':'Setting up the review widget','request-timing':'Scheduling review request timing','survey-setup':'Setting up your NPS survey','nps-routing':'How NPS routing works','promoter-destination':'Setting your promoter destination','survey-link':'Sharing your survey link','detractor-handling':'Handling detractor responses','webchat-setup':'Webchat appearance settings','ai-agent-setup':'Setting up the AI chat agent','knowledge-base':'Building your AI knowledge base','handoff':'How handoffs work','inbox-manage':'Managing your inbox','sms-bridge':'How the SMS bridge works','webchat-notifications':'Webchat notification settings','contact-import':'Importing contacts for campaigns','segments':'Creating audience segments','campaign-limits':'SMS campaign limits by plan','tcpa-compliance':'TCPA compliance guide','opt-outs':'Managing opt-outs','sms-best-practices':'SMS campaign best practices','listings-overview':'How listings sync works','fix-mismatch':'Fixing a listing mismatch','apple-maps':'Connecting Apple Maps','bing-places':'Connecting Bing Places','insights-overview':'Insights dashboard overview','sentiment-score':'Understanding your sentiment score','keyword-tracker':'Using the keyword tracker','competitor-benchmarking':'Competitor benchmarking','rating-velocity':'Rating velocity explained','monthly-report':'Your monthly reputation report','visibility-score':'Understanding your visibility score','improve-visibility':'How to improve your AI visibility','llm-setup':'Setting up AI visibility monitoring','zapier-setup':'Setting up Zapier','csv-import':'Importing contacts via CSV','api-key':'Using the API key','upgrade-plan':'Upgrading your plan','cancel':'Cancelling your subscription','update-card':'Updating your payment method','invoices':'Viewing and downloading invoices','account-settings':'Account settings overview','alert-preferences':'Setting alert preferences','google-posts-settings':'Google Posts auto-publisher settings','locations':'Managing multiple locations'
+};
+
+articleStubs.forEach(function(id) {
+  if (!articles[id]) {
+    articles[id] = {
+      title: titleMap[id] || id,
+      category: 'Help',
+      readTime: '3 min read',
+      body: '<p style="color:var(--mu);font-style:italic">This article is coming soon. In the meantime, email us at <a href="mailto:hello@swarmreply.com" style="color:var(--k);font-weight:600">hello@swarmreply.com</a> — we respond to every question.</p>'
+    };
+  }
+});
+
+// ── ALL ARTICLES SEARCH INDEX ──────────────────────────────────────────────────
+var allArticles = [];
+Object.keys(categories).forEach(function(catKey) {
+  var cat = categories[catKey];
+  cat.articles.forEach(function(artId) {
+    if (articles[artId]) {
+      allArticles.push({ id: artId, catKey: catKey, catLabel: cat.title, catIcon: cat.icon, title: articles[artId].title });
+    }
+  });
+});
+
+// ── NAV STATE ─────────────────────────────────────────────────────────────────
+var currentCat = null;
+var previousView = 'home';
+
+function showHome() {
+  document.getElementById('view-home').style.display = 'block';
+  document.getElementById('view-category').style.display = 'none';
+  document.getElementById('view-article').style.display = 'none';
+  document.querySelectorAll('.sidebar-link').forEach(function(l){ l.classList.remove('active'); });
+  window.scrollTo(0,0);
+}
+
+function showCategory(catKey) {
+  var cat = categories[catKey];
+  if (!cat) return;
+  currentCat = catKey;
+  previousView = 'category';
+
+  document.getElementById('view-home').style.display = 'none';
+  document.getElementById('view-category').style.display = 'block';
+  document.getElementById('view-article').style.display = 'none';
+
+  document.getElementById('cat-title').textContent = cat.icon + ' ' + cat.title;
+  document.getElementById('cat-desc').textContent = cat.desc;
+
+  var list = document.getElementById('cat-articles');
+  list.innerHTML = '';
+  cat.articles.forEach(function(artId) {
+    var art = articles[artId];
+    if (!art) return;
+    var row = document.createElement('div');
+    row.className = 'article-row';
+    row.innerHTML = '<div class="ar-icon">📄</div><div style="flex:1"><div class="ar-title">' + art.title + '</div><div class="ar-meta">' + art.readTime + '</div></div><div class="ar-arrow">→</div>';
+    row.onclick = function() { showArticle(artId); };
+    list.appendChild(row);
+  });
+
+  document.querySelectorAll('.sidebar-link').forEach(function(l){ l.classList.remove('active'); });
+  document.querySelectorAll('.sidebar-link').forEach(function(l){
+    if (l.getAttribute('onclick') && l.getAttribute('onclick').includes("'" + catKey + "'")) l.classList.add('active');
+  });
+
+  window.scrollTo(0,0);
+}
+
+function showArticle(artId) {
+  var art = articles[artId];
+  if (!art) return;
+
+  document.getElementById('view-home').style.display = 'none';
+  document.getElementById('view-category').style.display = 'none';
+  document.getElementById('view-article').style.display = 'block';
+
+  var content = document.getElementById('article-content');
+  content.style.display = 'block';
+  content.innerHTML = '<div class="article-header"><div class="article-meta"><span class="article-tag">' + art.category + '</span><span>' + art.readTime + '</span></div><h2>' + art.title + '</h2></div><div class="article-body">' + art.body + '</div>';
+
+  document.getElementById('article-back-btn').textContent = currentCat ? '← Back to ' + categories[currentCat]?.title : '← Back to all topics';
+  window.scrollTo(0,0);
+}
+
+function goBack() {
+  if (currentCat) { showCategory(currentCat); }
+  else { showHome(); }
+}
+
+function articleFeedback(helpful) {
+  var btns = document.querySelectorAll('.fb-btn');
+  btns.forEach(function(b){ b.disabled = true; b.style.opacity = '.5'; });
+  var msg = document.querySelector('.article-feedback p');
+  msg.textContent = helpful ? 'Thanks! Glad it helped. 🐝' : 'Thanks for the feedback — we\'ll improve this article.';
+}
+
+// ── SEARCH ────────────────────────────────────────────────────────────────────
+var searchTimer = null;
+
+function handleSearch(val) {
+  var clear = document.getElementById('search-clear');
+  var results = document.getElementById('search-results');
+  clear.classList.toggle('show', val.length > 0);
+
+  clearTimeout(searchTimer);
+  if (!val.trim()) { results.classList.remove('show'); return; }
+
+  searchTimer = setTimeout(function() {
+    var q = val.toLowerCase();
+    var matches = allArticles.filter(function(a) {
+      return a.title.toLowerCase().includes(q) || a.catLabel.toLowerCase().includes(q);
+    }).slice(0, 7);
+
+    if (!matches.length) {
+      results.innerHTML = '<div class="sr-empty">No results for "' + val + '" — <a href="mailto:hello@swarmreply.com" style="color:var(--k);font-weight:600">ask us directly →</a></div>';
+    } else {
+      results.innerHTML = matches.map(function(a) {
+        return '<div class="sr-item" onclick="selectResult(\'' + a.id + '\',\'' + a.catKey + '\')">' +
+          '<div class="sr-icon">' + a.catIcon + '</div>' +
+          '<div><div class="sr-title">' + highlight(a.title, q) + '</div><div class="sr-meta">' + a.catLabel + '</div></div>' +
+          '</div>';
+      }).join('');
+    }
+    results.classList.add('show');
+  }, 180);
+}
+
+function highlight(text, q) {
+  var re = new RegExp('(' + q.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + ')', 'gi');
+  return text.replace(re, '<strong style="color:var(--k)">$1</strong>');
+}
+
+function handleSearchKey(e) {
+  if (e.key === 'Escape') clearSearch();
+}
+
+function selectResult(artId, catKey) {
+  clearSearch();
+  currentCat = catKey;
+  showArticle(artId);
+}
+
+function clearSearch() {
+  var input = document.getElementById('search-input');
+  var clear = document.getElementById('search-clear');
+  var results = document.getElementById('search-results');
+  input.value = '';
+  clear.classList.remove('show');
+  results.classList.remove('show');
+  input.focus();
+}
+
+function doSearch(term) {
+  var input = document.getElementById('search-input');
+  input.value = term;
+  input.focus();
+  handleSearch(term);
+}
+
+// Close search on click outside
+document.addEventListener('click', function(e) {
+  if (!document.getElementById('search-wrap').contains(e.target)) {
+    document.getElementById('search-results').classList.remove('show');
+  }
+});
+
+// Nav scroll effect
+window.addEventListener('scroll', function() {
+  document.querySelector('.nav').style.boxShadow = window.scrollY > 10 ? '0 2px 20px rgba(0,0,0,.07)' : 'none';
+});
+</script>
+</body>
+</html>
