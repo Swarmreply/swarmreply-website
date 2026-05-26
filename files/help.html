@@ -338,8 +338,8 @@ button{font-family:inherit;cursor:pointer}
             <div class="cat-card" onclick="showCategory('integrations')">
               <div class="cat-icon">⊕</div>
               <div class="cat-name">Integrations</div>
-              <div class="cat-desc">Connect Google, Facebook, Zapier, and import from any PMS or CRM system.</div>
-              <div class="cat-count">5 articles</div>
+              <div class="cat-desc">Connect Google, Facebook, Square, HubSpot, Shopify, Mindbody, Calendly, Acuity, Stripe, Zapier, and more.</div>
+              <div class="cat-count">12 articles</div>
             </div>
             <div class="cat-card" onclick="showCategory('billing')">
               <div class="cat-icon">💳</div>
@@ -502,9 +502,9 @@ var categories = {
   },
   integrations: {
     title: 'Integrations',
-    desc: 'Connect SwarmReply to the tools your business already uses.',
+    desc: 'Connect SwarmReply to the tools your business already uses — Google, Square, HubSpot, Shopify, Mindbody, Calendly, Acuity, and more.',
     icon: '⊕',
-    articles: ['connect-google','facebook-reviews','zapier-setup','csv-import','api-key']
+    articles: ['connect-google','facebook-reviews','connect-square','connect-hubspot','connect-shopify','connect-mindbody','connect-calendly','connect-acuity','connect-stripe-trigger','zapier-setup','csv-import','api-key']
   },
   billing: {
     title: 'Billing & Plans',
@@ -683,12 +683,411 @@ var articles = {
     `
   }
 };
-
+,
+'connect-square': {
+    title: 'Connecting Square',
+    category: 'Integrations',
+    readTime: '3 min read',
+    body: `
+      <h3>What this integration does</h3>
+      <p>When a customer completes a payment in Square, SwarmReply automatically sends them a review request 60 minutes later. Works for restaurants, salons, retail stores, and any business using Square as their point of sale.</p>
+      <div class="tip">✓ SwarmReply requests read-only access to your Square payments and customer profiles. It cannot process refunds or modify transactions.</div>
+      <h3>How to connect Square</h3>
+      <div class="step"><div class="step-n">1</div><div>In your dashboard, go to <strong>Settings → Integrations</strong></div></div>
+      <div class="step"><div class="step-n">2</div><div>Click <strong>Connect →</strong> next to Square</div></div>
+      <div class="step"><div class="step-n">3</div><div>You'll be redirected to Square — log in with your Square account</div></div>
+      <div class="step"><div class="step-n">4</div><div>Click <strong>Allow</strong> to grant SwarmReply read access</div></div>
+      <div class="step"><div class="step-n">5</div><div>You'll be redirected back to SwarmReply — Square is now connected</div></div>
+      <h3>Configuring the delay</h3>
+      <p>By default SwarmReply waits 60 minutes after a completed payment before sending a review request. To change this, go to <strong>Settings → Integrations → Square → Settings</strong> and adjust the delay. We recommend 30–120 minutes for most businesses.</p>
+      <h3>What customer info is used?</h3>
+      <p>SwarmReply fetches the customer's name, email, and phone from their Square customer profile (if available). If the customer has no profile attached to the transaction, no request is sent.</p>
+      <div class="warn">⚠ Make sure your review request template is set up and connected to a platform before enabling the Square integration.</div>
+    `
+  },
+  'connect-hubspot': {
+    title: 'Connecting HubSpot CRM',
+    category: 'Integrations',
+    readTime: '3 min read',
+    body: `
+      <h3>What this integration does</h3>
+      <p>When a deal is marked <strong>Closed Won</strong> in HubSpot, SwarmReply automatically sends a review request to the associated contact 30 minutes later. This is ideal for service businesses, agencies, and any B2B or B2C company using HubSpot to manage their sales pipeline.</p>
+      <h3>How to connect HubSpot</h3>
+      <div class="step"><div class="step-n">1</div><div>Go to <strong>Settings → Integrations</strong></div></div>
+      <div class="step"><div class="step-n">2</div><div>Click <strong>Connect →</strong> next to HubSpot CRM</div></div>
+      <div class="step"><div class="step-n">3</div><div>You'll be redirected to HubSpot — log in and choose your portal</div></div>
+      <div class="step"><div class="step-n">4</div><div>Grant SwarmReply access to CRM contacts and deals — click <strong>Connect app</strong></div></div>
+      <div class="step"><div class="step-n">5</div><div>You'll be redirected back to SwarmReply — the integration is live</div></div>
+      <h3>Which deals trigger a request?</h3>
+      <p>Only deals moved to the <strong>Closed Won</strong> stage trigger a review request. Closed Lost, Open, and all other stages are ignored.</p>
+      <h3>What contact details are used?</h3>
+      <p>SwarmReply looks up the contacts associated with the closed deal and uses their email address and phone number from HubSpot. If the deal has no associated contacts, no request is sent.</p>
+      <div class="tip">✓ SwarmReply requests read-only access to your HubSpot CRM. It cannot create, modify, or delete contacts or deals.</div>
+    `
+  },
+  'connect-shopify': {
+    title: 'Connecting Shopify',
+    category: 'Integrations',
+    readTime: '3 min read',
+    body: `
+      <h3>What this integration does</h3>
+      <p>When an order is fulfilled in Shopify, SwarmReply sends the customer a review request 2 hours later. This gives them time to receive their order confirmation before being asked for a review.</p>
+      <h3>How to connect Shopify</h3>
+      <div class="step"><div class="step-n">1</div><div>Go to <strong>Settings → Integrations</strong></div></div>
+      <div class="step"><div class="step-n">2</div><div>Click <strong>Connect →</strong> next to Shopify</div></div>
+      <div class="step"><div class="step-n">3</div><div>Enter your Shopify store URL — it looks like <code>yourstore.myshopify.com</code></div></div>
+      <div class="step"><div class="step-n">4</div><div>You'll be redirected to your Shopify store — click <strong>Install app</strong></div></div>
+      <div class="step"><div class="step-n">5</div><div>You'll be redirected back to SwarmReply — Shopify is now connected</div></div>
+      <h3>When is the request sent?</h3>
+      <p>The request fires when Shopify sends a <strong>orders/fulfilled</strong> webhook — meaning when the order status changes to Fulfilled (typically when a tracking number is added). The default delay is 2 hours after fulfilment.</p>
+      <div class="warn">⚠ Shopify requires your store URL in the exact format <code>yourstore.myshopify.com</code> — not your custom domain.</div>
+    `
+  },
+  'connect-mindbody': {
+    title: 'Connecting Mindbody',
+    category: 'Integrations',
+    readTime: '4 min read',
+    body: `
+      <h3>What this integration does</h3>
+      <p>When a client completes an appointment or class visit in Mindbody, SwarmReply sends them a review request 60 minutes later. Ideal for yoga studios, gyms, spas, salons, and wellness businesses.</p>
+      <h3>What you need before connecting</h3>
+      <ul>
+        <li>Your Mindbody <strong>Site ID</strong> (a number found in your Mindbody admin URL)</li>
+        <li>A Mindbody <strong>staff account</strong> with API access (username and password)</li>
+      </ul>
+      <h3>Finding your Site ID</h3>
+      <p>Log into Mindbody. In your browser address bar, look for the number after <code>/POSHomePage?studioid=</code> — that's your Site ID. It's usually a 5–6 digit number.</p>
+      <h3>How to connect Mindbody</h3>
+      <div class="step"><div class="step-n">1</div><div>Go to <strong>Settings → Integrations</strong></div></div>
+      <div class="step"><div class="step-n">2</div><div>Click <strong>Connect →</strong> next to Mindbody</div></div>
+      <div class="step"><div class="step-n">3</div><div>Enter your <strong>Site ID</strong>, staff username, and staff password</div></div>
+      <div class="step"><div class="step-n">4</div><div>Click <strong>Connect</strong> — SwarmReply validates your credentials and configures the webhook</div></div>
+      <div class="tip">✓ SwarmReply uses your credentials to authenticate with the Mindbody API on your behalf. Your password is encrypted before storage.</div>
+      <div class="warn">⚠ Mindbody webhooks require your business to have an active Mindbody subscription that includes API access. Contact Mindbody support if you need to enable this.</div>
+    `
+  },
+  'connect-calendly': {
+    title: 'Connecting Calendly',
+    category: 'Integrations',
+    readTime: '2 min read',
+    body: `
+      <h3>What this integration does</h3>
+      <p>When an invitee books an appointment through your Calendly link, SwarmReply sends them a review request at the time of booking (no delay by default). You can configure a delay in Settings if you prefer to wait until after the appointment.</p>
+      <div class="warn">⚠ By default the request fires when the appointment is <em>booked</em>, not when it occurs. If you want to send after the appointment, add a delay equal to the typical appointment length + a few hours.</div>
+      <h3>How to connect Calendly</h3>
+      <div class="step"><div class="step-n">1</div><div>Go to <strong>Settings → Integrations</strong></div></div>
+      <div class="step"><div class="step-n">2</div><div>Click <strong>Connect →</strong> next to Calendly</div></div>
+      <div class="step"><div class="step-n">3</div><div>You'll be redirected to Calendly — log in with your Calendly account</div></div>
+      <div class="step"><div class="step-n">4</div><div>Click <strong>Allow access</strong></div></div>
+      <div class="step"><div class="step-n">5</div><div>You'll be redirected back to SwarmReply — Calendly is live</div></div>
+      <h3>Configuring a delay</h3>
+      <p>Go to <strong>Settings → Integrations → Calendly → Settings</strong>. Set the delay in minutes. For a 60-minute appointment that you want to follow up after, set the delay to 120 minutes (60 min for the appointment + 60 min after).</p>
+      <div class="tip">✓ SwarmReply uses the name and email from the Calendly invitee form automatically.</div>
+    `
+  },
+  'connect-acuity': {
+    title: 'Connecting Acuity Scheduling',
+    category: 'Integrations',
+    readTime: '3 min read',
+    body: `
+      <h3>What this integration does</h3>
+      <p>When an appointment is scheduled in Acuity, SwarmReply sends a review request 24 hours later — giving the appointment time to occur before the request is sent.</p>
+      <h3>What you need</h3>
+      <ul>
+        <li>Your Acuity <strong>User ID</strong></li>
+        <li>Your Acuity <strong>API Key</strong></li>
+      </ul>
+      <h3>Finding your User ID and API Key</h3>
+      <div class="step"><div class="step-n">1</div><div>Log into your Acuity account at <strong>acuityscheduling.com</strong></div></div>
+      <div class="step"><div class="step-n">2</div><div>Go to <strong>Business Settings → Integrations → API</strong></div></div>
+      <div class="step"><div class="step-n">3</div><div>Your <strong>User ID</strong> and <strong>API Key</strong> are both listed there</div></div>
+      <h3>How to connect Acuity</h3>
+      <div class="step"><div class="step-n">1</div><div>Go to <strong>Settings → Integrations</strong> in your SwarmReply dashboard</div></div>
+      <div class="step"><div class="step-n">2</div><div>Click <strong>Connect →</strong> next to Acuity Scheduling</div></div>
+      <div class="step"><div class="step-n">3</div><div>Enter your User ID and API Key</div></div>
+      <div class="step"><div class="step-n">4</div><div>Click <strong>Connect</strong> — SwarmReply validates your credentials and registers the webhook</div></div>
+      <div class="tip">✓ Your Acuity API Key is encrypted before being stored. It is never visible after saving.</div>
+    `
+  },
+  'connect-stripe-trigger': {
+    title: 'Setting up the Stripe payment trigger',
+    category: 'Integrations',
+    readTime: '2 min read',
+    body: `
+      <h3>What this does</h3>
+      <p>Since you already use Stripe to pay for SwarmReply, you can optionally enable a review request trigger that fires every time one of your customers pays you via Stripe. No additional OAuth connection is needed — SwarmReply already has the relationship.</p>
+      <div class="warn">⚠ This only works if you are using Stripe to charge your own customers — for example, if you run a service business that invoices through Stripe.</div>
+      <h3>How to enable</h3>
+      <div class="step"><div class="step-n">1</div><div>Go to <strong>Settings → Integrations</strong></div></div>
+      <div class="step"><div class="step-n">2</div><div>Find <strong>Stripe Payment Trigger</strong> and click <strong>Connect →</strong></div></div>
+      <div class="step"><div class="step-n">3</div><div>Set your delay (default is 60 minutes) and choose your review request template</div></div>
+      <div class="step"><div class="step-n">4</div><div>Click <strong>Enable</strong></div></div>
+      <h3>When does the trigger fire?</h3>
+      <p>The trigger fires when a Stripe <code>invoice.payment_succeeded</code> event is received — meaning a successful charge processed through Stripe. The customer's email and name are pulled from the Stripe charge billing details.</p>
+      <div class="tip">✓ If the customer has no email attached to their Stripe charge, no review request is sent.</div>
+    `
+  },
+  'zapier-setup': {
+    title: 'Setting up Zapier integration',
+    category: 'Integrations',
+    readTime: '3 min read',
+    body: `
+      <h3>What Zapier lets you do</h3>
+      <p>Zapier connects SwarmReply to 7,000+ apps — including Mailchimp, ActiveCampaign, QuickBooks, Slack, Airtable, Google Sheets, and hundreds more. You can trigger review requests from any app that has a Zapier connector.</p>
+      <div class="warn">⚠ Zapier subscriptions are billed separately by Zapier. SwarmReply does not charge for the Zapier connection itself.</div>
+      <h3>Getting your API key</h3>
+      <div class="step"><div class="step-n">1</div><div>In your SwarmReply dashboard, go to <strong>Settings → Integrations → API Key</strong></div></div>
+      <div class="step"><div class="step-n">2</div><div>Click <strong>Generate API Key</strong> (or copy your existing key)</div></div>
+      <div class="step"><div class="step-n">3</div><div>Keep this key private — it gives full access to your SwarmReply account</div></div>
+      <h3>Creating a Zap</h3>
+      <div class="step"><div class="step-n">1</div><div>Go to <strong>zapier.com</strong> and click <strong>Create Zap</strong></div></div>
+      <div class="step"><div class="step-n">2</div><div>Set your trigger — for example, <em>New paid invoice in QuickBooks</em></div></div>
+      <div class="step"><div class="step-n">3</div><div>Set your action to <strong>SwarmReply → Send Review Request</strong></div></div>
+      <div class="step"><div class="step-n">4</div><div>Connect your SwarmReply account using your API key</div></div>
+      <div class="step"><div class="step-n">5</div><div>Map the customer name, email, and phone from your trigger app to SwarmReply</div></div>
+      <div class="step"><div class="step-n">6</div><div>Test the Zap and turn it on</div></div>
+      <div class="tip">✓ SwarmReply is available in the Zapier app directory at zapier.com/apps/swarmreply</div>
+    `
+  },
+  'csv-import': {
+    title: 'Importing contacts via CSV',
+    category: 'Integrations',
+    readTime: '2 min read',
+    body: `
+      <h3>When to use CSV import</h3>
+      <p>Use CSV import when you want to upload a list of existing customers from your PMS, CRM, booking software, or any spreadsheet. This is the fastest way to send review requests to your existing customer base.</p>
+      <h3>Required CSV format</h3>
+      <p>Your CSV file must have a header row with at least one of these columns:</p>
+      <ul>
+        <li><strong>name</strong> (or first_name + last_name)</li>
+        <li><strong>email</strong></li>
+        <li><strong>phone</strong> (for SMS requests)</li>
+      </ul>
+      <p>Example header row: <code>name,email,phone</code></p>
+      <h3>How to import</h3>
+      <div class="step"><div class="step-n">1</div><div>Go to <strong>Grow → Import Contacts</strong></div></div>
+      <div class="step"><div class="step-n">2</div><div>Click <strong>Upload CSV</strong> and select your file</div></div>
+      <div class="step"><div class="step-n">3</div><div>Map your CSV columns to the SwarmReply fields</div></div>
+      <div class="step"><div class="step-n">4</div><div>Preview the first 5 rows and confirm</div></div>
+      <div class="step"><div class="step-n">5</div><div>Choose whether to send review requests immediately or save contacts for later</div></div>
+      <div class="tip">✓ SwarmReply automatically deduplicates contacts — if the same email or phone already exists, it won't create a duplicate.</div>
+      <div class="warn">⚠ Maximum file size is 10MB. For files larger than this, split into multiple imports.</div>
+    `
+  },
+  'api-key': {
+    title: 'Using the SwarmReply API key',
+    category: 'Integrations',
+    readTime: '2 min read',
+    body: `
+      <h3>What the API key is for</h3>
+      <p>Your API key authenticates requests to the SwarmReply API and Zapier integration. It gives programmatic access to send review requests, retrieve review data, and manage contacts.</p>
+      <h3>Getting your API key</h3>
+      <div class="step"><div class="step-n">1</div><div>Go to <strong>Settings → Integrations → API Key</strong></div></div>
+      <div class="step"><div class="step-n">2</div><div>Click <strong>Generate API Key</strong> if you don't have one yet</div></div>
+      <div class="step"><div class="step-n">3</div><div>Copy the key — it starts with <code>sr_live_</code></div></div>
+      <div class="warn">⚠ Your API key gives full access to your account. Never share it publicly, commit it to GitHub, or paste it in a public Zapier template. If it is ever exposed, regenerate it immediately.</div>
+      <h3>Regenerating your API key</h3>
+      <p>If your key is ever compromised, click <strong>Regenerate key</strong> on the API Key page. This immediately invalidates the old key — any Zapier zaps or integrations using the old key will stop working until updated.</p>
+    `
+  },
+  'approval-mode': {
+    title: 'Using approval mode for AI replies',
+    category: 'AI Review Replies',
+    readTime: '3 min read',
+    body: `
+      <h3>What is approval mode?</h3>
+      <p>By default, SwarmReply posts AI replies automatically the moment a new review is detected. Approval mode changes this so the AI drafts the reply but waits for you to approve it before it goes live on Google.</p>
+      <h3>When to use approval mode</h3>
+      <p>Approval mode is useful if you want to review each reply before it posts — for example, during a sensitive business period, after a negative press event, or if you want to personally add a touch to each response before it goes public.</p>
+      <div class="warn">⚠ Approval mode requires someone on your team to check the Approvals queue regularly. Unanswered reviews age poorly — aim to approve or reject within 24 hours of a review arriving.</div>
+      <h3>How to turn on approval mode</h3>
+      <div class="step"><div class="step-n">1</div><div>Go to <strong>Reviews → Approvals</strong> in the sidebar</div></div>
+      <div class="step"><div class="step-n">2</div><div>Click <strong>Approve before posting</strong> at the top right</div></div>
+      <div class="step"><div class="step-n">3</div><div>The AI will now draft replies and queue them here instead of posting automatically</div></div>
+      <h3>Approving, editing, and rejecting replies</h3>
+      <p><strong>Approve</strong> — posts the AI reply to Google exactly as written, immediately.</p>
+      <p><strong>Edit</strong> — opens the reply text in an editable box. Make your changes and click Post edited reply — the edited version goes live on Google.</p>
+      <p><strong>Reject</strong> — discards the AI reply. The review returns to pending status. You can reject with an optional internal note explaining why.</p>
+      <div class="tip">✓ Only Admins and Managers can approve or reject replies. Staff members can view the queue but cannot act on it.</div>
+    `
+  },
+  'negative-reviews': {
+    title: 'How SwarmReply handles negative reviews',
+    category: 'AI Review Replies',
+    readTime: '3 min read',
+    body: `
+      <h3>What happens when a 1 or 2 star review comes in</h3>
+      <p>SwarmReply handles negative reviews differently from positive ones. When a review comes in with 1 or 2 stars, the following happens simultaneously:</p>
+      <ul>
+        <li>You receive an immediate alert via email and SMS</li>
+        <li>The AI generates a de-escalating, empathetic reply — never defensive</li>
+        <li>The review is flagged in your Reviews page with a red indicator</li>
+        <li>Your NPS routing (if enabled) is bypassed so the customer isn't also sent a survey</li>
+      </ul>
+      <h3>What the AI says in a negative review reply</h3>
+      <p>The AI is trained to acknowledge the issue, apologise without admitting fault, and invite the customer to reach out directly — giving you a chance to resolve the issue off-platform and potentially get the review updated.</p>
+      <div class="tip">✓ Responding to negative reviews publicly shows other potential customers that you take feedback seriously. Businesses that respond to all reviews — positive and negative — consistently outperform those that don't.</div>
+      <h3>When you should override the AI reply</h3>
+      <p>If the review contains false information, references a specific staff member by name, or involves a legal matter, use approval mode to review the reply before it posts — or edit it after the AI generates a draft.</p>
+      <h3>Can I turn off AI replies for negative reviews only?</h3>
+      <p>Yes. Go to <strong>Settings → AI Replies</strong> and set the minimum star rating for auto-reply. For example, set it to 3 stars — the AI will only auto-reply to 3, 4, and 5 star reviews. 1 and 2 star reviews will require manual approval.</p>
+    `
+  },
+  'invite-team': {
+    title: 'Inviting team members',
+    category: 'Getting started',
+    readTime: '2 min read',
+    body: `
+      <h3>Roles and permissions</h3>
+      <p>SwarmReply has three team roles:</p>
+      <p><strong>Admin</strong> — Full access including billing, team management, and all settings. Typically the business owner or account holder.</p>
+      <p><strong>Manager</strong> — Full operational access — reviews, inbox, campaigns, analytics. Cannot access billing or invite team members.</p>
+      <p><strong>Staff</strong> — Can view and act on reviews, manage the inbox, send review requests, and view basic analytics. Cannot access billing, campaigns, or settings.</p>
+      <h3>How to invite someone</h3>
+      <div class="step"><div class="step-n">1</div><div>Go to <strong>Settings → Team</strong></div></div>
+      <div class="step"><div class="step-n">2</div><div>Click <strong>Invite team member</strong></div></div>
+      <div class="step"><div class="step-n">3</div><div>Enter their email address and choose their role</div></div>
+      <div class="step"><div class="step-n">4</div><div>Click <strong>Send invite</strong> — they'll receive an email with a link to set their password</div></div>
+      <div class="tip">✓ Invite links expire after 7 days. If a team member hasn't accepted, go to Settings → Team and resend the invite.</div>
+      <h3>Removing a team member</h3>
+      <p>Go to <strong>Settings → Team</strong>, click the three dots next to the team member, and select <strong>Remove</strong>. Their access is revoked immediately. Only Admins can remove team members.</p>
+    `
+  },
+  'onboarding-checklist': {
+    title: 'Onboarding checklist',
+    category: 'Getting started',
+    readTime: '2 min read',
+    body: `
+      <h3>Your SwarmReply setup checklist</h3>
+      <div class="step"><div class="step-n gold">1</div><div><strong>Connect Google Business Profile</strong> — Settings → Integrations → Connect Google. Takes 30 seconds.</div></div>
+      <div class="step"><div class="step-n gold">2</div><div><strong>Set your AI tone</strong> — Settings → AI Replies → choose Warm, Professional, Casual, or Empathetic.</div></div>
+      <div class="step"><div class="step-n gold">3</div><div><strong>Add your Google review link</strong> — Settings → Integrations → copy and paste your Google review URL.</div></div>
+      <div class="step"><div class="step-n gold">4</div><div><strong>Send your first review request</strong> — Grow → Review Requests → + Send Review Request.</div></div>
+      <div class="step"><div class="step-n gold">5</div><div><strong>Set up your NPS survey</strong> — Grow → Surveys → configure and enable.</div></div>
+      <div class="step"><div class="step-n gold">6</div><div><strong>Add the webchat widget</strong> — Settings → Webchat → copy and paste the embed code onto your website.</div></div>
+      <div class="step"><div class="step-n gold">7</div><div><strong>Invite your team</strong> — Settings → Team → Invite team member.</div></div>
+      <div class="step"><div class="step-n gold">8</div><div><strong>Connect an integration</strong> — Settings → Integrations → choose Square, HubSpot, Calendly, or another platform you use.</div></div>
+      <div class="tip">✓ Most businesses complete all 8 steps in under 30 minutes. Steps 1–4 are the most impactful — start there.</div>
+    `
+  },
+  'account-settings': {
+    title: 'Account settings overview',
+    category: 'Settings',
+    readTime: '2 min read',
+    body: `
+      <h3>What you can configure in Settings</h3>
+      <p><strong>Business info</strong> — Your business name, address, phone, website, and industry. Used in AI replies and reports.</p>
+      <p><strong>AI Replies</strong> — Reply tone, always-include phrases, never-include phrases, minimum star rating for auto-reply, approval mode.</p>
+      <p><strong>Integrations</strong> — Connect and manage Google, Facebook, Square, HubSpot, Shopify, Mindbody, Calendly, Acuity, Stripe trigger, Zapier, and your API key.</p>
+      <p><strong>Webchat & AI Agent</strong> — Widget appearance, AI agent toggle, FAQ content, business hours, notification settings.</p>
+      <p><strong>Team</strong> — Invite, manage, and remove team members. View roles and last login dates.</p>
+      <p><strong>Alerts</strong> — Configure which events trigger email or SMS alerts and which number/address they go to.</p>
+      <p><strong>Billing</strong> — View and manage your subscription, update your payment method, and download invoices.</p>
+      <p><strong>Locations</strong> — Add, rename, or manage multiple locations from one account (Growth plan and above).</p>
+    `
+  },
+  'alert-preferences': {
+    title: 'Setting your alert preferences',
+    category: 'Settings',
+    readTime: '2 min read',
+    body: `
+      <h3>What triggers an alert</h3>
+      <p>SwarmReply can alert you by email or SMS when any of the following happen:</p>
+      <ul>
+        <li>A new review arrives (you can filter by star rating — e.g. only 1 and 2 star reviews)</li>
+        <li>A new webchat conversation starts</li>
+        <li>Your Google Business Profile connection breaks</li>
+        <li>A new NPS response comes in with a low score</li>
+        <li>A review request is opened or a review is left after a request</li>
+      </ul>
+      <h3>How to configure alerts</h3>
+      <div class="step"><div class="step-n">1</div><div>Go to <strong>Settings → Alerts</strong></div></div>
+      <div class="step"><div class="step-n">2</div><div>Toggle each alert type on or off</div></div>
+      <div class="step"><div class="step-n">3</div><div>Set the email address and/or phone number for each alert type</div></div>
+      <div class="step"><div class="step-n">4</div><div>Click <strong>Save</strong></div></div>
+      <div class="tip">✓ We recommend keeping negative review alerts (1–2 stars) on at all times so you can respond quickly.</div>
+    `
+  },
+  'locations': {
+    title: 'Managing multiple locations',
+    category: 'Settings',
+    readTime: '3 min read',
+    body: `
+      <h3>How multi-location works</h3>
+      <p>Each location in SwarmReply has its own Google Business Profile connection, AI reply settings, review queue, webchat widget, and analytics. You switch between locations using the location picker in the top bar.</p>
+      <h3>Adding a new location</h3>
+      <div class="step"><div class="step-n">1</div><div>Go to <strong>Settings → Locations → Add location</strong></div></div>
+      <div class="step"><div class="step-n">2</div><div>Enter the location's business name and details</div></div>
+      <div class="step"><div class="step-n">3</div><div>Connect its Google Business Profile via OAuth</div></div>
+      <div class="step"><div class="step-n">4</div><div>Configure AI tone and settings for this location independently</div></div>
+      <h3>Pricing for additional locations</h3>
+      <p>Your first location is included at $99/month. Additional locations are charged at $79/month each for locations 2–5, and $69/month each for locations 6–25. At 26+ locations, contact us for Agency pricing.</p>
+      <p>Go to <strong>Settings → Billing</strong> to see your current location count and adjust your plan.</p>
+      <div class="tip">✓ All locations share one login and one dashboard. You don't need separate accounts for each location.</div>
+    `
+  },
+  'upgrade-plan': {
+    title: 'Adding locations to your plan',
+    category: 'Billing & Plans',
+    readTime: '2 min read',
+    body: `
+      <h3>How to add more locations</h3>
+      <div class="step"><div class="step-n">1</div><div>Go to <strong>Settings → Billing</strong></div></div>
+      <div class="step"><div class="step-n">2</div><div>Use the location slider to select your new total number of locations</div></div>
+      <div class="step"><div class="step-n">3</div><div>Review the updated monthly cost and breakdown</div></div>
+      <div class="step"><div class="step-n">4</div><div>Click <strong>Update plan</strong></div></div>
+      <div class="tip">✓ Changes take effect immediately. Stripe prorates the difference — you only pay for the days remaining in your current billing period.</div>
+      <h3>Pricing breakdown</h3>
+      <p>1 location: $99/mo · Locations 2–5: $79/mo each · Locations 6–25: $69/mo each · 26+: contact sales for Agency pricing.</p>
+      <p>Annual billing gives you 10% off — switch in Settings → Billing.</p>
+    `
+  },
+  'cancel': {
+    title: 'Cancelling your subscription',
+    category: 'Billing & Plans',
+    readTime: '2 min read',
+    body: `
+      <h3>How to cancel</h3>
+      <div class="step"><div class="step-n">1</div><div>Go to <strong>Settings → Billing</strong></div></div>
+      <div class="step"><div class="step-n">2</div><div>Scroll to <strong>Danger zone</strong></div></div>
+      <div class="step"><div class="step-n">3</div><div>Click <strong>Cancel subscription</strong></div></div>
+      <div class="step"><div class="step-n">4</div><div>Choose a cancellation reason and confirm</div></div>
+      <h3>What happens after you cancel</h3>
+      <p>You keep full access to SwarmReply until the end of your current billing period. After that, AI replies stop posting, review requests stop sending, and your dashboard goes read-only. Your data is retained for 30 days before permanent deletion.</p>
+      <div class="tip">💡 Before you cancel, email us at hello@swarmreply.com — most concerns that lead to cancellation can be solved quickly.</div>
+      <h3>Reactivating after cancellation</h3>
+      <p>Go to swarmreply.com/signup and sign up again with the same email address. If you reactivate within 30 days, your data will be restored automatically.</p>
+    `
+  },
+  'update-card': {
+    title: 'Updating your payment method',
+    category: 'Billing & Plans',
+    readTime: '1 min read',
+    body: `
+      <h3>How to update your card</h3>
+      <div class="step"><div class="step-n">1</div><div>Go to <strong>Settings → Billing</strong></div></div>
+      <div class="step"><div class="step-n">2</div><div>Click <strong>Manage billing →</strong> in the top right</div></div>
+      <div class="step"><div class="step-n">3</div><div>The Stripe billing portal opens — click <strong>Update payment method</strong></div></div>
+      <div class="step"><div class="step-n">4</div><div>Enter your new card details and save</div></div>
+      <div class="tip">✓ SwarmReply never stores your card details — all payments are handled securely by Stripe, which is PCI DSS Level 1 certified.</div>
+    `
+  },
+  'invoices': {
+    title: 'Viewing and downloading invoices',
+    category: 'Billing & Plans',
+    readTime: '1 min read',
+    body: `
+      <h3>Finding your invoices</h3>
+      <p>Go to <strong>Settings → Billing</strong> and scroll to <strong>Invoice history</strong>. Every invoice is listed with its date, period, amount, and status. Click <strong>PDF</strong> to download.</p>
+      <p>You can also access all invoices through the Stripe billing portal — click <strong>Manage billing →</strong> in the Billing page header.</p>
+      <div class="tip">✓ Invoices are automatically emailed to the billing email on your account after each successful charge.</div>
+    `
+  }
 // Populate remaining articles as stubs
-var articleStubs = ['onboarding-checklist','invite-team','approval-mode','reply-templates','facebook-reviews','negative-reviews','multi-language','reply-quality','edit-reply','import-contacts','review-platforms','sms-requests','template-customise','review-widget','request-timing','survey-setup','nps-routing','promoter-destination','survey-link','detractor-handling','webchat-setup','ai-agent-setup','knowledge-base','handoff','inbox-manage','sms-bridge','webchat-notifications','contact-import','segments','campaign-limits','tcpa-compliance','opt-outs','sms-best-practices','listings-overview','fix-mismatch','apple-maps','bing-places','insights-overview','sentiment-score','keyword-tracker','competitor-benchmarking','rating-velocity','monthly-report','visibility-score','improve-visibility','llm-setup','zapier-setup','csv-import','api-key','upgrade-plan','cancel','update-card','invoices','account-settings','alert-preferences','google-posts-settings','locations'];
+var articleStubs = ['reply-templates','facebook-reviews','multi-language','reply-quality','edit-reply','import-contacts','review-platforms','sms-requests','template-customise','review-widget','request-timing','survey-setup','nps-routing','promoter-destination','survey-link','detractor-handling','webchat-setup','ai-agent-setup','knowledge-base','handoff','inbox-manage','sms-bridge','webchat-notifications','contact-import','segments','campaign-limits','tcpa-compliance','opt-outs','sms-best-practices','listings-overview','fix-mismatch','apple-maps','bing-places','insights-overview','sentiment-score','keyword-tracker','competitor-benchmarking','rating-velocity','monthly-report','visibility-score','improve-visibility','llm-setup','google-posts-settings'];
 
 var titleMap = {
-  'onboarding-checklist':'Onboarding checklist','invite-team':'Inviting team members','approval-mode':'Using approval mode','reply-templates':'Customising reply templates','facebook-reviews':'Replying to Facebook reviews','negative-reviews':'Handling negative reviews','multi-language':'Multi-language replies','reply-quality':'Understanding reply quality scores','edit-reply':'Editing a reply before it posts','import-contacts':'Importing contacts from CSV','review-platforms':'Choosing your review platform','sms-requests':'Sending review requests via SMS','template-customise':'Customising review request templates','review-widget':'Setting up the review widget','request-timing':'Scheduling review request timing','survey-setup':'Setting up your NPS survey','nps-routing':'How NPS routing works','promoter-destination':'Setting your promoter destination','survey-link':'Sharing your survey link','detractor-handling':'Handling detractor responses','webchat-setup':'Webchat appearance settings','ai-agent-setup':'Setting up the AI chat agent','knowledge-base':'Building your AI knowledge base','handoff':'How handoffs work','inbox-manage':'Managing your inbox','sms-bridge':'How the SMS bridge works','webchat-notifications':'Webchat notification settings','contact-import':'Importing contacts for campaigns','segments':'Creating audience segments','campaign-limits':'SMS campaign limits by plan','tcpa-compliance':'TCPA compliance guide','opt-outs':'Managing opt-outs','sms-best-practices':'SMS campaign best practices','listings-overview':'How listings sync works','fix-mismatch':'Fixing a listing mismatch','apple-maps':'Connecting Apple Maps','bing-places':'Connecting Bing Places','insights-overview':'Insights dashboard overview','sentiment-score':'Understanding your sentiment score','keyword-tracker':'Using the keyword tracker','competitor-benchmarking':'Competitor benchmarking','rating-velocity':'Rating velocity explained','monthly-report':'Your monthly reputation report','visibility-score':'Understanding your visibility score','improve-visibility':'How to improve your AI visibility','llm-setup':'Setting up AI visibility monitoring','zapier-setup':'Setting up Zapier','csv-import':'Importing contacts via CSV','api-key':'Using the API key','upgrade-plan':'Upgrading your plan','cancel':'Cancelling your subscription','update-card':'Updating your payment method','invoices':'Viewing and downloading invoices','account-settings':'Account settings overview','alert-preferences':'Setting alert preferences','google-posts-settings':'Google Posts auto-publisher settings','locations':'Managing multiple locations'
+  'onboarding-checklist':'Onboarding checklist','invite-team':'Inviting team members','approval-mode':'Using approval mode','reply-templates':'Customising reply templates','facebook-reviews':'Replying to Facebook reviews','negative-reviews':'Handling negative reviews','multi-language':'Multi-language replies','reply-quality':'Understanding reply quality scores','edit-reply':'Editing a reply before it posts','import-contacts':'Importing contacts from CSV','review-platforms':'Choosing your review platform','sms-requests':'Sending review requests via SMS','template-customise':'Customising review request templates','review-widget':'Setting up the review widget','request-timing':'Scheduling review request timing','survey-setup':'Setting up your NPS survey','nps-routing':'How NPS routing works','promoter-destination':'Setting your promoter destination','survey-link':'Sharing your survey link','detractor-handling':'Handling detractor responses','webchat-setup':'Webchat appearance settings','ai-agent-setup':'Setting up the AI chat agent','knowledge-base':'Building your AI knowledge base','handoff':'How handoffs work','inbox-manage':'Managing your inbox','sms-bridge':'How the SMS bridge works','webchat-notifications':'Webchat notification settings','contact-import':'Importing contacts for campaigns','segments':'Creating audience segments','campaign-limits':'SMS campaign limits by plan','tcpa-compliance':'TCPA compliance guide','opt-outs':'Managing opt-outs','sms-best-practices':'SMS campaign best practices','listings-overview':'How listings sync works','fix-mismatch':'Fixing a listing mismatch','apple-maps':'Connecting Apple Maps','bing-places':'Connecting Bing Places','insights-overview':'Insights dashboard overview','sentiment-score':'Understanding your sentiment score','keyword-tracker':'Using the keyword tracker','competitor-benchmarking':'Competitor benchmarking','rating-velocity':'Rating velocity explained','monthly-report':'Your monthly reputation report','visibility-score':'Understanding your visibility score','improve-visibility':'How to improve your AI visibility','llm-setup':'Setting up AI visibility monitoring','zapier-setup':'Setting up Zapier','connect-square':'Connecting Square','connect-hubspot':'Connecting HubSpot CRM','connect-shopify':'Connecting Shopify','connect-mindbody':'Connecting Mindbody','connect-calendly':'Connecting Calendly','connect-acuity':'Connecting Acuity Scheduling','connect-stripe-trigger':'Setting up the Stripe payment trigger','csv-import':'Importing contacts via CSV','api-key':'Using the API key','upgrade-plan':'Upgrading your plan','cancel':'Cancelling your subscription','update-card':'Updating your payment method','invoices':'Viewing and downloading invoices','account-settings':'Account settings overview','alert-preferences':'Setting alert preferences','google-posts-settings':'Google Posts auto-publisher settings','locations':'Managing multiple locations'
 };
 
 articleStubs.forEach(function(id) {
