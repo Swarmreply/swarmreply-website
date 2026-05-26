@@ -132,7 +132,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--off);min-height:100%;disp
     <!-- Form panel -->
     <div class="form-panel">
       <h2>Welcome back.</h2>
-      <p>Enter the email address you used when subscribing to access your dashboard.</p>
+      <p>Enter your email and password to access your dashboard.</p>
 
       <div id="err-box"></div>
       <div id="success-box"></div>
@@ -141,6 +141,16 @@ body{font-family:'DM Sans',sans-serif;background:var(--off);min-height:100%;disp
         <div style="margin-bottom:16px">
           <label class="fl" for="email">Email address</label>
           <input class="fi" type="email" id="email" name="email" placeholder="you@yourbusiness.com" autocomplete="email" required>
+        </div>
+        <div class="form-group" style="margin-bottom:16px">
+          <label class="form-label" for="password">Password</label>
+          <div style="position:relative">
+            <input type="password" id="password" class="form-input" placeholder="Your password" autocomplete="current-password" required>
+            <button type="button" id="togglePw" style="position:absolute;right:12px;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;color:var(--muted);font-size:.8rem;font-family:inherit">Show</button>
+          </div>
+        </div>
+        <div style="text-align:right;margin-bottom:16px;margin-top:-8px">
+          <a href="APP_URL/forgot-password" style="font-size:.78rem;color:var(--muted);font-weight:500">Forgot password?</a>
         </div>
         <button type="submit" class="btn-login" id="loginBtn">Sign In to Dashboard →</button>
       </form>
@@ -155,13 +165,32 @@ body{font-family:'DM Sans',sans-serif;background:var(--off);min-height:100%;disp
 </div>
 
 <script>
+// ── CONFIG — update these two URLs before deploying ──────────────────────────
+var API_URL = 'https://your-railway-url.up.railway.app/api';
+var APP_URL = 'https://app.swarmreply.com'; // your Next.js dashboard domain
+
+// Update the forgot password link dynamically
+document.querySelectorAll('a[href="APP_URL/forgot-password"]').forEach(function(a) {
+  a.href = APP_URL + '/forgot-password';
+});
+
+// Show/hide password toggle
+document.getElementById('togglePw').addEventListener('click', function() {
+  var pw = document.getElementById('password');
+  var showing = pw.type === 'text';
+  pw.type = showing ? 'password' : 'text';
+  this.textContent = showing ? 'Show' : 'Hide';
+});
+
 document.getElementById('loginForm').addEventListener('submit', async function(e) {
   e.preventDefault();
-  const email = document.getElementById('email').value.trim();
-  const btn = document.getElementById('loginBtn');
-  const errBox = document.getElementById('err-box');
-  const sucBox = document.getElementById('success-box');
-  if (!email) return;
+  var email    = document.getElementById('email').value.trim().toLowerCase();
+  var password = document.getElementById('password').value;
+  var btn      = document.getElementById('loginBtn');
+  var errBox   = document.getElementById('err-box');
+  var sucBox   = document.getElementById('success-box');
+
+  if (!email || !password) return;
 
   btn.textContent = 'Signing in...';
   btn.disabled = true;
@@ -169,29 +198,37 @@ document.getElementById('loginForm').addEventListener('submit', async function(e
   sucBox.style.display = 'none';
 
   try {
-    const API_URL = 'https://your-railway-url.up.railway.app/api';
-    const res = await fetch(API_URL + '/customers/login', {
+    var res = await fetch(API_URL + '/customers/login', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email })
+      body: JSON.stringify({ email: email, password: password })
     });
 
-    if (res.ok) {
-      const data = await res.json();
-      localStorage.setItem('swarmreply_customer_id', data.customer.id);
-      if (data.token) localStorage.setItem('swarmreply_token', data.token);
+    var data = await res.json();
+
+    if (res.ok && data.accessToken) {
+      // Store JWT — the Next.js app reads from localStorage
+      localStorage.setItem('swarmreply_token', data.accessToken);
       sucBox.textContent = 'Logging you in...';
       sucBox.style.display = 'block';
-      window.location.href = '/dashboard';
-    } else if (res.status === 404) {
-      errBox.innerHTML = 'No account found with that email address. <a href="/#pricing" style="color:var(--black);font-weight:600;text-decoration:underline">Sign up today →</a>';
+      // Redirect to the app
+      window.location.href = APP_URL + '/dashboard';
+
+    } else if (res.status === 401) {
+      errBox.textContent = 'Invalid email or password. Please try again.';
+      errBox.style.display = 'block';
+    } else if (res.status === 429) {
+      errBox.textContent = 'Too many failed attempts. Please wait 15 minutes before trying again.';
+      errBox.style.display = 'block';
+    } else if (res.status === 403) {
+      errBox.textContent = data.error || 'Account access denied. Contact hello@swarmreply.com';
       errBox.style.display = 'block';
     } else {
-      errBox.textContent = 'Something went wrong. Please try again or email hello@swarmreply.com';
+      errBox.innerHTML = data.error || 'Something went wrong. <a href="mailto:hello@swarmreply.com" style="color:var(--black);font-weight:600">Email us →</a>';
       errBox.style.display = 'block';
     }
   } catch (err) {
-    errBox.textContent = 'Unable to connect right now. Please check your connection and try again.';
+    errBox.textContent = 'Unable to connect. Please check your connection and try again.';
     errBox.style.display = 'block';
   } finally {
     btn.textContent = 'Sign In to Dashboard →';
