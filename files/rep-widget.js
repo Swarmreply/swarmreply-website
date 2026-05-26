@@ -22,7 +22,7 @@
   var STYLE    = script.getAttribute('data-style')    || 'floating';
   var POSITION = script.getAttribute('data-position') || null; // server default
   var COLOR    = script.getAttribute('data-color')    || null;
-  var API      = 'https://YOUR-RAILWAY-URL.up.railway.app/api';
+  var API      = 'https://swarmreply-backend-production.up.railway.app/api';
 
   if (!TOKEN) { console.warn('[SwarmReply] data-token is required'); return; }
 
