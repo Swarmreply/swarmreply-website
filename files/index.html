@@ -234,13 +234,57 @@ h3.card-hed{font-family:'Playfair Display',serif;font-size:1.35rem;font-weight:7
 .tag-g{background:#e8f5ef;color:#1a6b45}
 
 /* ── RESPONSIVE ── */
-@media(max-width:900px){
-  .hero-grid,.mission-grid,.plans-grid,.feat-grid,.test-grid{grid-template-columns:1fr}
+/* ── TABLET ── */
+@media(max-width:960px){
+  .hero-grid{grid-template-columns:1fr}
   .hero-visual{display:none}
-  .stat-grid{grid-template-columns:1fr 1fr}
-  .stat-item:nth-child(2){border-right:none}
+  .mission-grid{grid-template-columns:1fr}
+  .plans-grid{grid-template-columns:1fr!important;max-width:520px!important;margin:0 auto!important}
+  .feat-grid{grid-template-columns:1fr 1fr}
+  .test-grid{grid-template-columns:1fr 1fr}
   .footer-grid{grid-template-columns:1fr 1fr}
   .nav-links{display:none}
+  .ob-steps-grid{grid-template-columns:1fr 1fr!important}
+}
+/* ── MOBILE ── */
+@media(max-width:640px){
+  .wrap{padding:0 18px}
+  .hero-hed{font-size:2.6rem!important}
+  .sec-hed{font-size:1.8rem!important}
+  .hero-badge{font-size:.72rem}
+  .hero-ctas{flex-direction:column;align-items:stretch}
+  .hero-ctas .btn{text-align:center;justify-content:center}
+  .btn{padding:12px 22px;font-size:.875rem}
+  .stat-grid{grid-template-columns:1fr 1fr}
+  .stat-item{border-right:none!important;border-bottom:1px solid var(--bd);padding:20px 0}
+  .feat-grid{grid-template-columns:1fr}
+  .test-grid{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr;gap:28px}
+  .nav-links{display:none}
+  .nav-cta .btn{display:none}
+  .nav-cta .btn-gold{display:inline-flex}
+  .section{padding:60px 0}
+  .section-sm{padding:32px 0}
+  .ob-steps-grid{grid-template-columns:1fr!important}
+  /* Pricing cards */
+  .plans-grid{grid-template-columns:1fr!important;max-width:100%!important}
+  /* Mission table scroll */
+  .compare-table{font-size:.78rem}
+  .ct-feat{font-size:.76rem}
+  .ct-val{font-size:.72rem;padding:2px 4px}
+  /* Comparison table horizontal scroll on small screens */
+  .mission-grid > div:last-child{overflow-x:auto;-webkit-overflow-scrolling:touch}
+  /* Steps value props */
+  .ob-val-row{grid-template-columns:1fr!important}
+  /* Hero note */
+  .hero-note{font-size:.72rem}
+  /* Lead text */
+  .lead{font-size:.95rem}
+}
+/* ── SMALL MOBILE ── */
+@media(max-width:400px){
+  .hero-hed{font-size:2.2rem!important}
+  .stat-grid{grid-template-columns:1fr}
 }
 /* ── PWA INSTALL BANNER ── */
 #pwa-banner{position:fixed;bottom:0;left:0;right:0;z-index:9999;background:#0a0a0a;border-top:2px solid #f5c842;padding:16px 20px;padding-bottom:max(20px,env(safe-area-inset-bottom));display:flex;align-items:center;gap:14px;transform:translateY(100%);transition:transform .4s cubic-bezier(.25,.46,.45,.94);box-shadow:0 -8px 40px rgba(0,0,0,.4)}
@@ -810,7 +854,7 @@ h3.card-hed{font-family:'Playfair Display',serif;font-size:1.35rem;font-weight:7
     </div>
 
     <!-- Value props row -->
-    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:800px;margin:0 auto">
+    <div class="ob-val-row" style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:800px;margin:0 auto">
       <div style="text-align:center;padding:20px">
         <div style="font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:900;color:var(--k);margin-bottom:6px">&lt; 1hr</div>
         <div style="font-size:.82rem;color:var(--mu);line-height:1.5">From sign-up to first<br>AI reply posted</div>
