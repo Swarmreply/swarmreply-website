@@ -202,8 +202,8 @@ a{text-decoration:none;color:inherit}
 <script>
 // Stripe payment links
 const STRIPE = {
-  starter: 'https://buy.stripe.com/8x29ATa118yl32GbvebfO04',
-  growth:  'https://buy.stripe.com/4gM3cv6OP01PcDg2YIbfO05'
+  starter: 'https://buy.stripe.com/dRm9AT3CD3e1cDgeHqbfO07',
+  growth:  'https://buy.stripe.com/bJe9AT3CD6qd5aO7eYbfO08'
 };
 
 // Formspree endpoint
@@ -218,13 +218,13 @@ function updatePlanHint(val) {
     hint.style.color = 'var(--mu)';
     btn.textContent = 'Continue to payment →';
   } else if (n === 1) {
-    hint.innerHTML = 'Plan: <span class="plan-badge pb-starter">Starter — $79/mo</span> · 1 location, full suite included.';
+    hint.innerHTML = 'Plan: <span class="plan-badge pb-starter">Starter — $99/mo</span> · 1 location, full suite included.';
     hint.style.color = '#1a6b45';
-    btn.textContent = 'Continue to payment — $79/mo →';
+    btn.textContent = 'Continue to payment — $99/mo →';
   } else if (n <= 5) {
-    hint.innerHTML = 'Plan: <span class="plan-badge pb-growth">Growth — $139/mo</span> · Up to 5 locations, full suite included.';
+    hint.innerHTML = 'Plan: <span class="plan-badge pb-growth">Growth — $199/mo</span> · Up to 5 locations, full suite included.';
     hint.style.color = '#1a4baa';
-    btn.textContent = 'Continue to payment — $139/mo →';
+    btn.textContent = 'Continue to payment — $199/mo →';
   } else {
     hint.innerHTML = '<span style="color:#92690a;font-weight:600">6+ locations → Agency plan.</span> Our team will contact you with custom pricing.';
     hint.style.color = '#92690a';
@@ -239,7 +239,7 @@ async function handleSubmit(e) {
   btn.textContent = 'Sending...';
 
   const n = parseInt(document.getElementById('f-locations').value);
-  const plan = n === 1 ? 'Starter ($79/mo)' : n <= 5 ? 'Growth ($139/mo)' : 'Agency (6+ locations)';
+  const plan = n === 1 ? 'Starter ($99/mo)' : n <= 5 ? 'Growth ($199/mo)' : 'Agency (6+ locations)';
 
   // Build form data for Formspree → sends to nick@swarmreply.com
   const data = {
