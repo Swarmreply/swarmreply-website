@@ -139,16 +139,16 @@ h3.card-hed{font-family:'Playfair Display',serif;font-size:1.35rem;font-weight:7
 .mission-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start}
 .mission-text h2{margin-bottom:20px}
 .mission-text p{font-size:.95rem;color:rgba(255,255,255,.65);line-height:1.85;margin-bottom:16px}
-.compare-table{min-width:100%;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:18px;overflow:hidden}
-.ct-head{display:grid;grid-template-columns:1fr 80px 80px;gap:0;padding:14px 20px;border-bottom:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.04)}
-.ct-head span{font-size:.68rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.35);text-align:center}
-.ct-head span:first-child{text-align:left;color:rgba(255,255,255,.5)}
-.ct-row{display:grid;grid-template-columns:1fr 80px 80px;gap:0;padding:13px 20px;border-bottom:1px solid rgba(255,255,255,.06);align-items:center}
+.compare-table{width:100%;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:18px;overflow:hidden;table-layout:fixed}
+.ct-head{display:grid;grid-template-columns:1.8fr 1fr 1fr;gap:0;padding:16px 24px;border-bottom:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.06)}
+.ct-head span{font-size:.68rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.45);text-align:center}
+.ct-head span:first-child{text-align:left;color:rgba(255,255,255,.6)}
+.ct-row{display:grid;grid-template-columns:1.8fr 1fr 1fr;gap:0;padding:14px 24px;border-bottom:1px solid rgba(255,255,255,.06);align-items:center}
 .ct-row:last-child{border-bottom:none}
 .ct-row:hover{background:rgba(255,255,255,.03)}
-.ct-feat{font-size:.85rem;color:rgba(255,255,255,.7)}
-.ct-val{text-align:center;font-size:.85rem;font-weight:600}
-.ct-y{color:var(--g)}.ct-n{color:rgba(255,255,255,.2)}.ct-p{color:rgba(255,255,255,.35);font-size:.75rem}
+.ct-feat{font-size:.84rem;color:rgba(255,255,255,.8);padding-right:12px;line-height:1.4}
+.ct-val{text-align:center;font-size:.8rem;font-weight:600;padding:4px 8px;border-radius:6px}
+.ct-y{color:#4ade80;background:rgba(74,222,128,.08);border-radius:6px}.ct-n{color:rgba(255,100,100,.7);background:rgba(255,100,100,.06);border-radius:6px}.ct-p{color:rgba(255,255,255,.35);font-size:.75rem}
 
 /* ── INDUSTRY SLIDER ── */
 .ind-slider-wrap{overflow:hidden;cursor:grab;user-select:none;padding:4px 0 20px}
@@ -755,66 +755,56 @@ h3.card-hed{font-family:'Playfair Display',serif;font-size:1.35rem;font-weight:7
   </div>
   <div class="wrap inner">
     <div class="center mb48">
-      <div class="eyebrow">Up and running in minutes. Not weeks.</div>
-      <h2 class="sec-hed">Live in minutes,<br>not months.</h2>
-      <p class="lead center mt16">No onboarding calls. No implementation specialists. No contracts. The complete reputation management platform that sets itself up — because your time is worth more than a 3-week enterprise process.</p>
+      <div class="eyebrow">Your full reputation suite. Live today.</div>
+      <h2 class="sec-hed">Four steps.<br><em>One afternoon.</em></h2>
+      <p class="lead center mt16">No onboarding calls. No implementation team. No waiting weeks for a specialist. Sign up, connect Google, and your entire reputation management suite is live — AI replies, review generation, webchat, listings sync, and LLM monitoring — all running automatically.</p>
     </div>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start">
-      <div>
-        <div class="ob-steps">
-          <div class="ob-step">
-            <div class="ob-n">01</div>
-            <div>
-              <div class="ob-title">Connect your Google Business Profile</div>
-              <div class="ob-desc">Fill in your business details — name, industry, contact info, preferred tone. Takes 3 minutes. No technical knowledge needed.</div>
-            </div>
-          </div>
-          <div class="ob-step">
-            <div class="ob-n">02</div>
-            <div>
-              <div class="ob-title">Choose your plan and pay</div>
-              <div class="ob-desc">Starter (1 location) or Growth (5 locations). No annual contract, no setup fee. Your account is created the moment payment processes.</div>
-            </div>
-          </div>
-          <div class="ob-step">
-            <div class="ob-n">03</div>
-            <div>
-              <div class="ob-title">Connect Google in one click</div>
-              <div class="ob-desc">Log in, hit "Connect Google Business Profile." One OAuth click — done. SwarmReply starts monitoring and replying within minutes.</div>
-            </div>
-          </div>
-          <div class="ob-step">
-            <div class="ob-n">04</div>
-            <div>
-              <div class="ob-title">Your swarm goes live</div>
-              <div class="ob-desc">Reviews get replied to automatically. Surveys go out after every visit. Listings sync across platforms. You just run your business.</div>
-            </div>
-          </div>
-        </div>
+
+    <!-- Step cards -->
+    <div class="ob-steps-grid" style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:48px">
+
+      <div style="background:#fff;border:1px solid var(--bd);border-radius:16px;padding:24px;position:relative;border-top:3px solid var(--g)">
+        <div style="font-family:'Playfair Display',serif;font-size:2rem;font-weight:900;color:var(--g);line-height:1;margin-bottom:12px">01</div>
+        <div style="font-weight:700;font-size:.95rem;margin-bottom:8px;color:var(--k)">Sign up in 3 minutes</div>
+        <div style="font-size:.82rem;color:var(--mu);line-height:1.65">Enter your business details, choose your plan, pay. Your account is live the moment payment processes — no waiting, no approval.</div>
       </div>
-      <div>
-        <div style="background:#fff;border:1px solid var(--bd);border-radius:18px;padding:28px">
-          <div style="display:flex;flex-direction:column;gap:14px">
-            <div style="display:flex;align-items:center;gap:14px;padding:14px;background:var(--of);border-radius:12px;border:1px solid var(--bd)">
-              <div style="width:40px;height:40px;border-radius:50%;background:#e8f5ef;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0">✓</div>
-              <div><div style="font-weight:600;font-size:.875rem">No onboarding calls required</div><div style="font-size:.78rem;color:var(--mu);margin-top:2px">Dashboard explains itself. Seriously.</div></div>
-            </div>
-            <div style="display:flex;align-items:center;gap:14px;padding:14px;background:var(--of);border-radius:12px;border:1px solid var(--bd)">
-              <div style="width:40px;height:40px;border-radius:50%;background:#e8f5ef;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0">✓</div>
-              <div><div style="font-weight:600;font-size:.875rem">Live within minutes, not weeks</div><div style="font-size:.78rem;color:var(--mu);margin-top:2px">From sign-up to first reply — under an hour.</div></div>
-            </div>
-            <div style="display:flex;align-items:center;gap:14px;padding:14px;background:var(--of);border-radius:12px;border:1px solid var(--bd)">
-              <div style="width:40px;height:40px;border-radius:50%;background:#e8f5ef;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0">✓</div>
-              <div><div style="font-weight:600;font-size:.875rem">Designed for the person running it</div><div style="font-size:.78rem;color:var(--mu);margin-top:2px">Not the IT department. The owner. The manager.</div></div>
-            </div>
-            <div style="display:flex;align-items:center;gap:14px;padding:14px;background:var(--of);border-radius:12px;border:1px solid var(--bd)">
-              <div style="width:40px;height:40px;border-radius:50%;background:#e8f5ef;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0">✓</div>
-              <div><div style="font-weight:600;font-size:.875rem">Cancel anytime — no questions asked</div><div style="font-size:.78rem;color:var(--mu);margin-top:2px">Month-to-month. Your data is yours.</div></div>
-            </div>
-          </div>
-        </div>
+
+      <div style="background:#fff;border:1px solid var(--bd);border-radius:16px;padding:24px;border-top:3px solid var(--k)">
+        <div style="font-family:'Playfair Display',serif;font-size:2rem;font-weight:900;color:var(--k);line-height:1;margin-bottom:12px">02</div>
+        <div style="font-weight:700;font-size:.95rem;margin-bottom:8px;color:var(--k)">Connect Google in one click</div>
+        <div style="font-size:.82rem;color:var(--mu);line-height:1.65">One OAuth button — that's it. SwarmReply connects to your Google Business Profile and immediately starts monitoring every review.</div>
+      </div>
+
+      <div style="background:#fff;border:1px solid var(--bd);border-radius:16px;padding:24px;border-top:3px solid var(--k)">
+        <div style="font-family:'Playfair Display',serif;font-size:2rem;font-weight:900;color:var(--k);line-height:1;margin-bottom:12px">03</div>
+        <div style="font-weight:700;font-size:.95rem;margin-bottom:8px;color:var(--k)">Your suite activates automatically</div>
+        <div style="font-size:.82rem;color:var(--mu);line-height:1.65">AI replies start posting. Listings sync to Google, Apple &amp; Bing. Webchat goes live on your site. LLM monitoring begins tracking ChatGPT &amp; Gemini.</div>
+      </div>
+
+      <div style="background:#0a0a0a;border-radius:16px;padding:24px;border-top:3px solid var(--g)">
+        <div style="font-family:'Playfair Display',serif;font-size:2rem;font-weight:900;color:var(--g);line-height:1;margin-bottom:12px">04</div>
+        <div style="font-weight:700;font-size:.95rem;margin-bottom:8px;color:#fff">Just run your business</div>
+        <div style="font-size:.82rem;color:rgba(255,255,255,.55);line-height:1.65">Every review replied to. Every survey sent. Every listing updated. Every lead captured. SwarmReply runs 24/7 so you don't have to think about it.</div>
+      </div>
+
+    </div>
+
+    <!-- Value props row -->
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:800px;margin:0 auto">
+      <div style="text-align:center;padding:20px">
+        <div style="font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:900;color:var(--k);margin-bottom:6px">&lt; 1hr</div>
+        <div style="font-size:.82rem;color:var(--mu);line-height:1.5">From sign-up to first<br>AI reply posted</div>
+      </div>
+      <div style="text-align:center;padding:20px;border-left:1px solid var(--bd);border-right:1px solid var(--bd)">
+        <div style="font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:900;color:var(--k);margin-bottom:6px">Zero</div>
+        <div style="font-size:.82rem;color:var(--mu);line-height:1.5">Onboarding calls<br>or setup fees</div>
+      </div>
+      <div style="text-align:center;padding:20px">
+        <div style="font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:900;color:var(--k);margin-bottom:6px">100%</div>
+        <div style="font-size:.82rem;color:var(--mu);line-height:1.5">Self-serve — no<br>technical knowledge needed</div>
       </div>
     </div>
+
   </div>
 </section>
 
@@ -1009,7 +999,7 @@ h3.card-hed{font-family:'Playfair Display',serif;font-size:1.35rem;font-weight:7
           <div class="pf"><span class="pf-check">✓</span><span>Monthly reputation report</span></div>
           <div class="pf"><span class="pf-check">✓</span><span>Multi-language AI replies — 15 languages</span></div>
         </div>
-        <button class="btn-plan btn-plan-k" onclick="window.location.href='/signup.html'">Get started — $99/mo →</button>
+        <button class="btn-plan btn-plan-g" onclick="window.location.href='/signup.html'">Get started — $99/mo →</button>
         <div style="text-align:center;margin-top:10px;font-size:.75rem;color:var(--mu)">Annual billing available · Save 10%</div>
       </div>
 
@@ -1030,7 +1020,7 @@ h3.card-hed{font-family:'Playfair Display',serif;font-size:1.35rem;font-weight:7
           <div class="pf"><span class="pf-check">✓</span><span>Volume pricing — the more locations, the lower the rate</span></div>
           <div class="pf"><span class="pf-check">✓</span><span>Priority onboarding &amp; support</span></div>
         </div>
-        <a href="mailto:hello@swarmreply.com?subject=Agency Plan Inquiry" class="btn-plan btn-plan-k" style="display:block;text-align:center;text-decoration:none">Contact sales →</a>
+        <a href="mailto:hello@swarmreply.com?subject=Agency Plan Inquiry" class="btn-plan btn-plan-k" style="display:block;text-align:center;text-decoration:none;cursor:pointer">Contact sales →</a>
         <div style="text-align:center;margin-top:10px;font-size:.75rem;color:var(--mu)">Custom pricing · No contracts required</div>
       </div>
 
