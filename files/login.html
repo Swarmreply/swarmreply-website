@@ -5,159 +5,209 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Log In — SwarmReply</title>
 <meta name="robots" content="noindex">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --black:#0a0a0a;--white:#fff;--gold:#f5c842;--gold-dk:#d4a515;
-  --off:#f8f7f4;--mid:#f0eeea;--border:#e4e0d8;--muted:#7a7670;
+  --k:#0a0a0a;--w:#fff;--g:#f5c842;--gd:#d4a515;
+  --of:#f8f7f4;--bd:#e4e0d8;--mu:#7a7670;--tx:#1a1a18;
+  --gr:#1a6b45;--re:#c0392b;
 }
 html{height:100%;-webkit-text-size-adjust:100%}
-body{font-family:'DM Sans',sans-serif;background:var(--off);min-height:100%;display:flex;flex-direction:column;-webkit-font-smoothing:antialiased}
-/* Honeycomb bg */
-.hc-bg{position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.045}
-/* Layout */
-.page{flex:1;display:flex;align-items:center;justify-content:center;padding:60px 24px;position:relative;z-index:1}
-/* Left brand panel (desktop only) */
-.login-wrap{display:grid;grid-template-columns:1fr 1fr;max-width:920px;width:100%;border-radius:24px;overflow:hidden;box-shadow:0 24px 80px rgba(0,0,0,.1),0 4px 16px rgba(0,0,0,.06);border:1px solid var(--border)}
-.brand-panel{background:var(--black);padding:52px 44px;display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden}
-.brand-hc{position:absolute;inset:0;opacity:.05;pointer-events:none}
-.brand-logo{display:flex;align-items:center;gap:10px;margin-bottom:40px;position:relative}
-.brand-wm{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:900;color:var(--white)}
-.brand-tagline{font-family:'Playfair Display',serif;font-size:2rem;font-weight:900;line-height:1.1;letter-spacing:-.03em;color:var(--white);margin-bottom:16px;position:relative}
-.brand-tagline em{font-style:italic;font-weight:400;color:var(--gold)}
-.brand-sub{font-size:.85rem;color:rgba(255,255,255,.4);line-height:1.7;font-weight:300;position:relative}
-.brand-features{list-style:none;display:flex;flex-direction:column;gap:12px;position:relative;margin-top:auto}
+body{font-family:'DM Sans',sans-serif;background:var(--of);min-height:100%;
+     display:flex;flex-direction:column;-webkit-font-smoothing:antialiased;color:var(--tx)}
+
+/* ── HONEYCOMB BG ── */
+.hc-bg{position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.04}
+.hc-bg svg{width:100%;height:100%}
+
+/* ── PAGE ── */
+.page{flex:1;display:flex;align-items:center;justify-content:center;
+      padding:40px 20px;position:relative;z-index:1}
+
+/* ── CARD ── */
+.login-wrap{display:grid;grid-template-columns:1fr 1fr;max-width:900px;width:100%;
+            border-radius:24px;overflow:hidden;
+            box-shadow:0 24px 80px rgba(0,0,0,.1),0 4px 16px rgba(0,0,0,.06)}
+
+/* ── BRAND PANEL ── */
+.brand-panel{background:var(--k);padding:52px 44px;display:flex;
+             flex-direction:column;justify-content:space-between;
+             position:relative;overflow:hidden;min-height:560px}
+.brand-hc{position:absolute;inset:0;opacity:.06;pointer-events:none}
+.brand-logo{display:flex;align-items:center;gap:10px;margin-bottom:48px;position:relative}
+.brand-wm{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:900;color:#fff}
+.brand-tagline{font-family:'Playfair Display',serif;font-size:2.1rem;font-weight:900;
+               line-height:1.1;letter-spacing:-.03em;color:#fff;margin-bottom:14px;position:relative}
+.brand-tagline em{font-style:italic;font-weight:400;color:var(--g)}
+.brand-sub{font-size:.84rem;color:rgba(255,255,255,.45);line-height:1.75;
+           font-weight:300;position:relative;margin-bottom:40px}
+.brand-features{list-style:none;display:flex;flex-direction:column;gap:13px;position:relative}
 .brand-features li{display:flex;align-items:center;gap:10px;font-size:.82rem;color:rgba(255,255,255,.55)}
-.bf-dot{width:7px;height:7px;clip-path:polygon(50% 0%,100% 25%,100% 75%,50% 100%,0 75%,0 25%);background:var(--gold);flex-shrink:0}
+.bf-dot{width:7px;height:7px;flex-shrink:0;
+        clip-path:polygon(50% 0%,100% 25%,100% 75%,50% 100%,0 75%,0 25%);
+        background:var(--g)}
 .bf-dot.dim{background:rgba(245,200,66,.3)}
-/* Form panel */
-.form-panel{background:var(--white);padding:52px 44px}
-.form-panel h2{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:900;color:var(--black);margin-bottom:6px;letter-spacing:-.02em}
-.form-panel p{font-size:.875rem;color:var(--muted);margin-bottom:32px;line-height:1.6}
-.fl{display:block;font-size:.7rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:7px}
-.fi{width:100%;padding:13px 15px;border:1.5px solid var(--border);border-radius:10px;font-size:.9rem;font-family:'DM Sans',sans-serif;color:var(--black);outline:none;transition:border-color .15s;background:var(--white)}
-.fi:focus{border-color:var(--black)}
-.btn-login{width:100%;padding:14px;border-radius:50px;background:var(--black);color:var(--white);border:none;font-size:.95rem;font-weight:700;font-family:'DM Sans',sans-serif;cursor:pointer;transition:opacity .15s;margin-top:18px}
+
+/* ── FORM PANEL ── */
+.form-panel{background:#fff;padding:52px 44px;display:flex;flex-direction:column;justify-content:center}
+.form-hed{font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:900;
+          color:var(--k);margin-bottom:8px;letter-spacing:-.02em}
+.form-sub{font-size:.875rem;color:var(--mu);margin-bottom:32px;line-height:1.65}
+
+/* ── FORM ELEMENTS ── */
+.frow{margin-bottom:18px}
+.fl{display:block;font-size:.67rem;font-weight:700;letter-spacing:.08em;
+    text-transform:uppercase;color:var(--mu);margin-bottom:6px}
+.fi{width:100%;padding:12px 14px;border:1.5px solid var(--bd);border-radius:11px;
+    font-size:16px;font-family:'DM Sans',sans-serif;color:var(--tx);
+    outline:none;transition:border-color .15s;background:#fff;-webkit-appearance:none}
+.fi:focus{border-color:var(--k)}
+.pw-wrap{position:relative}
+.pw-wrap .fi{padding-right:60px}
+.pw-toggle{position:absolute;right:14px;top:50%;transform:translateY(-50%);
+           background:none;border:none;cursor:pointer;color:var(--mu);
+           font-size:.8rem;font-family:'DM Sans',sans-serif;font-weight:500;padding:4px}
+.pw-toggle:hover{color:var(--k)}
+
+.forgot-row{display:flex;justify-content:flex-end;margin-top:6px}
+.forgot-link{font-size:.78rem;color:var(--mu);text-decoration:none;font-weight:500;transition:color .15s}
+.forgot-link:hover{color:var(--k)}
+
+/* ── BUTTONS ── */
+.btn-login{width:100%;padding:14px;border-radius:50px;background:var(--k);color:#fff;
+           border:none;font-size:.95rem;font-weight:700;
+           font-family:'DM Sans',sans-serif;cursor:pointer;
+           transition:opacity .15s;margin-top:8px}
 .btn-login:hover{opacity:.85}
-.btn-login:disabled{opacity:.5;cursor:not-allowed}
-.divider{display:flex;align-items:center;gap:14px;margin:24px 0}
-.divider::before,.divider::after{content:'';flex:1;height:1px;background:var(--border)}
-.divider span{font-size:.75rem;color:var(--muted)}
-.btn-signup{display:block;text-align:center;width:100%;padding:13px;border-radius:50px;background:var(--gold);color:var(--black);border:none;font-size:.9rem;font-weight:700;font-family:'DM Sans',sans-serif;cursor:pointer;text-decoration:none;transition:all .15s}
-.btn-signup:hover{background:var(--gold-dk)}
-#err-box{display:none;background:#fef2f2;border:1px solid #fecaca;border-radius:8px;padding:11px 14px;font-size:.82rem;color:#dc2626;margin-bottom:14px;line-height:1.5}
-#success-box{display:none;background:#f0fdf4;border:1px solid #bbf7d0;border-radius:8px;padding:11px 14px;font-size:.82rem;color:#15803d;margin-bottom:14px;line-height:1.5}
-.back-link{display:flex;align-items:center;gap:6px;font-size:.78rem;color:var(--muted);text-decoration:none;margin-top:24px;transition:color .15s;justify-content:center}
-.back-link:hover{color:var(--black)}
-@media(max-width:700px){
+.btn-login:disabled{opacity:.45;cursor:not-allowed}
+
+.divider{display:flex;align-items:center;gap:14px;margin:22px 0}
+.divider::before,.divider::after{content:'';flex:1;height:1px;background:var(--bd)}
+.divider span{font-size:.75rem;color:var(--mu);white-space:nowrap}
+
+.btn-signup{display:block;text-align:center;width:100%;padding:13px;border-radius:50px;
+            background:var(--g);color:var(--k);border:none;font-size:.9rem;font-weight:700;
+            font-family:'DM Sans',sans-serif;cursor:pointer;text-decoration:none;transition:all .15s}
+.btn-signup:hover{background:var(--gd)}
+
+.back-link{display:block;text-align:center;margin-top:18px;font-size:.78rem;color:var(--mu);text-decoration:none}
+.back-link:hover{color:var(--k)}
+
+/* ── ALERTS ── */
+#err-box{display:none;background:#fef2f2;border:1px solid #fecaca;border-radius:9px;
+         padding:11px 14px;font-size:.82rem;color:#dc2626;margin-bottom:16px;line-height:1.5}
+#success-box{display:none;background:#f0fdf4;border:1px solid #bbf7d0;border-radius:9px;
+             padding:11px 14px;font-size:.82rem;color:#15803d;margin-bottom:16px;line-height:1.5}
+
+/* ── MOBILE ── */
+@media(max-width:680px){
   .login-wrap{grid-template-columns:1fr}
   .brand-panel{display:none}
-  .form-panel{padding:36px 28px}
-  .page{padding:40px 20px}
+  .form-panel{padding:40px 28px}
+  .form-hed{font-size:1.5rem}
+  .page{padding:24px 16px;align-items:flex-start}
 }
-/* Bee bounce */
-@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
-.bee-anim{display:inline-block;animation:bob 3s ease-in-out infinite}
 </style>
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#f5c842">
-<meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="SwarmReply">
 <link rel="apple-touch-icon" href="/icons/icon-192.svg">
-<link rel="apple-touch-startup-image" href="/icons/icon-512.svg">
 </head>
 <body>
 
-<!-- Honeycomb background -->
 <div class="hc-bg">
-  <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-    <defs><pattern id="hcp" x="0" y="0" width="54" height="94" patternUnits="userSpaceOnUse">
-      <polygon points="27,1 53,15 53,42 27,56 1,42 1,15" fill="none" stroke="#0a0a0a" stroke-width="1.2"/>
-      <polygon points="54,48 80,62 80,89 54,103 28,89 28,62" fill="none" stroke="#0a0a0a" stroke-width="1.2"/>
+  <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+    <defs><pattern id="hc" x="0" y="0" width="60" height="52" patternUnits="userSpaceOnUse">
+      <polygon points="30,2 56,16 56,44 30,58 4,44 4,16" fill="none" stroke="#0a0a0a" stroke-width="1.5"/>
     </pattern></defs>
-    <rect width="100%" height="100%" fill="url(#hcp)"/>
+    <rect width="100%" height="100%" fill="url(#hc)"/>
   </svg>
 </div>
 
 <div class="page">
   <div class="login-wrap">
 
-    <!-- Brand panel -->
+    <!-- ── BRAND PANEL ── -->
     <div class="brand-panel">
       <div class="brand-hc">
-        <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-          <defs><pattern id="hcb" x="0" y="0" width="54" height="94" patternUnits="userSpaceOnUse">
-            <polygon points="27,1 53,15 53,42 27,56 1,42 1,15" fill="none" stroke="white" stroke-width="1"/>
+        <svg viewBox="0 0 600 800" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+          <defs><pattern id="hcb" x="0" y="0" width="60" height="52" patternUnits="userSpaceOnUse">
+            <polygon points="30,2 56,16 56,44 30,58 4,44 4,16" fill="none" stroke="#fff" stroke-width="1.2"/>
           </pattern></defs>
           <rect width="100%" height="100%" fill="url(#hcb)"/>
         </svg>
       </div>
-      <div>
-        <div class="brand-logo">
-          <span class="bee-anim">
-            <svg width="32" height="32" viewBox="0 0 100 100" fill="none" aria-hidden="true">
-              <ellipse cx="50" cy="60" rx="21" ry="26" fill="white"/>
-              <rect x="29" y="52" width="42" height="8" rx="2" fill="#f5c842" opacity=".95"/>
-              <rect x="29" y="65" width="42" height="7" rx="2" fill="#f5c842" opacity=".7"/>
-              <circle cx="50" cy="31" r="15" fill="white"/>
-              <circle cx="43.5" cy="29" r="4" fill="#0a0a0a"/><circle cx="56.5" cy="29" r="4" fill="#0a0a0a"/>
-              <circle cx="44.5" cy="29" r="2.2" fill="white"/><circle cx="57.5" cy="29" r="2.2" fill="white"/>
-              <path d="M44 36 Q50 41 56 36" stroke="#0a0a0a" stroke-width="2" stroke-linecap="round" fill="none"/>
-              <ellipse cx="23" cy="46" rx="15" ry="7.5" fill="rgba(245,200,66,.6)" transform="rotate(-28 23 46)"/>
-              <ellipse cx="77" cy="46" rx="15" ry="7.5" fill="rgba(245,200,66,.6)" transform="rotate(28 77 46)"/>
-              <polygon points="50,86 46,95 54,95" fill="white"/>
-              <ellipse cx="50" cy="18" rx="21" ry="5" fill="#f5c842"/>
-              <path d="M32 18 Q33 6 50 6 Q67 6 68 18 Z" fill="#f5c842"/>
-              <rect x="32" y="17" width="36" height="3" rx="1.5" fill="#d4a515" opacity=".7"/>
-            </svg>
-          </span>
-          <span class="brand-wm">SwarmReply</span>
-        </div>
+
+      <!-- Logo -->
+      <div class="brand-logo">
+        <svg width="28" height="28" viewBox="0 0 100 100" fill="none">
+          <ellipse cx="50" cy="60" rx="21" ry="26" fill="#f5c842"/>
+          <rect x="29" y="52" width="42" height="8" rx="2" fill="#0a0a0a" opacity=".5"/>
+          <rect x="29" y="65" width="42" height="7" rx="2" fill="#0a0a0a" opacity=".35"/>
+          <circle cx="50" cy="31" r="15" fill="#f5c842"/>
+          <ellipse cx="50" cy="18" rx="21" ry="5" fill="#d4a515"/>
+          <path d="M32 18 Q33 6 50 6 Q67 6 68 18 Z" fill="#d4a515"/>
+        </svg>
+        <span class="brand-wm">SwarmReply</span>
+      </div>
+
+      <!-- Tagline -->
+      <div style="position:relative">
         <div class="brand-tagline">Your reputation<br>dashboard.<br><em>Always on.</em></div>
         <p class="brand-sub">Log in to see every review, every reply, your sentiment score, keyword insights, competitor data, and monthly reports — all in one place.</p>
       </div>
+
+      <!-- Features -->
       <ul class="brand-features">
-        <li><span class="bf-dot"></span>Live review feed & auto-replies</li>
-        <li><span class="bf-dot"></span>Sentiment analysis & keyword tracker</li>
-        <li><span class="bf-dot"></span>Review request sending & CSV import</li>
-        <li><span class="bf-dot"></span>Competitor benchmarking</li>
+        <li><span class="bf-dot"></span>Live review feed &amp; AI auto-replies</li>
+        <li><span class="bf-dot"></span>Sentiment analysis &amp; keyword tracker</li>
+        <li><span class="bf-dot"></span>Review requests — email &amp; SMS</li>
+        <li><span class="bf-dot"></span>LLM visibility — ChatGPT &amp; Gemini</li>
+        <li><span class="bf-dot dim"></span>Competitor benchmarking</li>
         <li><span class="bf-dot dim"></span>Monthly reputation reports</li>
-        <li><span class="bf-dot dim"></span>Multi-language reply coverage</li>
       </ul>
     </div>
 
-    <!-- Form panel -->
+    <!-- ── FORM PANEL ── -->
     <div class="form-panel">
-      <h2>Welcome back.</h2>
-      <p>Enter your email and password to access your dashboard.</p>
+      <div class="form-hed">Welcome back.</div>
+      <p class="form-sub">Enter your email and password to access your dashboard.</p>
 
       <div id="err-box"></div>
       <div id="success-box"></div>
 
-      <form id="loginForm">
-        <div style="margin-bottom:16px">
+      <form id="loginForm" onsubmit="handleLogin(event)">
+        <div class="frow">
           <label class="fl" for="email">Email address</label>
-          <input class="fi" type="email" id="email" name="email" placeholder="you@yourbusiness.com" autocomplete="email" required>
+          <input class="fi" type="email" id="email" name="email"
+                 placeholder="you@yourbusiness.com"
+                 autocomplete="email" required>
         </div>
-        <div class="form-group" style="margin-bottom:16px">
-          <label class="form-label" for="password">Password</label>
-          <div style="position:relative">
-            <input type="password" id="password" class="form-input" placeholder="Your password" autocomplete="current-password" required>
-            <button type="button" id="togglePw" style="position:absolute;right:12px;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;color:var(--muted);font-size:.8rem;font-family:inherit">Show</button>
+
+        <div class="frow">
+          <label class="fl" for="password">Password</label>
+          <div class="pw-wrap">
+            <input class="fi" type="password" id="password" name="password"
+                   placeholder="Your password"
+                   autocomplete="current-password" required>
+            <button type="button" class="pw-toggle" id="pwToggle"
+                    onclick="togglePw()">Show</button>
+          </div>
+          <div class="forgot-row">
+            <a href="APP_URL/forgot-password" class="forgot-link" id="forgotLink">Forgot password?</a>
           </div>
         </div>
-        <div style="text-align:right;margin-bottom:16px;margin-top:-8px">
-          <a href="APP_URL/forgot-password" style="font-size:.78rem;color:var(--muted);font-weight:500">Forgot password?</a>
-        </div>
-        <button type="submit" class="btn-login" id="loginBtn">Sign In to Dashboard →</button>
+
+        <button type="submit" class="btn-login" id="loginBtn">
+          Sign in to dashboard →
+        </button>
       </form>
 
       <div class="divider"><span>New to SwarmReply?</span></div>
-      <a href="/#pricing" class="btn-signup">Sign up today</a>
-
+      <a href="/signup.html" class="btn-signup">Get started — from $99/mo →</a>
       <a href="/" class="back-link">← Back to swarmreply.com</a>
     </div>
 
@@ -165,55 +215,49 @@ body{font-family:'DM Sans',sans-serif;background:var(--off);min-height:100%;disp
 </div>
 
 <script>
-// ── CONFIG — update these two URLs before deploying ──────────────────────────
+// ── CONFIG ─────────────────────────────────────────────────────────────────
 var API_URL = 'https://swarmreply-backend-production.up.railway.app/api';
-var APP_URL = 'https://app.swarmreply.com'; // your Next.js dashboard domain
+var APP_URL = 'https://app.swarmreply.com';
 
-// Update the forgot password link dynamically
-document.querySelectorAll('a[href="APP_URL/forgot-password"]').forEach(function(a) {
-  a.href = APP_URL + '/forgot-password';
-});
+// Update forgot password link
+document.getElementById('forgotLink').href = APP_URL + '/forgot-password';
 
-// Show/hide password toggle
-document.getElementById('togglePw').addEventListener('click', function() {
-  var pw = document.getElementById('password');
+// ── PASSWORD TOGGLE ────────────────────────────────────────────────────────
+function togglePw() {
+  var pw  = document.getElementById('password');
+  var btn = document.getElementById('pwToggle');
   var showing = pw.type === 'text';
   pw.type = showing ? 'password' : 'text';
-  this.textContent = showing ? 'Show' : 'Hide';
-});
+  btn.textContent = showing ? 'Show' : 'Hide';
+}
 
-document.getElementById('loginForm').addEventListener('submit', async function(e) {
+// ── LOGIN ──────────────────────────────────────────────────────────────────
+async function handleLogin(e) {
   e.preventDefault();
-  var email    = document.getElementById('email').value.trim().toLowerCase();
+  var email    = document.getElementById('email').value.trim();
   var password = document.getElementById('password').value;
   var btn      = document.getElementById('loginBtn');
   var errBox   = document.getElementById('err-box');
   var sucBox   = document.getElementById('success-box');
 
-  if (!email || !password) return;
-
-  btn.textContent = 'Signing in...';
   btn.disabled = true;
+  btn.textContent = 'Signing in...';
   errBox.style.display = 'none';
   sucBox.style.display = 'none';
 
   try {
-    var res = await fetch(API_URL + '/customers/login', {
+    var res  = await fetch(API_URL + '/customers/login', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ email: email, password: password })
     });
-
     var data = await res.json();
 
     if (res.ok && data.accessToken) {
-      // Store JWT — the Next.js app reads from localStorage
       localStorage.setItem('swarmreply_token', data.accessToken);
       sucBox.textContent = 'Logging you in...';
       sucBox.style.display = 'block';
-      // Redirect to the app
       window.location.href = APP_URL + '/dashboard';
-
     } else if (res.status === 401) {
       errBox.textContent = 'Invalid email or password. Please try again.';
       errBox.style.display = 'block';
@@ -224,25 +268,16 @@ document.getElementById('loginForm').addEventListener('submit', async function(e
       errBox.textContent = data.error || 'Account access denied. Contact hello@swarmreply.com';
       errBox.style.display = 'block';
     } else {
-      errBox.innerHTML = data.error || 'Something went wrong. <a href="mailto:hello@swarmreply.com" style="color:var(--black);font-weight:600">Email us →</a>';
+      errBox.textContent = data.error || 'Something went wrong. Please try again.';
       errBox.style.display = 'block';
     }
   } catch (err) {
-    errBox.textContent = 'Unable to connect. Please check your connection and try again.';
+    errBox.textContent = 'Unable to connect. Check your connection and try again.';
     errBox.style.display = 'block';
   } finally {
-    btn.textContent = 'Sign In to Dashboard →';
     btn.disabled = false;
+    btn.textContent = 'Sign in to dashboard →';
   }
-});
-</script>
-<script>
-if ('serviceWorker' in navigator) {
-  window.addEventListener('load', () => {
-    navigator.serviceWorker.register('/sw.js')
-      .then(reg => console.log('SW registered:', reg.scope))
-      .catch(err => console.log('SW failed:', err));
-  });
 }
 </script>
 </body>
