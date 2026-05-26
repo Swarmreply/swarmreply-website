@@ -10,26 +10,26 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{--k:#0a0a0a;--w:#fff;--g:#f5c842;--gd:#d4a515;--of:#f8f7f4;--bd:#e4e0d8;--mu:#7a7670;--tx:#1a1a18;--gr:#1a6b45;}
+:root{--k:#0a0a0a;--w:#fff;--g:#f5c842;--gd:#d4a515;--of:#f8f7f4;--bd:#e4e0d8;--mu:#7a7670;--tx:#1a1a18;--gr:#1a6b45}
 body{font-family:'DM Sans',sans-serif;background:var(--of);color:var(--tx);-webkit-font-smoothing:antialiased;min-height:100vh}
 a{text-decoration:none;color:inherit}
 
-/* ── HONEYCOMB ── */
 .hc-bg{position:fixed;inset:0;opacity:.04;pointer-events:none;z-index:0}
 .hc-bg svg{width:100%;height:100%}
 
-/* ── NAV ── */
 .nav{background:#fff;border-bottom:1px solid var(--bd);padding:0 28px;height:62px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100}
 .nav-logo{display:flex;align-items:center;gap:9px;font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:900;color:var(--k)}
 .nav-back{font-size:.82rem;color:var(--mu);display:flex;align-items:center;gap:6px;transition:color .15s}
 .nav-back:hover{color:var(--k)}
 
-/* ── LAYOUT ── */
 .page{position:relative;z-index:1;min-height:calc(100vh - 62px);display:flex;align-items:flex-start;justify-content:center;padding:48px 20px 80px}
-.container{width:100%;max-width:560px}
+.container{width:100%;max-width:960px}
 
-/* ── STEPS INDICATOR ── */
-.steps{display:flex;align-items:center;gap:0;margin-bottom:36px}
+/* Two-column layout */
+.signup-grid{display:grid;grid-template-columns:1fr 380px;gap:28px;align-items:start}
+@media(max-width:780px){.signup-grid{grid-template-columns:1fr}}
+
+.steps{display:flex;align-items:center;gap:0;margin-bottom:32px}
 .step-item{display:flex;align-items:center;gap:8px;font-size:.78rem;font-weight:500;color:var(--mu)}
 .step-item.active{color:var(--k);font-weight:600}
 .step-item.done{color:var(--gr)}
@@ -38,49 +38,50 @@ a{text-decoration:none;color:inherit}
 .step-item.done .step-n{background:var(--gr);color:#fff;border-color:var(--gr)}
 .step-line{flex:1;height:1px;background:var(--bd);margin:0 8px}
 
-/* ── FORM CARD ── */
 .form-card{background:#fff;border:1px solid var(--bd);border-radius:22px;padding:36px;box-shadow:0 4px 32px rgba(0,0,0,.06)}
 .form-hed{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:900;color:var(--k);margin-bottom:6px;line-height:1.1}
 .form-sub{font-size:.875rem;color:var(--mu);margin-bottom:28px;line-height:1.6}
 .fl{display:block;font-size:.67rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--mu);margin-bottom:5px}
 .fi{width:100%;padding:11px 14px;border:1.5px solid var(--bd);border-radius:11px;font-size:.9rem;color:var(--tx);outline:none;font-family:inherit;transition:border-color .15s;background:#fff}
 .fi:focus{border-color:var(--k)}
-.fsel{width:100%;padding:11px 14px;border:1.5px solid var(--bd);border-radius:11px;font-size:.9rem;color:var(--tx);outline:none;font-family:inherit;background:#fff;cursor:pointer;appearance:none}
+.fsel{width:100%;padding:11px 14px;border:1.5px solid var(--bd);border-radius:11px;font-size:.9rem;color:var(--tx);outline:none;font-family:inherit;background:#fff;cursor:pointer}
 .frow{margin-bottom:16px}
 .fg2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.req{color:var(--re)}
+.req{color:#c0392b}
 
 .btn-submit{width:100%;padding:15px;border:none;border-radius:50px;background:var(--g);color:var(--k);font-size:.95rem;font-weight:700;cursor:pointer;font-family:inherit;transition:all .18s;margin-top:8px}
 .btn-submit:hover{background:var(--gd);transform:translateY(-1px);box-shadow:0 8px 24px rgba(245,200,66,.35)}
 .btn-submit:disabled{background:var(--bd);color:var(--mu);cursor:not-allowed;transform:none;box-shadow:none}
-
 .form-note{font-size:.75rem;color:var(--mu);text-align:center;margin-top:14px;line-height:1.65}
 
-/* ── PLAN SELECTOR ── */
-.plan-opts{display:flex;flex-direction:column;gap:10px;margin-bottom:20px}
-.plan-opt{border:1.5px solid var(--bd);border-radius:13px;padding:14px 16px;cursor:pointer;transition:all .18s;display:flex;align-items:center;justify-content:space-between}
-.plan-opt:hover{border-color:var(--gd)}
-.plan-opt.selected{border-color:var(--k);background:var(--of)}
-.plan-opt-left h3{font-size:.9rem;font-weight:600;margin-bottom:2px}
-.plan-opt-left p{font-size:.78rem;color:var(--mu)}
-.plan-opt-right{text-align:right;flex-shrink:0;margin-left:16px}
-.plan-price{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:900;color:var(--k)}
-.plan-price span{font-size:.78rem;font-weight:400;color:var(--mu)}
-.plan-check{width:20px;height:20px;border-radius:50%;border:1.5px solid var(--bd);display:flex;align-items:center;justify-content:center;font-size:.72rem;margin-top:4px;margin-left:auto}
-.plan-opt.selected .plan-check{background:var(--k);border-color:var(--k);color:#fff}
-
-/* ── AGENCY MESSAGE ── */
-.agency-msg{background:var(--k);border-radius:18px;padding:32px;text-align:center;display:none}
+/* ── PRICING CONFIGURATOR ── */
+.price-card{background:#0a0a0a;border-radius:22px;padding:28px;position:sticky;top:88px}
+.price-card-hed{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:900;color:#fff;margin-bottom:4px}
+.price-card-sub{font-size:.78rem;color:rgba(255,255,255,.5);margin-bottom:20px;line-height:1.6}
+.price-display{font-family:'Playfair Display',serif;font-size:3rem;font-weight:900;color:var(--g);line-height:1;margin-bottom:4px}
+.price-display span{font-size:1.1rem;font-weight:400;color:rgba(255,255,255,.5)}
+.price-period{font-size:.78rem;color:rgba(255,255,255,.4);margin-bottom:20px}
+.price-breakdown{display:flex;flex-direction:column;gap:8px;margin-bottom:20px}
+.pb-row{display:flex;justify-content:space-between;align-items:center;font-size:.8rem;padding:8px 12px;border-radius:9px;background:rgba(255,255,255,.06)}
+.pb-row-label{color:rgba(255,255,255,.6)}
+.pb-row-val{color:#fff;font-weight:600}
+.pb-row.total-row{background:rgba(245,200,66,.12);border:1px solid rgba(245,200,66,.25)}
+.pb-row.total-row .pb-row-label{color:rgba(255,255,255,.8);font-weight:600}
+.pb-row.total-row .pb-row-val{color:var(--g);font-size:.95rem;font-weight:900}
+.annual-toggle{display:flex;align-items:center;justify-content:space-between;background:rgba(255,255,255,.06);border-radius:11px;padding:10px 14px;cursor:pointer;margin-bottom:20px;user-select:none}
+.annual-toggle-label{font-size:.82rem;color:rgba(255,255,255,.7);line-height:1.4}
+.annual-toggle-label strong{color:#fff;display:block}
+.toggle-sw{width:36px;height:20px;background:rgba(255,255,255,.2);border-radius:50px;position:relative;transition:background .2s;flex-shrink:0}
+.toggle-sw.on{background:var(--g)}
+.toggle-sw::after{content:'';position:absolute;top:2px;left:2px;width:16px;height:16px;background:#fff;border-radius:50%;transition:left .2s}
+.toggle-sw.on::after{left:18px}
+.price-features{display:flex;flex-direction:column;gap:6px}
+.price-feat{display:flex;align-items:center;gap:8px;font-size:.78rem;color:rgba(255,255,255,.6)}
+.price-feat-icon{color:var(--g);font-size:.9rem;flex-shrink:0}
+.agency-msg{background:#0a0a0a;border-radius:18px;padding:32px;text-align:center;display:none}
 .agency-msg h2{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:900;color:#fff;margin-bottom:12px}
 .agency-msg p{font-size:.9rem;color:rgba(255,255,255,.65);line-height:1.75;margin-bottom:20px}
 .agency-msg a{display:inline-block;padding:13px 28px;background:var(--g);color:var(--k);border-radius:50px;font-weight:700;font-size:.9rem}
-
-/* ── LOC INPUT ── */
-.loc-note{font-size:.75rem;color:var(--mu);margin-top:5px;line-height:1.5}
-.plan-badge{display:inline-block;font-size:.7rem;font-weight:700;padding:2px 8px;border-radius:50px;margin-left:6px;vertical-align:middle}
-.pb-starter{background:#e8f5ef;color:#1a6b45}
-.pb-growth{background:#e8f0fe;color:#1a4baa}
-.pb-agency{background:#fef3cd;color:#92690a}
 
 @media(max-width:600px){.fg2{grid-template-columns:1fr}}
 </style>
@@ -91,7 +92,6 @@ a{text-decoration:none;color:inherit}
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="SwarmReply">
 <link rel="apple-touch-icon" href="/icons/icon-192.svg">
-<link rel="apple-touch-startup-image" href="/icons/icon-512.svg">
 </head>
 <body>
 
@@ -122,7 +122,6 @@ a{text-decoration:none;color:inherit}
 <div class="page">
   <div class="container">
 
-    <!-- Steps -->
     <div class="steps">
       <div class="step-item active" id="step1-ind"><div class="step-n">1</div>Business Info</div>
       <div class="step-line"></div>
@@ -131,67 +130,97 @@ a{text-decoration:none;color:inherit}
       <div class="step-item" id="step3-ind"><div class="step-n">3</div>You're live</div>
     </div>
 
-    <!-- Step 1: Business Info Form -->
-    <div id="step1">
-      <div class="form-card">
-        <h1 class="form-hed">Let's set up<br><em style="font-style:italic;color:#d4a515">your swarm.</em></h1>
-        <p class="form-sub">Tell us about your business — takes under 3 minutes. You'll choose your plan and complete payment on the next screen.</p>
+    <div class="signup-grid" id="signup-grid">
 
-        <form id="signup-form" onsubmit="handleSubmit(event)">
-          <div class="fg2">
-            <div class="frow"><label class="fl">Full Name <span class="req">*</span></label><input class="fi" type="text" name="name" id="f-name" placeholder="Jane Smith" required></div>
-            <div class="frow"><label class="fl">Business Name <span class="req">*</span></label><input class="fi" type="text" name="business" id="f-business" placeholder="Bella's Kitchen" required></div>
-          </div>
-          <div class="fg2">
-            <div class="frow"><label class="fl">Email Address <span class="req">*</span></label><input class="fi" type="email" name="email" id="f-email" placeholder="you@yourbusiness.com" required></div>
-            <div class="frow"><label class="fl">Phone Number</label><input class="fi" type="tel" name="phone" id="f-phone" placeholder="+1 (555) 000-0000"></div>
-          </div>
-          <div class="frow">
-            <label class="fl">Industry <span class="req">*</span></label>
-            <select class="fsel" name="industry" id="f-industry" required>
-              <option value="">Select your industry...</option>
-              <option>Dental Practice</option>
-              <option>Medical / Healthcare</option>
-              <option>Restaurant / Food &amp; Beverage</option>
-              <option>Salon / Beauty / Med Spa</option>
-              <option>Auto Shop / Dealership</option>
-              <option>Gym / Fitness</option>
-              <option>Law Firm</option>
-              <option>Home Services</option>
-              <option>Retail</option>
-              <option>Hotel / Hospitality</option>
-              <option>Veterinary Clinic</option>
-              <option>Marketing Agency</option>
-              <option>Other</option>
-            </select>
-          </div>
-          <div class="frow">
-            <label class="fl" for="f-locations">Number of Locations <span class="req">*</span></label>
-            <input class="fi" type="number" name="locations" id="f-locations" min="1" max="99" placeholder="e.g. 1" required oninput="updatePlanHint(this.value)">
-            <div class="loc-note" id="plan-hint">Enter a number from 1 to 99.</div>
-          </div>
-          <div class="frow">
-            <label class="fl">Preferred Reply Tone</label>
-            <select class="fsel" name="tone" id="f-tone">
-              <option>Warm &amp; Friendly</option>
-              <option>Professional</option>
-              <option>Casual &amp; Conversational</option>
-              <option>Empathetic &amp; Caring</option>
-            </select>
-          </div>
+      <!-- LEFT: Business Info Form -->
+      <div id="step1">
+        <div class="form-card">
+          <h1 class="form-hed">Let's set up<br><em style="font-style:italic;color:#d4a515">your swarm.</em></h1>
+          <p class="form-sub">Tell us about your business — takes under 3 minutes. You'll complete payment on the next screen.</p>
 
-          <button type="submit" class="btn-submit" id="submit-btn">Continue to payment →</button>
-          <p class="form-note">No payment taken on this page. By continuing you agree to our <a href="/terms.html" style="color:var(--k);font-weight:600">Terms of Service</a> and <a href="/privacy.html" style="color:var(--k);font-weight:600">Privacy Policy</a>.</p>
-        </form>
+          <form id="signup-form" onsubmit="handleSubmit(event)">
+            <div class="fg2">
+              <div class="frow"><label class="fl">Full Name <span class="req">*</span></label><input class="fi" type="text" name="name" id="f-name" placeholder="Jane Smith" required></div>
+              <div class="frow"><label class="fl">Business Name <span class="req">*</span></label><input class="fi" type="text" name="business" id="f-business" placeholder="Bella's Kitchen" required></div>
+            </div>
+            <div class="fg2">
+              <div class="frow"><label class="fl">Email Address <span class="req">*</span></label><input class="fi" type="email" name="email" id="f-email" placeholder="you@yourbusiness.com" required></div>
+              <div class="frow"><label class="fl">Phone Number</label><input class="fi" type="tel" name="phone" id="f-phone" placeholder="+1 (555) 000-0000"></div>
+            </div>
+            <div class="frow">
+              <label class="fl">Industry <span class="req">*</span></label>
+              <select class="fsel" name="industry" id="f-industry" required>
+                <option value="">Select your industry...</option>
+                <option>Dental Practice</option>
+                <option>Medical / Healthcare</option>
+                <option>Restaurant / Food &amp; Beverage</option>
+                <option>Salon / Beauty / Med Spa</option>
+                <option>Auto Shop / Dealership</option>
+                <option>Gym / Fitness</option>
+                <option>Law Firm</option>
+                <option>Home Services</option>
+                <option>Retail</option>
+                <option>Hotel / Hospitality</option>
+                <option>Veterinary Clinic</option>
+                <option>Marketing Agency</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div class="frow">
+              <label class="fl" for="f-locations">Number of Locations <span class="req">*</span></label>
+              <input class="fi" type="number" name="locations" id="f-locations" min="1" max="999" placeholder="e.g. 1" required oninput="updatePricing()">
+              <div style="font-size:.75rem;color:var(--mu);margin-top:5px" id="loc-hint">Enter the total number of locations you manage.</div>
+            </div>
+
+            <button type="submit" class="btn-submit" id="submit-btn">Continue to payment →</button>
+            <p class="form-note">No payment taken on this page. By continuing you agree to our <a href="/terms.html" style="color:var(--k);font-weight:600">Terms of Service</a> and <a href="/privacy.html" style="color:var(--k);font-weight:600">Privacy Policy</a>.</p>
+          </form>
+        </div>
       </div>
+
+      <!-- RIGHT: Pricing Configurator -->
+      <div id="price-panel">
+        <div class="price-card">
+          <div class="price-card-hed">Your estimated price</div>
+          <div class="price-card-sub">Updates as you enter your location count. No surprises.</div>
+
+          <div class="price-display" id="price-total">$99<span>/mo</span></div>
+          <div class="price-period" id="price-period">Billed monthly</div>
+
+          <div class="price-breakdown" id="price-breakdown">
+            <div class="pb-row">
+              <span class="pb-row-label">First location</span>
+              <span class="pb-row-val">$99/mo</span>
+            </div>
+          </div>
+
+          <!-- Annual toggle -->
+          <div class="annual-toggle" id="annual-toggle" onclick="toggleAnnual()">
+            <div class="annual-toggle-label">
+              <strong>Pay annually — save 10%</strong>
+              Billed once per year
+            </div>
+            <div class="toggle-sw" id="annual-sw"></div>
+          </div>
+
+          <div class="price-features">
+            <div class="price-feat"><span class="price-feat-icon">✓</span>Every feature included</div>
+            <div class="price-feat"><span class="price-feat-icon">✓</span>AI review replies — 24/7</div>
+            <div class="price-feat"><span class="price-feat-icon">✓</span>LLM visibility monitoring</div>
+            <div class="price-feat"><span class="price-feat-icon">✓</span>Webchat, SMS campaigns &amp; more</div>
+            <div class="price-feat"><span class="price-feat-icon">✓</span>No contracts · Cancel anytime</div>
+          </div>
+        </div>
+      </div>
+
     </div>
 
-    <!-- Agency thank-you (shown when > 5 locations) -->
+    <!-- Agency block -->
     <div id="agency-block" style="display:none">
-      <div class="agency-msg" style="display:block;background:#0a0a0a;border-radius:22px;padding:44px;text-align:center">
+      <div style="background:#0a0a0a;border-radius:22px;padding:44px;text-align:center">
         <div style="font-size:2.5rem;margin-bottom:16px">🐝</div>
-        <h2 style="font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:900;color:#fff;margin-bottom:12px">Thank you — we'll be in touch shortly.</h2>
-        <p style="font-size:.95rem;color:rgba(255,255,255,.6);line-height:1.75;margin-bottom:28px;max-width:400px;margin-left:auto;margin-right:auto">Your information has been sent to our team. A member of staff will reach out to you within one business day to get your account set up.</p>
+        <h2 style="font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:900;color:#fff;margin-bottom:12px">You're in Agency territory.</h2>
+        <p style="font-size:.95rem;color:rgba(255,255,255,.6);line-height:1.75;margin-bottom:28px;max-width:440px;margin-left:auto;margin-right:auto">With 26+ locations you qualify for our Agency plan with volume pricing and a dedicated account manager. Our team will reach out within one business day.</p>
         <a href="/" style="display:inline-block;padding:13px 28px;background:var(--g);color:var(--k);border-radius:50px;font-weight:700;font-size:.9rem">← Back to SwarmReply</a>
       </div>
     </div>
@@ -200,36 +229,98 @@ a{text-decoration:none;color:inherit}
 </div>
 
 <script>
-// Stripe payment links
+// Stripe checkout links — base plan only
+// Per-location add-ons handled post-signup in the dashboard
 const STRIPE = {
-  starter: 'https://buy.stripe.com/dRm9AT3CD3e1cDgeHqbfO07',
-  growth:  'https://buy.stripe.com/bJe9AT3CD6qd5aO7eYbfO08'
+  monthly: 'https://buy.stripe.com/dRm9AT3CD3e1cDgeHqbfO07',
+  annual:  'https://buy.stripe.com/4gM4gz3CD4i58n00QAbfO0a'
 };
-
-// Formspree endpoint
 const FORMSPREE = 'https://formspree.io/f/mnjrpvab';
 
-function updatePlanHint(val) {
-  const n = parseInt(val);
-  const hint = document.getElementById('plan-hint');
-  const btn  = document.getElementById('submit-btn');
-  if (!val || isNaN(n) || n < 1) {
-    hint.innerHTML = 'Enter a number from 1 to 99.';
-    hint.style.color = 'var(--mu)';
-    btn.textContent = 'Continue to payment →';
-  } else if (n === 1) {
-    hint.innerHTML = 'Plan: <span class="plan-badge pb-starter">Starter — $99/mo</span> · 1 location, full suite included.';
-    hint.style.color = '#1a6b45';
-    btn.textContent = 'Continue to payment — $99/mo →';
-  } else if (n <= 5) {
-    hint.innerHTML = 'Plan: <span class="plan-badge pb-growth">Growth — $199/mo</span> · Up to 5 locations, full suite included.';
-    hint.style.color = '#1a4baa';
-    btn.textContent = 'Continue to payment — $199/mo →';
-  } else {
-    hint.innerHTML = '<span style="color:#92690a;font-weight:600">6+ locations → Agency plan.</span> Our team will contact you with custom pricing.';
-    hint.style.color = '#92690a';
-    btn.textContent = 'Submit — our team will reach out →';
+let isAnnual = false;
+
+// Pricing tiers (monthly rates)
+const BASE = 99;
+const TIER1_RATE = 79; // locations 2-5
+const TIER2_RATE = 69; // locations 6-25
+const ANNUAL_DISCOUNT = 0.90;
+
+function calcMonthly(n) {
+  if (!n || n < 1) return BASE;
+  if (n === 1) return BASE;
+  let total = BASE;
+  // Locations 2-5: $79 each
+  const tier1 = Math.min(n - 1, 4);
+  total += tier1 * TIER1_RATE;
+  // Locations 6-25: $69 each
+  if (n > 5) {
+    const tier2 = Math.min(n - 5, 20);
+    total += tier2 * TIER2_RATE;
   }
+  return total;
+}
+
+function fmt(n) { return '$' + n.toLocaleString(); }
+
+function updatePricing() {
+  const raw = parseInt(document.getElementById('f-locations').value) || 0;
+  const n   = raw;
+  const btn = document.getElementById('submit-btn');
+  const hint = document.getElementById('loc-hint');
+
+  if (n > 25) {
+    // Agency
+    document.getElementById('price-total').innerHTML = 'Contact<span style="font-size:1.2rem;display:block"> sales</span>';
+    document.getElementById('price-period').textContent = '25+ locations — Agency plan';
+    document.getElementById('price-breakdown').innerHTML = '<div class="pb-row total-row"><span class="pb-row-label">Agency plan</span><span class="pb-row-val">Custom pricing</span></div>';
+    btn.textContent = 'Submit — our team will reach out →';
+    hint.textContent = '25+ locations qualifies for Agency pricing. Our team will contact you.';
+    hint.style.color = '#92690a';
+    return;
+  }
+
+  const monthly = calcMonthly(n);
+  const display = isAnnual ? Math.round(monthly * ANNUAL_DISCOUNT) : monthly;
+  const annual  = Math.round(monthly * 12 * ANNUAL_DISCOUNT);
+
+  // Update display
+  document.getElementById('price-total').innerHTML = fmt(display) + '<span>/mo</span>';
+  document.getElementById('price-period').textContent = isAnnual
+    ? `Billed annually — ${fmt(annual)}/year (save ${fmt(Math.round(monthly * 12 - annual))})`
+    : 'Billed monthly — cancel anytime';
+
+  // Build breakdown
+  let rows = `<div class="pb-row"><span class="pb-row-label">First location</span><span class="pb-row-val">${fmt(isAnnual ? Math.round(BASE * ANNUAL_DISCOUNT) : BASE)}/mo</span></div>`;
+
+  if (n > 1) {
+    const t1 = Math.min(n - 1, 4);
+    const t1r = isAnnual ? Math.round(TIER1_RATE * ANNUAL_DISCOUNT) : TIER1_RATE;
+    rows += `<div class="pb-row"><span class="pb-row-label">Locations 2–${1+t1} (${t1} × ${fmt(t1r)}/mo)</span><span class="pb-row-val">${fmt(t1 * t1r)}/mo</span></div>`;
+  }
+  if (n > 5) {
+    const t2 = Math.min(n - 5, 20);
+    const t2r = isAnnual ? Math.round(TIER2_RATE * ANNUAL_DISCOUNT) : TIER2_RATE;
+    rows += `<div class="pb-row"><span class="pb-row-label">Locations 6–${5+t2} (${t2} × ${fmt(t2r)}/mo)</span><span class="pb-row-val">${fmt(t2 * t2r)}/mo</span></div>`;
+  }
+  if (n > 1) {
+    rows += `<div class="pb-row total-row"><span class="pb-row-label">Total per month</span><span class="pb-row-val">${fmt(display)}/mo</span></div>`;
+  }
+
+  document.getElementById('price-breakdown').innerHTML = rows;
+
+  btn.textContent = n > 0
+    ? `Continue to payment — ${fmt(display)}/mo →`
+    : 'Continue to payment →';
+  hint.textContent = n > 0
+    ? `${n} location${n > 1 ? 's' : ''} — full suite included at every location`
+    : 'Enter the total number of locations you manage.';
+  hint.style.color = n > 0 ? '#1a6b45' : 'var(--mu)';
+}
+
+function toggleAnnual() {
+  isAnnual = !isAnnual;
+  document.getElementById('annual-sw').classList.toggle('on', isAnnual);
+  updatePricing();
 }
 
 async function handleSubmit(e) {
@@ -238,20 +329,48 @@ async function handleSubmit(e) {
   btn.disabled = true;
   btn.textContent = 'Sending...';
 
-  const n = parseInt(document.getElementById('f-locations').value);
-  const plan = n === 1 ? 'Starter ($99/mo)' : n <= 5 ? 'Growth ($199/mo)' : 'Agency (6+ locations)';
+  const n = parseInt(document.getElementById('f-locations').value) || 1;
 
-  // Build form data for Formspree → sends to nick@swarmreply.com
+  if (n > 25) {
+    // Agency — submit to Formspree and show thank you
+    const data = {
+      _subject: `Agency Plan Inquiry — ${document.getElementById('f-business').value}`,
+      name:     document.getElementById('f-name').value,
+      business: document.getElementById('f-business').value,
+      email:    document.getElementById('f-email').value,
+      phone:    document.getElementById('f-phone').value,
+      industry: document.getElementById('f-industry').value,
+      locations: n,
+      plan:     'Agency (25+ locations)',
+      _replyto: document.getElementById('f-email').value,
+    };
+    try {
+      await fetch(FORMSPREE, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(data)
+      });
+    } catch(err) {}
+    document.getElementById('signup-grid').style.display = 'none';
+    document.getElementById('agency-block').style.display = 'block';
+    return;
+  }
+
+  // Normal flow — submit to Formspree then redirect to Stripe
+  const monthly = calcMonthly(n);
+  const display = isAnnual ? Math.round(monthly * 0.9) : monthly;
+  const planLabel = `SwarmReply — ${n} location${n > 1 ? 's' : ''} — $${display}/mo${isAnnual ? ' (annual)' : ''}`;
+
   const data = {
-    _subject: `New SwarmReply Signup — ${plan}`,
+    _subject:  `New SwarmReply Signup — ${planLabel}`,
     name:      document.getElementById('f-name').value,
     business:  document.getElementById('f-business').value,
     email:     document.getElementById('f-email').value,
     phone:     document.getElementById('f-phone').value,
     industry:  document.getElementById('f-industry').value,
-    locations: document.getElementById('f-locations').value,
-    tone:      document.getElementById('f-tone').value,
-    plan:      plan,
+    locations: n,
+    billing:   isAnnual ? 'annual' : 'monthly',
+    plan:      planLabel,
     _replyto:  document.getElementById('f-email').value,
   };
 
@@ -261,26 +380,14 @@ async function handleSubmit(e) {
       headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
       body: JSON.stringify(data)
     });
-
     if (res.ok) {
-      if (n > 5) {
-        // Agency → show thank you
-        document.getElementById('step1').style.display = 'none';
-        document.getElementById('agency-block').style.display = 'block';
-        document.getElementById('step2-ind').style.opacity = '.3';
-      } else {
-        // Redirect to Stripe
-        const stripeUrl = n === 1 ? STRIPE.starter : STRIPE.growth;
-        // Append email as prefill if possible
-        const email = encodeURIComponent(document.getElementById('f-email').value);
-        window.location.href = stripeUrl;
-      }
+      window.location.href = isAnnual ? STRIPE.annual : STRIPE.monthly;
     } else {
-      throw new Error('Form submission failed');
+      throw new Error('failed');
     }
-  } catch (err) {
+  } catch(err) {
     btn.disabled = false;
-    btn.textContent = 'Continue to payment →';
+    btn.textContent = `Continue to payment — $${display}/mo →`;
     alert('Something went wrong. Please try again or email hello@swarmreply.com');
   }
 }
@@ -288,9 +395,7 @@ async function handleSubmit(e) {
 <script>
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('/sw.js')
-      .then(reg => console.log('SW registered:', reg.scope))
-      .catch(err => console.log('SW failed:', err));
+    navigator.serviceWorker.register('/sw.js').catch(() => {});
   });
 }
 </script>
