@@ -960,7 +960,7 @@ button.btn-plan{position:relative;z-index:20}
           <div class="pf"><span class="pf-check">✓</span><span>Reputation widget per location</span></div>
           <div class="pf"><span class="pf-check">✓</span><span>Integration suite across all locations</span></div>
         </div>
-        <button class="btn-plan btn-plan-k" style="display:block;text-align:center;width:100%;cursor:pointer;margin-top:auto;border:none;font-family:inherit" onclick="contactSales('Agency Plan Inquiry')">Contact us →</button>
+        <a href="/contact.html" class="btn-plan btn-plan-k" style="display:block;text-align:center;width:100%;text-decoration:none;margin-top:auto">Contact us →</a>
         <div style="text-align:center;margin-top:10px;font-size:.75rem;color:var(--mu)">Custom pricing · No contracts required</div>
       </div>
 
@@ -1033,9 +1033,9 @@ button.btn-plan{position:relative;z-index:20}
       </div>
       <div class="footer-col">
         <h4>Contact</h4>
-        <a href="#" onclick="contactSales('General Inquiry');return false;" style="cursor:pointer">Contact us</a>
+        <button onclick="window.location.href='/contact.html'" style="background:none;border:none;cursor:pointer;color:inherit;font:inherit;padding:0;text-decoration:underline">Contact us</button>
         <a href="/signup.html">Get started</a>
-        <a href="#" onclick="contactSales('Agency Plan Inquiry');return false;" style="cursor:pointer">Agency sales</a>
+        <button onclick="window.location.href='/contact.html'" style="background:none;border:none;cursor:pointer;color:inherit;font:inherit;padding:0;text-decoration:underline">Agency sales</button>
       </div>
     </div>
     <div class="footer-bot">
@@ -1188,6 +1188,6 @@ if (isIOS && !isInStandaloneMode && !sessionStorage.getItem('pwa-dismissed')) {
 }
 
 
-function contactSales() { window.location.href = '/contact.html'; }
+function contactSales() { window.location.href = '/contact.html'; } /* all buttons now use direct hrefs */
 </body>
 </html>
