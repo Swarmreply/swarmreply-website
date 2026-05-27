@@ -328,6 +328,16 @@ h3.card-hed{font-family:'Playfair Display',serif;font-size:1.35rem;font-weight:7
 <link rel="apple-touch-startup-image" href="/icons/icon-512.svg">
 </head>
 <body>
+<div style="position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden;opacity:.04">
+  <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <pattern id="hcsite" x="0" y="0" width="60" height="52" patternUnits="userSpaceOnUse">
+        <polygon points="30,2 56,16 56,44 30,58 4,44 4,16" fill="none" stroke="#0a0a0a" stroke-width="1.5"/>
+      </pattern>
+    </defs>
+    <rect width="100%" height="100%" fill="url(#hcsite)"/>
+  </svg>
+</div>
 
 <!-- ══════════════════════════════════════════════
      NAV
@@ -538,19 +548,6 @@ h3.card-hed{font-family:'Playfair Display',serif;font-size:1.35rem;font-weight:7
      FEATURES
 ══════════════════════════════════════════════ -->
 <section class="section rel" style="overflow:hidden">
-
-  <!-- Signup-style honeycomb background -->
-  <div style="position:absolute;inset:0;opacity:.04;pointer-events:none;z-index:0;overflow:hidden">
-    <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-      <defs>
-        <pattern id="hcfeat" x="0" y="0" width="60" height="52" patternUnits="userSpaceOnUse">
-          <polygon points="30,2 56,16 56,44 30,58 4,44 4,16" fill="none" stroke="#0a0a0a" stroke-width="1.5"/>
-        </pattern>
-      </defs>
-      <rect width="100%" height="100%" fill="url(#hcfeat)"/>
-    </svg>
-  </div>
-
   <div class="wrap inner" style="position:relative;z-index:1">
     <div class="center mb48">
       <div class="eyebrow">Complete reputation management platform</div>
@@ -559,47 +556,47 @@ h3.card-hed{font-family:'Playfair Display',serif;font-size:1.35rem;font-weight:7
     </div>
 
     <style>
-      /* ── HONEYCOMB TILES ── */
+            /* ── HONEYCOMB TILES ── */
       .hive{display:flex;flex-direction:column;align-items:center;padding:20px 0}
       .hive-r{display:flex;justify-content:center;gap:4px}
-      .hive-r2{transform:translateX(-110px)}
-      .hive-r + .hive-r{margin-top:-58px}
-      .hx{width:216px;height:249px;flex-shrink:0;cursor:pointer;perspective:800px}
+      .hive-r2{transform:translateX(-82px)}
+      .hive-r + .hive-r{margin-top:-42px}
+      .hx{width:160px;height:184px;flex-shrink:0;cursor:pointer;perspective:700px}
       .hx-f{width:100%;height:100%;position:relative;transform-style:preserve-3d;transition:transform .5s ease}
       .hx:hover .hx-f{transform:rotateY(180deg)}
       .hx-front,.hx-back{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden}
       .hx-back{transform:rotateY(180deg)}
       .hx-front svg,.hx-back svg{position:absolute;inset:0;width:100%;height:100%}
-      .hx-in{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px 20px;text-align:center;z-index:2}
-      .hx-ic{font-size:2.2rem;line-height:1;margin-bottom:10px}
-      .hx-nm{font-family:'DM Sans',sans-serif;font-size:.88rem;font-weight:700;color:#fff;line-height:1.3;letter-spacing:0}
-      .hx-in-back{padding:18px 22px}
-      .hx-nm-b{font-family:'DM Sans',sans-serif;font-size:.75rem;font-weight:700;color:#0a0a0a;margin-bottom:8px;line-height:1.25;text-transform:uppercase;letter-spacing:.06em}
-      .hx-desc{font-family:'DM Sans',sans-serif;font-size:.7rem;font-weight:400;color:#3a3a30;line-height:1.6}
-      @media(max-width:1100px){
-        .hx{width:175px;height:202px}
-        .hive-r2{transform:translateX(-89px)}
-        .hive-r + .hive-r{margin-top:-47px}
-        .hx-ic{font-size:1.8rem;margin-bottom:8px}
-        .hx-nm{font-size:.8rem}
-        .hx-nm-b{font-size:.68rem}
-        .hx-desc{font-size:.64rem}
+      .hx-in{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:18px 16px;text-align:center;z-index:2}
+      .hx-ic{font-size:1.8rem;line-height:1;margin-bottom:8px}
+      .hx-nm{font-family:'DM Sans',sans-serif;font-size:.82rem;font-weight:700;color:#fff;line-height:1.3;letter-spacing:0}
+      .hx-in-back{padding:14px 18px}
+      .hx-nm-b{font-family:'DM Sans',sans-serif;font-size:.7rem;font-weight:700;color:#0a0a0a;margin-bottom:7px;line-height:1.25;text-transform:uppercase;letter-spacing:.06em}
+      .hx-desc{font-family:'DM Sans',sans-serif;font-size:.67rem;font-weight:400;color:#3a3a30;line-height:1.6}
+      @media(max-width:960px){
+        .hx{width:128px;height:147px}
+        .hive-r2{transform:translateX(-66px)}
+        .hive-r + .hive-r{margin-top:-32px}
+        .hx-ic{font-size:1.4rem;margin-bottom:6px}
+        .hx-nm{font-size:.74rem}
+        .hx-nm-b{font-size:.64rem}
+        .hx-desc{font-size:.61rem}
       }
-      @media(max-width:800px){
-        .hx{width:132px;height:152px}
-        .hive-r2{transform:translateX(-68px)}
-        .hive-r + .hive-r{margin-top:-35px}
-        .hx-ic{font-size:1.3rem;margin-bottom:5px}
-        .hx-nm{font-size:.68rem}
+      @media(max-width:700px){
+        .hx{width:96px;height:110px}
+        .hive-r2{transform:translateX(-50px)}
+        .hive-r + .hive-r{margin-top:-23px}
+        .hx-ic{font-size:1.1rem;margin-bottom:4px}
+        .hx-nm{font-size:.64rem}
         .hx-desc{display:none}
-        .hx-nm-b{font-size:.62rem;margin-bottom:0}
+        .hx-nm-b{font-size:.6rem;margin-bottom:0}
       }
-      @media(max-width:540px){
-        .hx{width:100px;height:115px}
-        .hive-r2{transform:translateX(-52px)}
-        .hive-r + .hive-r{margin-top:-26px}
-        .hx-ic{font-size:1rem;margin-bottom:3px}
-        .hx-nm{font-size:.56rem}
+      @media(max-width:480px){
+        .hx{width:72px;height:82px}
+        .hive-r2{transform:translateX(-38px)}
+        .hive-r + .hive-r{margin-top:-16px}
+        .hx-ic{font-size:.85rem;margin-bottom:2px}
+        .hx-nm{font-size:.52rem}
       }
     </style>
 
@@ -608,14 +605,14 @@ h3.card-hed{font-family:'Playfair Display',serif;font-size:1.35rem;font-weight:7
         <div class="hx">
           <div class="hx-f">
             <div class="hx-front">
-              <svg viewBox="0 0 216 249" fill="none" xmlns="http://www.w3.org/2000/svg"><polygon points="108,4 208,58 208,191 108,245 8,191 8,58" fill="#0a0a0a" stroke="#1e1e1c" stroke-width="2"/></svg>
+              <svg viewBox="0 0 160 184" fill="none" xmlns="http://www.w3.org/2000/svg"><polygon points="80,4 156,46 156,138 80,180 4,138 4,46" fill="#0a0a0a" stroke="#1e1e1c" stroke-width="2"/></svg>
               <div class="hx-in">
                 <div class="hx-ic">⭐</div>
                 <div class="hx-nm">AI Review Replies</div>
               </div>
             </div>
             <div class="hx-back">
-              <svg viewBox="0 0 216 249" fill="none" xmlns="http://www.w3.org/2000/svg"><polygon points="108,4 208,58 208,191 108,245 8,191 8,58" fill="#f5c842" stroke="#d4a515" stroke-width="2"/></svg>
+              <svg viewBox="0 0 160 184" fill="none" xmlns="http://www.w3.org/2000/svg"><polygon points="80,4 156,46 156,138 80,180 4,138 4,46" fill="#f5c842" stroke="#d4a515" stroke-width="2"/></svg>
               <div class="hx-in hx-in-back">
                 <div class="hx-nm-b">AI Review Replies</div>
                 <div class="hx-desc">AI crafts and posts a personalised reply to every Google and Facebook review within 1 business day — on-brand, warm, and unique every time.</div>
@@ -626,14 +623,14 @@ h3.card-hed{font-family:'Playfair Display',serif;font-size:1.35rem;font-weight:7
         <div class="hx">
           <div class="hx-f">
             <div class="hx-front">
-              <svg viewBox="0 0 216 249" fill="none" xmlns="http://www.w3.org/2000/svg"><polygon points="108,4 208,58 208,191 108,245 8,191 8,58" fill="#0a0a0a" stroke="#1e1e1c" stroke-width="2"/></svg>
+              <svg viewBox="0 0 160 184" fill="none" xmlns="http://www.w3.org/2000/svg"><polygon points="80,4 156,46 156,138 80,180 4,138 4,46" fill="#0a0a0a" stroke="#1e1e1c" stroke-width="2"/></svg>
               <div class="hx-in">
                 <div class="hx-ic">📋</div>
                 <div class="hx-nm">Post-Visit NPS</div>
               </div>
             </div>
             <div class="hx-back">
-              <svg viewBox="0 0 216 249" fill="none" xmlns="http://www.w3.org/2000/svg"><polygon points="108,4 208,58 208,191 108,245 8,191 8,58" fill="#f5c842" stroke="#d4a515" stroke-width="2"/></svg>
+              <svg viewBox="0 0 160 184" fill="none" xmlns="http://www.w3.org/2000/svg"><polygon points="80,4 156,46 156,138 80,180 4,138 4,46" fill="#f5c842" stroke="#d4a515" stroke-width="2"/></svg>
               <div class="hx-in hx-in-back">
                 <div class="hx-nm-b">Post-Visit NPS</div>
                 <div class="hx-desc">Automatically send post-visit surveys. Route happy customers to leave a Google review. Catch unhappy ones before they post publicly.</div>
@@ -644,14 +641,14 @@ h3.card-hed{font-family:'Playfair Display',serif;font-size:1.35rem;font-weight:7
         <div class="hx">
           <div class="hx-f">
             <div class="hx-front">
-              <svg viewBox="0 0 216 249" fill="none" xmlns="http://www.w3.org/2000/svg"><polygon points="108,4 208,58 208,191 108,245 8,191 8,58" fill="#0a0a0a" stroke="#1e1e1c" stroke-width="2"/></svg>
+              <svg viewBox="0 0 160 184" fill="none" xmlns="http://www.w3.org/2000/svg"><polygon points="80,4 156,46 156,138 80,180 4,138 4,46" fill="#0a0a0a" stroke="#1e1e1c" stroke-width="2"/></svg>
               <div class="hx-in">
                 <div class="hx-ic">💬</div>
                 <div class="hx-nm">Webchat & AI Inbox</div>
               </div>
             </div>
             <div class="hx-back">
-              <svg viewBox="0 0 216 249" fill="none" xmlns="http://www.w3.org/2000/svg"><polygon points="108,4 208,58 208,191 108,245 8,191 8,58" fill="#f5c842" stroke="#d4a515" stroke-width="2"/></svg>
+              <svg viewBox="0 0 160 184" fill="none" xmlns="http://www.w3.org/2000/svg"><polygon points="80,4 156,46 156,138 80,180 4,138 4,46" fill="#f5c842" stroke="#d4a515" stroke-width="2"/></svg>
               <div class="hx-in hx-in-back">
                 <div class="hx-nm-b">Webchat & AI Inbox</div>
                 <div class="hx-desc">An AI-powered chat widget for your website that captures leads, answers FAQs, and routes every conversation to your team in one inbox.</div>
@@ -664,14 +661,14 @@ h3.card-hed{font-family:'Playfair Display',serif;font-size:1.35rem;font-weight:7
         <div class="hx">
           <div class="hx-f">
             <div class="hx-front">
-              <svg viewBox="0 0 216 249" fill="none" xmlns="http://www.w3.org/2000/svg"><polygon points="108,4 208,58 208,191 108,245 8,191 8,58" fill="#0a0a0a" stroke="#1e1e1c" stroke-width="2"/></svg>
+              <svg viewBox="0 0 160 184" fill="none" xmlns="http://www.w3.org/2000/svg"><polygon points="80,4 156,46 156,138 80,180 4,138 4,46" fill="#0a0a0a" stroke="#1e1e1c" stroke-width="2"/></svg>
               <div class="hx-in">
                 <div class="hx-ic">📡</div>
                 <div class="hx-nm">Listings Sync</div>
               </div>
             </div>
             <div class="hx-back">
-              <svg viewBox="0 0 216 249" fill="none" xmlns="http://www.w3.org/2000/svg"><polygon points="108,4 208,58 208,191 108,245 8,191 8,58" fill="#f5c842" stroke="#d4a515" stroke-width="2"/></svg>
+              <svg viewBox="0 0 160 184" fill="none" xmlns="http://www.w3.org/2000/svg"><polygon points="80,4 156,46 156,138 80,180 4,138 4,46" fill="#f5c842" stroke="#d4a515" stroke-width="2"/></svg>
               <div class="hx-in hx-in-back">
                 <div class="hx-nm-b">Listings Sync</div>
                 <div class="hx-desc">Keep your name, address, phone, and hours consistent across Google, Apple Maps, Bing Places, and 40+ directories. Fix mismatches in one click.</div>
@@ -682,14 +679,14 @@ h3.card-hed{font-family:'Playfair Display',serif;font-size:1.35rem;font-weight:7
         <div class="hx">
           <div class="hx-f">
             <div class="hx-front">
-              <svg viewBox="0 0 216 249" fill="none" xmlns="http://www.w3.org/2000/svg"><polygon points="108,4 208,58 208,191 108,245 8,191 8,58" fill="#0a0a0a" stroke="#1e1e1c" stroke-width="2"/></svg>
+              <svg viewBox="0 0 160 184" fill="none" xmlns="http://www.w3.org/2000/svg"><polygon points="80,4 156,46 156,138 80,180 4,138 4,46" fill="#0a0a0a" stroke="#1e1e1c" stroke-width="2"/></svg>
               <div class="hx-in">
                 <div class="hx-ic">📊</div>
                 <div class="hx-nm">Reputation Analytics</div>
               </div>
             </div>
             <div class="hx-back">
-              <svg viewBox="0 0 216 249" fill="none" xmlns="http://www.w3.org/2000/svg"><polygon points="108,4 208,58 208,191 108,245 8,191 8,58" fill="#f5c842" stroke="#d4a515" stroke-width="2"/></svg>
+              <svg viewBox="0 0 160 184" fill="none" xmlns="http://www.w3.org/2000/svg"><polygon points="80,4 156,46 156,138 80,180 4,138 4,46" fill="#f5c842" stroke="#d4a515" stroke-width="2"/></svg>
               <div class="hx-in hx-in-back">
                 <div class="hx-nm-b">Reputation Analytics</div>
                 <div class="hx-desc">Track your rating trend, review velocity, sentiment score, and keyword mentions week over week. Know exactly what customers say and why.</div>
@@ -700,14 +697,14 @@ h3.card-hed{font-family:'Playfair Display',serif;font-size:1.35rem;font-weight:7
         <div class="hx">
           <div class="hx-f">
             <div class="hx-front">
-              <svg viewBox="0 0 216 249" fill="none" xmlns="http://www.w3.org/2000/svg"><polygon points="108,4 208,58 208,191 108,245 8,191 8,58" fill="#0a0a0a" stroke="#1e1e1c" stroke-width="2"/></svg>
+              <svg viewBox="0 0 160 184" fill="none" xmlns="http://www.w3.org/2000/svg"><polygon points="80,4 156,46 156,138 80,180 4,138 4,46" fill="#0a0a0a" stroke="#1e1e1c" stroke-width="2"/></svg>
               <div class="hx-in">
                 <div class="hx-ic">📲</div>
                 <div class="hx-nm">SMS Campaigns</div>
               </div>
             </div>
             <div class="hx-back">
-              <svg viewBox="0 0 216 249" fill="none" xmlns="http://www.w3.org/2000/svg"><polygon points="108,4 208,58 208,191 108,245 8,191 8,58" fill="#f5c842" stroke="#d4a515" stroke-width="2"/></svg>
+              <svg viewBox="0 0 160 184" fill="none" xmlns="http://www.w3.org/2000/svg"><polygon points="80,4 156,46 156,138 80,180 4,138 4,46" fill="#f5c842" stroke="#d4a515" stroke-width="2"/></svg>
               <div class="hx-in hx-in-back">
                 <div class="hx-nm-b">SMS Campaigns</div>
                 <div class="hx-desc">Send targeted SMS marketing campaigns to your customer list. Segment by visit date, rating, or location. Fully TCPA-compliant.</div>
@@ -718,14 +715,14 @@ h3.card-hed{font-family:'Playfair Display',serif;font-size:1.35rem;font-weight:7
         <div class="hx">
           <div class="hx-f">
             <div class="hx-front">
-              <svg viewBox="0 0 216 249" fill="none" xmlns="http://www.w3.org/2000/svg"><polygon points="108,4 208,58 208,191 108,245 8,191 8,58" fill="#0a0a0a" stroke="#1e1e1c" stroke-width="2"/></svg>
+              <svg viewBox="0 0 160 184" fill="none" xmlns="http://www.w3.org/2000/svg"><polygon points="80,4 156,46 156,138 80,180 4,138 4,46" fill="#0a0a0a" stroke="#1e1e1c" stroke-width="2"/></svg>
               <div class="hx-in">
                 <div class="hx-ic">🔭</div>
                 <div class="hx-nm">Rank & LLM Visibility</div>
               </div>
             </div>
             <div class="hx-back">
-              <svg viewBox="0 0 216 249" fill="none" xmlns="http://www.w3.org/2000/svg"><polygon points="108,4 208,58 208,191 108,245 8,191 8,58" fill="#f5c842" stroke="#d4a515" stroke-width="2"/></svg>
+              <svg viewBox="0 0 160 184" fill="none" xmlns="http://www.w3.org/2000/svg"><polygon points="80,4 156,46 156,138 80,180 4,138 4,46" fill="#f5c842" stroke="#d4a515" stroke-width="2"/></svg>
               <div class="hx-in hx-in-back">
                 <div class="hx-nm-b">Rank & LLM Visibility</div>
                 <div class="hx-desc">Track your Google local pack rankings weekly and monitor whether your business appears when customers ask ChatGPT, Gemini, or Perplexity to recommend you.</div>
