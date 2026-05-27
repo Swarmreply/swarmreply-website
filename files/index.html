@@ -30,11 +30,8 @@ button{font-family:inherit;cursor:pointer}
 img{display:block;max-width:100%}
 
 /* ── HONEYCOMB BG ── */
-.hc-bg{position:absolute;inset:0;overflow:hidden;pointer-events:none;opacity:.045;z-index:0}
 .hc-bg svg{width:100%;height:100%}
-.hc-mid{opacity:.045}
-.hc-dark .hc-bg{opacity:.045;filter:invert(1)}
-.rel{position:relative}
+.hc-dark .rel{position:relative}
 .inner{position:relative;z-index:1}
 
 /* ── LAYOUT ── */
@@ -298,6 +295,13 @@ h3.card-hed{font-family:'Playfair Display',serif;font-size:1.35rem;font-weight:7
 #pwa-dismiss{background:transparent;border:none;color:rgba(255,255,255,.4);font-size:1.4rem;cursor:pointer;padding:8px;flex-shrink:0;line-height:1;-webkit-tap-highlight-color:transparent}
 #pwa-dismiss:active{color:#fff}
 
+
+/* ══ GLOBAL HONEYCOMB BACKGROUND ══ */
+.hc-bg{position:absolute;inset:0;overflow:hidden;pointer-events:none;opacity:.045;z-index:0}
+.hc-bg::after{content:'';position:absolute;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='48'%3E%3Cpolygon points='28,2 54,16 54,40 28,46 2,40 2,16' fill='none' stroke='%230a0a0a' stroke-width='1'/%3E%3C/svg%3E");background-size:56px 48px;background-repeat:repeat}
+.hc-dark .hc-bg::after{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='48'%3E%3Cpolygon points='28,2 54,16 54,40 28,46 2,40 2,16' fill='none' stroke='%23ffffff' stroke-width='1'/%3E%3C/svg%3E")}
+.hc-mid{opacity:.05}
+.hc-dark .hc-bg{opacity:.05}
 </style>
 <script type="application/ld+json">
 {
@@ -385,15 +389,7 @@ h3.card-hed{font-family:'Playfair Display',serif;font-size:1.35rem;font-weight:7
      HERO
 ══════════════════════════════════════════════ -->
 <section class="hero rel">
-  <div class="hc-bg">
-    <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
-      <defs><pattern id="hc" x="0" y="0" width="34" height="30" patternUnits="userSpaceOnUse">
-        <polygon points="17,1 32,9 32,26 17,34 2,26 2,9" fill="none" stroke="#0a0a0a" stroke-width="1"/>
-        
-      </pattern></defs>
-      <rect width="100%" height="100%" fill="url(#hc)"/>
-    </svg>
-  </div>
+  <div class="hc-bg"></div>
   <div class="wrap inner">
     <div class="hero-grid">
       <div>
@@ -551,14 +547,7 @@ h3.card-hed{font-family:'Playfair Display',serif;font-size:1.35rem;font-weight:7
      FEATURES
 ══════════════════════════════════════════════ -->
 <section class="section bg-off rel">
-  <div class="hc-bg hc-mid">
-    <svg viewBox="0 0 1200 400" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
-      <defs><pattern id="hcf" x="0" y="0" width="34" height="30" patternUnits="userSpaceOnUse">
-        <polygon points="17,1 32,9 32,26 17,34 2,26 2,9" fill="none" stroke="#0a0a0a" stroke-width="1"/>
-      </pattern></defs>
-      <rect width="100%" height="100%" fill="url(#hcf)"/>
-    </svg>
-  </div>
+  <div class="hc-bg hc-mid"></div>
   <div class="wrap inner">
     <div class="center mb48">
       <div class="eyebrow">Complete reputation management platform</div>
@@ -569,10 +558,10 @@ h3.card-hed{font-family:'Playfair Display',serif;font-size:1.35rem;font-weight:7
     <!-- HONEYCOMB GRID -->
             <div class="hive-wrap">
       <style>
-        .hive-wrap{display:flex;flex-direction:column;align-items:center;gap:8px;user-select:none;padding:24px 0}
+        .hive-wrap{display:flex;flex-direction:column;align-items:center;gap:8px;padding:24px 0}
         .hive-row{display:flex;justify-content:center;gap:10px}
         .hive-row.offset{transform:translateX(95px)}
-        .hex{width:180px;height:207px;cursor:pointer;perspective:700px;flex-shrink:0}
+        .hex{width:180px;height:207px;cursor:pointer;perspective:700px;flex-shrink:0;user-select:none}
         .hex-flipper{width:100%;height:100%;position:relative;transform-style:preserve-3d;transition:transform .55s cubic-bezier(.4,0,.2,1)}
         .hex:hover .hex-flipper{transform:rotateY(180deg)}
         .hex-front,.hex-back{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden}
@@ -580,36 +569,35 @@ h3.card-hed{font-family:'Playfair Display',serif;font-size:1.35rem;font-weight:7
         .hex-front svg,.hex-back svg{position:absolute;inset:0;width:100%;height:100%}
         .hex-inner{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:20px 16px;text-align:center;z-index:2}
         .hex-ic{font-size:2rem;line-height:1;margin-bottom:9px}
-        .hex-name{font-size:.82rem;font-weight:700;color:#fff;line-height:1.3;letter-spacing:.01em}
+        .hex-ic-dark{font-size:2rem;line-height:1;margin-bottom:9px}
+        .hex-name{font-size:.82rem;font-weight:700;color:#fff;line-height:1.3}
+        .hex-name-dark{font-size:.82rem;font-weight:700;color:#0a0a0a;line-height:1.3}
         .hex-back-inner{padding:16px 18px}
-        .hex-back-name{font-size:.72rem;font-weight:800;color:#0a0a0a;margin-bottom:8px;line-height:1.2;text-transform:uppercase;letter-spacing:.05em}
-        .hex-back-desc{font-size:.7rem;color:#3a3a30;line-height:1.55;font-weight:400}
-        @media(max-width:1000px){
+        .hex-back-name{font-size:.72rem;font-weight:800;margin-bottom:8px;line-height:1.2;text-transform:uppercase;letter-spacing:.05em;color:#0a0a0a}
+        .hex-back-desc{font-size:.7rem;line-height:1.55;font-weight:400;color:#3a3a30}
+        @media(max-width:960px){
           .hex{width:145px;height:167px}
           .hive-row.offset{transform:translateX(77px)}
-          .hex-ic{font-size:1.6rem;margin-bottom:7px}
-          .hex-name{font-size:.75rem}
-          .hex-back-name{font-size:.66rem}
-          .hex-back-desc{font-size:.63rem}
+          .hex-ic,.hex-ic-dark{font-size:1.5rem;margin-bottom:7px}
+          .hex-name,.hex-name-dark{font-size:.74rem}
         }
-        @media(max-width:700px){
+        @media(max-width:640px){
           .hive-wrap{gap:4px}
-          .hex{width:105px;height:121px}
-          .hive-row.offset{transform:translateX(57px)}
-          .hex-ic{font-size:1.2rem;margin-bottom:5px}
-          .hex-name{font-size:.64rem}
+          .hex{width:108px;height:124px}
+          .hive-row.offset{transform:translateX(59px)}
+          .hex-ic,.hex-ic-dark{font-size:1.1rem;margin-bottom:4px}
+          .hex-name,.hex-name-dark{font-size:.62rem}
           .hex-back-desc{display:none}
           .hex-back-name{font-size:.62rem;margin-bottom:0}
         }
-        @media(max-width:480px){
-          .hex{width:82px;height:94px}
-          .hive-row.offset{transform:translateX(46px)}
-          .hex-ic{font-size:.95rem}
-          .hex-name{font-size:.55rem}
+        @media(max-width:440px){
+          .hex{width:84px;height:97px}
+          .hive-row.offset{transform:translateX(47px)}
+          .hex-ic,.hex-ic-dark{font-size:.9rem}
+          .hex-name,.hex-name-dark{font-size:.55rem}
         }
       </style>
 
-      <!-- Row 1: 3 tiles -->
       <div class="hive-row">
         <div class="hex">
           <div class="hex-flipper">
@@ -618,39 +606,92 @@ h3.card-hed{font-family:'Playfair Display',serif;font-size:1.35rem;font-weight:7
               <div class="hex-inner"><div class="hex-ic">⭐</div><div class="hex-name">AI Review Replies</div></div>
             </div>
             <div class="hex-back">
-              <svg viewBox="0 0 180 207" fill="none" xmlns="http://www.w3.org/2000/svg"><polygon points="90,5 173,50 173,157 90,202 7,157 7,50" fill="#f5c842" stroke="#d4a515" stroke-width="1.5"/></svg>
-              <div class="hex-inner hex-back-inner"><div class="hex-back-name">AI Review Replies</div><div class="hex-back-desc">AI crafts and posts a reply to every Google and Facebook review within 1 business day — warm, on-brand, and unique every time.</div></div>
+              <svg viewBox="0 0 180 207" fill="none" xmlns="http://www.w3.org/2000/svg"><polygon points="90,5 173,50 173,157 90,202 7,157 7,50" fill="#f5c842" stroke="#d4a515" stroke-width="2"/></svg>
+              <div class="hex-inner hex-back-inner"><div class="hex-back-name">AI Review Replies</div><div class="hex-back-desc">AI crafts and posts a reply to every Google and Facebook review within 1 business day — warm, on-brand, unique every time.</div></div>
             </div>
           </div>
-        </div>
-        <div class="hex">
+        </div>        <div class="hex">
           <div class="hex-flipper">
             <div class="hex-front">
-              <svg viewBox="0 0 180 207" fill="none" xmlns="http://www.w3.org/2000/svg"><polygon points="90,5 173,50 173,157 90,202 7,157 7,50" fill="#1a1a18" stroke="#2e2e2c" stroke-width="1.5"/></svg>
-              <div class="hex-inner"><div class="hex-ic">📊</div><div class="hex-name">Reputation Analytics</div></div>
+              <svg viewBox="0 0 180 207" fill="none" xmlns="http://www.w3.org/2000/svg"><polygon points="90,5 173,50 173,157 90,202 7,157 7,50" fill="#f5c842" stroke="#d4a515" stroke-width="2"/></svg>
+              <div class="hex-inner"><div class="hex-ic-dark">📊</div><div class="hex-name-dark">Reputation Analytics</div></div>
             </div>
             <div class="hex-back">
-              <svg viewBox="0 0 180 207" fill="none" xmlns="http://www.w3.org/2000/svg"><polygon points="90,5 173,50 173,157 90,202 7,157 7,50" fill="#f5c842" stroke="#d4a515" stroke-width="1.5"/></svg>
-              <div class="hex-inner hex-back-inner"><div class="hex-back-name">Reputation Analytics</div><div class="hex-back-desc">Track your rating trend, review velocity, sentiment score, and keyword mentions week over week. Know exactly what customers are saying.</div></div>
+              <svg viewBox="0 0 180 207" fill="none" xmlns="http://www.w3.org/2000/svg"><polygon points="90,5 173,50 173,157 90,202 7,157 7,50" fill="#1a1a18" stroke="#2e2e2c" stroke-width="1.5"/></svg>
+              <div class="hex-inner hex-back-inner"><div class="hex-back-name" style="color:#f5c842">Reputation Analytics</div><div class="hex-back-desc" style="color:rgba(255,255,255,.75)">Track your rating trend, review velocity, sentiment score, and keyword mentions week over week.</div></div>
             </div>
           </div>
-        </div>
-        <div class="hex">
+        </div>        <div class="hex">
           <div class="hex-flipper">
             <div class="hex-front">
               <svg viewBox="0 0 180 207" fill="none" xmlns="http://www.w3.org/2000/svg"><polygon points="90,5 173,50 173,157 90,202 7,157 7,50" fill="#1a1a18" stroke="#2e2e2c" stroke-width="1.5"/></svg>
               <div class="hex-inner"><div class="hex-ic">🤖</div><div class="hex-name">LLM Visibility</div></div>
             </div>
             <div class="hex-back">
-              <svg viewBox="0 0 180 207" fill="none" xmlns="http://www.w3.org/2000/svg"><polygon points="90,5 173,50 173,157 90,202 7,157 7,50" fill="#f5c842" stroke="#d4a515" stroke-width="1.5"/></svg>
-              <div class="hex-inner hex-back-inner"><div class="hex-back-name">LLM Visibility</div><div class="hex-back-desc">Monitor whether your business appears when customers ask ChatGPT, Google Gemini, or Perplexity to recommend a local business.</div></div>
+              <svg viewBox="0 0 180 207" fill="none" xmlns="http://www.w3.org/2000/svg"><polygon points="90,5 173,50 173,157 90,202 7,157 7,50" fill="#f5c842" stroke="#d4a515" stroke-width="2"/></svg>
+              <div class="hex-inner hex-back-inner"><div class="hex-back-name">LLM Visibility</div><div class="hex-back-desc">Monitor whether your business shows up when customers ask ChatGPT, Gemini, or Perplexity to recommend a local business.</div></div>
             </div>
           </div>
         </div>
       </div>
-
-      <!-- Row 2: 4 tiles offset (feat, bee, feat, feat) -->
       <div class="hive-row offset">
+        <div class="hex">
+          <div class="hex-flipper">
+            <div class="hex-front">
+              <svg viewBox="0 0 180 207" fill="none" xmlns="http://www.w3.org/2000/svg"><polygon points="90,5 173,50 173,157 90,202 7,157 7,50" fill="#f5c842" stroke="#d4a515" stroke-width="2"/></svg>
+              <div class="hex-inner"><div class="hex-ic-dark">📲</div><div class="hex-name-dark">SMS Campaigns</div></div>
+            </div>
+            <div class="hex-back">
+              <svg viewBox="0 0 180 207" fill="none" xmlns="http://www.w3.org/2000/svg"><polygon points="90,5 173,50 173,157 90,202 7,157 7,50" fill="#1a1a18" stroke="#2e2e2c" stroke-width="1.5"/></svg>
+              <div class="hex-inner hex-back-inner"><div class="hex-back-name" style="color:#f5c842">SMS Campaigns</div><div class="hex-back-desc" style="color:rgba(255,255,255,.75)">Send targeted SMS campaigns to your customer list. Segment by visit date, rating, or location. Fully TCPA-compliant.</div></div>
+            </div>
+          </div>
+        </div>        <div class="hex">
+          <div class="hex-flipper">
+            <div class="hex-front">
+              <svg viewBox="0 0 180 207" fill="none" xmlns="http://www.w3.org/2000/svg"><polygon points="90,5 173,50 173,157 90,202 7,157 7,50" fill="#f5c842" stroke="#d4a515" stroke-width="2"/></svg>
+              <div class="hex-inner"><svg width="68" height="68" viewBox="0 0 100 100" fill="none" style="margin-bottom:4px">
+  <!-- Body -->
+  <ellipse cx="50" cy="62" rx="20" ry="24" fill="#0a0a0a" stroke="#0a0a0a" stroke-width="1"/>
+  <!-- Stripes -->
+  <rect x="30" y="54" width="40" height="7" rx="2" fill="#f5c842"/>
+  <rect x="30" y="65" width="40" height="6" rx="2" fill="#f5c842"/>
+  <!-- Head -->
+  <circle cx="50" cy="34" r="14" fill="#0a0a0a" stroke="#0a0a0a" stroke-width="1"/>
+  <!-- Eyes -->
+  <circle cx="44" cy="32" r="4" fill="#fff"/><circle cx="56" cy="32" r="4" fill="#fff"/>
+  <circle cx="45" cy="33" r="2" fill="#0a0a0a"/><circle cx="57" cy="33" r="2" fill="#0a0a0a"/>
+  <!-- Smile -->
+  <path d="M44 40 Q50 45 56 40" stroke="#fff" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+  <!-- Wings — outlined in black so visible on gold -->
+  <ellipse cx="22" cy="46" rx="16" ry="8" fill="rgba(245,200,66,.45)" stroke="#0a0a0a" stroke-width="1.2" transform="rotate(-28 22 46)"/>
+  <ellipse cx="78" cy="46" rx="16" ry="8" fill="rgba(245,200,66,.45)" stroke="#0a0a0a" stroke-width="1.2" transform="rotate(28 78 46)"/>
+  <!-- Crown/Hat -->
+  <ellipse cx="50" cy="21" rx="18" ry="4" fill="#f5c842" stroke="#0a0a0a" stroke-width="1"/>
+  <path d="M34 21 Q36 9 50 9 Q64 9 66 21 Z" fill="#f5c842" stroke="#0a0a0a" stroke-width="1"/>
+  <!-- Stinger -->
+  <polygon points="50,86 46,94 54,94" fill="#0a0a0a"/>
+</svg></div>
+            </div>
+            <div class="hex-back">
+              <svg viewBox="0 0 180 207" fill="none" xmlns="http://www.w3.org/2000/svg"><polygon points="90,5 173,50 173,157 90,202 7,157 7,50" fill="#1a1a18" stroke="#2e2e2c" stroke-width="1.5"/></svg>
+              <div class="hex-inner hex-back-inner"><div class="hex-back-name" style="color:#f5c842">Every tool.<br>One platform.</div><div class="hex-back-desc" style="color:rgba(255,255,255,.7)">From $99/mo. No contracts. Cancel anytime.</div></div>
+            </div>
+          </div>
+        </div>        <div class="hex">
+          <div class="hex-flipper">
+            <div class="hex-front">
+              <svg viewBox="0 0 180 207" fill="none" xmlns="http://www.w3.org/2000/svg"><polygon points="90,5 173,50 173,157 90,202 7,157 7,50" fill="#f5c842" stroke="#d4a515" stroke-width="2"/></svg>
+              <div class="hex-inner"><div class="hex-ic-dark">💬</div><div class="hex-name-dark">Webchat & AI Inbox</div></div>
+            </div>
+            <div class="hex-back">
+              <svg viewBox="0 0 180 207" fill="none" xmlns="http://www.w3.org/2000/svg"><polygon points="90,5 173,50 173,157 90,202 7,157 7,50" fill="#1a1a18" stroke="#2e2e2c" stroke-width="1.5"/></svg>
+              <div class="hex-inner hex-back-inner"><div class="hex-back-name" style="color:#f5c842">Webchat & AI Inbox</div><div class="hex-back-desc" style="color:rgba(255,255,255,.75)">An AI-powered chat widget that captures leads, answers FAQs, and routes conversations to your team in one inbox.</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="hive-row">
         <div class="hex">
           <div class="hex-flipper">
             <div class="hex-front">
@@ -658,99 +699,30 @@ h3.card-hed{font-family:'Playfair Display',serif;font-size:1.35rem;font-weight:7
               <div class="hex-inner"><div class="hex-ic">📍</div><div class="hex-name">Rank Tracking</div></div>
             </div>
             <div class="hex-back">
-              <svg viewBox="0 0 180 207" fill="none" xmlns="http://www.w3.org/2000/svg"><polygon points="90,5 173,50 173,157 90,202 7,157 7,50" fill="#f5c842" stroke="#d4a515" stroke-width="1.5"/></svg>
-              <div class="hex-inner hex-back-inner"><div class="hex-back-name">Rank Tracking</div><div class="hex-back-desc">Track your Google position for up to 5 keywords weekly. See your local pack ranking, trend, and 8-week history at a glance.</div></div>
+              <svg viewBox="0 0 180 207" fill="none" xmlns="http://www.w3.org/2000/svg"><polygon points="90,5 173,50 173,157 90,202 7,157 7,50" fill="#f5c842" stroke="#d4a515" stroke-width="2"/></svg>
+              <div class="hex-inner hex-back-inner"><div class="hex-back-name">Rank Tracking</div><div class="hex-back-desc">Track your Google position for up to 5 keywords weekly. See your local pack ranking and 8-week trend.</div></div>
             </div>
           </div>
-        </div>
-        <div class="hex hex-gold">
-          <div class="hex-flipper">
-            <div class="hex-front">
-              <svg viewBox="0 0 180 207" fill="none" xmlns="http://www.w3.org/2000/svg"><polygon points="90,5 173,50 173,157 90,202 7,157 7,50" fill="#f5c842" stroke="#d4a515" stroke-width="1.5"/></svg>
-              <div class="hex-inner">
-                <svg width="52" height="52" viewBox="0 0 100 100" fill="none" style="margin-bottom:8px">
-                <ellipse cx="50" cy="60" rx="21" ry="26" fill="#0a0a0a"/>
-                <rect x="29" y="52" width="42" height="8" rx="2" fill="#f5c842" opacity=".95"/>
-                <rect x="29" y="65" width="42" height="7" rx="2" fill="#f5c842" opacity=".7"/>
-                <circle cx="50" cy="31" r="15" fill="#0a0a0a"/>
-                <circle cx="43.5" cy="29" r="4" fill="#fff"/><circle cx="56.5" cy="29" r="4" fill="#fff"/>
-                <circle cx="44.5" cy="29" r="2.2" fill="#0a0a0a"/><circle cx="57.5" cy="29" r="2.2" fill="#0a0a0a"/>
-                <path d="M44 36 Q50 41 56 36" stroke="#fff" stroke-width="2" stroke-linecap="round" fill="none"/>
-                <ellipse cx="23" cy="46" rx="15" ry="7.5" fill="rgba(245,200,66,.6)" transform="rotate(-28 23 46)"/>
-                <ellipse cx="77" cy="46" rx="15" ry="7.5" fill="rgba(245,200,66,.6)" transform="rotate(28 77 46)"/>
-                <ellipse cx="50" cy="18" rx="21" ry="5" fill="#f5c842"/>
-                <path d="M32 18 Q33 6 50 6 Q67 6 68 18 Z" fill="#f5c842"/>
-              </svg>
-                <div style="font-size:.7rem;font-weight:800;color:#0a0a0a;letter-spacing:.05em;text-transform:uppercase">SwarmReply</div>
-              </div>
-            </div>
-            <div class="hex-back">
-              <svg viewBox="0 0 180 207" fill="none" xmlns="http://www.w3.org/2000/svg"><polygon points="90,5 173,50 173,157 90,202 7,157 7,50" fill="#0a0a0a" stroke="#1a1a18" stroke-width="1.5"/></svg>
-              <div class="hex-inner hex-back-inner"><div class="hex-back-name" style="color:#f5c842">Every tool.<br>One platform.</div><div class="hex-back-desc" style="color:rgba(255,255,255,.7)">From $99/mo. No contracts. Cancel anytime.</div></div>
-            </div>
-          </div>
-        </div>
-        <div class="hex">
-          <div class="hex-flipper">
-            <div class="hex-front">
-              <svg viewBox="0 0 180 207" fill="none" xmlns="http://www.w3.org/2000/svg"><polygon points="90,5 173,50 173,157 90,202 7,157 7,50" fill="#1a1a18" stroke="#2e2e2c" stroke-width="1.5"/></svg>
-              <div class="hex-inner"><div class="hex-ic">💬</div><div class="hex-name">Webchat & AI Inbox</div></div>
-            </div>
-            <div class="hex-back">
-              <svg viewBox="0 0 180 207" fill="none" xmlns="http://www.w3.org/2000/svg"><polygon points="90,5 173,50 173,157 90,202 7,157 7,50" fill="#f5c842" stroke="#d4a515" stroke-width="1.5"/></svg>
-              <div class="hex-inner hex-back-inner"><div class="hex-back-name">Webchat & AI Inbox</div><div class="hex-back-desc">An AI-powered chat widget that captures leads, answers FAQs, and routes conversations to your team — all in one inbox.</div></div>
-            </div>
-          </div>
-        </div>
-        <div class="hex">
+        </div>        <div class="hex">
           <div class="hex-flipper">
             <div class="hex-front">
               <svg viewBox="0 0 180 207" fill="none" xmlns="http://www.w3.org/2000/svg"><polygon points="90,5 173,50 173,157 90,202 7,157 7,50" fill="#1a1a18" stroke="#2e2e2c" stroke-width="1.5"/></svg>
               <div class="hex-inner"><div class="hex-ic">📋</div><div class="hex-name">Post-Visit NPS</div></div>
             </div>
             <div class="hex-back">
-              <svg viewBox="0 0 180 207" fill="none" xmlns="http://www.w3.org/2000/svg"><polygon points="90,5 173,50 173,157 90,202 7,157 7,50" fill="#f5c842" stroke="#d4a515" stroke-width="1.5"/></svg>
-              <div class="hex-inner hex-back-inner"><div class="hex-back-name">Post-Visit NPS</div><div class="hex-back-desc">Automatically send post-visit surveys. Route happy customers to leave a review. Catch unhappy ones before they post publicly.</div></div>
+              <svg viewBox="0 0 180 207" fill="none" xmlns="http://www.w3.org/2000/svg"><polygon points="90,5 173,50 173,157 90,202 7,157 7,50" fill="#f5c842" stroke="#d4a515" stroke-width="2"/></svg>
+              <div class="hex-inner hex-back-inner"><div class="hex-back-name">Post-Visit NPS</div><div class="hex-back-desc">Automatically send post-visit surveys. Route happy customers to review. Catch unhappy ones before they post publicly.</div></div>
             </div>
           </div>
-        </div>
-      </div>
-
-      <!-- Row 3: 3 tiles -->
-      <div class="hive-row">
-        <div class="hex">
-          <div class="hex-flipper">
-            <div class="hex-front">
-              <svg viewBox="0 0 180 207" fill="none" xmlns="http://www.w3.org/2000/svg"><polygon points="90,5 173,50 173,157 90,202 7,157 7,50" fill="#1a1a18" stroke="#2e2e2c" stroke-width="1.5"/></svg>
-              <div class="hex-inner"><div class="hex-ic">📡</div><div class="hex-name">Listings Sync</div></div>
-            </div>
-            <div class="hex-back">
-              <svg viewBox="0 0 180 207" fill="none" xmlns="http://www.w3.org/2000/svg"><polygon points="90,5 173,50 173,157 90,202 7,157 7,50" fill="#f5c842" stroke="#d4a515" stroke-width="1.5"/></svg>
-              <div class="hex-inner hex-back-inner"><div class="hex-back-name">Listings Sync</div><div class="hex-back-desc">Keep your name, address, phone, and hours consistent across Google, Apple Maps, Bing Places, and 40+ directories. One click.</div></div>
-            </div>
-          </div>
-        </div>
-        <div class="hex">
-          <div class="hex-flipper">
-            <div class="hex-front">
-              <svg viewBox="0 0 180 207" fill="none" xmlns="http://www.w3.org/2000/svg"><polygon points="90,5 173,50 173,157 90,202 7,157 7,50" fill="#1a1a18" stroke="#2e2e2c" stroke-width="1.5"/></svg>
-              <div class="hex-inner"><div class="hex-ic">📲</div><div class="hex-name">SMS Campaigns</div></div>
-            </div>
-            <div class="hex-back">
-              <svg viewBox="0 0 180 207" fill="none" xmlns="http://www.w3.org/2000/svg"><polygon points="90,5 173,50 173,157 90,202 7,157 7,50" fill="#f5c842" stroke="#d4a515" stroke-width="1.5"/></svg>
-              <div class="hex-inner hex-back-inner"><div class="hex-back-name">SMS Campaigns</div><div class="hex-back-desc">Send targeted SMS marketing campaigns to your customer list. Segment by visit date, rating, or location. Fully TCPA-compliant.</div></div>
-            </div>
-          </div>
-        </div>
-        <div class="hex">
+        </div>        <div class="hex">
           <div class="hex-flipper">
             <div class="hex-front">
               <svg viewBox="0 0 180 207" fill="none" xmlns="http://www.w3.org/2000/svg"><polygon points="90,5 173,50 173,157 90,202 7,157 7,50" fill="#1a1a18" stroke="#2e2e2c" stroke-width="1.5"/></svg>
               <div class="hex-inner"><div class="hex-ic">⊕</div><div class="hex-name">Integration Suite</div></div>
             </div>
             <div class="hex-back">
-              <svg viewBox="0 0 180 207" fill="none" xmlns="http://www.w3.org/2000/svg"><polygon points="90,5 173,50 173,157 90,202 7,157 7,50" fill="#f5c842" stroke="#d4a515" stroke-width="1.5"/></svg>
-              <div class="hex-inner hex-back-inner"><div class="hex-back-name">Integration Suite</div><div class="hex-back-desc">Native connections to Square, HubSpot, Shopify, Mindbody, Calendly, Acuity, and Stripe. Plus 7,000+ apps via Zapier.</div></div>
+              <svg viewBox="0 0 180 207" fill="none" xmlns="http://www.w3.org/2000/svg"><polygon points="90,5 173,50 173,157 90,202 7,157 7,50" fill="#f5c842" stroke="#d4a515" stroke-width="2"/></svg>
+              <div class="hex-inner hex-back-inner"><div class="hex-back-name">Integration Suite</div><div class="hex-back-desc">Native connections to Square, HubSpot, Shopify, Mindbody, Calendly, Acuity, Stripe — plus 7,000+ apps via Zapier.</div></div>
             </div>
           </div>
         </div>
@@ -762,14 +734,7 @@ h3.card-hed{font-family:'Playfair Display',serif;font-size:1.35rem;font-weight:7
      SEE IT WORK — PRODUCT SLIDER
 ══════════════════════════════════════════════ -->
 <section class="section bg-off rel" id="see-it-work">
-  <div class="hc-bg hc-mid">
-    <svg viewBox="0 0 1200 600" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
-      <defs><pattern id="hc2" x="0" y="0" width="34" height="30" patternUnits="userSpaceOnUse">
-        <polygon points="17,1 32,9 32,26 17,34 2,26 2,9" fill="none" stroke="#0a0a0a" stroke-width="1"/>
-      </pattern></defs>
-      <rect width="100%" height="100%" fill="url(#hc2)"/>
-    </svg>
-  </div>
+  <div class="hc-bg hc-mid"></div>
   <div class="wrap inner">
     <div class="center mb48">
       <div class="eyebrow">See it in action</div>
@@ -1028,14 +993,7 @@ h3.card-hed{font-family:'Playfair Display',serif;font-size:1.35rem;font-weight:7
      MISSION
 ══════════════════════════════════════════════ -->
 <section class="section bg-k rel hc-dark" id="mission">
-  <div class="hc-bg">
-    <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
-      <defs><pattern id="hc5" x="0" y="0" width="34" height="30" patternUnits="userSpaceOnUse">
-        <polygon points="17,1 32,9 32,26 17,34 2,26 2,9" fill="none" stroke="#fff" stroke-width="1"/>
-      </pattern></defs>
-      <rect width="100%" height="100%" fill="url(#hc5)"/>
-    </svg>
-  </div>
+  <div class="hc-bg"></div>
   <div class="wrap inner">
     <div class="mission-grid">
       <div class="mission-text">
@@ -1082,14 +1040,7 @@ h3.card-hed{font-family:'Playfair Display',serif;font-size:1.35rem;font-weight:7
      PRICING
 ══════════════════════════════════════════════ -->
 <section class="section rel" id="pricing">
-  <div class="hc-bg">
-    <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
-      <defs><pattern id="hc6" x="0" y="0" width="34" height="30" patternUnits="userSpaceOnUse">
-        <polygon points="17,1 32,9 32,26 17,34 2,26 2,9" fill="none" stroke="#0a0a0a" stroke-width="1"/>
-      </pattern></defs>
-      <rect width="100%" height="100%" fill="url(#hc6)"/>
-    </svg>
-  </div>
+  <div class="hc-bg"></div>
   <div class="wrap inner">
     <div class="center mb48">
       <div class="eyebrow">Simple, transparent pricing</div>
@@ -1203,14 +1154,7 @@ h3.card-hed{font-family:'Playfair Display',serif;font-size:1.35rem;font-weight:7
      FINAL CTA
 ══════════════════════════════════════════════ -->
 <section class="cta-section bg-k rel hc-dark">
-  <div class="hc-bg">
-    <svg viewBox="0 0 1200 600" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
-      <defs><pattern id="hc9" x="0" y="0" width="34" height="30" patternUnits="userSpaceOnUse">
-        <polygon points="17,1 32,9 32,26 17,34 2,26 2,9" fill="none" stroke="#fff" stroke-width="1"/>
-      </pattern></defs>
-      <rect width="100%" height="100%" fill="url(#hc9)"/>
-    </svg>
-  </div>
+  <div class="hc-bg"></div>
   <div class="wrap inner">
     <div style="font-size:3rem;margin-bottom:16px">🐝</div>
     <h2 class="sec-hed" style="font-size:clamp(2rem,5vw,3.5rem);margin-bottom:16px">Complete reputation<br>management starts<br><em style="color:var(--g)">today.</em></h2>
