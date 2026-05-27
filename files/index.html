@@ -270,6 +270,10 @@ h3.card-hed{font-family:'Playfair Display',serif;font-size:1.35rem;font-weight:7
 #pwa-dismiss{background:transparent;border:none;color:rgba(255,255,255,.4);font-size:1.4rem;cursor:pointer;padding:8px;flex-shrink:0;line-height:1;-webkit-tap-highlight-color:transparent}
 #pwa-dismiss:active{color:#fff}
 
+
+/* ── MAILTO LINKS — always clickable ── */
+a[href^="mailto"]{pointer-events:all!important;position:relative;z-index:20;cursor:pointer!important}
+button.btn-plan{position:relative;z-index:20}
 </style>
 <script type="application/ld+json">
 {
@@ -956,7 +960,7 @@ h3.card-hed{font-family:'Playfair Display',serif;font-size:1.35rem;font-weight:7
           <div class="pf"><span class="pf-check">✓</span><span>Reputation widget per location</span></div>
           <div class="pf"><span class="pf-check">✓</span><span>Integration suite across all locations</span></div>
         </div>
-        <a href="mailto:hello@swarmreply.com?subject=Agency Plan Inquiry" class="btn-plan btn-plan-k" style="display:block;text-align:center;width:100%;text-decoration:none;cursor:pointer;margin-top:auto">Get in touch →</a>
+        <button class="btn-plan btn-plan-k" style="display:block;text-align:center;width:100%;cursor:pointer;margin-top:auto;border:none;font-family:inherit" onclick="window.location.href='mailto:hello@swarmreply.com?subject=Agency Plan Inquiry'">Get in touch →</button>
         <div style="text-align:center;margin-top:10px;font-size:.75rem;color:var(--mu)">Custom pricing · No contracts required</div>
       </div>
 
@@ -1029,9 +1033,9 @@ h3.card-hed{font-family:'Playfair Display',serif;font-size:1.35rem;font-weight:7
       </div>
       <div class="footer-col">
         <h4>Contact</h4>
-        <a href="mailto:hello@swarmreply.com">Contact us</a>
+        <a href="mailto:hello@swarmreply.com" style="pointer-events:all;position:relative;z-index:10">Contact us</a>
         <a href="/signup.html">Get started</a>
-        <a href="mailto:hello@swarmreply.com?subject=Agency Plan Inquiry">Agency sales</a>
+        <a href="mailto:hello@swarmreply.com?subject=Agency Plan Inquiry" style="pointer-events:all;position:relative;z-index:10">Agency sales</a>
       </div>
     </div>
     <div class="footer-bot">
