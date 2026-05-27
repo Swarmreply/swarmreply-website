@@ -399,7 +399,7 @@ h3.card-hed{font-family:'Playfair Display',serif;font-size:1.35rem;font-weight:7
       <div>
         <div class="hero-badge">
           <div class="hero-badge-dot"></div>
-          <span>AI reputation management + LLM visibility · No contracts · From $99/mo · add locations from $79</span>
+          <span>AI reputation management + LLM visibility · No contracts · From $99/mo</span>
         </div>
         <h1 class="hero-hed">AI reputation<br>management<br><em>that gets you found.</em></h1>
         <p class="hero-sub">SwarmReply replies to every review with AI, generates new reviews automatically, and tracks whether your business shows up when customers ask ChatGPT, Google Gemini, or Perplexity to recommend a business like yours — all from one platform, from $99/mo, no contracts.</p>
@@ -510,7 +510,8 @@ h3.card-hed{font-family:'Playfair Display',serif;font-size:1.35rem;font-weight:7
   var el = document.getElementById('sr-marquee');
   if (!el) return;
   var pos = 0;
-  var speed = 0.5; // px per frame — lower = slower
+  var isMobile = window.innerWidth <= 640;
+  var speed = isMobile ? 0.625 : 0.325; // desktop slower, mobile faster
   var paused = false;
   var halfW = 0;
 
@@ -725,82 +726,134 @@ h3.card-hed{font-family:'Playfair Display',serif;font-size:1.35rem;font-weight:7
 <!-- ══════════════════════════════════════════════
      FEATURES
 ══════════════════════════════════════════════ -->
-<section class="section rel" id="features">
-  <div class="hc-bg" style="opacity:.03">
-    <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
-      <defs><pattern id="hc3" x="0" y="0" width="60" height="52" patternUnits="userSpaceOnUse">
+<section class="section bg-off rel">
+  <div class="hc-bg hc-mid">
+    <svg viewBox="0 0 1200 400" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+      <defs><pattern id="hcf" x="0" y="0" width="60" height="52" patternUnits="userSpaceOnUse">
         <polygon points="30,2 56,16 56,44 30,58 4,44 4,16" fill="none" stroke="#0a0a0a" stroke-width="1.5"/>
       </pattern></defs>
-      <rect width="100%" height="100%" fill="url(#hc3)"/>
+      <rect width="100%" height="100%" fill="url(#hcf)"/>
     </svg>
   </div>
   <div class="wrap inner">
     <div class="center mb48">
       <div class="eyebrow">Complete reputation management platform</div>
-      <h2 class="sec-hed">Every tool.<br>One platform.</h2>
-      <p class="lead center mt16">Review responses, review generation, webchat, SMS campaigns, listings sync, competitor tracking, and LLM visibility monitoring — all included. No add-ons. No feature tiers. No contracts.</p>
+      <h2 class="sec-hed">Every tool connected.<br><em>One platform.</em></h2>
+      <p class="lead center mt16">Everything works together — reviews feed sentiment, sentiment shapes replies, replies drive ratings, ratings improve LLM visibility. One platform, fully connected.</p>
     </div>
-    <div class="feat-grid">
-      <div class="feat-card">
-        <div class="feat-icon">★</div>
-        <div class="feat-name">AI Review Replies</div>
-        <div class="feat-desc">Every review replied to within hours — in your brand voice, on brand, every time. Never miss a review again.</div>
+
+    <!-- HONEYCOMB GRID -->
+    <div class="hive-wrap">
+      <style>
+        .hive-wrap{display:flex;flex-direction:column;align-items:center;gap:0;user-select:none}
+        .hive-row{display:flex;justify-content:center;gap:6px;margin-bottom:-18px}
+        .hive-row.offset{margin-left:72px}
+        .hex{position:relative;width:130px;height:150px;cursor:default;transition:transform .2s}
+        .hex:hover{transform:scale(1.06);z-index:10}
+        .hex svg{position:absolute;inset:0;width:100%;height:100%}
+        .hex-inner{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:12px 10px;text-align:center;z-index:2}
+        .hex-ic{font-size:1.4rem;line-height:1;margin-bottom:6px}
+        .hex-name{font-size:.72rem;font-weight:700;color:#fff;line-height:1.3;letter-spacing:.01em}
+        .hex-center svg polygon{fill:var(--g) !important}
+        .hex-center .hex-name{color:var(--k)}
+        @media(max-width:700px){
+          .hex{width:90px;height:104px}
+          .hex-row.offset{margin-left:48px}
+          .hive-row{gap:4px;margin-bottom:-12px}
+          .hex-ic{font-size:1rem;margin-bottom:4px}
+          .hex-name{font-size:.62rem}
+        }
+        @media(max-width:480px){
+          .hex{width:72px;height:83px}
+          .hive-row.offset{margin-left:38px}
+          .hex-ic{font-size:.85rem}
+          .hex-name{font-size:.55rem}
+        }
+      </style>
+
+      <!-- Row 1: 3 hexagons -->
+      <div class="hive-row">
+        <div class="hex">
+          <svg viewBox="0 0 130 150" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <polygon points="65,4 124,37 124,113 65,146 6,113 6,37" fill="#1a1a18" stroke="#333" stroke-width="1.5"/>
+          </svg>
+          <div class="hex-inner"><div class="hex-ic">⭐</div><div class="hex-name">AI Review Replies</div></div>
+        </div>
+        <div class="hex">
+          <svg viewBox="0 0 130 150" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <polygon points="65,4 124,37 124,113 65,146 6,113 6,37" fill="#1a1a18" stroke="#333" stroke-width="1.5"/>
+          </svg>
+          <div class="hex-inner"><div class="hex-ic">📊</div><div class="hex-name">Reputation Analytics</div></div>
+        </div>
+        <div class="hex">
+          <svg viewBox="0 0 130 150" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <polygon points="65,4 124,37 124,113 65,146 6,113 6,37" fill="#1a1a18" stroke="#333" stroke-width="1.5"/>
+          </svg>
+          <div class="hex-inner"><div class="hex-ic">🤖</div><div class="hex-name">LLM Visibility Monitoring</div></div>
+        </div>
       </div>
-      <div class="feat-card">
-        <div class="feat-icon">📊</div>
-        <div class="feat-name">Post-Visit Surveys & NPS</div>
-        <div class="feat-desc">Send after every visit. Promoters go straight to your Google review link. Detractors stay private — protecting your public rating.</div>
+
+      <!-- Row 2: 4 hexagons (offset) -->
+      <div class="hive-row offset">
+        <div class="hex">
+          <svg viewBox="0 0 130 150" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <polygon points="65,4 124,37 124,113 65,146 6,113 6,37" fill="#1a1a18" stroke="#333" stroke-width="1.5"/>
+          </svg>
+          <div class="hex-inner"><div class="hex-ic">📍</div><div class="hex-name">Rank Tracking</div></div>
+        </div>
+        <!-- CENTER — golden -->
+        <div class="hex hex-center">
+          <svg viewBox="0 0 130 150" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <polygon points="65,4 124,37 124,113 65,146 6,113 6,37" fill="#f5c842" stroke="#d4a515" stroke-width="1.5"/>
+          </svg>
+          <div class="hex-inner">
+            <svg width="28" height="28" viewBox="0 0 100 100" fill="none" style="margin-bottom:5px">
+              <ellipse cx="50" cy="60" rx="21" ry="26" fill="#0a0a0a"/>
+              <rect x="29" y="52" width="42" height="8" rx="2" fill="#f5c842" opacity=".95"/>
+              <rect x="29" y="65" width="42" height="7" rx="2" fill="#f5c842" opacity=".7"/>
+              <circle cx="50" cy="31" r="15" fill="#0a0a0a"/>
+              <ellipse cx="50" cy="18" rx="21" ry="5" fill="#f5c842"/>
+              <path d="M32 18 Q33 6 50 6 Q67 6 68 18 Z" fill="#f5c842"/>
+            </svg>
+            <div class="hex-name" style="color:var(--k);font-size:.68rem">SwarmReply</div>
+          </div>
+        </div>
+        <div class="hex">
+          <svg viewBox="0 0 130 150" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <polygon points="65,4 124,37 124,113 65,146 6,113 6,37" fill="#1a1a18" stroke="#333" stroke-width="1.5"/>
+          </svg>
+          <div class="hex-inner"><div class="hex-ic">💬</div><div class="hex-name">Webchat &amp; AI Inbox</div></div>
+        </div>
+        <div class="hex">
+          <svg viewBox="0 0 130 150" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <polygon points="65,4 124,37 124,113 65,146 6,113 6,37" fill="#1a1a18" stroke="#333" stroke-width="1.5"/>
+          </svg>
+          <div class="hex-inner"><div class="hex-ic">📋</div><div class="hex-name">Post-Visit NPS Surveys</div></div>
+        </div>
       </div>
-      <div class="feat-card">
-        <div class="feat-icon">📍</div>
-        <div class="feat-name">Business Listings Sync</div>
-        <div class="feat-desc">Your name, address, and phone synced across Google, Apple Maps, and Bing. NAP consistency — included, not a $300/mo add-on.</div>
+
+      <!-- Row 3: 3 hexagons -->
+      <div class="hive-row" style="margin-top:6px">
+        <div class="hex">
+          <svg viewBox="0 0 130 150" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <polygon points="65,4 124,37 124,113 65,146 6,113 6,37" fill="#1a1a18" stroke="#333" stroke-width="1.5"/>
+          </svg>
+          <div class="hex-inner"><div class="hex-ic">📡</div><div class="hex-name">Listings Sync</div></div>
+        </div>
+        <div class="hex">
+          <svg viewBox="0 0 130 150" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <polygon points="65,4 124,37 124,113 65,146 6,113 6,37" fill="#1a1a18" stroke="#333" stroke-width="1.5"/>
+          </svg>
+          <div class="hex-inner"><div class="hex-ic">📲</div><div class="hex-name">SMS Campaigns</div></div>
+        </div>
+        <div class="hex">
+          <svg viewBox="0 0 130 150" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <polygon points="65,4 124,37 124,113 65,146 6,113 6,37" fill="#1a1a18" stroke="#333" stroke-width="1.5"/>
+          </svg>
+          <div class="hex-inner"><div class="hex-ic">⊕</div><div class="hex-name">Integration Suite</div></div>
+        </div>
       </div>
-      <div class="feat-card">
-        <div class="feat-icon">📮</div>
-        <div class="feat-name">Google Posts Auto-Publisher</div>
-        <div class="feat-desc">Weekly posts written from your best reviews and auto-published to Google Business Profile. Boosts Maps ranking — on autopilot.</div>
-      </div>
-      <div class="feat-card">
-        <div class="feat-icon">◎</div>
-        <div class="feat-name">Reputation Analytics</div>
-        <div class="feat-desc">Sentiment score, keyword tracker, rating history by platform, review velocity, reply quality score, hour-of-day patterns — all in one data section.</div>
-      </div>
-      <div class="feat-card">
-        <div class="feat-icon">↑</div>
-        <div class="feat-name">Review Request Campaigns</div>
-        <div class="feat-desc">Send via email or SMS after every visit. Import any CSV from any PMS or CRM. Auto-schedule with configurable delay — zero manual work.</div>
-      </div>
-      <div class="feat-card">
-        <div class="feat-icon">❒</div>
-        <div class="feat-name">Embeddable Review Widget</div>
-        <div class="feat-desc">One script tag. Your best reviews displayed on your website in a carousel, grid, list, or badge — always fresh, zero maintenance.</div>
-      </div>
-      <div class="feat-card">
-        <div class="feat-icon">⟳</div>
-        <div class="feat-name">Competitor Benchmarking</div>
-        <div class="feat-desc">See exactly how your rating, review volume, and response rate compare to the 5 nearest businesses — without leaving your dashboard.</div>
-      </div>
-      <div class="feat-card">
-        <div class="feat-icon">⚡</div>
-        <div class="feat-name">Zapier & CSV Integrations</div>
-        <div class="feat-desc">Native integrations with Square, HubSpot, Shopify, Mindbody, Calendly, Acuity, and Stripe. Plus 7,000+ apps via Zapier and CSV import from any PMS, CRM, or spreadsheet. Additional fees may apply for third-party services.</div>
-      </div>
-      <div class="feat-card">
-        <div class="feat-icon">💬</div>
-        <div class="feat-name">Webchat & Lead Capture</div>
-        <div class="feat-desc">A chat bubble on your website captures visitor name and phone, bridges to SMS, and routes conversations to your inbox — 24/7, with an optional AI agent that answers questions automatically.</div>
-      </div>
-      <div class="feat-card">
-        <div class="feat-icon">📣</div>
-        <div class="feat-name">SMS Marketing Campaigns</div>
-        <div class="feat-desc">Send targeted SMS to your customer list — promotions, win-backs, reminders. Segmented by tag or visit history. TCPA-compliant with automatic opt-out handling.</div>
-      </div>
-      <div class="feat-card">
-        <div class="feat-icon">✦</div>
-        <div class="feat-name">AI Visibility Monitoring</div>
-        <div class="feat-desc">Track what ChatGPT, Gemini, Perplexity, and Claude say about your business. A new category of reputation management — monitored weekly, scored, and reported.</div>
-      </div>
+
     </div>
   </div>
 </section>
@@ -808,69 +861,7 @@ h3.card-hed{font-family:'Playfair Display',serif;font-size:1.35rem;font-weight:7
 <!-- ══════════════════════════════════════════════
      HOW IT WORKS — ONBOARDING
 ══════════════════════════════════════════════ -->
-<section class="section bg-off rel" id="how-it-works">
-  <div class="hc-bg hc-mid">
-    <svg viewBox="0 0 1200 600" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
-      <defs><pattern id="hc4" x="0" y="0" width="60" height="52" patternUnits="userSpaceOnUse">
-        <polygon points="30,2 56,16 56,44 30,58 4,44 4,16" fill="none" stroke="#0a0a0a" stroke-width="1.5"/>
-      </pattern></defs>
-      <rect width="100%" height="100%" fill="url(#hc4)"/>
-    </svg>
-  </div>
-  <div class="wrap inner">
-    <div class="center mb48">
-      <div class="eyebrow">Your full reputation suite. Live today.</div>
-      <h2 class="sec-hed">Four steps.<br><em>One afternoon.</em></h2>
-      <p class="lead center mt16">No onboarding calls. No implementation team. No waiting weeks for a specialist. Sign up, connect Google, and your entire reputation management suite is live — AI replies, review generation, webchat, listings sync, and LLM monitoring — all running automatically.</p>
-    </div>
 
-    <!-- Step cards -->
-    <div class="ob-steps-grid" style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:48px">
-
-      <div style="background:#fff;border:1px solid var(--bd);border-radius:16px;padding:24px;position:relative;border-top:3px solid var(--g)">
-        <div style="font-family:'Playfair Display',serif;font-size:2rem;font-weight:900;color:var(--g);line-height:1;margin-bottom:12px">01</div>
-        <div style="font-weight:700;font-size:.95rem;margin-bottom:8px;color:var(--k)">Sign up in 3 minutes</div>
-        <div style="font-size:.82rem;color:var(--mu);line-height:1.65">Enter your business details, choose your plan, pay. Your account is live the moment payment processes — no waiting, no approval.</div>
-      </div>
-
-      <div style="background:#fff;border:1px solid var(--bd);border-radius:16px;padding:24px;border-top:3px solid var(--k)">
-        <div style="font-family:'Playfair Display',serif;font-size:2rem;font-weight:900;color:var(--k);line-height:1;margin-bottom:12px">02</div>
-        <div style="font-weight:700;font-size:.95rem;margin-bottom:8px;color:var(--k)">Connect Google in one click</div>
-        <div style="font-size:.82rem;color:var(--mu);line-height:1.65">One OAuth button — that's it. SwarmReply connects to your Google Business Profile and immediately starts monitoring every review.</div>
-      </div>
-
-      <div style="background:#fff;border:1px solid var(--bd);border-radius:16px;padding:24px;border-top:3px solid var(--k)">
-        <div style="font-family:'Playfair Display',serif;font-size:2rem;font-weight:900;color:var(--k);line-height:1;margin-bottom:12px">03</div>
-        <div style="font-weight:700;font-size:.95rem;margin-bottom:8px;color:var(--k)">Your suite activates automatically</div>
-        <div style="font-size:.82rem;color:var(--mu);line-height:1.65">AI replies start posting. Listings sync to Google, Apple &amp; Bing. Webchat goes live on your site. LLM monitoring begins tracking ChatGPT &amp; Gemini.</div>
-      </div>
-
-      <div style="background:#0a0a0a;border-radius:16px;padding:24px;border-top:3px solid var(--g)">
-        <div style="font-family:'Playfair Display',serif;font-size:2rem;font-weight:900;color:var(--g);line-height:1;margin-bottom:12px">04</div>
-        <div style="font-weight:700;font-size:.95rem;margin-bottom:8px;color:#fff">Just run your business</div>
-        <div style="font-size:.82rem;color:rgba(255,255,255,.55);line-height:1.65">Every review replied to. Every survey sent. Every listing updated. Every lead captured. SwarmReply runs 24/7 so you don't have to think about it.</div>
-      </div>
-
-    </div>
-
-    <!-- Value props row -->
-    <div class="ob-val-row" style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:800px;margin:0 auto">
-      <div style="text-align:center;padding:20px">
-        <div style="font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:900;color:var(--k);margin-bottom:6px">&lt; 1hr</div>
-        <div style="font-size:.82rem;color:var(--mu);line-height:1.5">From sign-up to first<br>AI reply posted</div>
-      </div>
-      <div style="text-align:center;padding:20px;border-left:1px solid var(--bd);border-right:1px solid var(--bd)">
-        <div style="font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:900;color:var(--k);margin-bottom:6px">Zero</div>
-        <div style="font-size:.82rem;color:var(--mu);line-height:1.5">Onboarding calls<br>or setup fees</div>
-      </div>
-      <div style="text-align:center;padding:20px">
-        <div style="font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:900;color:var(--k);margin-bottom:6px">100%</div>
-        <div style="font-size:.82rem;color:var(--mu);line-height:1.5">Self-serve — no<br>technical knowledge needed</div>
-      </div>
-    </div>
-
-  </div>
-</section>
 
 <!-- ══════════════════════════════════════════════
      INDUSTRIES
@@ -1031,20 +1022,19 @@ h3.card-hed{font-family:'Playfair Display',serif;font-size:1.35rem;font-weight:7
   <div class="wrap inner">
     <div class="center mb48">
       <div class="eyebrow">Simple, transparent pricing</div>
-      <h2 class="sec-hed">From $99/mo.<br><span style="font-size:.6em;font-weight:400;color:var(--mu)">Add locations from $79.</span></h2>
-      <p class="lead center mt16">Every feature included from day one. Start with one location at $99/mo — add more locations as you grow. No contracts, no lock-in, no surprises.</p>
+      <h2 class="sec-hed">From $99/mo.</h2>
+      <p class="lead center mt16">Every feature included from day one. One price, one platform, no contracts.</p>
     </div>
         <div class="plans-grid" style="grid-template-columns:1fr 1fr;max-width:820px;margin:0 auto">
 
       <!-- BASE — $99/mo -->
       <div class="plan-card feat" style="border-top:4px solid var(--g)">
-        <div class="plan-name">SwarmReply</div>
+        <div class="plan-name">Get started</div>
         <div class="plan-price">$99<span>/mo</span></div>
         <div class="plan-loc">First location</div>
         <div class="plan-sub" style="margin-bottom:6px">Every feature included. No contracts. Cancel anytime.</div>
         <div style="background:var(--of);border-radius:10px;padding:10px 14px;margin-bottom:16px;font-size:.8rem;color:var(--mu);line-height:1.6">
-          <strong style="color:var(--tx)">Add locations from $79/mo</strong><br>
-          2–5 locations: $79/mo each · 6–25 locations: $69/mo each · 25+: contact sales
+          2–5 locations: $79/mo each · 6–25 locations: $69/mo each
         </div>
         <div class="plan-features">
           <div class="pf"><span class="pf-check">✓</span><span>AI replies to every Google &amp; Facebook review</span></div>
@@ -1069,9 +1059,9 @@ h3.card-hed{font-family:'Playfair Display',serif;font-size:1.35rem;font-weight:7
 
       <!-- AGENCY -->
       <div class="plan-card" style="border-top:4px solid var(--k)">
-        <div class="plan-name">Agency</div>
-        <div class="plan-price" style="font-size:2rem">Contact<span style="font-size:.9rem;display:block;margin-top:4px"> sales</span></div>
-        <div class="plan-loc">25+ locations</div>
+        <div class="plan-name">Multi-location</div>
+        <div class="plan-price" style="font-size:2rem">Let's<span style="font-size:.9rem;display:block;margin-top:4px">talk</span></div>
+        <div class="plan-loc">Growing brands &amp; agencies</div>
         <div class="plan-sub">Full-platform reputation management for agencies and multi-location brands. White-label, custom integrations, dedicated support.</div>
         <div class="plan-features">
           <div class="pf"><span class="pf-check">✓</span><span>Everything in the base plan</span></div>
@@ -1084,12 +1074,12 @@ h3.card-hed{font-family:'Playfair Display',serif;font-size:1.35rem;font-weight:7
           <div class="pf"><span class="pf-check">✓</span><span>Volume pricing — the more locations, the lower the rate</span></div>
           <div class="pf"><span class="pf-check">✓</span><span>Priority onboarding &amp; support</span></div>
         </div>
-        <a href="mailto:hello@swarmreply.com?subject=Agency Plan Inquiry" class="btn-plan btn-plan-k" style="display:block;text-align:center;text-decoration:none;cursor:pointer">Contact sales →</a>
+        <a href="mailto:hello@swarmreply.com?subject=Multi-location Plan Inquiry" class="btn-plan btn-plan-k" style="display:block;text-align:center;text-decoration:none;cursor:pointer">Get in touch →</a>
         <div style="text-align:center;margin-top:10px;font-size:.75rem;color:var(--mu)">Custom pricing · No contracts required</div>
       </div>
 
     </div>
-    <p style="text-align:center;margin-top:24px    <p style="text-align:center;margin-top:24px;font-size:.82rem;color:var(--mu)">No setup fees · No annual contracts · Cancel anytime · All features included from day one</p>
+    <p style="text-align:center;margin-top:24px;font-size:.82rem;color:var(--mu);font-family:'DM Sans',sans-serif;font-weight:400;letter-spacing:0">No setup fees · No annual contracts · Cancel anytime · All features included from day one</p>
   </div>
 </section>
 
