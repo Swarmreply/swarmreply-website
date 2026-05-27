@@ -144,7 +144,7 @@ h3.card-hed{font-family:'Playfair Display',serif;font-size:1.35rem;font-weight:7
 .ind-tag{display:inline-block;margin-top:12px;background:var(--of);border:1px solid var(--bd);color:var(--mu);font-size:.68rem;font-weight:600;padding:3px 10px;border-radius:50px}
 
 .plans-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-.plan-card{background:#fff;border:1.5px solid var(--bd);border-radius:22px;padding:32px;position:relative;transition:all .2s}
+.plan-card{background:#fff;border:1.5px solid var(--bd);border-radius:22px;padding:32px;position:relative;z-index:1;transition:all .2s}
 .plan-card.feat{border-color:var(--k);box-shadow:0 16px 48px rgba(0,0,0,.1)}
 .plan-pop{position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:var(--g);color:var(--k);font-size:.7rem;font-weight:700;padding:4px 14px;border-radius:50px;letter-spacing:.06em;text-transform:uppercase;white-space:nowrap}
 .plan-name{font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--mu);margin-bottom:8px}
@@ -308,7 +308,7 @@ button.btn-plan{position:relative;z-index:20}
 <link rel="apple-touch-startup-image" href="/icons/icon-512.svg">
 </head>
 <body>
-<div style="position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden;opacity:.04">
+<div style="position:fixed;inset:0;pointer-events:none;z-index:-1;overflow:hidden;opacity:.04">
   <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
     <defs>
       <pattern id="hcsite" x="0" y="0" width="60" height="52" patternUnits="userSpaceOnUse">
