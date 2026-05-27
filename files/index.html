@@ -960,7 +960,7 @@ button.btn-plan{position:relative;z-index:20}
           <div class="pf"><span class="pf-check">✓</span><span>Reputation widget per location</span></div>
           <div class="pf"><span class="pf-check">✓</span><span>Integration suite across all locations</span></div>
         </div>
-        <button class="btn-plan btn-plan-k" style="display:block;text-align:center;width:100%;cursor:pointer;margin-top:auto;border:none;font-family:inherit" onclick="contactSales('Agency Plan Inquiry')">Get in touch →</button>
+        <button class="btn-plan btn-plan-k" style="display:block;text-align:center;width:100%;cursor:pointer;margin-top:auto;border:none;font-family:inherit" onclick="contactSales('Agency Plan Inquiry')">Contact us →</button>
         <div style="text-align:center;margin-top:10px;font-size:.75rem;color:var(--mu)">Custom pricing · No contracts required</div>
       </div>
 
@@ -1188,9 +1188,7 @@ if (isIOS && !isInStandaloneMode && !sessionStorage.getItem('pwa-dismissed')) {
 }
 
 
-function contactSales(subject) {
-  var existing = document.getElementById('contact-modal');
-  if (existing) { existing.remove(); return; }
+function contactSales() { window.location.href = '/contact.html'; }
   var sub = subject || 'Agency Plan Inquiry';
   var email = 'hello@swarmreply.com';
   var modal = document.createElement('div');
