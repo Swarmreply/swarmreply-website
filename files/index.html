@@ -1050,5 +1050,78 @@ button.btn-plan{position:relative;z-index:20}
   makeDraggable('ind-slider');
 })();
 </script>
+
+<script>
+// ── PWA install banner — mobile only, dismissible ────────────────────────────
+(function(){
+  var banner  = document.getElementById('pwa-banner');
+  var install = document.getElementById('pwa-install-btn');
+  var dismiss = document.getElementById('pwa-dismiss');
+  if (!banner) return;
+
+  // Only show on mobile
+  if (window.innerWidth > 768) return;
+
+  // Don't show if user already dismissed
+  if (localStorage.getItem('pwa_dismissed')) return;
+
+  // Don't show if already installed as PWA
+  if (window.matchMedia('(display-mode: standalone)').matches) return;
+  if (window.navigator.standalone === true) return;
+
+  var deferredPrompt = null;
+
+  // Capture the install prompt event (Chrome/Android)
+  window.addEventListener('beforeinstallprompt', function(e) {
+    e.preventDefault();
+    deferredPrompt = e;
+    showBanner();
+  });
+
+  // On iOS Safari, beforeinstallprompt doesn't fire — show after 3s
+  var isIOS = /iphone|ipad|ipod/i.test(navigator.userAgent);
+  var isSafari = /safari/i.test(navigator.userAgent) && !/chrome/i.test(navigator.userAgent);
+  if (isIOS && isSafari) {
+    setTimeout(showBanner, 3000);
+  }
+
+  function showBanner() {
+    banner.classList.add('show');
+  }
+
+  function hideBanner() {
+    banner.classList.remove('show');
+    localStorage.setItem('pwa_dismissed', '1');
+  }
+
+  // Dismiss button — close and never show again
+  if (dismiss) {
+    dismiss.addEventListener('click', function(e) {
+      e.stopPropagation();
+      hideBanner();
+    });
+  }
+
+  // Install button — trigger native install prompt
+  if (install) {
+    install.addEventListener('click', function() {
+      if (deferredPrompt) {
+        deferredPrompt.prompt();
+        deferredPrompt.userChoice.then(function(result) {
+          if (result.outcome === 'accepted') {
+            hideBanner();
+          }
+          deferredPrompt = null;
+        });
+      } else {
+        // iOS — show instructions
+        alert('To install: tap the Share button ⬆ then "Add to Home Screen"');
+        hideBanner();
+      }
+    });
+  }
+})();
+</script>
+
 </body>
 </html>
