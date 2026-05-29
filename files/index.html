@@ -133,7 +133,7 @@ h3.card-hed{font-family:'Playfair Display',serif;font-size:1.35rem;font-weight:7
 .ct-val{text-align:center;font-size:.8rem;font-weight:600;padding:4px 8px;border-radius:6px}
 .ct-y{color:#4ade80;background:rgba(74,222,128,.08);border-radius:6px}.ct-n{color:rgba(255,100,100,.7);background:rgba(255,100,100,.06);border-radius:6px}.ct-p{color:rgba(255,255,255,.35);font-size:.75rem}
 
-.ind-slider-wrap{overflow:hidden;cursor:grab;user-select:none;padding:4px 0 20px}
+.ind-slider-wrap{overflow-x:auto;cursor:grab;user-select:none;padding:4px 0 20px;scrollbar-width:none;-webkit-overflow-scrolling:touch}.ind-slider-wrap::-webkit-scrollbar{display:none}.ind-slider-wrap:active{cursor:grabbing}
 .ind-slider-wrap:active{cursor:grabbing}
 .ind-track{display:flex;gap:16px;width:max-content}
 .ind-card{width:300px;flex-shrink:0;background:#fff;border:1px solid var(--bd);border-radius:18px;padding:26px;transition:all .25s}
@@ -1047,6 +1047,7 @@ button.btn-plan{position:relative;z-index:20}
   }
   makeDraggable('product-slider');
   makeDraggable('test-scroll');
+  makeDraggable('ind-slider');
 })();
 </script>
 </body>
