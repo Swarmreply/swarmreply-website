@@ -180,8 +180,8 @@ h3.card-hed{font-family:'Playfair Display',serif;font-size:1.35rem;font-weight:7
 .int-pill:hover{border-color:var(--gd);box-shadow:0 4px 16px rgba(245,200,66,.15)}
 .int-ic{font-size:1.1rem}
 
-.test-scroll-outer{overflow-x:auto;cursor:grab;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding-bottom:4px}.test-scroll-outer::-webkit-scrollbar{display:none}.test-scroll-outer:active{cursor:grabbing}.test-grid{display:flex;gap:20px;padding:4px 0;width:max-content}
-.test-card{min-width:300px;background:#fff;border:1px solid var(--bd);border-radius:18px;padding:26px}
+.test-scroll-outer{overflow-x:auto;cursor:grab;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding-bottom:4px;scroll-snap-type:x mandatory}.test-scroll-outer::-webkit-scrollbar{display:none}.test-scroll-outer:active{cursor:grabbing}.test-grid{display:flex;gap:16px;padding:4px 4px 4px 4px}
+.test-card{width:min(340px,85vw);flex-shrink:0;background:#fff;border:1px solid var(--bd);border-radius:18px;padding:26px;scroll-snap-align:start}
 .test-stars{color:var(--gd);font-size:.85rem;letter-spacing:2px;margin-bottom:12px}
 .test-q{font-size:.9rem;line-height:1.75;color:var(--tx);font-style:italic;margin-bottom:16px}
 .test-author{font-size:.8rem;font-weight:600;color:var(--k)}
@@ -213,7 +213,7 @@ h3.card-hed{font-family:'Playfair Display',serif;font-size:1.35rem;font-weight:7
   .mission-grid{grid-template-columns:1fr}
   .plans-grid{grid-template-columns:1fr!important;max-width:520px!important;margin:0 auto!important}
   .feat-grid{grid-template-columns:1fr 1fr}
-  .test-grid{grid-template-columns:1fr 1fr}
+  
   .footer-grid{grid-template-columns:1fr 1fr}
   .nav-links{display:none}
   .ob-steps-grid{grid-template-columns:1fr 1fr!important}
@@ -230,7 +230,7 @@ h3.card-hed{font-family:'Playfair Display',serif;font-size:1.35rem;font-weight:7
   .stat-grid{grid-template-columns:1fr 1fr}
   .stat-item{border-right:none!important;border-bottom:1px solid var(--bd);padding:20px 0}
   .feat-grid{grid-template-columns:1fr}
-  .test-grid{grid-template-columns:1fr}
+  
   .footer-grid{grid-template-columns:1fr;gap:28px}
   .nav-links{display:none}
   .nav-cta .btn{display:none}
