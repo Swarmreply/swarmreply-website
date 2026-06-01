@@ -253,7 +253,11 @@ async function handleLogin(e) {
     var data = await res.json();
 
     if (res.ok && data.accessToken) {
-      localStorage.setItem('swarmreply_token', data.accessToken);
+      // localStorage is per-origin, so a token saved here on swarmreply.com is
+      // invisible to app.swarmreply.com. Hand it off via a cookie scoped to the
+      // shared parent domain; the app moves it into its own localStorage on load.
+      document.cookie = 'sr_handoff=' + encodeURIComponent(data.accessToken) +
+        '; domain=.swarmreply.com; path=/; max-age=120; Secure; SameSite=Lax';
       sucBox.textContent = 'Logging you in...';
       sucBox.style.display = 'block';
       window.location.href = APP_URL + '/dashboard';
