@@ -18,7 +18,7 @@
 (function (w, d) {
   'use strict';
 
-  var API = 'https://your-railway-url.up.railway.app/api/webchat';
+  var API = 'https://swarmreply-backend-production.up.railway.app/api/webchat';
   var token = null;
   var cfg = null;
   var sessionId = null;
