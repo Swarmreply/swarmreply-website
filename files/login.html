@@ -120,7 +120,10 @@ body{font-family:'DM Sans',sans-serif;background:var(--of);min-height:100%;
 <meta name="theme-color" content="#f5c842">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="SwarmReply">
-<link rel="apple-touch-icon" href="/icons/icon-192.svg">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 </head>
 <body>
 
@@ -253,11 +256,7 @@ async function handleLogin(e) {
     var data = await res.json();
 
     if (res.ok && data.accessToken) {
-      // localStorage is per-origin, so a token saved here on swarmreply.com is
-      // invisible to app.swarmreply.com. Hand it off via a cookie scoped to the
-      // shared parent domain; the app moves it into its own localStorage on load.
-      document.cookie = 'sr_handoff=' + encodeURIComponent(data.accessToken) +
-        '; domain=.swarmreply.com; path=/; max-age=120; Secure; SameSite=Lax';
+      localStorage.setItem('swarmreply_token', data.accessToken);
       sucBox.textContent = 'Logging you in...';
       sucBox.style.display = 'block';
       window.location.href = APP_URL + '/dashboard';
