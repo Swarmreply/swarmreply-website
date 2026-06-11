@@ -1,5 +1,5 @@
 // ============================================
-// files/wallabee.js  —  v3 (single pill + dvh panel sizing)
+// files/wallabee.js  —  v4 (phone-sized panel + compact sheet)
 // Wallabee — SwarmReply's floating support bee, for the marketing site.
 // Self-contained: inject <script src="/wallabee.js" defer></script> on any
 // page. Answers come from the Help Center catalog (word-overlap matching,
@@ -189,6 +189,11 @@
   '.wb-foot{padding:10px 12px;background:#fff;border-top:1px solid #e4e0d8;display:flex;gap:8px}' +
   '.wb-input{flex:1;border:none;background:#f8f7f4;border-radius:50px;padding:11px 16px;font-family:inherit;font-size:.85rem;outline:none}' +
   '.wb-send{width:42px;height:42px;border-radius:50%;border:none;background:linear-gradient(135deg,#f5c842,#d4a515);cursor:pointer;font-size:1rem;flex-shrink:0}' +
+  '@media(max-width:640px){' +
+    '.wb-panel{left:10px;right:10px;width:auto;bottom:80px;height:min(420px,calc(100dvh - 170px));border-radius:16px}' +
+    '.wb-bubble{padding:8px 15px 8px 10px}' +
+    '.wb-input{font-size:16px}' +
+  '}' +
   '';
 
   var style = document.createElement('style');

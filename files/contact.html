@@ -73,6 +73,12 @@ body{font-family:'DM Sans',sans-serif;background:var(--of);color:var(--tx);min-h
 .mnav .mnav-login{background:rgba(0,0,0,.05);color:#1a1d21}
 .mnav .mnav-start{background:linear-gradient(135deg,#f4b400,#e89a00);color:#1a1408}
 @media (max-width:960px){.mnav-btn{display:inline-flex;align-items:center}}
+@media (max-width:960px){
+  .ncta .nbtn{padding:8px 14px!important;font-size:.8rem!important;white-space:nowrap}
+}
+@media (max-width:480px){
+  .ncta .nbtn-ghost{display:none}
+}
 
 
 /* ── footer (new design) ── */
@@ -256,7 +262,7 @@ async function handleSubmit(e) {
   </div>
 </footer>
 
-<script src="/wallabee.js?v=3" defer></script>
+<script src="/wallabee.js?v=4" defer></script>
 
 <script>
 (function(){
