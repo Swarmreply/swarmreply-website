@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /dashboard.html
+Disallow: /offline.html
+
+Sitemap: https://swarmreply.com/sitemap.xml
