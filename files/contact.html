@@ -103,7 +103,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--of);color:var(--tx);min-h
 /* ── footer (new design) ── */
 footer.site-foot{background:#0d0c0a;color:rgba(255,255,255,.65);padding:60px 0 30px;font-family:'DM Sans',sans-serif}
 .foot-wrap{max-width:1160px;margin:0 auto;padding:0 28px}
-.foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:36px;margin-bottom:40px}
+.foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr 1fr;gap:36px;margin-bottom:40px}
 .foot-brand{font-family:'Playfair Display',serif;font-weight:900;font-size:1.4rem;color:#fff;display:flex;align-items:center;gap:9px}
 .foot-brand img{width:36px;height:36px;object-fit:contain}
 .foot-col h4{font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.45);margin-bottom:14px;font-weight:700}
@@ -263,6 +263,12 @@ async function handleSubmit(e) {
         <a href="/#compare">Compare</a>
       </div>
       <div class="foot-col">
+        <h4>Compare</h4>
+        <a href="/compare/birdeye-alternative.html">vs Birdeye</a>
+        <a href="/compare/podium-alternative.html">vs Podium</a>
+        <a href="/compare/nicejob-alternative.html">vs NiceJob</a>
+      </div>
+      <div class="foot-col">
         <h4>Company</h4>
         <a href="/#mission">Our mission</a>
         <a href="/help.html">Help</a>
@@ -281,7 +287,7 @@ async function handleSubmit(e) {
   </div>
 </footer>
 
-<script src="/wallabee.js?v=4" defer></script>
+<script src="/wallabee.js?v=5" defer></script>
 
 <script>
 (function(){

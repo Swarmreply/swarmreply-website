@@ -1,5 +1,5 @@
 // ============================================
-// files/wallabee.js  —  v4 (phone-sized panel + compact sheet)
+// files/wallabee.js  —  v5 (compare + AI visibility pages in catalog)
 // Wallabee — SwarmReply's floating support bee, for the marketing site.
 // Self-contained: inject <script src="/wallabee.js" defer></script> on any
 // page. Answers come from the Help Center catalog (word-overlap matching,
@@ -18,6 +18,10 @@
 
   // Help Center catalog — mirrors help.html. Add new articles in both places.
   var ARTICLES = [
+    { id: 'vs-birdeye', t: 'SwarmReply vs Birdeye — honest comparison', c: 'Compare', u: '/compare/birdeye-alternative.html', k: 'birdeye alternative compare versus price cheaper switch' },
+    { id: 'vs-podium', t: 'SwarmReply vs Podium — honest comparison', c: 'Compare', u: '/compare/podium-alternative.html', k: 'podium alternative compare versus price cheaper switch contract' },
+    { id: 'vs-nicejob', t: 'SwarmReply vs NiceJob — honest comparison', c: 'Compare', u: '/compare/nicejob-alternative.html', k: 'nicejob alternative compare versus reviews only' },
+    { id: 'ai-visibility-explained', t: 'AI search visibility — show up in ChatGPT answers', c: 'Get Found', u: '/ai-search-visibility.html', k: 'chatgpt gemini claude ai visibility recommendations search appear' },
     { id: 'welcome', t: 'Welcome to SwarmReply', c: 'Getting started' },
     { id: 'connect-google', t: 'How to connect Google Business Profile', c: 'Getting started' },
     { id: 'first-review-request', t: 'Sending your first review request', c: 'Getting started' },
@@ -240,7 +244,7 @@
       if (m.type === 'articles') {
         html += '<div class="wb-arts">';
         m.articles.forEach(function (a) {
-          html += '<a class="wb-art" href="' + HELP_BASE + '#' + esc(a.id) + '" target="_blank" rel="noreferrer">' +
+          html += '<a class="wb-art" href="' + (a.u ? a.u : HELP_BASE + '#' + esc(a.id)) + '" target="_blank" rel="noreferrer">' +
             '<span style="flex:1"><span class="wb-art-t">' + esc(a.t) + '</span>' +
             '<span class="wb-art-c">' + esc(a.c) + '</span></span>' +
             '<span style="font-size:.75rem;color:#7a7670">\u2197</span></a>';
