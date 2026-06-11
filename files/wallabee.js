@@ -158,10 +158,11 @@
 
   // ── Styles ─────────────────────────────────────────────────────────────────
   var css = '' +
-  '.wb-bubble{position:fixed;bottom:24px;right:20px;z-index:9000;width:60px;height:60px;border-radius:50%;border:none;cursor:pointer;background:linear-gradient(135deg,#f5c842,#d4a515);box-shadow:0 6px 24px rgba(212,165,21,.45);display:flex;align-items:center;justify-content:center;transition:transform .15s ease;font-family:"DM Sans",sans-serif}' +
-  '.wb-bubble:hover{transform:scale(1.07)}' +
-  '.wb-bubble img{width:38px;height:38px;object-fit:contain}' +
-  '.wb-label{position:fixed;bottom:38px;right:90px;z-index:9000;padding:8px 15px;border-radius:50px;border:1px solid #e4e0d8;background:#fff;box-shadow:0 4px 16px rgba(0,0,0,.1);cursor:pointer;font-family:"DM Sans",sans-serif;font-size:.78rem;font-weight:700;color:#0a0a0a;white-space:nowrap}' +
+  '.wb-bubble{position:fixed;bottom:24px;right:20px;z-index:9000;display:flex;align-items:center;gap:9px;padding:9px 18px 9px 11px;border-radius:50px;border:none;cursor:pointer;background:linear-gradient(135deg,#f5c842,#d4a515);box-shadow:0 6px 24px rgba(212,165,21,.45);transition:transform .15s ease;font-family:"DM Sans",sans-serif;font-size:.85rem;font-weight:700;color:#0a0a0a}' +
+  '.wb-bubble:hover{transform:scale(1.05)}' +
+  '.wb-ic{width:34px;height:34px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;flex-shrink:0}' +
+  '.wb-ic img{width:26px;height:26px;object-fit:contain}' +
+  '.wb-ic.x{background:rgba(10,10,10,.12);font-size:1rem;font-weight:700}' +
   '.wb-panel{position:fixed;bottom:96px;right:20px;z-index:9000;width:min(360px,calc(100vw - 32px));height:min(540px,calc(100vh - 140px));background:#f8f7f4;border-radius:18px;border:1px solid #e4e0d8;box-shadow:0 12px 48px rgba(0,0,0,.18);display:flex;flex-direction:column;overflow:hidden;font-family:"DM Sans",sans-serif}' +
   '.wb-head{background:linear-gradient(135deg,#f5c842,#d4a515);padding:14px 16px;display:flex;align-items:center;gap:11px}' +
   '.wb-avatar{width:40px;height:40px;border-radius:50%;background:#fff;border:1px solid #e4e0d8;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;overflow:hidden}' +
@@ -188,7 +189,7 @@
   '.wb-foot{padding:10px 12px;background:#fff;border-top:1px solid #e4e0d8;display:flex;gap:8px}' +
   '.wb-input{flex:1;border:none;background:#f8f7f4;border-radius:50px;padding:11px 16px;font-family:inherit;font-size:.85rem;outline:none}' +
   '.wb-send{width:42px;height:42px;border-radius:50%;border:none;background:linear-gradient(135deg,#f5c842,#d4a515);cursor:pointer;font-size:1rem;flex-shrink:0}' +
-  '@media (max-width:480px){.wb-label{display:none}}';
+  '';
 
   var style = document.createElement('style');
   style.textContent = css;
@@ -197,11 +198,6 @@
   // ── DOM ────────────────────────────────────────────────────────────────────
   var root = document.createElement('div');
   document.body.appendChild(root);
-
-  var label = document.createElement('button');
-  label.className = 'wb-label';
-  label.textContent = 'Support';
-  label.setAttribute('aria-label', 'Open support chat');
 
   var bubble = document.createElement('button');
   bubble.className = 'wb-bubble';
@@ -223,7 +219,6 @@
       '<button class="wb-send" aria-label="Send">\u2191</button>' +
     '</div>';
 
-  root.appendChild(label);
   root.appendChild(bubble);
   root.appendChild(panel);
 
@@ -274,10 +269,9 @@
   function setOpen(o) {
     state.open = o;
     panel.style.display = o ? 'flex' : 'none';
-    label.style.display = o ? 'none' : '';
     bubble.innerHTML = o
-      ? '<span style="font-size:1.3rem;font-weight:700;color:#0a0a0a">\u2715</span>'
-      : '<img src="/bee-logo.png" alt="">';
+      ? '<span class="wb-ic x">\u2715</span><span>Close</span>'
+      : '<span class="wb-ic"><img src="/bee-logo.png" alt=""></span><span>Support</span>';
     if (o) { render(); inputEl.focus(); }
     persist();
   }
@@ -322,7 +316,6 @@
 
   // ── Events ─────────────────────────────────────────────────────────────────
   bubble.addEventListener('click', function () { setOpen(!state.open); });
-  label.addEventListener('click', function () { setOpen(true); });
   panel.querySelector('.wb-close').addEventListener('click', function () { setOpen(false); });
   panel.querySelector('.wb-send').addEventListener('click', function () { ask(inputEl.value); });
   inputEl.addEventListener('keydown', function (e) { if (e.key === 'Enter') ask(inputEl.value); });
