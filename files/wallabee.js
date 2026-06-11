@@ -1,5 +1,5 @@
 // ============================================
-// files/wallabee.js
+// files/wallabee.js  —  v2 (single combined pill launcher)
 // Wallabee — SwarmReply's floating support bee, for the marketing site.
 // Self-contained: inject <script src="/wallabee.js" defer></script> on any
 // page. Answers come from the Help Center catalog (word-overlap matching,
