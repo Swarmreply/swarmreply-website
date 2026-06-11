@@ -257,6 +257,18 @@ footer{background:#0d0c0a;color:rgba(255,255,255,.65);padding:60px 0 30px}
   .plans{grid-template-columns:1fr}
   .foot-grid{grid-template-columns:1fr 1fr}
 }
+
+/* ── Mobile menu (hamburger) ── */
+.mnav-btn{display:none;background:rgba(0,0,0,.03);border:1px solid rgba(0,0,0,.12);border-radius:10px;padding:8px 11px;cursor:pointer;color:#1a1d21;font-size:1.1rem;line-height:1;margin-left:10px;flex-shrink:0}
+.mnav{display:none;position:fixed;top:68px;left:0;right:0;z-index:998;background:rgba(255,255,255,.98);backdrop-filter:blur(10px);border-bottom:1px solid rgba(0,0,0,.08);box-shadow:0 18px 40px rgba(0,0,0,.12);padding:8px 22px 18px;flex-direction:column}
+.mnav.open{display:flex}
+.mnav a{padding:13px 4px;font-size:1.02rem;color:#1a1d21;text-decoration:none;border-bottom:1px solid rgba(0,0,0,.06);font-weight:600}
+.mnav a:last-child{border-bottom:none}
+.mnav .mnav-cta{display:flex;gap:10px;margin-top:14px}
+.mnav .mnav-cta a{flex:1;text-align:center;border:none;border-radius:10px;padding:12px;font-weight:700;font-size:.95rem}
+.mnav .mnav-login{background:rgba(0,0,0,.05);color:#1a1d21}
+.mnav .mnav-start{background:linear-gradient(135deg,#f4b400,#e89a00);color:#1a1408}
+@media (max-width:960px){.mnav-btn{display:inline-flex;align-items:center}}
 </style>
 </head>
 <body>
@@ -276,8 +288,22 @@ footer{background:#0d0c0a;color:rgba(255,255,255,.65);padding:60px 0 30px}
       <a href="/login.html" class="btn btn-ghost btn-sm">Log in</a>
       <a href="/signup.html" class="btn btn-gold btn-sm">Start now</a>
     </div>
+    <button class="mnav-btn" id="mnavBtn" aria-label="Open menu" aria-expanded="false" aria-controls="mnavPanel">☰</button>
   </div>
 </nav>
+<div class="mnav" id="mnavPanel">
+  <a href="#product">Product</a>
+  <a href="#ai-visibility">AI Visibility</a>
+  <a href="#compare">Compare</a>
+  <a href="#pricing">Pricing</a>
+  <a href="#faq">FAQ</a>
+  <a href="/help.html">Help Center</a>
+  <div class="mnav-cta">
+    <a href="/login.html" class="mnav-login">Log in</a>
+    <a href="/signup.html" class="mnav-start">Start now</a>
+  </div>
+</div>
+
 
 <!-- ━━━━━ HERO ━━━━━ -->
 <header class="hero">
@@ -563,5 +589,20 @@ footer{background:#0d0c0a;color:rgba(255,255,255,.65);padding:60px 0 30px}
 if('serviceWorker' in navigator){window.addEventListener('load',function(){navigator.serviceWorker.register('/sw.js').catch(function(){})})}
 </script>
 <script src="/wallabee.js?v=2" defer></script>
+
+<script>
+(function(){
+  var btn=document.getElementById('mnavBtn'),panel=document.getElementById('mnavPanel');
+  if(!btn||!panel)return;
+  btn.addEventListener('click',function(){
+    var open=panel.classList.toggle('open');
+    btn.setAttribute('aria-expanded',open?'true':'false');
+    btn.textContent=open?'\u2715':'\u2630';
+  });
+  panel.addEventListener('click',function(e){
+    if(e.target.tagName==='A'){panel.classList.remove('open');btn.setAttribute('aria-expanded','false');btn.textContent='\u2630';}
+  });
+})();
+</script>
 </body>
 </html>
