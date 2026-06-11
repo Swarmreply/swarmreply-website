@@ -1161,6 +1161,21 @@ document.addEventListener('click', function(e) {
 window.addEventListener('scroll', function() {
   document.querySelector('.nav').style.boxShadow = window.scrollY > 10 ? '0 2px 20px rgba(0,0,0,.07)' : 'none';
 });
+
+// ── DEEP LINKING ──────────────────────────────────────────────────────────────
+// swarmreply.com/help#connect-google opens that article directly.
+// Used by the in-app Support page search results (and shareable links).
+function openFromHash() {
+  var id = (window.location.hash || '').replace('#', '');
+  if (!id || !articles[id]) return;
+  // Find the category this article belongs to so "Back" works
+  Object.keys(categories).forEach(function(catKey) {
+    if (categories[catKey].articles.indexOf(id) !== -1) currentCat = catKey;
+  });
+  showArticle(id);
+}
+window.addEventListener('hashchange', openFromHash);
+openFromHash();
 </script>
 </body>
 </html>
