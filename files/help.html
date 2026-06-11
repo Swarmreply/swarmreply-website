@@ -229,19 +229,20 @@ button{font-family:inherit;cursor:pointer}
         </div>
         <div class="sidebar-section">
           <div class="sidebar-title">Features</div>
-          <div class="sidebar-link" onclick="showCategory('requests')"><span class="sl-ic">↑</span>Review Generation<span class="sl-count">7</span></div>
+          <div class="sidebar-link" onclick="showCategory('requests')"><span class="sl-ic">↑</span>Review Generation<span class="sl-count">8</span></div>
+          <div class="sidebar-link" onclick="showCategory('replies')"><span class="sl-ic">🤖</span>AI Replies<span class="sl-count">4</span></div>
           <div class="sidebar-link" onclick="showCategory('surveys')"><span class="sl-ic">📊</span>Surveys & NPS<span class="sl-count">5</span></div>
           <div class="sidebar-link" onclick="showCategory('webchat')"><span class="sl-ic">💬</span>Webchat & Inbox<span class="sl-count">8</span></div>
           <div class="sidebar-link" onclick="showCategory('campaigns')"><span class="sl-ic">📣</span>SMS Campaigns<span class="sl-count">7</span></div>
           <div class="sidebar-link" onclick="showCategory('listings')"><span class="sl-ic">📍</span>Listings Sync<span class="sl-count">4</span></div>
           <div class="sidebar-link" onclick="showCategory('insights')"><span class="sl-ic">◎</span>Insights & Analytics<span class="sl-count">6</span></div>
           <div class="sidebar-link" onclick="showCategory('llm')"><span class="sl-ic">✦</span>AI Visibility<span class="sl-count">4</span></div>
-          <div class="sidebar-link" onclick="showCategory('integrations')"><span class="sl-ic">⊕</span>Integrations<span class="sl-count">5</span></div>
+          <div class="sidebar-link" onclick="showCategory('integrations')"><span class="sl-ic">⊕</span>Integrations<span class="sl-count">13</span></div>
         </div>
         <div class="sidebar-section">
           <div class="sidebar-title">Account</div>
           <div class="sidebar-link" onclick="showCategory('billing')"><span class="sl-ic">💳</span>Billing & Plans<span class="sl-count">5</span></div>
-          <div class="sidebar-link" onclick="showCategory('settings')"><span class="sl-ic">⚙</span>Settings<span class="sl-count">4</span></div>
+          <div class="sidebar-link" onclick="showCategory('settings')"><span class="sl-ic">⚙</span>Settings<span class="sl-count">5</span></div>
         </div>
       </aside>
 
@@ -274,11 +275,17 @@ button{font-family:inherit;cursor:pointer}
               <div class="cat-count">6 articles</div>
             </div>
             
+            <div class="cat-card" onclick="showCategory('replies')">
+              <div class="cat-icon">🤖</div>
+              <div class="cat-name">AI Replies</div>
+              <div class="cat-desc">Automatic, on-brand responses to your reviews — launching later this year.</div>
+              <div class="cat-count">4 articles</div>
+            </div>
             <div class="cat-card" onclick="showCategory('requests')">
               <div class="cat-icon">↑</div>
               <div class="cat-name">Review Generation</div>
               <div class="cat-desc">Send review requests by email and SMS, import contacts, schedule campaigns.</div>
-              <div class="cat-count">7 articles</div>
+              <div class="cat-count">8 articles</div>
             </div>
             <div class="cat-card" onclick="showCategory('surveys')">
               <div class="cat-icon">📊</div>
@@ -320,7 +327,7 @@ button{font-family:inherit;cursor:pointer}
               <div class="cat-icon">⊕</div>
               <div class="cat-name">Integrations</div>
               <div class="cat-desc">Connect Google, Facebook, Square, HubSpot, Shopify, Mindbody, Calendly, Acuity, Stripe, Zapier, and more.</div>
-              <div class="cat-count">12 articles</div>
+              <div class="cat-count">13 articles</div>
             </div>
             <div class="cat-card" onclick="showCategory('billing')">
               <div class="cat-icon">💳</div>
@@ -332,7 +339,7 @@ button{font-family:inherit;cursor:pointer}
               <div class="cat-icon">⚙</div>
               <div class="cat-name">Settings</div>
               <div class="cat-desc">Configure your account, alert preferences, team members, and notification settings.</div>
-              <div class="cat-count">4 articles</div>
+              <div class="cat-count">5 articles</div>
             </div>
           </div>
 
@@ -426,11 +433,17 @@ var categories = {
     icon: '🚀',
     articles: ['welcome','connect-google','first-review-request','onboarding-checklist','invite-team']
   },
+  replies: {
+    title: 'AI Replies',
+    desc: 'Automatic, on-brand responses to your reviews — launching later this year.',
+    icon: '🤖',
+    articles: ['reply-templates','edit-reply','reply-quality','multi-language']
+  },
   requests: {
     title: 'Review Generation',
     desc: 'Send review requests by email and SMS, import contacts, and automate follow-ups.',
     icon: '↑',
-    articles: ['first-review-request','import-contacts','review-platforms','sms-requests','template-customise','review-widget','request-timing']
+    articles: ['first-review-request','import-contacts','review-platforms','sms-requests','template-customise','review-widget','request-timing','bulk-send']
   },
   surveys: {
     title: 'Surveys & NPS',
@@ -472,7 +485,7 @@ var categories = {
     title: 'Integrations',
     desc: 'Connect SwarmReply to the tools your business already uses — Google, Square, HubSpot, Shopify, Mindbody, Calendly, Acuity, and more.',
     icon: '⊕',
-    articles: ['connect-google','facebook-reviews','connect-square','connect-hubspot','connect-shopify','connect-mindbody','connect-calendly','connect-acuity','connect-stripe-trigger','zapier-setup','csv-import','api-key']
+    articles: ['connect-google','facebook-reviews','connect-square','connect-hubspot','connect-shopify','connect-mindbody','connect-calendly','connect-acuity','connect-stripe-trigger','zapier-setup','csv-import','api-key','connect-jobber']
   },
   billing: {
     title: 'Billing & Plans',
@@ -484,7 +497,7 @@ var categories = {
     title: 'Settings',
     desc: 'Configure your account, alerts, and preferences.',
     icon: '⚙',
-    articles: ['account-settings','alert-preferences','google-posts-settings','locations']
+    articles: ['account-settings','alert-preferences','google-posts-settings','locations','review-links']
   }
 };
 
@@ -981,6 +994,695 @@ var articles = {
       <p>Go to <strong>Settings → Billing</strong> and scroll to <strong>Invoice history</strong>. Every invoice is listed with its date, period, amount, and status. Click <strong>PDF</strong> to download.</p>
       <p>You can also access all invoices through the Stripe billing portal — click <strong>Manage billing →</strong> in the Billing page header.</p>
       <div class="tip">✓ Invoices are automatically emailed to the billing email on your account after each successful charge.</div>
+    `
+  }
+,
+  'import-contacts': {
+    title: 'Importing contacts from CSV',
+    category: 'Review Generation',
+    readTime: '2 min read',
+    body: `
+<h3>What this is for</h3>
+<p>Importing your customer list lets you send review requests in bulk instead of one at a time. Once imported, your contacts appear in <strong>Grow → Bulk Send</strong> ready to receive a request.</p>
+<h3>Step by step</h3>
+<div class="step"><div class="step-n">1</div><div>In your dashboard, go to <strong>Grow → Import Contacts</strong></div></div>
+<div class="step"><div class="step-n">2</div><div>Export your customer list from your CRM, booking system, or spreadsheet as a <strong>.csv file</strong></div></div>
+<div class="step"><div class="step-n">3</div><div>Upload the file — SwarmReply reads it in your browser and shows you a preview before anything is saved</div></div>
+<div class="step"><div class="step-n">4</div><div>Match the columns to <strong>name</strong>, <strong>email</strong>, and <strong>phone</strong>, then confirm the import</div></div>
+<div class="tip">💡 Email is needed for email requests and phone for SMS requests — include both columns when you can so you're free to use either channel.</div>
+<h3>After importing</h3>
+<p>Head to <strong>Grow → Bulk Send</strong> to send review requests to your imported contacts, or send to individuals from <strong>Grow → Review Requests</strong>.</p>
+    `
+  },
+  'review-platforms': {
+    title: 'Choosing your review platform',
+    category: 'Review Generation',
+    readTime: '3 min read',
+    body: `
+<h3>Where should your reviews go?</h3>
+<p>SwarmReply can route happy customers to <strong>Google</strong>, <strong>Yelp</strong>, or <strong>Facebook</strong>. Which buttons your customers see is controlled by the review links you've saved in <strong>Settings → Review Links</strong>.</p>
+<h3>Our recommendation: Google first</h3>
+<p>For most local businesses, Google reviews matter most. They power your Google Business Profile rating, influence local search ranking, and are what most customers check before calling you. If you only set up one platform, make it Google.</p>
+<h3>When to add Yelp and Facebook</h3>
+<p>Add Yelp if your industry lives there (restaurants, home services, beauty) and Facebook if your customers already engage with your page. Once you paste those links into <strong>Settings → Review Links</strong>, they automatically appear as options in your request templates and on the thank-you screen your survey promoters see.</p>
+<div class="tip">✓ You can offer all three at once — customers simply pick the platform they already have an account on, which removes friction and gets you more reviews.</div>
+    `
+  },
+  'sms-requests': {
+    title: 'Sending review requests via SMS',
+    category: 'Review Generation',
+    readTime: '2 min read',
+    body: `
+<h3>Email or text — your choice</h3>
+<p>Every request template has a channel: <strong>email</strong> or <strong>SMS</strong>. Text messages get opened faster — most are read within minutes — which makes SMS a great choice when you ask right after the service.</p>
+<h3>Setting up an SMS request</h3>
+<div class="step"><div class="step-n">1</div><div>Go to <strong>Grow → Request Templates</strong> and create a new template</div></div>
+<div class="step"><div class="step-n">2</div><div>Choose <strong>SMS</strong> as the channel</div></div>
+<div class="step"><div class="step-n">3</div><div>Write a short message — your review link is added automatically</div></div>
+<div class="step"><div class="step-n">4</div><div>Send a test to yourself from the builder before using it live</div></div>
+<div class="warn">⚠️ Keep SMS requests short and always identify your business by name. Your contact must have a phone number on file, and texting customers requires their consent — see our TCPA compliance guide.</div>
+<h3>Sending</h3>
+<p>Pick the SMS template when sending from <strong>Review Requests</strong> or <strong>Bulk Send</strong> — everything else works exactly like email requests.</p>
+    `
+  },
+  'template-customise': {
+    title: 'Customising review request templates',
+    category: 'Review Generation',
+    readTime: '3 min read',
+    body: `
+<h3>The template builder</h3>
+<p><strong>Grow → Request Templates</strong> is a side-by-side builder: your settings on the left, a live preview of exactly what your customer receives on the right.</p>
+<h3>What you can customise</h3>
+<div class="step"><div class="step-n">1</div><div><strong>Channel</strong> — email or SMS</div></div>
+<div class="step"><div class="step-n">2</div><div><strong>Message</strong> — the subject and body, written in your voice</div></div>
+<div class="step"><div class="step-n">3</div><div><strong>Brand color & logo</strong> — pick your brand color and add a logo URL so the request looks like it came from you, not from software</div></div>
+<div class="step"><div class="step-n">4</div><div><strong>Review platforms</strong> — choose which buttons appear (Google, Yelp, Facebook), pulled from your saved review links</div></div>
+<h3>Test before you send</h3>
+<p>Use the test send to deliver the request to your own inbox or phone. What you receive is exactly what customers get.</p>
+<div class="tip">💡 Short, personal messages win. Two sentences thanking them and asking for a minute of their time will outperform a long pitch every time.</div>
+    `
+  },
+  'review-widget': {
+    title: 'Setting up the review widget',
+    category: 'Review Generation',
+    readTime: '2 min read',
+    body: `
+<h3>Show your reviews on your own website</h3>
+<p>The <strong>Rep Widget</strong> displays your star rating and recent reviews directly on your website — social proof exactly where new customers are deciding whether to contact you.</p>
+<h3>Step by step</h3>
+<div class="step"><div class="step-n">1</div><div>Go to <strong>Settings → Rep Widget</strong></div></div>
+<div class="step"><div class="step-n">2</div><div>Choose how you want it to look for your site</div></div>
+<div class="step"><div class="step-n">3</div><div>Copy the embed snippet and paste it into your website where you want reviews to appear — it works on WordPress, Squarespace, Wix, Shopify, and plain HTML sites</div></div>
+<div class="tip">✓ The widget updates automatically as new reviews come in — set it once and forget it.</div>
+<h3>Where to place it</h3>
+<p>The homepage and any page where customers make a decision (pricing, booking, contact) are the highest-impact spots.</p>
+    `
+  },
+  'request-timing': {
+    title: 'When to send review requests',
+    category: 'Review Generation',
+    readTime: '3 min read',
+    body: `
+<h3>Timing is everything</h3>
+<p>The single biggest factor in whether a customer leaves a review is <strong>how soon you ask after the experience</strong>. Ask within a few hours and the experience is fresh; ask a week later and most people have moved on.</p>
+<h3>The best windows</h3>
+<div class="step"><div class="step-n gold">1</div><div><strong>Same day as the service</strong> — ideal for home services, salons, repairs, and appointments</div></div>
+<div class="step"><div class="step-n gold">2</div><div><strong>Right after payment</strong> — the natural "transaction complete" moment</div></div>
+<div class="step"><div class="step-n gold">3</div><div><strong>After a positive interaction</strong> — a compliment in person or a 9–10 survey score is a green light</div></div>
+<h3>Automate the timing entirely</h3>
+<p>Connect <strong>Jobber</strong> (request sent automatically when a job is marked complete) or the <strong>Stripe payment trigger</strong> (request sent after a successful payment) from the Integrations page, and the right moment is never missed.</p>
+<div class="tip">💡 Send during business hours — mid-morning and early evening perform best. Avoid late nights, especially for SMS.</div>
+    `
+  },
+  'bulk-send': {
+    title: 'Sending review requests in bulk',
+    category: 'Review Generation',
+    readTime: '2 min read',
+    body: `
+<h3>One send, your whole list</h3>
+<p><strong>Grow → Bulk Send</strong> lets you send a review request to many customers at once — perfect for working through a backlog of past customers or a batch you just imported.</p>
+<h3>Step by step</h3>
+<div class="step"><div class="step-n">1</div><div>Import your customers first via <strong>Grow → Import Contacts</strong> (CSV with name, email, phone)</div></div>
+<div class="step"><div class="step-n">2</div><div>Open <strong>Grow → Bulk Send</strong> and select the contacts to include</div></div>
+<div class="step"><div class="step-n">3</div><div>Choose the request template to use (email or SMS)</div></div>
+<div class="step"><div class="step-n">4</div><div>Send — each contact gets their own personal review link, and delivery status is tracked per contact</div></div>
+<div class="warn">⚠️ Only send to customers who actually used your business. Review platforms penalise review gating and bulk solicitation of strangers — and texting requires consent.</div>
+<div class="tip">💡 Working through old customers? Batch by recency — last month's customers first, then go further back. Recent experiences convert far better.</div>
+    `
+  },
+  'survey-setup': {
+    title: 'Setting up your NPS survey',
+    category: 'Surveys & NPS',
+    readTime: '3 min read',
+    body: `
+<h3>What the survey does</h3>
+<p>Your NPS survey asks customers one question — "How likely are you to recommend us?" on a 0–10 scale — and then routes them based on the score: happy customers are invited to leave a public review, unhappy ones give you private feedback instead.</p>
+<h3>Step by step</h3>
+<div class="step"><div class="step-n">1</div><div>Go to <strong>Grow → Surveys & NPS</strong></div></div>
+<div class="step"><div class="step-n">2</div><div>Customise the messages — the thank-you shown to promoters, and the two follow-up questions detractors are asked</div></div>
+<div class="step"><div class="step-n">3</div><div>Make sure your review links are saved in <strong>Settings → Review Links</strong> — that's where 9s and 10s get sent</div></div>
+<div class="step"><div class="step-n">4</div><div>Send it — every review request includes a personal survey link for each customer</div></div>
+<div class="tip">✓ By default, 9–10 counts as a promoter, 7–8 as passive, and 0–6 as a detractor — the standard NPS bands.</div>
+    `
+  },
+  'nps-routing': {
+    title: 'How NPS routing works',
+    category: 'Surveys & NPS',
+    readTime: '2 min read',
+    body: `
+<h3>One score, three paths</h3>
+<p>When a customer taps a score on your survey, SwarmReply routes them automatically:</p>
+<div class="step"><div class="step-n gold">9–10</div><div><strong>Promoters</strong> see your thank-you message and buttons to leave a review on Google, Yelp, or Facebook (whichever links you've saved)</div></div>
+<div class="step"><div class="step-n">7–8</div><div><strong>Passives</strong> get a simple thank-you — they're satisfied but not enthusiastic, so we don't push them to review</div></div>
+<div class="step"><div class="step-n">0–6</div><div><strong>Detractors</strong> are asked two private follow-up questions instead of being sent to a public review site</div></div>
+<h3>Why this matters</h3>
+<p>This is how you grow your public rating ethically: everyone gets the same survey, but the people most likely to write a glowing review are the ones invited to share it publicly, while problems come to you privately first — giving you the chance to fix them before they become a 1-star review.</p>
+    `
+  },
+  'promoter-destination': {
+    title: 'Setting your promoter destination',
+    category: 'Surveys & NPS',
+    readTime: '2 min read',
+    body: `
+<h3>Where do your 9s and 10s go?</h3>
+<p>When a customer scores you 9 or 10, they see buttons inviting them to share their experience publicly. Those buttons come straight from <strong>Settings → Review Links</strong>.</p>
+<h3>Step by step</h3>
+<div class="step"><div class="step-n">1</div><div>Go to <strong>Settings → Review Links</strong></div></div>
+<div class="step"><div class="step-n">2</div><div>Paste your <strong>Google review link</strong> — and optionally your Yelp and Facebook review page links</div></div>
+<div class="step"><div class="step-n">3</div><div>Save — promoters now see a button for each link you've added</div></div>
+<div class="tip">💡 To get your Google review link: search your business on Google, open your Business Profile, click "Ask for reviews", and copy the short link Google gives you.</div>
+<p>If you serve multiple locations, each location keeps its own links, so customers always land on the right listing.</p>
+    `
+  },
+  'survey-link': {
+    title: 'Sharing your survey link',
+    category: 'Surveys & NPS',
+    readTime: '2 min read',
+    body: `
+<h3>Every customer gets a personal link</h3>
+<p>When you send a review request, SwarmReply generates a unique survey link for that customer (it looks like <strong>…/review/abc123</strong>). The link identifies them, records their score once, and routes them to the right follow-up.</p>
+<h3>Ways to get the link in front of customers</h3>
+<div class="step"><div class="step-n">1</div><div><strong>Review requests</strong> — every email or SMS request includes the customer's personal link automatically</div></div>
+<div class="step"><div class="step-n">2</div><div><strong>Bulk Send</strong> — each contact in the batch gets their own unique link</div></div>
+<div class="step"><div class="step-n">3</div><div><strong>Automations</strong> — Jobber and Stripe triggers send the link at exactly the right moment without you lifting a finger</div></div>
+<div class="tip">✓ Because each link is unique, your results stay clean: one customer, one response, tied to a real interaction.</div>
+    `
+  },
+  'detractor-handling': {
+    title: 'Handling detractor responses',
+    category: 'Surveys & NPS',
+    readTime: '3 min read',
+    body: `
+<h3>A detractor is a gift (really)</h3>
+<p>A customer who scores you 0–6 was probably going to tell someone about their bad experience — the survey makes sure they tell <strong>you</strong> first, privately, instead of Google.</p>
+<h3>What detractors see</h3>
+<p>Instead of review buttons, they're asked two questions: what fell short, and what you could do better. Their answers are saved with their survey response.</p>
+<h3>What to do when one comes in</h3>
+<div class="step"><div class="step-n">1</div><div><strong>Respond fast and personally</strong> — a same-day call or email from the owner defuses most situations</div></div>
+<div class="step"><div class="step-n">2</div><div><strong>Fix what you can</strong> — a refund, redo, or sincere apology often turns a detractor into a loyal customer</div></div>
+<div class="step"><div class="step-n">3</div><div><strong>Look for patterns</strong> — if three detractors mention the same thing, that's an operations issue, not a one-off</div></div>
+<div class="tip">💡 Turn on negative-feedback alerts in <strong>Settings → Account</strong> so detractor responses reach your inbox the moment they happen.</div>
+    `
+  },
+  'webchat-setup': {
+    title: 'Webchat appearance settings',
+    category: 'Webchat & Inbox',
+    readTime: '2 min read',
+    body: `
+<h3>Make the chat yours</h3>
+<p>Once the widget is on your site (see <em>Adding the webchat widget to your website</em>), customise how it greets visitors in <strong>Settings → Webchat & AI Agent</strong>.</p>
+<h3>What you can set</h3>
+<div class="step"><div class="step-n">1</div><div><strong>Greeting title</strong> — the headline visitors see when the chat opens</div></div>
+<div class="step"><div class="step-n">2</div><div><strong>Welcome message</strong> — the first message in the conversation, written in your voice</div></div>
+<div class="step"><div class="step-n">3</div><div><strong>Business hours</strong> — so visitor expectations match when you can actually reply</div></div>
+<div class="tip">💡 A specific welcome message ("Hi! Ask us about availability, pricing, or anything else") starts far more conversations than a generic "How can we help?"</div>
+<p>Changes apply to the live widget as soon as you save — no need to touch the code on your website again.</p>
+    `
+  },
+  'ai-agent-setup': {
+    title: 'Setting up the AI chat agent',
+    category: 'Webchat & Inbox',
+    readTime: '3 min read',
+    body: `
+<h3>Your 24/7 first responder</h3>
+<p>The AI agent answers webchat visitors instantly using the knowledge base you give it — capturing leads at 9pm on a Sunday when you'd otherwise miss them.</p>
+<h3>Step by step</h3>
+<div class="step"><div class="step-n">1</div><div>Go to <strong>Settings → Webchat & AI Agent</strong></div></div>
+<div class="step"><div class="step-n">2</div><div>Turn the AI agent on</div></div>
+<div class="step"><div class="step-n">3</div><div>Fill in your <strong>knowledge base</strong> — services, pricing, hours, service area, FAQs (see the knowledge base guide)</div></div>
+<div class="step"><div class="step-n">4</div><div>Test it on your own site: ask the questions your customers actually ask and refine the knowledge base until the answers sound right</div></div>
+<div class="tip">✓ When the agent can't answer confidently or the visitor asks for a person, it hands the conversation to you and notifies you — it never bluffs on your behalf.</div>
+    `
+  },
+  'knowledge-base': {
+    title: 'Building your AI knowledge base',
+    category: 'Webchat & Inbox',
+    readTime: '3 min read',
+    body: `
+<h3>The agent only knows what you tell it</h3>
+<p>The knowledge base in <strong>Settings → Webchat & AI Agent</strong> is the AI agent's only source of truth about your business. The better it is, the more conversations the agent can finish without you.</p>
+<h3>What to include</h3>
+<div class="step"><div class="step-n">1</div><div><strong>Services & pricing</strong> — what you do, what it costs (even ranges help: "Most jobs run $150–$400")</div></div>
+<div class="step"><div class="step-n">2</div><div><strong>Hours & service area</strong> — when you're open and where you go</div></div>
+<div class="step"><div class="step-n">3</div><div><strong>Your top 10 FAQs</strong> — the questions you answer on the phone every week</div></div>
+<div class="step"><div class="step-n">4</div><div><strong>Booking process</strong> — how a visitor becomes a customer</div></div>
+<div class="warn">⚠️ Keep it current. If your prices or hours change, update the knowledge base the same day — the agent will keep confidently giving the old answer until you do.</div>
+    `
+  },
+  'handoff': {
+    title: 'How handoffs work',
+    category: 'Webchat & Inbox',
+    readTime: '2 min read',
+    body: `
+<h3>AI first, humans when it matters</h3>
+<p>The AI agent handles the routine questions. When a conversation needs a person, it hands off — and you take over in your <strong>Messages</strong> inbox.</p>
+<h3>When a handoff happens</h3>
+<div class="step"><div class="step-n">1</div><div>The visitor asks for a human</div></div>
+<div class="step"><div class="step-n">2</div><div>The agent isn't confident it can answer correctly</div></div>
+<div class="step"><div class="step-n">3</div><div>The conversation involves something only you can decide — a custom quote, a complaint, a scheduling change</div></div>
+<h3>What happens next</h3>
+<p>You're notified (email, SMS, or both — your choice in webchat settings), the conversation is flagged in <strong>Messages</strong>, and every handoff is logged so you can review where the agent needed help — which is also your to-do list for improving the knowledge base.</p>
+    `
+  },
+  'inbox-manage': {
+    title: 'Managing your inbox',
+    category: 'Webchat & Inbox',
+    readTime: '2 min read',
+    body: `
+<h3>Every conversation in one place</h3>
+<p><strong>Messages</strong> in your dashboard sidebar is where all webchat conversations live — the ones the AI handled, the ones handed off to you, and everything in between.</p>
+<h3>Working the inbox</h3>
+<div class="step"><div class="step-n">1</div><div>Filter by <strong>open</strong> to see conversations waiting on you</div></div>
+<div class="step"><div class="step-n">2</div><div>Click a conversation to read the full history — including what the AI agent already said</div></div>
+<div class="step"><div class="step-n">3</div><div>Reply right in the thread — the visitor sees it in the chat widget (or by text if the SMS bridge is on)</div></div>
+<div class="tip">💡 Speed wins leads. A visitor chatting on your site is comparing you to two competitors in other tabs — replying within minutes is the difference-maker.</div>
+    `
+  },
+  'sms-bridge': {
+    title: 'How the SMS bridge works',
+    category: 'Webchat & Inbox',
+    readTime: '2 min read',
+    body: `
+<h3>Run your webchat from your phone</h3>
+<p>With the SMS bridge on, webchat doesn't chain you to the dashboard: new visitor messages reach you by <strong>text</strong>, and your text replies go straight back into the visitor's chat window.</p>
+<h3>Setting it up</h3>
+<div class="step"><div class="step-n">1</div><div>Go to <strong>Settings → Webchat & AI Agent</strong></div></div>
+<div class="step"><div class="step-n">2</div><div>Turn on <strong>SMS notifications</strong> and <strong>SMS replies</strong>, and confirm the phone number to use</div></div>
+<div class="step"><div class="step-n">3</div><div>That's it — next time a lead comes in while you're on a job, just reply to the text</div></div>
+<div class="tip">✓ Everything still lands in your Messages inbox too, so the full conversation history stays in one place no matter where you replied from.</div>
+    `
+  },
+  'webchat-notifications': {
+    title: 'Webchat notification settings',
+    category: 'Webchat & Inbox',
+    readTime: '2 min read',
+    body: `
+<h3>Never miss a lead</h3>
+<p>Every webchat conversation is a potential customer. Notifications make sure new chats and handoffs reach you wherever you are.</p>
+<h3>Your options</h3>
+<div class="step"><div class="step-n">1</div><div><strong>Email notifications</strong> — a message to your chosen address when a new conversation starts or the AI hands off</div></div>
+<div class="step"><div class="step-n">2</div><div><strong>SMS notifications</strong> — a text to your phone for the same events (pairs with the SMS bridge so you can reply by text too)</div></div>
+<h3>Where to set them</h3>
+<p>Both live in <strong>Settings → Webchat & AI Agent</strong>, per location — so the right person gets notified for each location you run.</p>
+<div class="tip">💡 Running a team? Point email notifications at a shared inbox and SMS at whoever is on duty.</div>
+    `
+  },
+  'contact-import': {
+    title: 'Importing contacts for campaigns',
+    category: 'SMS Campaigns',
+    readTime: '2 min read',
+    body: `
+<h3>Build your campaign audience</h3>
+<p>SMS campaigns send to contacts in your <strong>Campaigns → Contacts</strong> list. Import them once and reuse the list for every campaign.</p>
+<h3>Step by step</h3>
+<div class="step"><div class="step-n">1</div><div>Export your customers as a <strong>.csv</strong> from your CRM or spreadsheet (name and mobile number at minimum)</div></div>
+<div class="step"><div class="step-n">2</div><div>Go to <strong>Campaigns → Contacts</strong> and upload the file</div></div>
+<div class="step"><div class="step-n">3</div><div>Review the preview, match the columns, and confirm</div></div>
+<div class="warn">⚠️ Only import people who have agreed to receive texts from your business. Texting without consent violates TCPA rules and carries serious fines — see the TCPA compliance guide before your first campaign.</div>
+<div class="tip">💡 Anyone who has opted out previously is automatically excluded from sends, even if they appear in a new import.</div>
+    `
+  },
+  'segments': {
+    title: 'Creating audience segments',
+    category: 'SMS Campaigns',
+    readTime: '2 min read',
+    body: `
+<h3>Right message, right people</h3>
+<p>Segments let you group contacts in <strong>Campaigns → Segments</strong> so each campaign goes to the people it's actually relevant to — which means better response rates and fewer opt-outs.</p>
+<h3>Segments that work for local businesses</h3>
+<div class="step"><div class="step-n">1</div><div><strong>Recent customers</strong> — served in the last 90 days; great for review requests and referral asks</div></div>
+<div class="step"><div class="step-n">2</div><div><strong>Lapsed customers</strong> — haven't been back in 6+ months; perfect for a win-back offer</div></div>
+<div class="step"><div class="step-n">3</div><div><strong>VIPs / repeat customers</strong> — first access to promotions and seasonal slots</div></div>
+<p>When you compose a campaign, pick the segment instead of the full list. Smaller, targeted sends also stretch your monthly SMS limit much further.</p>
+    `
+  },
+  'campaign-limits': {
+    title: 'SMS campaign limits by plan',
+    category: 'SMS Campaigns',
+    readTime: '2 min read',
+    body: `
+<h3>How limits work</h3>
+<p>Each plan includes a monthly SMS campaign allowance. The <strong>usage meter</strong> at the top of the Campaigns page shows messages used, messages remaining, and how far through the month you are.</p>
+<h3>The details</h3>
+<div class="step"><div class="step-n">1</div><div>Every message in a campaign counts toward the limit — a campaign to 500 contacts uses 500 messages</div></div>
+<div class="step"><div class="step-n">2</div><div>The allowance resets at the start of each billing month</div></div>
+<div class="step"><div class="step-n">3</div><div>If a campaign would exceed your remaining allowance, trim the audience with a segment or wait for the reset</div></div>
+<div class="tip">💡 Consistently hitting the ceiling? Upgrading your plan raises the allowance — see <strong>Settings → Billing</strong>, or check the Billing FAQ for what each plan includes.</div>
+    `
+  },
+  'tcpa-compliance': {
+    title: 'TCPA compliance guide',
+    category: 'SMS Campaigns',
+    readTime: '4 min read',
+    body: `
+<h3>The rules of texting customers</h3>
+<p>The TCPA (Telephone Consumer Protection Act) is the US law governing marketing texts. Violations can cost <strong>$500–$1,500 per message</strong>, so this is worth five minutes of your time.</p>
+<h3>The essentials</h3>
+<div class="step"><div class="step-n">1</div><div><strong>Get consent first.</strong> Customers must agree to receive texts from you — a checkbox at booking, a signed form, or a verbal yes you record. Buying phone lists is never OK.</div></div>
+<div class="step"><div class="step-n">2</div><div><strong>Identify yourself.</strong> Every message should make clear which business it's from.</div></div>
+<div class="step"><div class="step-n">3</div><div><strong>Honor opt-outs instantly.</strong> SwarmReply processes STOP replies automatically and blocks future sends to that number — you never have to manage this manually.</div></div>
+<div class="step"><div class="step-n">4</div><div><strong>Text at reasonable hours.</strong> Stay inside 8am–9pm in the customer's local time.</div></div>
+<div class="warn">⚠️ This guide is practical information, not legal advice. If you run large campaigns or operate in multiple states, a quick consultation with an attorney is cheap insurance.</div>
+    `
+  },
+  'opt-outs': {
+    title: 'Managing opt-outs',
+    category: 'SMS Campaigns',
+    readTime: '2 min read',
+    body: `
+<h3>Opt-outs are handled for you</h3>
+<p>When a contact replies <strong>STOP</strong> (or STOPALL, UNSUBSCRIBE, CANCEL, END, QUIT), SwarmReply automatically marks them as opted out and excludes them from every future campaign. There is nothing you need to do — and no way to accidentally text them again.</p>
+<h3>Opting back in</h3>
+<p>If a customer changes their mind, they can reply <strong>START</strong>, <strong>YES</strong>, or <strong>UNSTOP</strong> to the same number and they'll be re-subscribed automatically.</p>
+<h3>Why this protects you</h3>
+<p>Honoring opt-outs immediately is a legal requirement under the TCPA, not a courtesy. Because it's enforced automatically at the sending level, an opted-out contact stays excluded even if they show up again in a fresh CSV import.</p>
+<div class="tip">✓ A few opt-outs per campaign is normal. A spike usually means the audience was too broad or the message wasn't relevant — tighten your segment next time.</div>
+    `
+  },
+  'sms-best-practices': {
+    title: 'SMS campaign best practices',
+    category: 'SMS Campaigns',
+    readTime: '3 min read',
+    body: `
+<h3>What separates great campaigns from spam</h3>
+<div class="step"><div class="step-n gold">1</div><div><strong>Lead with value.</strong> A real offer, useful reminder, or genuine update — if you'd be annoyed receiving it, don't send it.</div></div>
+<div class="step"><div class="step-n gold">2</div><div><strong>Keep it under 160 characters</strong> where you can. One message, one idea, one clear action.</div></div>
+<div class="step"><div class="step-n gold">3</div><div><strong>Identify yourself</strong> in the first few words — "Hi, it's Maria from Sunrise Plumbing…"</div></div>
+<div class="step"><div class="step-n gold">4</div><div><strong>Send mid-morning or early evening</strong>, never late at night.</div></div>
+<div class="step"><div class="step-n gold">5</div><div><strong>Respect frequency.</strong> One or two campaigns a month keeps your list healthy; weekly blasts burn it down.</div></div>
+<div class="step"><div class="step-n gold">6</div><div><strong>Segment.</strong> A win-back offer to lapsed customers and a VIP early-access text will both outperform one generic blast to everyone.</div></div>
+<div class="tip">💡 Track results per campaign and double down on what your audience actually responds to — your customers will tell you what they want by what they click.</div>
+    `
+  },
+  'listings-overview': {
+    title: 'How listings sync will work',
+    category: 'Listings Sync',
+    readTime: '2 min read',
+    body: `
+<h3>Coming to SwarmReply</h3>
+<p>Listings sync is in development. When it launches, SwarmReply will push your business name, address, phone, and hours to the major directories from one place — and flag mismatches that confuse customers and hurt local search ranking.</p>
+<h3>What to do today</h3>
+<div class="step"><div class="step-n">1</div><div>Keep your <strong>Google Business Profile</strong> complete and current at business.google.com — it's the listing that matters most by far</div></div>
+<div class="step"><div class="step-n">2</div><div>Make sure your name, address, and phone are written <strong>identically</strong> everywhere they appear (your website, Google, Yelp, Facebook)</div></div>
+<div class="tip">💡 Consistent business details across the web is one of the strongest local SEO signals — it's worth an hour to audit yours manually while sync is on the way.</div>
+    `
+  },
+  'fix-mismatch': {
+    title: 'Fixing a listing mismatch',
+    category: 'Listings Sync',
+    readTime: '2 min read',
+    body: `
+<h3>Why mismatches matter</h3>
+<p>If your phone number is different on Google than on Yelp, or your old address still appears somewhere, customers get confused and search engines trust your listings less. Automated mismatch detection is part of the listings sync feature currently in development.</p>
+<h3>How to fix mismatches manually today</h3>
+<div class="step"><div class="step-n">1</div><div>Write down your canonical details: exact business name, address, phone, website, hours</div></div>
+<div class="step"><div class="step-n">2</div><div>Check the big four — Google Business Profile, Yelp, Facebook, Apple Maps — and correct anything that differs</div></div>
+<div class="step"><div class="step-n">3</div><div>Search your business name and fix stragglers (old directories, chamber of commerce pages) as you find them</div></div>
+<div class="tip">✓ Moved or changed numbers recently? Old details linger for years — this audit is especially worth doing.</div>
+    `
+  },
+  'apple-maps': {
+    title: 'Getting listed on Apple Maps',
+    category: 'Listings Sync',
+    readTime: '2 min read',
+    body: `
+<h3>Why Apple Maps matters</h3>
+<p>Roughly half of US smartphones are iPhones, and Apple Maps is their default navigation. If your listing is missing or wrong, those customers literally can't find you. Apple Maps will be part of SwarmReply listings sync when it launches; here's how to get listed today.</p>
+<h3>Step by step</h3>
+<div class="step"><div class="step-n">1</div><div>Go to <strong>businessconnect.apple.com</strong> and sign in with an Apple ID</div></div>
+<div class="step"><div class="step-n">2</div><div>Search for your business — it may already exist from public data. Claim it, or add it new</div></div>
+<div class="step"><div class="step-n">3</div><div>Verify ownership (Apple typically calls your business phone)</div></div>
+<div class="step"><div class="step-n">4</div><div>Complete your profile with the same details you use on Google — identical name, address, and phone</div></div>
+    `
+  },
+  'bing-places': {
+    title: 'Getting listed on Bing Places',
+    category: 'Listings Sync',
+    readTime: '2 min read',
+    body: `
+<h3>Ten minutes, free visibility</h3>
+<p>Bing powers search for Microsoft Edge, Windows, and increasingly AI assistants — a meaningful slice of local searches that most of your competitors ignore. Bing Places will be part of SwarmReply listings sync when it launches; claiming it manually today takes about ten minutes.</p>
+<h3>Step by step</h3>
+<div class="step"><div class="step-n">1</div><div>Go to <strong>bingplaces.com</strong> and sign in with a Microsoft account</div></div>
+<div class="step"><div class="step-n">2</div><div>Use <strong>"Import from Google Business Profile"</strong> — Bing copies your existing Google listing, which keeps details consistent automatically</div></div>
+<div class="step"><div class="step-n">3</div><div>Verify your business and you're done</div></div>
+<div class="tip">💡 The Google import option is the whole trick — never re-type your details by hand when you can sync them.</div>
+    `
+  },
+  'insights-overview': {
+    title: 'Reports dashboard overview',
+    category: 'Insights & Analytics',
+    readTime: '3 min read',
+    body: `
+<h3>Your reputation, measured</h3>
+<p><strong>Reports</strong> in the sidebar is your analytics hub. Everything on the Analytics tab is computed from your real data — reviews, requests, surveys, and campaigns — with no estimates or filler.</p>
+<h3>What you'll find</h3>
+<div class="step"><div class="step-n">1</div><div><strong>Review overview</strong> — total reviews, average rating, and the star-by-star distribution</div></div>
+<div class="step"><div class="step-n">2</div><div><strong>Trends</strong> — your rating over 12 months, review volume by week, and sentiment over the last 8 weeks</div></div>
+<div class="step"><div class="step-n">3</div><div><strong>Requests & surveys</strong> — how many review requests you've sent and how your NPS responses break down</div></div>
+<div class="step"><div class="step-n">4</div><div><strong>Campaigns</strong> — sends and results from your SMS campaigns</div></div>
+<div class="tip">💡 Use the range picker (7 days / 30 days / 90 days / 12 months) to zoom between "how's this week going" and "how's this year going".</div>
+<p>Competitor tracking, listing accuracy, and Google Posts analytics are coming to Reports soon.</p>
+    `
+  },
+  'sentiment-score': {
+    title: 'Understanding your sentiment score',
+    category: 'Insights & Analytics',
+    readTime: '2 min read',
+    body: `
+<h3>How sentiment is calculated</h3>
+<p>Sentiment groups your reviews by star rating: <strong>4–5 stars count as positive</strong>, <strong>3 stars as neutral</strong>, and <strong>1–2 stars as negative</strong>. The sentiment trend in Reports shows how that mix shifts week by week over the last 8 weeks.</p>
+<h3>How to read it</h3>
+<div class="step"><div class="step-n">1</div><div><strong>Steady and mostly positive</strong> — healthy; keep the review requests flowing</div></div>
+<div class="step"><div class="step-n">2</div><div><strong>A negative spike in one week</strong> — something specific happened; read that week's reviews and find the common thread</div></div>
+<div class="step"><div class="step-n">3</div><div><strong>A slow slide</strong> — a process or staffing issue creeping in; your detractor survey feedback usually names it</div></div>
+<div class="tip">💡 Sentiment moves before your average rating does — a 4.8 with two bad weeks of sentiment is an early warning your overall score hasn't shown yet.</div>
+    `
+  },
+  'keyword-tracker': {
+    title: 'Using the keyword tracker',
+    category: 'Insights & Analytics',
+    readTime: '3 min read',
+    body: `
+<h3>Know where you rank</h3>
+<p>Rank Tracking (under <strong>Get Found</strong> in the sidebar) follows where your business appears in search results for the keywords that matter — "plumber near me", "best salon in Auburn", whatever your customers actually type.</p>
+<h3>Setting it up</h3>
+<div class="step"><div class="step-n">1</div><div>Open <strong>Get Found</strong> and switch to <strong>Rank Tracking</strong></div></div>
+<div class="step"><div class="step-n">2</div><div>Add the keywords to track — your Setup Guide can suggest a starter set based on your business type and city</div></div>
+<div class="step"><div class="step-n">3</div><div>Check back over the following weeks to see positions and movement for each keyword</div></div>
+<div class="tip">💡 Track 5–15 keywords you'd genuinely want to win, mixing service terms ("water heater repair") with local intent ("near me", your city name). More isn't better — focused is better.</div>
+    `
+  },
+  'competitor-benchmarking': {
+    title: 'Competitor benchmarking',
+    category: 'Insights & Analytics',
+    readTime: '2 min read',
+    body: `
+<h3>Coming to Reports</h3>
+<p>Competitor benchmarking is in development. When it arrives in your Reports dashboard, you'll be able to track competitors' ratings, review volume, and momentum next to your own — so "are we winning?" gets a real answer.</p>
+<h3>How to benchmark manually today</h3>
+<div class="step"><div class="step-n">1</div><div>Pick your three closest competitors</div></div>
+<div class="step"><div class="step-n">2</div><div>Once a month, note their Google rating and total review count alongside yours</div></div>
+<div class="step"><div class="step-n">3</div><div>Watch the <strong>pace</strong> — a competitor adding 20 reviews a month is telling you what consistent review requests can do</div></div>
+<div class="tip">💡 The goal isn't to obsess over rivals — it's to know whether your review growth is keeping up with your market.</div>
+    `
+  },
+  'rating-velocity': {
+    title: 'Rating velocity explained',
+    category: 'Insights & Analytics',
+    readTime: '2 min read',
+    body: `
+<h3>Fresh reviews beat old ones</h3>
+<p>Rating velocity is the <strong>pace</strong> of your incoming reviews. Google and customers both weigh recency heavily: a 4.7 with ten reviews this month beats a 4.9 whose last review is from 2024.</p>
+<h3>Where to see yours</h3>
+<p>The <strong>review volume trend</strong> in Reports shows your reviews per week. What you want is a steady drumbeat — not a burst after a campaign followed by months of silence.</p>
+<h3>How to keep velocity up</h3>
+<div class="step"><div class="step-n">1</div><div>Make the review request part of every job's closing routine</div></div>
+<div class="step"><div class="step-n">2</div><div>Automate it — the Jobber and Stripe triggers send requests the moment work completes, without anyone remembering to</div></div>
+<div class="step"><div class="step-n">3</div><div>Use Bulk Send occasionally to catch customers who slipped through</div></div>
+    `
+  },
+  'monthly-report': {
+    title: 'Your weekly summary email',
+    category: 'Insights & Analytics',
+    readTime: '2 min read',
+    body: `
+<h3>Your week, delivered</h3>
+<p>SwarmReply sends a <strong>weekly summary email</strong> recapping what happened with your reputation — reviews handled, your current average rating, and the highlights worth knowing — so you stay informed without logging in.</p>
+<h3>Controlling it</h3>
+<div class="step"><div class="step-n">1</div><div>Go to <strong>Settings → Account → Alert preferences</strong></div></div>
+<div class="step"><div class="step-n">2</div><div>Toggle the <strong>weekly digest</strong> on or off (negative-review and all-review alerts live here too)</div></div>
+<h3>Want more detail?</h3>
+<p>The <strong>Reports</strong> dashboard has the full picture any time — trends, distributions, NPS, and campaign results across whatever date range you choose.</p>
+    `
+  },
+  'llm-setup': {
+    title: 'Setting up AI visibility monitoring',
+    category: 'AI Visibility Monitoring',
+    readTime: '3 min read',
+    body: `
+<h3>Get found by AI, not just Google</h3>
+<p>Customers increasingly ask ChatGPT, Claude, and Gemini for recommendations — "best electrician near Auburn" — instead of searching. AI Visibility monitoring shows whether those assistants mention <strong>you</strong>.</p>
+<h3>Step by step</h3>
+<div class="step"><div class="step-n">1</div><div>Open <strong>Get Found → AI Visibility</strong></div></div>
+<div class="step"><div class="step-n">2</div><div>Add the <strong>queries</strong> to monitor — the questions a customer would actually ask. Your Setup Guide can suggest a starter set for your business type and area</div></div>
+<div class="step"><div class="step-n">3</div><div>Run a scan — SwarmReply asks ChatGPT, Claude, and Gemini your queries and records whether your business comes up and what's said about it</div></div>
+<div class="step"><div class="step-n">4</div><div>Review the results, then re-scan over time to track your progress</div></div>
+<div class="tip">💡 Monitor 5–10 realistic queries. "Best [your service] in [your city]" and "who should I call for [problem]" are the patterns customers actually use.</div>
+    `
+  },
+  'visibility-score': {
+    title: 'Understanding your visibility score',
+    category: 'AI Visibility Monitoring',
+    readTime: '2 min read',
+    body: `
+<h3>What the score means</h3>
+<p>Your visibility score reflects how often the AI assistants — ChatGPT, Claude, and Gemini — mention your business when asked the queries you monitor. Mentioned in most answers: high score. Invisible: low score.</p>
+<h3>Reading your results</h3>
+<div class="step"><div class="step-n">1</div><div><strong>Per query</strong> — see exactly which questions you show up for and which you don't</div></div>
+<div class="step"><div class="step-n">2</div><div><strong>Per model</strong> — assistants differ; you might appear in Gemini (which leans on Google data) but not ChatGPT</div></div>
+<div class="step"><div class="step-n">3</div><div><strong>Over time</strong> — re-scans show whether your visibility work is paying off</div></div>
+<div class="tip">💡 Don't panic at a low first score — most local businesses are invisible to AI today. That's the opportunity: the bar is low and your competitors aren't watching it.</div>
+    `
+  },
+  'improve-visibility': {
+    title: 'How to improve your AI visibility',
+    category: 'AI Visibility Monitoring',
+    readTime: '3 min read',
+    body: `
+<h3>What AI assistants actually weigh</h3>
+<p>AI assistants recommend businesses that look established, well-reviewed, and consistently described across the web. You can influence every one of those signals.</p>
+<h3>The playbook</h3>
+<div class="step"><div class="step-n gold">1</div><div><strong>Grow review volume and recency</strong> — reviews are the strongest trust signal AI models lean on. Steady review requests are the engine here</div></div>
+<div class="step"><div class="step-n gold">2</div><div><strong>Complete your Google Business Profile</strong> — categories, services, photos, hours; assistants draw heavily on it</div></div>
+<div class="step"><div class="step-n gold">3</div><div><strong>Keep your details identical everywhere</strong> — same name, address, phone on your site, Google, Yelp, and Facebook</div></div>
+<div class="step"><div class="step-n gold">4</div><div><strong>Say what you do, in plain words, on your website</strong> — pages that literally answer "water heater repair in Auburn" give AI something to cite</div></div>
+<div class="step"><div class="step-n gold">5</div><div><strong>Re-scan monthly</strong> and watch which queries flip from invisible to mentioned</div></div>
+    `
+  },
+  'google-posts-settings': {
+    title: 'Google Posts auto-publisher',
+    category: 'Settings',
+    readTime: '1 min read',
+    body: `
+<h3>Coming soon</h3>
+<p>The Google Posts auto-publisher — publishing updates, offers, and highlights straight to your Google Business Profile from SwarmReply — is part of our social posting launch arriving later this year, alongside posting to Facebook, Instagram, and LinkedIn.</p>
+<h3>In the meantime</h3>
+<p>You can post manually from your Google Business Profile at <strong>business.google.com</strong> — a fresh post every week or two keeps your profile active, which Google rewards.</p>
+<div class="tip">💡 Watch your dashboard — social features will appear in Settings and Campaigns as soon as they go live.</div>
+    `
+  },
+  'review-links': {
+    title: 'Setting up your review links',
+    category: 'Settings',
+    readTime: '2 min read',
+    body: `
+<h3>One setting, used everywhere</h3>
+<p><strong>Settings → Review Links</strong> stores your Google, Yelp, and Facebook review URLs per location. These links power your request templates' platform buttons <em>and</em> the buttons survey promoters see — set them once and everything stays in sync.</p>
+<h3>Step by step</h3>
+<div class="step"><div class="step-n">1</div><div>Go to <strong>Settings → Review Links</strong> and pick the location</div></div>
+<div class="step"><div class="step-n">2</div><div><strong>Google:</strong> search your business on Google, open your Business Profile, click "Ask for reviews", and copy the short link</div></div>
+<div class="step"><div class="step-n">3</div><div><strong>Yelp / Facebook (optional):</strong> paste the URL of your Yelp listing and your Facebook page's Reviews tab</div></div>
+<div class="step"><div class="step-n">4</div><div>Save — your templates and surveys pick up the new links immediately</div></div>
+<div class="tip">✓ Multiple locations? Each keeps its own links, so customers always land on the right listing.</div>
+    `
+  },
+  'reply-templates': {
+    title: 'Customising AI reply style',
+    category: 'AI Replies',
+    readTime: '2 min read',
+    body: `
+<h3>What's coming</h3>
+<p>When AI replies launch, SwarmReply will draft on-brand responses to your reviews automatically — and you'll control the style: tone (warm, professional, casual and more), sign-off, and the details that make replies sound like <em>you</em> rather than a bot.</p>
+<div class="warn">⚠️ AI review replies are rolling out later in 2026 — this feature isn't switched on in your dashboard yet. Until then, you can view and manage incoming reviews from the <strong>Reviews</strong> tab and reply directly on Google or Facebook.</div>
+<h3>Prepare now</h3>
+<p>Make sure your business details and brand voice are dialed in via the Setup Guide — the AI uses them to write replies that fit your business from day one.</p>
+    `
+  },
+  'multi-language': {
+    title: 'Multi-language replies',
+    category: 'AI Replies',
+    readTime: '1 min read',
+    body: `
+<h3>What's coming</h3>
+<p>As part of the AI replies launch, reviews written in another language will get replies in that same language — a customer who reviews you in Spanish gets a fluent Spanish thank-you, automatically.</p>
+<div class="warn">⚠️ AI review replies are rolling out later in 2026 — this feature isn't switched on in your dashboard yet. Until then, you can view and manage incoming reviews from the <strong>Reviews</strong> tab and reply directly on Google or Facebook.</div>
+    `
+  },
+  'reply-quality': {
+    title: 'How reply quality is protected',
+    category: 'AI Replies',
+    readTime: '2 min read',
+    body: `
+<h3>What's coming</h3>
+<p>AI replies will ship with built-in guardrails: sensitive reviews (legal threats, health or safety claims, accusations) get a safe, careful response or are flagged for you instead of being answered automatically — so the AI never makes a delicate situation worse on your behalf.</p>
+<div class="warn">⚠️ AI review replies are rolling out later in 2026 — this feature isn't switched on in your dashboard yet. Until then, you can view and manage incoming reviews from the <strong>Reviews</strong> tab and reply directly on Google or Facebook.</div>
+<h3>Why this matters</h3>
+<p>One careless reply to an angry review does more damage than the review itself. Quality protection is the difference between automation you can trust and automation you have to babysit.</p>
+    `
+  },
+  'edit-reply': {
+    title: 'Reviewing replies before they post',
+    category: 'AI Replies',
+    readTime: '2 min read',
+    body: `
+<h3>What's coming</h3>
+<p>The AI replies launch includes an <strong>approval mode</strong>: instead of posting automatically, drafted replies wait in an approvals queue where you can edit, approve, or discard each one. Full autopilot or final say — your choice.</p>
+<div class="warn">⚠️ AI review replies are rolling out later in 2026 — this feature isn't switched on in your dashboard yet. Until then, you can view and manage incoming reviews from the <strong>Reviews</strong> tab and reply directly on Google or Facebook.</div>
+    `
+  },
+  'facebook-reviews': {
+    title: 'Connecting Facebook Reviews',
+    category: 'Integrations',
+    readTime: '2 min read',
+    body: `
+<h3>What this does</h3>
+<p>Connecting your Facebook page lets SwarmReply monitor the reviews (recommendations) customers leave there and manage replies — so Facebook feedback gets the same attention as Google.</p>
+<h3>Step by step</h3>
+<div class="step"><div class="step-n">1</div><div>Go to <strong>Integrations</strong> in your dashboard</div></div>
+<div class="step"><div class="step-n">2</div><div>Find <strong>Facebook Reviews</strong> and click Connect</div></div>
+<div class="step"><div class="step-n">3</div><div>Log into Facebook with an account that <strong>admins your business page</strong> and approve the permissions</div></div>
+<div class="step"><div class="step-n">4</div><div>Pick the page — new reviews start flowing into your Reviews tab automatically</div></div>
+<div class="tip">✓ Also paste your page's review URL into <strong>Settings → Review Links</strong> so happy survey customers can be routed to Facebook too.</div>
+    `
+  },
+  'connect-jobber': {
+    title: 'Connecting Jobber',
+    category: 'Integrations',
+    readTime: '2 min read',
+    body: `
+<h3>What this does</h3>
+<p>The Jobber integration closes the loop on review timing: when a job is marked <strong>complete</strong> in Jobber, SwarmReply automatically sends that customer a review request — at the exact moment the experience is freshest.</p>
+<h3>Step by step</h3>
+<div class="step"><div class="step-n">1</div><div>Go to <strong>Integrations</strong> in your dashboard</div></div>
+<div class="step"><div class="step-n">2</div><div>Find <strong>Jobber</strong> and click Connect</div></div>
+<div class="step"><div class="step-n">3</div><div>Log into your Jobber account and approve the connection</div></div>
+<div class="step"><div class="step-n">4</div><div>Done — completed jobs now trigger review requests using your default template, with the customer's name and contact details pulled from the job</div></div>
+<div class="tip">💡 Polish your default template in <strong>Grow → Request Templates</strong> first — every automated request will use it. You can disconnect any time from the same Integrations page.</div>
+    `
+  },
+  'zapier-setup': {
+    title: 'Zapier integration',
+    category: 'Integrations',
+    readTime: '1 min read',
+    body: `
+<h3>Coming soon</h3>
+<p>A Zapier integration — connecting SwarmReply to thousands of other apps with triggers like "new review" and actions like "send review request" — is on our roadmap but not live yet.</p>
+<h3>What to use today</h3>
+<p>Most automation needs are already covered by our native integrations: <strong>Jobber</strong> and the <strong>Stripe payment trigger</strong> send review requests automatically, and <strong>Square, HubSpot, Shopify, Mindbody, Calendly, and Acuity</strong> connect your customer data. See the Integrations page in your dashboard.</p>
+<div class="tip">💡 Have a workflow these don't cover? Email hello@swarmreply.com and tell us — real requests decide what we build next.</div>
+    `
+  },
+  'api-key': {
+    title: 'Does SwarmReply have an API?',
+    category: 'Integrations',
+    readTime: '1 min read',
+    body: `
+<h3>Not yet — here's the honest answer</h3>
+<p>A public SwarmReply API (with API keys for custom integrations) is planned but not available today. The API section in Settings will light up when it ships.</p>
+<h3>What covers most needs today</h3>
+<p>Native integrations handle the common cases: <strong>Jobber</strong> and the <strong>Stripe trigger</strong> automate review requests, <strong>CSV import</strong> brings contacts in bulk, and the <strong>Rep Widget</strong> and <strong>webchat</strong> embed on any website with a snippet.</p>
+<div class="tip">💡 Building something custom and need API access? Email hello@swarmreply.com — early API partners help shape what we ship.</div>
     `
   }
 };
