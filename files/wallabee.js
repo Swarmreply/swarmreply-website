@@ -1,5 +1,5 @@
 // ============================================
-// files/wallabee.js  —  v2 (single combined pill launcher)
+// files/wallabee.js  —  v3 (single pill + dvh panel sizing)
 // Wallabee — SwarmReply's floating support bee, for the marketing site.
 // Self-contained: inject <script src="/wallabee.js" defer></script> on any
 // page. Answers come from the Help Center catalog (word-overlap matching,
@@ -163,7 +163,7 @@
   '.wb-ic{width:34px;height:34px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;flex-shrink:0}' +
   '.wb-ic img{width:26px;height:26px;object-fit:contain}' +
   '.wb-ic.x{background:rgba(10,10,10,.12);font-size:1rem;font-weight:700}' +
-  '.wb-panel{position:fixed;bottom:96px;right:20px;z-index:9000;width:min(360px,calc(100vw - 32px));height:min(540px,calc(100vh - 140px));background:#f8f7f4;border-radius:18px;border:1px solid #e4e0d8;box-shadow:0 12px 48px rgba(0,0,0,.18);display:flex;flex-direction:column;overflow:hidden;font-family:"DM Sans",sans-serif}' +
+  '.wb-panel{position:fixed;bottom:96px;right:20px;z-index:9000;width:min(360px,calc(100vw - 32px));height:min(540px,calc(100vh - 140px));height:min(540px,calc(100dvh - 140px));background:#f8f7f4;border-radius:18px;border:1px solid #e4e0d8;box-shadow:0 12px 48px rgba(0,0,0,.18);display:flex;flex-direction:column;overflow:hidden;font-family:"DM Sans",sans-serif}' +
   '.wb-head{background:linear-gradient(135deg,#f5c842,#d4a515);padding:14px 16px;display:flex;align-items:center;gap:11px}' +
   '.wb-avatar{width:40px;height:40px;border-radius:50%;background:#fff;border:1px solid #e4e0d8;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;overflow:hidden}' +
   '.wb-avatar img{width:32px;height:32px;object-fit:contain}' +
