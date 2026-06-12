@@ -1615,44 +1615,55 @@ var articles = {
     category: 'AI Replies',
     readTime: '2 min read',
     body: `
-<h3>What's coming</h3>
-<p>When AI replies launch, SwarmReply will draft on-brand responses to your reviews automatically — and you'll control the style: tone (warm, professional, casual and more), sign-off, and the details that make replies sound like <em>you</em> rather than a bot.</p>
-<div class="warn">⚠️ AI review replies are rolling out later in 2026 — this feature isn't switched on in your dashboard yet. Until then, you can view and manage incoming reviews from the <strong>Reviews</strong> tab and reply directly on Google or Facebook.</div>
-<h3>Prepare now</h3>
-<p>Make sure your business details and brand voice are dialed in via the Setup Guide — the AI uses them to write replies that fit your business from day one.</p>
-    `
+<h3>Make replies sound like you</h3>
+<p>SwarmReply drafts an on-brand response to every new Google review automatically. You control the voice in <strong>Settings → AI Replies</strong>:</p>
+<div class="step"><div class="step-n">1</div><div><strong>Tone</strong> — warm, professional, casual and more; pick what matches your brand</div></div>
+<div class="step"><div class="step-n">2</div><div><strong>Always include</strong> — phrases or details every reply should mention (e.g. your team name, a booking link)</div></div>
+<div class="step"><div class="step-n">3</div><div><strong>Never include</strong> — anything replies must avoid (discounts, specific staff names, etc.)</div></div>
+<p>Changes apply to every reply drafted from that moment on. New reviews are picked up automatically about every 30 minutes.</p>
+<div class="tip">💡 Want to sign off on each reply before it posts? Turn on the approval queue — see <em>Editing a reply before it posts</em>.</div>
+`,
   },
   'multi-language': {
-    title: 'Multi-language replies',
+    title: 'Replies in other languages',
     category: 'AI Replies',
     readTime: '1 min read',
     body: `
-<h3>What's coming</h3>
-<p>As part of the AI replies launch, reviews written in another language will get replies in that same language — a customer who reviews you in Spanish gets a fluent Spanish thank-you, automatically.</p>
-<div class="warn">⚠️ AI review replies are rolling out later in 2026 — this feature isn't switched on in your dashboard yet. Until then, you can view and manage incoming reviews from the <strong>Reviews</strong> tab and reply directly on Google or Facebook.</div>
-    `
+<h3>Where multi-language stands today</h3>
+<p>AI replies currently post in English. Language detection is built into the platform, and fully automatic same-language replies are on the near-term roadmap.</p>
+<h3>Handling non-English reviews now</h3>
+<div class="step"><div class="step-n">1</div><div>Switch to <strong>approval mode</strong> (Reviews → Approvals) so non-English reviews wait for you instead of getting an English auto-reply</div></div>
+<div class="step"><div class="step-n">2</div><div>Use <strong>Edit</strong> on the draft to translate or rewrite it in the reviewer's language, then post</div></div>
+<div class="warn">⚠️ If a meaningful share of your reviews come in another language, we recommend approval mode until automatic same-language replies ship.</div>
+`,
   },
   'reply-quality': {
-    title: 'How reply quality is protected',
+    title: 'How SwarmReply writes quality replies',
     category: 'AI Replies',
     readTime: '2 min read',
     body: `
-<h3>What's coming</h3>
-<p>AI replies will ship with built-in guardrails: sensitive reviews (legal threats, health or safety claims, accusations) get a safe, careful response or are flagged for you instead of being answered automatically — so the AI never makes a delicate situation worse on your behalf.</p>
-<div class="warn">⚠️ AI review replies are rolling out later in 2026 — this feature isn't switched on in your dashboard yet. Until then, you can view and manage incoming reviews from the <strong>Reviews</strong> tab and reply directly on Google or Facebook.</div>
-<h3>Why this matters</h3>
-<p>One careless reply to an angry review does more damage than the review itself. Quality protection is the difference between automation you can trust and automation you have to babysit.</p>
-    `
+<h3>What goes into every reply</h3>
+<p>Replies are drafted by Claude, one of the leading AI models, using your business profile: your business name, type, tone setting, and the specifics of the review itself — the reviewer's name, their star rating, and what they actually wrote. Five-star raves get genuine thanks; critical reviews get a measured, professional response that takes the conversation offline.</p>
+<h3>Making replies even better</h3>
+<div class="step"><div class="step-n">1</div><div>Fill in your business details fully in <strong>Settings</strong> — the more context, the more specific the reply</div></div>
+<div class="step"><div class="step-n">2</div><div>Use <strong>Always include</strong> for the touches that make replies unmistakably yours</div></div>
+<div class="step"><div class="step-n">3</div><div>Run approval mode for a week when you start — edit anything that misses your voice, then switch to automatic once you trust it</div></div>
+<div class="tip">💡 Replying to every review — positive and negative — is one of the strongest signals for both local SEO and AI search visibility.</div>
+`,
   },
   'edit-reply': {
-    title: 'Reviewing replies before they post',
+    title: 'Editing a reply before it posts',
     category: 'AI Replies',
     readTime: '2 min read',
     body: `
-<h3>What's coming</h3>
-<p>The AI replies launch includes an <strong>approval mode</strong>: instead of posting automatically, drafted replies wait in an approvals queue where you can edit, approve, or discard each one. Full autopilot or final say — your choice.</p>
-<div class="warn">⚠️ AI review replies are rolling out later in 2026 — this feature isn't switched on in your dashboard yet. Until then, you can view and manage incoming reviews from the <strong>Reviews</strong> tab and reply directly on Google or Facebook.</div>
-    `
+<h3>Two modes: automatic or approve-first</h3>
+<p>By default SwarmReply posts AI replies automatically. If you'd rather review each one first, switch to approval mode:</p>
+<div class="step"><div class="step-n">1</div><div>Open <strong>Reviews → Approvals</strong> and set the mode to <strong>Approve first</strong></div></div>
+<div class="step"><div class="step-n">2</div><div>New AI drafts now wait in the Approvals queue instead of posting</div></div>
+<div class="step"><div class="step-n">3</div><div>For each draft: <strong>Approve</strong> posts it to Google as-is, <strong>Edit</strong> lets you adjust the wording before posting, <strong>Reject</strong> discards it</div></div>
+<p>The original AI draft is kept in your history even when you edit, so you can always see what was suggested versus what was posted.</p>
+<div class="tip">💡 Approval mode is per location — a multi-location account can auto-post for one location and approve-first for another.</div>
+`,
   },
   'facebook-reviews': {
     title: 'Connecting Facebook Reviews',
