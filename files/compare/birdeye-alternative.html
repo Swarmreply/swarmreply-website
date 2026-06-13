@@ -133,6 +133,13 @@ a{color:inherit}
 .foot-col a{display:block;color:rgba(255,255,255,.6);text-decoration:none;font-size:.88rem;margin-bottom:9px}
 .foot-col a:hover{color:var(--honey)}
 .foot-base{border-top:1px solid rgba(255,255,255,.12);padding-top:24px;font-size:.8rem;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap}
+.nav-dd{position:relative;display:inline-flex}
+.nav-dd>a{display:inline-flex;align-items:center;gap:4px}
+.nav-dd-menu{display:none;position:absolute;top:calc(100% + 8px);left:50%;transform:translateX(-50%);background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:0 18px 44px rgba(0,0,0,.12);padding:8px;min-width:195px;z-index:130}
+.nav-dd-menu::before{content:'';position:absolute;top:-10px;left:0;right:0;height:10px}
+.nav-dd:hover .nav-dd-menu,.nav-dd:focus-within .nav-dd-menu{display:block}
+.nav-dd-menu a{display:block;padding:9px 14px;border-radius:9px;font-size:.88rem;color:var(--tx);text-decoration:none;white-space:nowrap}
+.nav-dd-menu a:hover{background:var(--cream);color:var(--ink)}
 .mnav-btn{display:none;background:rgba(0,0,0,.03);border:1px solid rgba(0,0,0,.12);border-radius:10px;padding:8px 11px;cursor:pointer;color:#1a1d21;font-size:1.1rem;line-height:1;margin-left:10px;flex-shrink:0}
 .mnav{display:none;position:fixed;top:68px;left:0;right:0;z-index:998;background:rgba(255,255,255,.98);backdrop-filter:blur(10px);border-bottom:1px solid rgba(0,0,0,.08);box-shadow:0 18px 40px rgba(0,0,0,.12);padding:8px 22px 18px;flex-direction:column}
 .mnav.open{display:flex}
@@ -168,6 +175,18 @@ a{color:inherit}
     <div class="nav-links">
       <a href="/#product">Product</a>
       <a href="/ai-search-visibility.html">AI Visibility</a>
+      <div class="nav-dd">
+        <a href="/compare/">Compare ▾</a>
+        <div class="nav-dd-menu">
+          <a href="/compare/">All comparisons →</a>
+          <a href="/compare/birdeye-alternative.html">vs Birdeye</a>
+          <a href="/compare/podium-alternative.html">vs Podium</a>
+          <a href="/compare/nicejob-alternative.html">vs NiceJob</a>
+          <a href="/compare/yext-alternative.html">vs Yext</a>
+          <a href="/compare/broadly-alternative.html">vs Broadly</a>
+          <a href="/compare/reviewtrackers-alternative.html">vs ReviewTrackers</a>
+        </div>
+      </div>
       <a href="/#pricing">Pricing</a>
       <a href="/help.html">Help</a>
     </div>
@@ -181,9 +200,8 @@ a{color:inherit}
 <div class="mnav" id="mnavPanel">
   <a href="/#product">Product</a>
   <a href="/ai-search-visibility.html">AI Visibility</a>
+  <a href="/compare/">Compare — all comparisons</a>
   <a href="/#pricing">Pricing</a>
-  <a href="/compare/birdeye-alternative.html">vs Birdeye</a>
-  <a href="/compare/podium-alternative.html">vs Podium</a>
   <a href="/help.html">Help Center</a>
   <div class="mnav-cta">
     <a href="/login.html" class="mnav-login">Log in</a>
@@ -266,6 +284,7 @@ a{color:inherit}
       </div>
       <div class="foot-col">
         <h4>Compare</h4>
+        <a href="/compare/">All comparisons</a>
         <a href="/compare/birdeye-alternative.html">vs Birdeye</a>
         <a href="/compare/podium-alternative.html">vs Podium</a>
         <a href="/compare/nicejob-alternative.html">vs NiceJob</a>
@@ -304,6 +323,6 @@ a{color:inherit}
 })();
 </script>
 
-<script src="/wallabee.js?v=5" defer></script>
+<script src="/wallabee.js?v=6" defer></script>
 </body>
 </html>
