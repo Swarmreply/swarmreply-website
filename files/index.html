@@ -297,6 +297,17 @@ footer{background:#0d0c0a;color:rgba(255,255,255,.65);padding:60px 0 30px}
 @media (max-width:480px){
   .nav-cta .btn-ghost{display:none}
 }
+
+/* ── Product directory grid ── */
+.feat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:10px}
+.feat-card{display:block;background:#fff;border:1.5px solid var(--line);border-radius:16px;padding:22px 20px;text-decoration:none;color:inherit;transition:transform .18s,box-shadow .18s,border-color .18s}
+.feat-card:hover{transform:translateY(-4px);box-shadow:0 16px 38px rgba(0,0,0,.09);border-color:var(--honey)}
+.feat-ico{font-size:1.7rem;margin-bottom:10px;line-height:1}
+.feat-card h3{font-size:1.04rem;margin-bottom:7px;line-height:1.25}
+.feat-card p{font-size:.86rem;color:var(--taupe);line-height:1.5;margin-bottom:12px}
+.feat-more{font-size:.82rem;font-weight:700;color:var(--green)}
+@media(max-width:920px){.feat-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:520px){.feat-grid{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -504,6 +515,70 @@ footer{background:#0d0c0a;color:rgba(255,255,255,.65);padding:60px 0 30px}
         <div class="kw"><span>“fitness classes near me”</span><span>#7 ↑1</span></div>
         <div class="bar"><i style="width:58%"></i></div>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- ━━━━━ PRODUCT DIRECTORY ━━━━━ -->
+<section class="sec cream" id="features">
+  <div class="container">
+    <div class="sec-head rv">
+      <span class="eyebrow">The complete toolkit</span>
+      <h2>Eight tools. <em>One $99 plan.</em></h2>
+      <p>Everything the big platforms charge $400–600 for — built for local businesses, priced fairly. Explore each tool:</p>
+    </div>
+    <div class="feat-grid rv">
+      <a href="/features/ai-review-replies.html" class="feat-card">
+        <div class="feat-ico">✍️</div>
+        <h3>AI Review Replies</h3>
+        <p>Every review answered in your voice, within minutes — automatically.</p>
+        <span class="feat-more">Learn more →</span>
+      </a>
+      <a href="/ai-search-visibility.html" class="feat-card">
+        <div class="feat-ico">🔮</div>
+        <h3>AI Search Visibility</h3>
+        <p>Become the local business ChatGPT, Gemini & Claude recommend.</p>
+        <span class="feat-more">Learn more →</span>
+      </a>
+      <a href="/features/review-generation.html" class="feat-card">
+        <div class="feat-ico">⭐</div>
+        <h3>Review Generation</h3>
+        <p>Turn happy customers into a steady stream of 5-star reviews.</p>
+        <span class="feat-more">Learn more →</span>
+      </a>
+      <a href="/features/listings.html" class="feat-card">
+        <div class="feat-ico">📍</div>
+        <h3>Business Listings</h3>
+        <p>Accurate on Google, Apple Maps & the listings that actually matter.</p>
+        <span class="feat-more">Learn more →</span>
+      </a>
+      <a href="/features/surveys.html" class="feat-card">
+        <div class="feat-ico">📊</div>
+        <h3>NPS Surveys</h3>
+        <p>Hear about problems first — and route happy customers to reviews.</p>
+        <span class="feat-more">Learn more →</span>
+      </a>
+      <a href="/features/webchat.html" class="feat-card">
+        <div class="feat-ico">💬</div>
+        <h3>Webchat & Widgets</h3>
+        <p>Answer visitors 24/7 and showcase your reviews on your site.</p>
+        <span class="feat-more">Learn more →</span>
+      </a>
+      <a href="/features/integrations.html" class="feat-card">
+        <div class="feat-ico">🔌</div>
+        <h3>Integrations</h3>
+        <p>Jobber, Square, Stripe, Zapier & more — review requests on autopilot.</p>
+        <span class="feat-more">Learn more →</span>
+      </a>
+      <a href="/features/onboarding.html" class="feat-card">
+        <div class="feat-ico">🚀</div>
+        <h3>Fast Onboarding</h3>
+        <p>No demo, no sales call. Set up in a day, built for owners.</p>
+        <span class="feat-more">Learn more →</span>
+      </a>
+    </div>
+    <div class="rv" style="text-align:center;margin-top:34px">
+      <a href="/features/" class="btn btn-ghost">See all features →</a>
     </div>
   </div>
 </section>
