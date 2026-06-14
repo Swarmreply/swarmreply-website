@@ -272,23 +272,17 @@ const FORMSPREE = 'https://formspree.io/f/mnjrpvab';
 let isAnnual = false;
 
 // Pricing tiers (monthly rates)
-const BASE = 99;
-const TIER1_RATE = 79; // locations 2-5
-const TIER2_RATE = 69; // locations 6-25
+const BASE = 99;        // locations 1–2 (each)
+const TIER2_RATE = 89;  // locations 3–25 (each)
+const TIER3_RATE = 79;  // locations 26–99 (each)
 const ANNUAL_DISCOUNT = 0.90;
+const MAX_SELF_SERVE = 99;
 
 function calcMonthly(n) {
   if (!n || n < 1) return BASE;
-  if (n === 1) return BASE;
-  let total = BASE;
-  // Locations 2-5: $79 each
-  const tier1 = Math.min(n - 1, 4);
-  total += tier1 * TIER1_RATE;
-  // Locations 6-25: $69 each
-  if (n > 5) {
-    const tier2 = Math.min(n - 5, 20);
-    total += tier2 * TIER2_RATE;
-  }
+  let total = Math.min(n, 2) * BASE;                 // locations 1–2 @ $99
+  if (n > 2)  total += Math.min(n - 2, 23) * TIER2_RATE;   // locations 3–25 @ $89
+  if (n > 25) total += Math.min(n - 25, 74) * TIER3_RATE;  // locations 26–99 @ $79
   return total;
 }
 
@@ -300,13 +294,13 @@ function updatePricing() {
   const btn = document.getElementById('submit-btn');
   const hint = document.getElementById('loc-hint');
 
-  if (n > 25) {
-    // Agency
+  if (n > MAX_SELF_SERVE) {
+    // Agency (100+ locations)
     document.getElementById('price-total').innerHTML = 'Contact<span style="font-size:1.2rem;display:block"> sales</span>';
-    document.getElementById('price-period').textContent = '25+ locations — Agency plan';
+    document.getElementById('price-period').textContent = '100+ locations — Agency plan';
     document.getElementById('price-breakdown').innerHTML = '<div class="pb-row total-row"><span class="pb-row-label">Agency plan</span><span class="pb-row-val">Custom pricing</span></div>';
     btn.textContent = 'Submit — our team will reach out →';
-    hint.textContent = '25+ locations qualifies for Agency pricing. Our team will contact you.';
+    hint.textContent = '100+ locations qualifies for Agency pricing. Our team will contact you.';
     hint.style.color = '#92690a';
     return;
   }
@@ -322,19 +316,21 @@ function updatePricing() {
     : 'Billed monthly — cancel anytime';
 
   // Build breakdown
-  let rows = `<div class="pb-row"><span class="pb-row-label">First location</span><span class="pb-row-val">${fmt(isAnnual ? Math.round(BASE * ANNUAL_DISCOUNT) : BASE)}/mo</span></div>`;
+  const t1n = Math.min(n, 2);
+  const baseR = isAnnual ? Math.round(BASE * ANNUAL_DISCOUNT) : BASE;
+  let rows = `<div class="pb-row"><span class="pb-row-label">Location${t1n>1?'s':''} 1${t1n>1?'–'+t1n:''} (${t1n} × ${fmt(baseR)}/mo)</span><span class="pb-row-val">${fmt(t1n * baseR)}/mo</span></div>`;
 
-  if (n > 1) {
-    const t1 = Math.min(n - 1, 4);
-    const t1r = isAnnual ? Math.round(TIER1_RATE * ANNUAL_DISCOUNT) : TIER1_RATE;
-    rows += `<div class="pb-row"><span class="pb-row-label">Locations 2–${1+t1} (${t1} × ${fmt(t1r)}/mo)</span><span class="pb-row-val">${fmt(t1 * t1r)}/mo</span></div>`;
-  }
-  if (n > 5) {
-    const t2 = Math.min(n - 5, 20);
+  if (n > 2) {
+    const t2 = Math.min(n - 2, 23);
     const t2r = isAnnual ? Math.round(TIER2_RATE * ANNUAL_DISCOUNT) : TIER2_RATE;
-    rows += `<div class="pb-row"><span class="pb-row-label">Locations 6–${5+t2} (${t2} × ${fmt(t2r)}/mo)</span><span class="pb-row-val">${fmt(t2 * t2r)}/mo</span></div>`;
+    rows += `<div class="pb-row"><span class="pb-row-label">Locations 3–${2+t2} (${t2} × ${fmt(t2r)}/mo)</span><span class="pb-row-val">${fmt(t2 * t2r)}/mo</span></div>`;
   }
-  if (n > 1) {
+  if (n > 25) {
+    const t3 = Math.min(n - 25, 74);
+    const t3r = isAnnual ? Math.round(TIER3_RATE * ANNUAL_DISCOUNT) : TIER3_RATE;
+    rows += `<div class="pb-row"><span class="pb-row-label">Locations 26–${25+t3} (${t3} × ${fmt(t3r)}/mo)</span><span class="pb-row-val">${fmt(t3 * t3r)}/mo</span></div>`;
+  }
+  if (n > 2) {
     rows += `<div class="pb-row total-row"><span class="pb-row-label">Total per month</span><span class="pb-row-val">${fmt(display)}/mo</span></div>`;
   }
 
@@ -363,8 +359,8 @@ async function handleSubmit(e) {
 
   const n = parseInt(document.getElementById('f-locations').value) || 1;
 
-  if (n > 25) {
-    // Agency — submit to Formspree and show thank you
+  if (n > 99) {
+    // Agency (100+ locations) — submit to Formspree and show thank you
     const data = {
       _subject: `Agency Plan Inquiry — ${document.getElementById('f-business').value}`,
       name:     document.getElementById('f-name').value,
@@ -373,7 +369,7 @@ async function handleSubmit(e) {
       phone:    document.getElementById('f-phone').value,
       industry: document.getElementById('f-industry').value,
       locations: n,
-      plan:     'Agency (25+ locations)',
+      plan:     'Agency (100+ locations)',
       _replyto: document.getElementById('f-email').value,
     };
     try {
