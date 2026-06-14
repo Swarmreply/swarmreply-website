@@ -252,8 +252,17 @@ a{text-decoration:none;color:inherit}
       <div style="background:#0a0a0a;border-radius:22px;padding:44px;text-align:center">
         <div style="font-size:2.5rem;margin-bottom:16px"><img src="/bee-logo.png" alt="🐝" style="width:38px;height:38px;object-fit:contain;vertical-align:middle;display:inline-block"></div>
         <h2 style="font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:900;color:#fff;margin-bottom:12px">You're in Agency territory.</h2>
-        <p style="font-size:.95rem;color:rgba(255,255,255,.6);line-height:1.75;margin-bottom:28px;max-width:440px;margin-left:auto;margin-right:auto">With 26+ locations you qualify for our Agency plan with volume pricing and a dedicated account manager. Our team will reach out within one business day.</p>
+        <p style="font-size:.95rem;color:rgba(255,255,255,.6);line-height:1.75;margin-bottom:28px;max-width:440px;margin-left:auto;margin-right:auto">With 100+ locations you qualify for our Agency plan with volume pricing and a dedicated account manager. Our team will reach out within one business day.</p>
         <a href="/" style="display:inline-block;padding:13px 28px;background:var(--g);color:var(--k);border-radius:50px;font-weight:700;font-size:.9rem">← Back to SwarmReply</a>
+      </div>
+    </div>
+
+    <div id="success-block" style="display:none">
+      <div style="background:#0a0a0a;border-radius:22px;padding:44px;text-align:center">
+        <div style="font-size:2.5rem;margin-bottom:16px"><img src="/bee-logo.png" alt="🐝" style="width:38px;height:38px;object-fit:contain;vertical-align:middle;display:inline-block"></div>
+        <h2 style="font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:900;color:#fff;margin-bottom:12px">Payment received — welcome to the swarm!</h2>
+        <p style="font-size:.95rem;color:rgba(255,255,255,.6);line-height:1.75;margin-bottom:28px;max-width:460px;margin-left:auto;margin-right:auto">Check your email for a link to set your password and log in. Your account and first location are already set up — you'll be live in minutes.</p>
+        <a href="https://app.swarmreply.com/login" style="display:inline-block;padding:13px 28px;background:var(--g);color:var(--k);border-radius:50px;font-weight:700;font-size:.9rem">Go to login →</a>
       </div>
     </div>
 
@@ -268,6 +277,7 @@ const STRIPE = {
   annual:  'https://buy.stripe.com/4gM4gz3CD4i58n00QAbfO0a'
 };
 const FORMSPREE = 'https://formspree.io/f/mnjrpvab';
+const CHECKOUT_API = 'https://swarmreply-backend-production.up.railway.app/api/checkout/session';
 
 let isAnnual = false;
 
@@ -396,13 +406,13 @@ async function handleSubmit(e) {
     return;
   }
 
-  // Normal flow — submit to Formspree then redirect to Stripe
+  // Normal flow — create a Stripe Checkout Session via our backend (carries all
+  // signup data as metadata so the account provisions automatically), then redirect.
   const monthly = calcMonthly(n);
   const display = isAnnual ? Math.round(monthly * 0.9) : monthly;
   const planLabel = `SwarmReply — ${n} location${n > 1 ? 's' : ''} — $${display}/mo${isAnnual ? ' (annual)' : ''}`;
 
-  const data = {
-    _subject:  `New SwarmReply Signup — ${planLabel}`,
+  const fields = {
     name:      document.getElementById('f-name').value,
     business:  document.getElementById('f-business').value,
     email:     document.getElementById('f-email').value,
@@ -410,25 +420,31 @@ async function handleSubmit(e) {
     industry:  document.getElementById('f-industry').value,
     locations: n,
     billing:   isAnnual ? 'annual' : 'monthly',
-    plan:      planLabel,
-    _replyto:  document.getElementById('f-email').value,
   };
 
+  // Fire the Formspree notification (fire-and-forget — never blocks checkout).
+  fetch(FORMSPREE, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+    body: JSON.stringify({ _subject: `New SwarmReply Signup — ${planLabel}`, plan: planLabel, _replyto: fields.email, ...fields })
+  }).catch(() => {});
+
   try {
-    const res = await fetch(FORMSPREE, {
+    const res = await fetch(CHECKOUT_API, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-      body: JSON.stringify(data)
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(fields)
     });
-    if (res.ok) {
-      window.location.href = isAnnual ? STRIPE.annual : STRIPE.monthly;
+    const out = await res.json().catch(() => ({}));
+    if (res.ok && out.url) {
+      window.location.href = out.url;   // → Stripe Checkout (correct graduated total)
     } else {
-      throw new Error('failed');
+      throw new Error(out.error || 'failed');
     }
   } catch(err) {
     btn.disabled = false;
     btn.textContent = `Continue to payment — $${display}/mo →`;
-    alert('Something went wrong. Please try again or email hello@swarmreply.com');
+    alert('Something went wrong starting checkout. Please try again or email hello@swarmreply.com');
   }
 }
 
@@ -509,6 +525,19 @@ if ('serviceWorker' in navigator) {
   <p style="max-width:1160px;margin:0 auto;font-size:.8rem;color:rgba(255,255,255,.45)">© 2026 SwarmReply, LLC. All rights reserved. · <a href="/terms.html" style="color:rgba(255,255,255,.45);text-decoration:none">Terms of Service</a> · <a href="/privacy.html" style="color:rgba(255,255,255,.45);text-decoration:none">Privacy Policy</a></p>
 </footer>
 
+<script>
+(function(){
+  var params = new URLSearchParams(window.location.search);
+  if (params.get('success') === '1') {
+    var grid = document.getElementById('signup-grid'); if (grid) grid.style.display = 'none';
+    var sb = document.getElementById('success-block'); if (sb) sb.style.display = 'block';
+    window.scrollTo(0, 0);
+  } else if (params.get('canceled') === '1') {
+    var hint = document.getElementById('loc-hint');
+    if (hint) { hint.textContent = 'Checkout canceled — no charge was made. Adjust anything and try again.'; hint.style.color = '#92690a'; }
+  }
+})();
+</script>
 <script src="/wallabee.js?v=6" defer></script>
 </body>
 </html>
