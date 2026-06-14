@@ -123,6 +123,15 @@ a{text-decoration:none;color:inherit}
 
 :focus-visible{outline:3px solid #d4a515;outline-offset:2px;border-radius:4px}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
+
+/* Searchable industry combobox */
+.combo{position:relative}
+.combo-input{cursor:text}
+.combo-list{position:absolute;top:calc(100% + 4px);left:0;right:0;background:#fff;border:1.5px solid var(--bd);border-radius:11px;box-shadow:0 12px 32px rgba(0,0,0,.13);max-height:264px;overflow-y:auto;z-index:60;display:none}
+.combo-list.open{display:block}
+.combo-opt{padding:10px 14px;font-size:.88rem;color:var(--tx);cursor:pointer}
+.combo-opt:hover,.combo-opt.active{background:#f6f4f0}
+.combo-empty{padding:10px 14px;font-size:.85rem;color:var(--mu)}
 </style>
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#f5c842">
@@ -181,22 +190,13 @@ a{text-decoration:none;color:inherit}
             </div>
             <div class="frow">
               <label class="fl">Industry <span class="req">*</span></label>
-              <select class="fsel" name="industry" id="f-industry" required>
-                <option value="">Select your industry...</option>
-                <option>Dental Practice</option>
-                <option>Medical / Healthcare</option>
-                <option>Restaurant / Food &amp; Beverage</option>
-                <option>Salon / Beauty / Med Spa</option>
-                <option>Auto Shop / Dealership</option>
-                <option>Gym / Fitness</option>
-                <option>Law Firm</option>
-                <option>Home Services</option>
-                <option>Retail</option>
-                <option>Hotel / Hospitality</option>
-                <option>Veterinary Clinic</option>
-                <option>Marketing Agency</option>
-                <option>Other</option>
-              </select>
+              <div class="combo" id="industry-combo">
+                <input type="text" class="fi combo-input" id="f-industry-search" autocomplete="off"
+                       placeholder="Search your industry…" role="combobox" aria-expanded="false"
+                       aria-controls="industry-list" aria-autocomplete="list" required>
+                <input type="hidden" name="industry" id="f-industry">
+                <div class="combo-list" id="industry-list" role="listbox"></div>
+              </div>
             </div>
             <div class="frow">
               <label class="fl" for="f-locations">Number of Locations <span class="req">*</span></label>
@@ -353,6 +353,18 @@ function toggleAnnual() {
 
 async function handleSubmit(e) {
   e.preventDefault();
+
+  // Industry comes from a searchable combobox (hidden input holds the value).
+  const indHidden = document.getElementById('f-industry');
+  const indSearch = document.getElementById('f-industry-search');
+  if (!indHidden.value) {
+    // Accept an exact typed match; otherwise require a selection.
+    const typed = (indSearch.value || '').trim().toLowerCase();
+    const match = window.__INDUSTRIES && window.__INDUSTRIES.find(x => x.toLowerCase() === typed);
+    if (match) { indHidden.value = match; indSearch.value = match; }
+    else { indSearch.focus(); indSearch.setCustomValidity('Please pick an industry from the list'); indSearch.reportValidity(); return; }
+  }
+
   const btn = document.getElementById('submit-btn');
   btn.disabled = true;
   btn.textContent = 'Sending...';
@@ -419,6 +431,71 @@ async function handleSubmit(e) {
     alert('Something went wrong. Please try again or email hello@swarmreply.com');
   }
 }
+
+// ── Searchable industry combobox (full app list, A–Z, "Other" last) ──
+(function(){
+  var INDUSTRIES = [
+    'Restaurant / Food', 'Cafe / Coffee Shop', 'Bar / Brewery', 'Grocery / Convenience',
+    'Home Services (general)', 'HVAC / Plumbing / Electrical', 'Cleaning Services',
+    'Landscaping / Lawn Care', 'Roofing / Construction', 'Moving / Storage', 'Pest Control',
+    'Retail / Shop', 'E-commerce',
+    'Healthcare / Medical', 'Dental', 'Veterinary', 'Chiropractic', 'Mental Health / Therapy', 'Optometry',
+    'Professional Services', 'Legal', 'Accounting / Tax', 'Real Estate', 'Insurance',
+    'Financial Services', 'Marketing / Agency', 'IT / Tech Services',
+    'Beauty / Salon / Spa', 'Barber Shop', 'Nail Salon', 'Tattoo / Piercing',
+    'Automotive', 'Auto Repair', 'Car Dealership', 'Car Wash / Detailing',
+    'Fitness / Wellness', 'Gym / Personal Training', 'Yoga / Pilates Studio',
+    'Education / Tutoring', 'Childcare / Daycare',
+    'Hotel / Hospitality', 'Event Services', 'Photography', 'Pet Services / Grooming',
+    'Other'
+  ];
+  // Sort A–Z, keep "Other" pinned at the bottom.
+  INDUSTRIES = INDUSTRIES.filter(function(x){return x !== 'Other';})
+                         .sort(function(a,b){return a.localeCompare(b);})
+                         .concat(['Other']);
+  window.__INDUSTRIES = INDUSTRIES;
+
+  var combo  = document.getElementById('industry-combo');
+  var input  = document.getElementById('f-industry-search');
+  var hidden = document.getElementById('f-industry');
+  var list   = document.getElementById('industry-list');
+  if (!combo || !input || !hidden || !list) return;
+  var activeIdx = -1, filtered = INDUSTRIES.slice();
+
+  function render(items){
+    filtered = items; activeIdx = -1; list.innerHTML = '';
+    if (!items.length){ list.innerHTML = '<div class="combo-empty">No matching industries</div>'; return; }
+    items.forEach(function(name){
+      var d = document.createElement('div');
+      d.className = 'combo-opt'; d.setAttribute('role','option'); d.textContent = name;
+      d.addEventListener('mousedown', function(e){ e.preventDefault(); choose(name); });
+      list.appendChild(d);
+    });
+  }
+  function open(){ list.classList.add('open'); input.setAttribute('aria-expanded','true'); }
+  function close(){ list.classList.remove('open'); input.setAttribute('aria-expanded','false'); }
+  function choose(name){ hidden.value = name; input.value = name; input.setCustomValidity(''); close(); }
+  function filterList(){
+    var q = input.value.trim().toLowerCase();
+    render(q ? INDUSTRIES.filter(function(x){return x.toLowerCase().indexOf(q) > -1;}) : INDUSTRIES.slice());
+    open();
+  }
+  function paint(){
+    var opts = list.querySelectorAll('.combo-opt');
+    opts.forEach(function(o,i){ o.classList.toggle('active', i === activeIdx); if (i === activeIdx) o.scrollIntoView({block:'nearest'}); });
+  }
+  input.addEventListener('focus', function(){ render(INDUSTRIES.slice()); open(); });
+  input.addEventListener('input', function(){ hidden.value = ''; input.setCustomValidity(''); filterList(); });
+  input.addEventListener('keydown', function(e){
+    var opts = list.querySelectorAll('.combo-opt');
+    if (e.key === 'ArrowDown'){ e.preventDefault(); if(!list.classList.contains('open')){filterList();} activeIdx = Math.min(activeIdx + 1, opts.length - 1); paint(); }
+    else if (e.key === 'ArrowUp'){ e.preventDefault(); activeIdx = Math.max(activeIdx - 1, 0); paint(); }
+    else if (e.key === 'Enter'){ if (list.classList.contains('open') && activeIdx > -1){ e.preventDefault(); choose(filtered[activeIdx]); } }
+    else if (e.key === 'Escape'){ close(); }
+  });
+  document.addEventListener('click', function(e){ if (!combo.contains(e.target)) close(); });
+  render(INDUSTRIES.slice());
+})();
 </script>
 <script>
 if ('serviceWorker' in navigator) {
