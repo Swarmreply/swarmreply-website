@@ -458,7 +458,7 @@ var categories = {
     title: 'Getting started',
     desc: 'Everything you need to go from sign-up to your first review request in under 10 minutes.',
     icon: '🚀',
-    articles: ['welcome','connect-google','first-review-request','onboarding-checklist','invite-team']
+    articles: ['welcome','connect-google','first-review-request','onboarding-checklist','invite-team','google-import','results-timeline','mobile-app']
   },
   replies: {
     title: 'AI Replies',
@@ -470,25 +470,25 @@ var categories = {
     title: 'Review Generation',
     desc: 'Send review requests by email and SMS, import contacts, and automate follow-ups.',
     icon: '↑',
-    articles: ['first-review-request','import-contacts','review-platforms','sms-requests','template-customise','review-widget','request-timing','bulk-send']
+    articles: ['first-review-request','import-contacts','review-platforms','sms-requests','template-customise','review-widget','request-timing','bulk-send','request-not-sending','review-not-showing','dispute-review']
   },
   surveys: {
     title: 'Surveys & NPS',
     desc: 'Post-visit surveys that protect your rating by routing feedback intelligently.',
     icon: '📊',
-    articles: ['survey-setup','nps-routing','promoter-destination','survey-link','detractor-handling']
+    articles: ['survey-setup','nps-routing','promoter-destination','survey-link','detractor-handling','review-gating-policy']
   },
   webchat: {
     title: 'Webchat & Inbox',
     desc: 'Add a chat widget to your website and manage all conversations from your inbox.',
     icon: '💬',
-    articles: ['embed-webchat','webchat-setup','ai-agent-setup','knowledge-base','handoff','inbox-manage','sms-bridge','webchat-notifications']
+    articles: ['embed-webchat','webchat-setup','ai-agent-setup','knowledge-base','handoff','inbox-manage','sms-bridge','webchat-notifications','webchat-not-showing']
   },
   campaigns: {
     title: 'SMS Campaigns',
     desc: 'Send targeted SMS campaigns to your customer list and track results.',
     icon: '📣',
-    articles: ['sms-campaign','contact-import','segments','campaign-limits','tcpa-compliance','opt-outs','sms-best-practices']
+    articles: ['sms-campaign','contact-import','segments','campaign-limits','tcpa-compliance','opt-outs','sms-best-practices','sms-10dlc','sms-sender-number']
   },
   listings: {
     title: 'Listings Sync',
@@ -506,25 +506,25 @@ var categories = {
     title: 'AI Visibility Monitoring',
     desc: 'Track what AI models say about your business when people ask for recommendations.',
     icon: '✦',
-    articles: ['llm-overview','visibility-score','improve-visibility','llm-setup']
+    articles: ['llm-overview','visibility-score','improve-visibility','llm-setup','visibility-zero']
   },
   integrations: {
     title: 'Integrations',
     desc: 'Connect SwarmReply to the tools your business already uses — Google, Square, HubSpot, Shopify, Mindbody, Calendly, Acuity, and more.',
     icon: '⊕',
-    articles: ['connect-google','facebook-reviews','connect-square','connect-hubspot','connect-shopify','connect-mindbody','connect-calendly','connect-acuity','connect-stripe-trigger','zapier-setup','csv-import','api-key','connect-jobber']
+    articles: ['connect-google','facebook-reviews','connect-square','connect-hubspot','connect-shopify','connect-mindbody','connect-calendly','connect-acuity','connect-stripe-trigger','zapier-setup','csv-import','api-key','connect-jobber','reconnect-google','connect-social','schedule-social-posts']
   },
   billing: {
     title: 'Billing & Plans',
     desc: 'Everything about your subscription, payment, and plan options.',
     icon: '💳',
-    articles: ['billing-faq','upgrade-plan','cancel','update-card','invoices']
+    articles: ['billing-faq','upgrade-plan','cancel','update-card','invoices','failed-payment']
   },
   settings: {
     title: 'Settings',
     desc: 'Configure your account, alerts, and preferences.',
     icon: '⚙',
-    articles: ['account-settings','alert-preferences','google-posts-settings','locations','review-links']
+    articles: ['account-settings','alert-preferences','google-posts-settings','locations','review-links','data-security','export-delete-data','account-security','team-roles']
   }
 };
 
@@ -1747,7 +1747,297 @@ var articles = {
 <p>If you have a use case these don't cover and you specifically need programmatic access, we want to hear it — early API partners help shape what we build first.</p>
 <div class="tip">💡 Email hello@swarmreply.com with what you're trying to build and we'll point you to the best way to do it today — and flag you the moment the API is ready.</div>
     `
-  }
+  },
+  'sms-10dlc': {
+    title: 'Why can\'t I send texts yet? (A2P 10DLC)',
+    category: 'SMS Campaigns',
+    readTime: '2 min read',
+    body: `
+<h3>Texting needs carrier approval first</h3>
+<p>In the US, every business that texts customers must be registered with the mobile carriers under a program called <strong>A2P 10DLC</strong> (Application-to-Person, 10-Digit Long Code). It's an anti-spam standard the carriers require — not a SwarmReply rule — and until your registration is approved, outbound texts are held.</p>
+<h3>What's happening behind the scenes</h3>
+<div class="step"><div class="step-n">1</div><div>Your business and your messaging campaign are submitted to the carriers for vetting</div></div>
+<div class="step"><div class="step-n">2</div><div>The carriers review and approve — usually a few business days, occasionally longer</div></div>
+<div class="step"><div class="step-n">3</div><div>Once approved, SwarmReply switches texting on automatically — nothing for you to do</div></div>
+<h3>What you can do right now</h3>
+<p>Email review requests work today with no registration required, so you can start collecting reviews immediately while SMS is pending. The moment 10DLC clears, your text and email requests run side by side.</p>
+<div class="tip">💡 You'll see a banner in Grow and Campaigns while texting is pending — it disappears on its own once you're approved.</div>
+    `
+  },
+  'sms-sender-number': {
+    title: 'What number do my texts come from?',
+    category: 'SMS Campaigns',
+    readTime: '1 min read',
+    body: `
+<h3>A dedicated number for your account</h3>
+<p>Your review requests and campaigns send from a dedicated 10-digit business number assigned to your account during 10DLC registration. It stays the same, so customers see a consistent sender and can reply.</p>
+<h3>Replies and STOP</h3>
+<p>If a customer replies to a text, it's captured so you can follow up. If they reply <strong>STOP</strong>, they're unsubscribed automatically and won't receive further texts — SwarmReply handles this to keep you compliant.</p>
+<div class="tip">💡 Always close marketing texts with "Reply STOP to unsubscribe." It's required, and SwarmReply processes the opt-out instantly.</div>
+    `
+  },
+  'review-gating-policy': {
+    title: 'Surveys and Google\'s review policy',
+    category: 'Surveys & NPS',
+    readTime: '3 min read',
+    body: `
+<h3>The short version</h3>
+<p>SwarmReply surveys are designed to gather private feedback and to make it easy for happy customers to share their experience publicly. Used as intended, every customer is always free to leave a public review — nothing blocks or filters that.</p>
+<h3>Why this matters</h3>
+<p>Google's policies prohibit "review gating" — soliciting public reviews only from customers you expect to be positive while steering unhappy ones away from the public review form. It's worth understanding so you stay on the right side of it.</p>
+<h3>Using surveys the right way</h3>
+<div class="step"><div class="step-n">1</div><div>Treat the survey as a <strong>feedback</strong> tool first — it tells you how customers feel and gives unhappy ones a private way to reach you</div></div>
+<div class="step"><div class="step-n">2</div><div>Keep your public review links available to everyone — in your email signature, on receipts, on your website — not only to survey promoters</div></div>
+<div class="step"><div class="step-n">3</div><div>Never tell a customer they can't or shouldn't leave a public review based on their score</div></div>
+<div class="tip">💡 This is general guidance, not legal advice. Review platforms set and update their own policies — when in doubt, check Google's current review guidelines or ask a professional.</div>
+    `
+  },
+  'reconnect-google': {
+    title: 'Reconnecting your Google Business Profile',
+    category: 'Integrations',
+    readTime: '2 min read',
+    body: `
+<h3>Why a reconnect is sometimes needed</h3>
+<p>Google connections use a secure token that can expire or be revoked — for example if you change your Google password, remove SwarmReply's access, or Google times out the session. When that happens, new reviews stop syncing until you reconnect.</p>
+<h3>How you'll know</h3>
+<p>If you've turned on the "Google connection breaks" alert (Settings → Account → Alert preferences), you'll get an email or text. You may also see a reconnect prompt on your dashboard.</p>
+<h3>How to reconnect</h3>
+<div class="step"><div class="step-n">1</div><div>Go to <strong>Integrations</strong> in your dashboard</div></div>
+<div class="step"><div class="step-n">2</div><div>Find <strong>Google Business Profile</strong> and click <strong>Reconnect</strong></div></div>
+<div class="step"><div class="step-n">3</div><div>Sign in with the Google account that manages your Business Profile and approve access</div></div>
+<div class="step"><div class="step-n">4</div><div>Syncing resumes automatically — recent reviews catch up within a few minutes</div></div>
+<div class="tip">✓ Use the same Google account that owns or manages the Business Profile — a personal account without access to the listing won't work.</div>
+    `
+  },
+  'webchat-not-showing': {
+    title: 'Webchat isn\'t showing on my site',
+    category: 'Webchat & Inbox',
+    readTime: '2 min read',
+    body: `
+<h3>Most common causes</h3>
+<div class="step"><div class="step-n">1</div><div><strong>The snippet isn't on the page</strong> — make sure the embed code from Settings → Webchat & AI Agent is pasted into your site's footer (before the closing body tag) on every page you want it</div></div>
+<div class="step"><div class="step-n">2</div><div><strong>Caching</strong> — clear your site or CDN cache and hard-refresh (Ctrl/Cmd + Shift + R) after adding the code</div></div>
+<div class="step"><div class="step-n">3</div><div><strong>Pasted in the wrong place</strong> — many site builders need the code in a "custom code" or "footer injection" area, not inside a text block</div></div>
+<div class="step"><div class="step-n">4</div><div><strong>The widget is turned off</strong> — confirm webchat is enabled in Settings → Webchat & AI Agent</div></div>
+<h3>Still not appearing?</h3>
+<p>Open your site, right-click and choose "View page source," and search for "swarmreply" — if it's not there, the snippet didn't save. If it is there but the bubble doesn't show, an ad-blocker or a conflicting script may be hiding it.</p>
+<div class="tip">💡 On single-page sites (React, Vue, and similar) the snippet should load once in the main template so it persists as visitors navigate.</div>
+    `
+  },
+  'request-not-sending': {
+    title: 'A review request didn\'t send',
+    category: 'Review Generation',
+    readTime: '2 min read',
+    body: `
+<h3>For text (SMS) requests</h3>
+<div class="step"><div class="step-n">1</div><div><strong>Texting may still be pending</strong> — if your A2P 10DLC registration isn't approved yet, texts are held. Email requests still work in the meantime</div></div>
+<div class="step"><div class="step-n">2</div><div><strong>The customer opted out</strong> — anyone who replied STOP won't receive texts. Reach them by email instead</div></div>
+<div class="step"><div class="step-n">3</div><div><strong>Bad or missing number</strong> — the number must be a valid mobile. Landlines can't receive texts</div></div>
+<h3>For email requests</h3>
+<div class="step"><div class="step-n">1</div><div><strong>Missing email</strong> — the contact needs a valid email address on file</div></div>
+<div class="step"><div class="step-n">2</div><div><strong>Check spam</strong> — ask the customer to look in their spam or promotions folder</div></div>
+<h3>Either way</h3>
+<p>SwarmReply is built to fail softly — one bad contact never stops the rest of a batch from going out. Fix the email or number and resend.</p>
+<div class="tip">✓ Sending to a list? Grow → Bulk Send shows the result for each contact so you can spot any that didn't go.</div>
+    `
+  },
+  'review-not-showing': {
+    title: 'A review I got isn\'t showing up',
+    category: 'Review Generation',
+    readTime: '2 min read',
+    body: `
+<h3>Give it a little time</h3>
+<p>SwarmReply pulls new reviews from Google and Facebook on a regular sync, so a brand-new review can take a short while to appear in your <strong>Reviews</strong> tab. It isn't instant.</p>
+<h3>If it still hasn't appeared</h3>
+<div class="step"><div class="step-n">1</div><div><strong>Confirm where it was left</strong> — SwarmReply syncs Google and Facebook reviews; a review on another site won't appear here</div></div>
+<div class="step"><div class="step-n">2</div><div><strong>Check your Google connection</strong> — if it has disconnected, new reviews stop syncing until you reconnect (see Reconnecting your Google Business Profile)</div></div>
+<div class="step"><div class="step-n">3</div><div><strong>Make sure it posted publicly</strong> — a review saved as a draft, or one the platform filtered, won't show anywhere</div></div>
+<div class="tip">✓ Connected your Facebook page? Its recommendations land in the same Reviews tab alongside Google.</div>
+    `
+  },
+  'visibility-zero': {
+    title: 'My visibility score is 0 — what now?',
+    category: 'AI Visibility',
+    readTime: '2 min read',
+    body: `
+<h3>A 0 is a starting point, not a failure</h3>
+<p>A score of 0 means the AI assistants didn't mention your business in this week's test questions — completely normal for a business that's new to AI visibility. The good news: it's the most improvable number on your dashboard, and reviews move it.</p>
+<h3>What actually moves the score</h3>
+<div class="step"><div class="step-n">1</div><div><strong>Grow review volume and recency</strong> — fresh, frequent reviews are the strongest signal AI models weigh</div></div>
+<div class="step"><div class="step-n">2</div><div><strong>Complete your Google Business Profile</strong> — categories, services, hours, photos</div></div>
+<div class="step"><div class="step-n">3</div><div><strong>Keep your name, address, and phone identical everywhere</strong> — your site, Google, Yelp, Facebook</div></div>
+<div class="step"><div class="step-n">4</div><div><strong>Say what you do, in plain words,</strong> on your website</div></div>
+<h3>If your score dropped</h3>
+<p>Week-to-week movement is normal — AI answers vary, and a competitor's surge can edge you out of a single response. Watch the trend over a few weeks rather than any one scan. Your Overview tab's executive summary explains what changed and what to try next.</p>
+<div class="tip">💡 Scores build over weeks, not days. Steady review generation is the compounding engine behind a rising score.</div>
+    `
+  },
+  'data-security': {
+    title: 'Data, privacy & security',
+    category: 'Settings',
+    readTime: '3 min read',
+    body: `
+<h3>Where your data lives</h3>
+<p>SwarmReply runs on established cloud infrastructure in the United States. Your data is encrypted in transit (HTTPS/TLS) and at rest, and access is restricted to the systems that need it.</p>
+<h3>Payments</h3>
+<p>All billing is handled by <strong>Stripe</strong>, a PCI-compliant payment processor. Your card details go straight to Stripe and are never stored on SwarmReply's servers.</p>
+<h3>Your data is yours</h3>
+<p>The contacts, reviews, and messages in your account belong to you. SwarmReply uses them only to provide the service — sending the requests you set up, syncing your reviews, and producing your reports. We don't sell your data.</p>
+<h3>Connected accounts</h3>
+<p>When you connect Google, Facebook, or another integration, SwarmReply requests only the access it needs and stores the connection securely. You can disconnect any integration at any time from the Integrations page, which revokes that access.</p>
+<div class="tip">💡 Working on a security or vendor review? Email hello@swarmreply.com and we'll help with your questionnaire.</div>
+    `
+  },
+  'export-delete-data': {
+    title: 'Exporting or deleting your data',
+    category: 'Settings',
+    readTime: '2 min read',
+    body: `
+<h3>Exporting your data</h3>
+<p>Need a copy of your contacts, reviews, or other records? Email <strong>hello@swarmreply.com</strong> from your account email and we'll get you an export. (Contacts you imported can also be kept in your own CSV.)</p>
+<h3>Deleting your data</h3>
+<p>If you cancel, your data is retained for <strong>30 days</strong> in case you reactivate — everything stays exactly as you left it. After 30 days it's permanently deleted. Want it gone sooner? Email us and we'll take care of it.</p>
+<div class="tip">✓ Deletion is permanent and can't be undone, so export anything you want to keep first.</div>
+    `
+  },
+  'account-security': {
+    title: 'Logging in & account security',
+    category: 'Settings',
+    readTime: '2 min read',
+    body: `
+<h3>Signing in</h3>
+<p>Log in to your SwarmReply dashboard with your email and password. If you were invited to a team, you set your password from the invite link.</p>
+<h3>Forgot your password?</h3>
+<div class="step"><div class="step-n">1</div><div>On the login page, click <strong>Forgot password</strong></div></div>
+<div class="step"><div class="step-n">2</div><div>Enter your account email — we'll send a reset link</div></div>
+<div class="step"><div class="step-n">3</div><div>Open the link and choose a new password. The link is single-use and expires for security</div></div>
+<h3>Keeping your account secure</h3>
+<p>Use a strong, unique password, and give each team member their own login rather than sharing one. Remove anyone who leaves from Settings → Team so their access ends immediately.</p>
+<div class="tip">💡 See unfamiliar activity, or can't get a reset email? Email hello@swarmreply.com right away.</div>
+    `
+  },
+  'team-roles': {
+    title: 'Team roles & permissions',
+    category: 'Settings',
+    readTime: '2 min read',
+    body: `
+<h3>Three roles</h3>
+<p>Every team member has one of three roles, set when you invite them (Settings → Team) and changeable later.</p>
+<div class="step"><div class="step-n">1</div><div><strong>Admin</strong> — full access, including billing and team management. This is the owner's level</div></div>
+<div class="step"><div class="step-n">2</div><div><strong>Manager</strong> — full platform access (reviews, inbox, AI visibility, Grow, Campaigns, plus AI/webchat and integration settings) but <em>no</em> billing or team management</div></div>
+<div class="step"><div class="step-n">3</div><div><strong>Staff</strong> — day-to-day operational access: reviews, inbox, AI visibility, Grow, and Campaigns. No settings, billing, or team management</div></div>
+<h3>Choosing a role</h3>
+<p>Give front-desk and operational staff the <strong>Staff</strong> role, a trusted operations lead <strong>Manager</strong>, and keep <strong>Admin</strong> for owners who handle billing.</p>
+<div class="tip">✓ Only Admins can invite, change roles for, or remove team members.</div>
+    `
+  },
+  'connect-social': {
+    title: 'Connecting your social accounts',
+    category: 'Integrations',
+    readTime: '2 min read',
+    body: `
+<h3>Post everywhere from one place</h3>
+<p>SwarmReply can publish to <strong>Facebook, Instagram, LinkedIn, Google Business, and TikTok</strong>. Connect each account once, then post to any or all of them from Campaigns → Social Posts.</p>
+<h3>How to connect</h3>
+<div class="step"><div class="step-n">1</div><div>Go to <strong>Settings → Social Posting Accounts</strong></div></div>
+<div class="step"><div class="step-n">2</div><div>Click <strong>Connect</strong> next to the platform and approve access in the pop-up</div></div>
+<div class="step"><div class="step-n">3</div><div>Repeat for each platform — connected accounts show a green status</div></div>
+<h3>Good to know</h3>
+<p>Facebook and Instagram connect together through Meta (you'll need a Facebook Page, and a Business profile for Instagram). LinkedIn requires a Company Page you administer. Each network has its own content rules — Instagram and TikTok need media, and Google Business posts don't support video.</p>
+<div class="tip">💡 Only connecting Google Business to publish posts? That lives here under Social Posting Accounts too.</div>
+    `
+  },
+  'schedule-social-posts': {
+    title: 'Creating and scheduling social posts',
+    category: 'Integrations',
+    readTime: '2 min read',
+    body: `
+<h3>Compose once, post to many</h3>
+<div class="step"><div class="step-n">1</div><div>Go to <strong>Campaigns → Social Posts</strong> and start a new post</div></div>
+<div class="step"><div class="step-n">2</div><div>Choose a content type — text, text + image, link, video, or reel/short</div></div>
+<div class="step"><div class="step-n">3</div><div>Select the platforms to publish to (only the ones that support that content type are available)</div></div>
+<div class="step"><div class="step-n">4</div><div>Write your post, then <strong>post now</strong> or <strong>schedule</strong> it for a date and time</div></div>
+<h3>What posts where</h3>
+<p>SwarmReply matches your content to each network's rules: text and links go to Facebook, LinkedIn, and Google Business; images and video to the networks that accept them; reels and short video to the platforms built for them.</p>
+<div class="tip">💡 Connect your accounts first under Settings → Social Posting Accounts — see Connecting your social accounts.</div>
+    `
+  },
+  'dispute-review': {
+    title: 'Disputing a fake or unfair review',
+    category: 'Review Generation',
+    readTime: '3 min read',
+    body: `
+<h3>First, respond — publicly and calmly</h3>
+<p>Even when a review is unfair, a calm, professional public reply does more good than the review does harm: it shows future customers how you handle problems. SwarmReply can draft a measured response for you to review and post.</p>
+<h3>If it breaks the platform's rules, flag it</h3>
+<p>Platforms only remove reviews that violate their policies — spam, conflicts of interest, hate speech, or reviews not based on a real experience. Being negative isn't enough. To report one on Google:</p>
+<div class="step"><div class="step-n">1</div><div>Open your Google Business Profile and find the review</div></div>
+<div class="step"><div class="step-n">2</div><div>Use the menu on the review to <strong>Report</strong> it, and select the policy it violates</div></div>
+<div class="step"><div class="step-n">3</div><div>Google reviews the report — this can take time, and removal isn't guaranteed</div></div>
+<h3>The most durable fix</h3>
+<p>A steady stream of genuine positive reviews outweighs the occasional bad one and pulls your average back up far faster than waiting on a removal. That's the engine SwarmReply is built to run.</p>
+<div class="tip">💡 SwarmReply can't remove reviews for you — only the platform can — but it helps you respond well and out-earn the bad ones.</div>
+    `
+  },
+  'failed-payment': {
+    title: 'A payment failed or was declined',
+    category: 'Billing & Plans',
+    readTime: '2 min read',
+    body: `
+<h3>What happens</h3>
+<p>If a monthly charge fails — an expired card, insufficient funds, or a bank block — Stripe automatically retries it over the following days and emails you. Your account keeps working during this grace period.</p>
+<h3>How to fix it</h3>
+<div class="step"><div class="step-n">1</div><div>Go to <strong>Settings → Billing</strong> and click <strong>Manage billing</strong></div></div>
+<div class="step"><div class="step-n">2</div><div>Update your card in the Stripe billing portal</div></div>
+<div class="step"><div class="step-n">3</div><div>Stripe re-attempts the charge — once it clears, you're all set</div></div>
+<h3>If it isn't resolved</h3>
+<p>After repeated failed attempts your account may be paused until payment succeeds. Updating your card and clearing the balance restores access right away, and your data is retained throughout, so nothing is lost.</p>
+<div class="tip">✓ Card about to expire? Update it ahead of time in Settings → Billing → Manage billing to avoid any interruption.</div>
+    `
+  },
+  'google-import': {
+    title: 'What gets imported when you connect Google',
+    category: 'Getting started',
+    readTime: '1 min read',
+    body: `
+<h3>Connecting brings your reviews in automatically</h3>
+<p>When you connect your Google Business Profile, SwarmReply imports your existing Google reviews so your reputation history is there from day one — no manual entry.</p>
+<h3>What comes across</h3>
+<div class="step"><div class="step-n">1</div><div><strong>Your reviews</strong> — past Google reviews load into your Reviews tab, and new ones sync automatically going forward</div></div>
+<div class="step"><div class="step-n">2</div><div><strong>Your business details</strong> — name, location, and category are detected, so AI visibility and reports are set up for the right business and city</div></div>
+<h3>What it doesn't do</h3>
+<p>Connecting Google does not post anything, change your listing, or message your customers. It reads your profile and reviews so SwarmReply can monitor and help — nothing happens without your say-so.</p>
+<div class="tip">✓ A large review history can take a few minutes to finish importing on first connect.</div>
+    `
+  },
+  'results-timeline': {
+    title: 'How soon will I see results?',
+    category: 'Getting started',
+    readTime: '2 min read',
+    body: `
+<h3>Reviews — days</h3>
+<p>This is the fastest win. Once you start sending requests, new reviews typically begin arriving within days, depending on how many customers you reach and how quickly they respond.</p>
+<h3>AI visibility — weeks</h3>
+<p>Your visibility score moves as your review volume, recency, and listings improve. Watch the trend over several weekly scans rather than overnight — it's a compounding result, not a switch.</p>
+<h3>Local rank — weeks to months</h3>
+<p>Search rankings shift slowly by nature; rank tracking is there to show steady movement over time, not day-to-day noise.</p>
+<div class="tip">💡 The biggest lever on all three is consistent review generation. Get requests flowing in week one and the rest follows.</div>
+    `
+  },
+  'mobile-app': {
+    title: 'Can I use SwarmReply on my phone?',
+    category: 'Getting started',
+    readTime: '1 min read',
+    body: `
+<h3>Yes — right in your browser</h3>
+<p>SwarmReply is a web app that works in any modern mobile browser, so you can check reviews, reply, and answer webchat from your phone — there's no app to download or update.</p>
+<h3>Add it to your home screen</h3>
+<div class="step"><div class="step-n">1</div><div>Open your dashboard in your phone's browser and sign in</div></div>
+<div class="step"><div class="step-n">2</div><div>Use your browser's <strong>Add to Home Screen</strong> option</div></div>
+<div class="step"><div class="step-n">3</div><div>It opens full-screen, like an app, with one tap</div></div>
+<div class="tip">✓ Turn on alerts (Settings → Account → Alert preferences) so new reviews and webchats reach your phone the moment they happen.</div>
+    `
+  },
 };
 
 // Populate remaining articles as stubs
