@@ -191,6 +191,35 @@ a{color:inherit}
 }
 @media (max-width:480px){.nav-cta .btn-ghost{display:none}}
 
+
+/* ─────────── Product screenshot mockups (reusable) ─────────── */
+.shot{max-width:880px;margin:38px auto 0;background:#fff;border:1px solid var(--line);border-radius:16px;overflow:hidden;box-shadow:0 30px 70px rgba(10,10,10,.13)}
+.shot-bar{height:40px;background:var(--cream);border-bottom:1px solid var(--line);display:flex;align-items:center;gap:7px;padding:0 15px}
+.shot-bar i{width:10px;height:10px;border-radius:50%;background:#dcd7cc}
+.shot-url{flex:1;text-align:center;font-size:.72rem;color:var(--taupe);background:#fff;border:1px solid var(--line);border-radius:7px;padding:4px 12px;max-width:300px;margin:0 auto}
+.shot-body{display:grid;grid-template-columns:172px 1fr;min-height:288px}
+.shot-side{background:var(--cream);border-right:1px solid var(--line);padding:14px 0;font-size:.78rem}
+.shot-nav{padding:8px 16px;color:var(--taupe);display:flex;gap:8px;align-items:center}
+.shot-nav.on{background:#fff;color:var(--ink);font-weight:700;box-shadow:inset -2px 0 0 var(--honey)}
+.shot-main{padding:20px;display:flex;flex-direction:column;gap:12px}
+.shot-h{font-size:.7rem;font-weight:700;color:var(--taupe);letter-spacing:.08em;text-transform:uppercase}
+.shot-card{border:1px solid var(--line);border-radius:11px;padding:12px 14px;display:flex;gap:11px;align-items:flex-start;background:#fff}
+.shot-av{width:32px;height:32px;border-radius:50%;background:var(--cream);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.74rem;flex-shrink:0}
+.shot-stars{color:var(--amber);font-size:.76rem;letter-spacing:1.5px}
+.shot-card p{font-size:.8rem;color:#3a3a38;margin-top:3px;line-height:1.5}
+.shot-tag{margin-left:auto;font-size:.62rem;font-weight:700;border-radius:50px;padding:4px 9px;flex-shrink:0;white-space:nowrap}
+.shot-tag.g{background:#e8f5ef;color:var(--green)}
+.shot-tag.h{background:#fdf6e3;color:#92690a}
+.shot-tag.b{background:#eaf1fb;color:#2b5fb0}
+.shot-tag.p{background:#efe9fb;color:#6b4bb0}
+.shot-line{display:flex;align-items:center;justify-content:space-between;gap:10px;font-size:.8rem;padding:9px 2px;border-bottom:1px dashed var(--line)}
+.shot-line:last-child{border-bottom:none}
+.shot-line b{color:var(--green);font-weight:700}
+.shot-bubble{max-width:80%;padding:9px 12px;border-radius:13px;font-size:.8rem;line-height:1.45}
+.shot-bubble.them{background:var(--cream);border:1px solid var(--line);align-self:flex-start;border-bottom-left-radius:4px}
+.shot-bubble.me{background:var(--ink);color:#fff;align-self:flex-end;border-bottom-right-radius:4px}
+.shot-cap{text-align:center;font-size:.8rem;color:var(--taupe);margin:14px auto 0;max-width:640px}
+@media(max-width:620px){.shot-body{grid-template-columns:1fr}.shot-side{display:none}}
 </style>
 <style>body{background-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20width%3D'28'%20height%3D'49'%20viewBox%3D'0%200%2028%2049'%3E%3Cpath%20d%3D'M13.99%209.25l13%207.5v15l-13%207.5L1%2031.75v-15l12.99-7.5zM3%2017.9v12.7l10.99%206.34%2011-6.35V17.9l-11-6.34L3%2017.9zM0%2015l12.98-7.5V0h-2v6.35L0%2012.69v2.3zm0%2018.5L12.98%2041v8h-2v-6.85L0%2035.81v-2.3zM15%200v7.5L27.99%2015H28v-2.31h-.01L17%206.35V0h-2zm0%2049v-8l12.99-7.5H28v2.31h-.01L17%2042.15V49h-2z'%20fill%3D'%23a89878'%20fill-opacity%3D'0.03'%2F%3E%3C%2Fsvg%3E");background-repeat:repeat;background-size:84px auto}details summary::-webkit-details-marker{display:none}details summary::marker{content:""}</style>
 </head>
@@ -264,7 +293,33 @@ a{color:inherit}
     </div>
     <p style="font-size:.8rem;margin-top:16px;color:var(--taupe)">No demo required · Set up in a day · Cancel anytime</p>
   </div>
-</header><section class="sec" style="padding:48px 0;background:#ffffff;">
+</header>
+<div class="wrap" style="padding-top:6px;padding-bottom:8px">
+  <div class="shot" role="img" aria-label="AI review reply drafted in the owner's voice with approve and edit buttons">
+    <div class="shot-bar"><i></i><i></i><i></i><span class="shot-url">app.swarmreply.com/dashboard/reviews · replies</span></div>
+    <div class="shot-body">
+      <div class="shot-side">
+        <div class="shot-nav">⬢ Dashboard</div>
+        <div class="shot-nav on">⭐ Reviews</div>
+        <div class="shot-nav">📨 Grow</div>
+        <div class="shot-nav">✨ AI Visibility</div>
+        <div class="shot-nav">📈 Rank Tracking</div>
+        <div class="shot-nav">💬 Inbox</div>
+      </div>
+      <div class="shot-main">
+        <div class="shot-h">Reviews · AI replies</div>
+        <div class="shot-card"><div class="shot-av">DL</div><div style="flex:1"><div class="shot-stars">★★★★★</div><p>“Great experience start to finish — the team was so helpful.”</p></div></div>
+        <div class="shot-card" style="background:#faf9f6;border-left:3px solid var(--honey)"><div style="flex:1"><div class="shot-h" style="margin-bottom:5px">Drafted reply · in your voice</div><p>“Thank you, Dana! We loved having you in — the team will be thrilled to hear this. See you next time! 🐝”</p></div></div>
+        <div style="display:flex;gap:8px;margin-top:auto">
+          <span class="shot-tag g" style="margin:0;padding:8px 15px">✓ Approve &amp; post</span>
+          <span class="shot-tag b" style="margin:0;padding:8px 15px">Edit</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <p class="shot-cap">Every review gets a thoughtful reply drafted in your voice — you just approve, or tweak first.</p>
+</div>
+<section class="sec" style="padding:48px 0;background:#ffffff;">
   <div class="wrap" style="max-width:760px">
     <div class="eyebrow">The problem</div>
     <h2 style="font-size:clamp(1.5rem,3.2vw,2.05rem);margin:10px 0 18px">Unanswered reviews quietly cost you customers</h2>
