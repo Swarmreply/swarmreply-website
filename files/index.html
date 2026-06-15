@@ -199,6 +199,19 @@ h1 em,h2 em{font-style:italic;color:var(--amber);font-weight:700}
 .cmp .yes{color:var(--green);font-weight:700}
 .cmp .meh{color:var(--taupe)}
 .cmp tfoot td{font-size:.74rem;color:var(--taupe);border:none;padding:14px 22px}
+@media (max-width:560px){
+  .cmp{border-radius:14px}
+  .cmp table{font-size:.8rem}
+  .cmp th,.cmp td{padding:11px 11px;vertical-align:top}
+  .cmp thead th{font-size:.6rem;letter-spacing:.03em}
+  .cmp td:nth-child(2){font-size:.8rem}
+  .cmp tfoot td{font-size:.66rem;padding:11px 11px}
+}
+@media (max-width:400px){
+  .cmp table{font-size:.74rem}
+  .cmp th,.cmp td{padding:9px 8px}
+  .cmp thead th{font-size:.56rem}
+}
 
 /* ───── pricing ───── */
 .plans{display:grid;grid-template-columns:1fr 1fr;gap:28px;max-width:880px;margin:0 auto;align-items:stretch}
