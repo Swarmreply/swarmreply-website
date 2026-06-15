@@ -25,7 +25,7 @@
   'use strict';
 
   // ─── CONFIG ───────────────────────────────
-  var API_BASE = 'https://your-railway-url.up.railway.app/api';
+  var API_BASE = 'https://api.swarmreply.com/api';
   var WIDGET_VERSION = '1.0.0';
 
   // ─── FIND THE SCRIPT TAG ──────────────────
