@@ -249,7 +249,7 @@
         + '<p>' + escapeHtml(review.reply) + '</p></div>'
       : '';
     var metaHtml = '';
-    if (data.showDate && review.date) metaHtml += '<span>' + review.date + '</span>';
+    if (data.showDate && review.date) metaHtml += '<span>' + escapeHtml(review.date) + '</span>';
     if (data.showPlatform) {
       metaHtml += '<span class="sr-platform-badge">'
         + (review.platform === 'yelp' ? 'Yelp' : review.platform === 'tripadvisor' ? 'TripAdvisor' : 'Google')

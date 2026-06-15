@@ -29,6 +29,17 @@
   // Don't render twice
   if (document.getElementById('sr-rep-widget')) return;
 
+  // ── escaping helpers (review-link + business name come from config/API) ──
+  function escHtml(v) {
+    return String(v == null ? '' : v)
+      .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+  }
+  function safeUrl(v) {
+    var u = String(v == null ? '' : v).trim();
+    return /^https?:\/\//i.test(u) ? escHtml(u) : '#';
+  }
+
   function stars(rating) {
     var full  = Math.round(rating);
     var empty = 5 - full;
@@ -89,7 +100,7 @@
                 data.reviewCount.toLocaleString() + ' reviews' +
               '</div>'
             : '',
-          '<a href="' + reviewUrl + '" target="_blank" rel="noopener"',
+          '<a href="' + safeUrl(reviewUrl) + '" target="_blank" rel="noopener"',
              ' id="sr-cta-btn"',
              ' onclick="(function(){var f=fetch(\'' + API + '/rep-widget/' + TOKEN + '/click\',{method:\'POST\'}).catch(function(){});})()" ',
              ' style="',
@@ -102,7 +113,7 @@
                'text-decoration:none;',
                'transition:opacity .15s;',
              '">',
-            data.ctaText || 'Leave a review',
+            escHtml(data.ctaText || 'Leave a review'),
           '</a>',
       '</div>',
     ].join('');
@@ -139,19 +150,19 @@
 
     bar.innerHTML = [
       '<span style="font-size:13px;font-weight:700;color:#0a0a0a">',
-        data.businessName,
+        escHtml(data.businessName),
       '</span>',
       '<span style="font-size:15px;color:' + accent + '">' + stars(data.avgRating) + '</span>',
       '<span style="font-size:14px;font-weight:900;color:#0a0a0a">' + data.avgRating.toFixed(1) + '</span>',
       data.showCount
         ? '<span style="font-size:12px;color:#7a7670">' + data.reviewCount.toLocaleString() + ' Google reviews</span>'
         : '',
-      '<a href="' + reviewUrl + '" target="_blank" rel="noopener"',
+      '<a href="' + safeUrl(reviewUrl) + '" target="_blank" rel="noopener"',
          ' style="background:' + accent + ';color:#0a0a0a;padding:6px 16px;',
          'border-radius:50px;font-size:12px;font-weight:700;text-decoration:none;',
          'white-space:nowrap"',
          ' onclick="' + trackClick.toString() + '()">',
-        data.ctaText || 'Leave a review',
+        escHtml(data.ctaText || 'Leave a review'),
       '</a>',
       '<button onclick="document.getElementById(\'sr-rep-widget\').style.display=\'none\'"',
              ' style="background:none;border:none;cursor:pointer;color:#7a7670;',

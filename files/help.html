@@ -1845,7 +1845,8 @@ function handleSearch(val) {
     }).slice(0, 7);
 
     if (!matches.length) {
-      results.innerHTML = '<div class="sr-empty">No results for "' + val + '" — <a href="mailto:hello@swarmreply.com" style="color:var(--k);font-weight:600">ask us directly →</a></div>';
+      var safeVal = val.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+      results.innerHTML = '<div class="sr-empty">No results for "' + safeVal + '" — <a href="mailto:hello@swarmreply.com" style="color:var(--k);font-weight:600">ask us directly →</a></div>';
     } else {
       results.innerHTML = matches.map(function(a) {
         return '<div class="sr-item" onclick="selectResult(\'' + a.id + '\',\'' + a.catKey + '\')">' +
