@@ -50,7 +50,7 @@ button{font-family:inherit;cursor:pointer}
 .nav-right{display:flex;align-items:center;gap:20px}
 .nav-right a{font-size:.85rem;font-weight:500;color:var(--mu);transition:color .15s}
 .nav-right a:hover{color:var(--k)}
-.btn-nav{padding:8px 18px;border-radius:50px;font-size:.82rem;font-weight:700;background:var(--g);color:var(--k);border:none;transition:all .15s}
+.btn-nav{display:inline-block;padding:8px 18px;border-radius:50px;font-size:.82rem;font-weight:700;background:var(--g);color:var(--k);border:none;text-decoration:none;transition:all .15s}
 .btn-nav:hover{background:var(--gd)}
 
 /* ── HERO ── */
@@ -162,7 +162,7 @@ button{font-family:inherit;cursor:pointer}
 .contact-banner h3{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:900;color:#fff;margin-bottom:4px}
 .contact-banner p{font-size:.82rem;color:rgba(255,255,255,.5);line-height:1.5}
 .contact-banner .cb-btns{display:flex;gap:10px;flex-shrink:0}
-.cb-btn{padding:10px 20px;border-radius:50px;font-size:.82rem;font-weight:700;border:none;cursor:pointer;transition:all .15s}
+.cb-btn{display:inline-block;padding:10px 20px;border-radius:50px;font-size:.82rem;font-weight:700;border:none;cursor:pointer;text-decoration:none;text-align:center;transition:all .15s}
 .cb-btn.gold{background:var(--g);color:var(--k)}
 .cb-btn.gold:hover{background:var(--gd)}
 .cb-btn.ghost{background:transparent;border:1.5px solid rgba(255,255,255,.2);color:#fff}
@@ -214,7 +214,7 @@ body{background-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww
       <a href="/#pricing">Pricing</a>
       <a href="mailto:hello@swarmreply.com">Contact</a>
       <a href="/login.html" style="color:var(--tx)">Log in</a>
-      <a href="/signup.html"><button class="btn-nav">Sign up today</button></a>
+      <a href="/signup.html" class="btn-nav">Sign up today</a>
     </div>
   </div>
 </nav>
@@ -376,8 +376,8 @@ body{background-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww
               <p>Our team is here to help. Usually responds within a few hours on business days.</p>
             </div>
             <div class="cb-btns">
-              <a href="mailto:hello@swarmreply.com"><button class="cb-btn gold">Email support</button></a>
-              <a href="mailto:hello@swarmreply.com?subject=Help Center Feedback"><button class="cb-btn ghost">Send feedback</button></a>
+              <a href="/contact.html" class="cb-btn gold">Email support</a>
+              <a href="mailto:hello@swarmreply.com?subject=Help Center Feedback" class="cb-btn ghost">Send feedback</a>
             </div>
           </div>
         </div>
@@ -396,7 +396,7 @@ body{background-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww
               <p>Email us at hello@swarmreply.com — we read and reply to every message.</p>
             </div>
             <div class="cb-btns">
-              <a href="mailto:hello@swarmreply.com"><button class="cb-btn gold">Email support</button></a>
+              <a href="/contact.html" class="cb-btn gold">Email support</a>
             </div>
           </div>
         </div>
@@ -418,7 +418,7 @@ body{background-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww
               <p>Email us at hello@swarmreply.com and we'll get back to you.</p>
             </div>
             <div class="cb-btns">
-              <a href="mailto:hello@swarmreply.com"><button class="cb-btn gold">Email support</button></a>
+              <a href="/contact.html" class="cb-btn gold">Email support</a>
             </div>
           </div>
         </div>
