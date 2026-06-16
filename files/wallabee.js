@@ -152,8 +152,9 @@
   // ── State ──────────────────────────────────────────────────────────────────
   var GREETING = { who: 'bee', type: 'text',
     text: "Hi! I'm Wallabee \uD83D\uDC1D \u2014 SwarmReply's support bee. Ask me anything, like \u201chow do I connect Google\u201d or \u201chow does pricing work\u201d, and I'll point you to the right guide." };
+  var GREETING_CHIPS = { who: 'bee', type: 'chips', chips: ['Email our team'] };
 
-  var state = { open: false, messages: [GREETING], lastQuestion: '' };
+  var state = { open: false, messages: [GREETING, GREETING_CHIPS], lastQuestion: '' };
   try {
     var saved = JSON.parse(sessionStorage.getItem(STORE_KEY));
     if (saved && saved.messages && saved.messages.length) state = saved;
@@ -264,10 +265,7 @@
       } else {
         var mail = '';
         if (m.mailto) {
-          mail = '<div><a class="wb-mail" href="mailto:' + SUPPORT_EMAIL + '">' + SUPPORT_EMAIL + ' \u2197</a></div>' +
-            '<a class="wb-mailbtn" href="mailto:' + SUPPORT_EMAIL +
-            '?subject=' + encodeURIComponent('Support: ' + (state.lastQuestion || 'question from swarmreply.com')) +
-            '">Email our team \u2192</a>';
+          mail = '<a class="wb-mailbtn" href="/contact.html" target="_blank" rel="noopener">Email our team \u2192</a>';
         }
         html += '<div class="wb-row ' + (m.who === 'user' ? 'user' : '') + '">' +
           (m.who === 'bee' ? beeAvatarSm() : '') +
@@ -344,6 +342,9 @@
     render();
     if (labelTxt.indexOf('That helped') === 0) {
       beeSay([{ who: 'bee', type: 'text', text: 'Happy to help! Buzz me anytime. \uD83D\uDC1D' }]);
+    } else if (labelTxt.indexOf('Email our team') === 0) {
+      beeSay([{ who: 'bee', type: 'text', mailto: true,
+        text: "Happy to connect you with a human \u2014 we read and reply to every message. Send us a note and we'll get back within one business day." }]);
     } else {
       escalate();
     }
