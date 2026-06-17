@@ -36,18 +36,21 @@
 <style>
   *{box-sizing:border-box}
   :root{
-    --ink:#0a0a0a; --ink2:#0f0e0c; --paper:#faf8f3; --bg:#ece8e1; --line:#e4e0d8;
+    --ink:#0a0a0a; --ink2:#0f0e0c; --paper:#faf8f3; --bg:#f8f7f4; --line:#e4e0d8;
     --honey:#f5c842; --amber:#d4a515; --green:#1a6b45; --taupe:#7a7670; --mute:#a39e95; --tx:#3a3a38;
   }
   html,body{margin:0}
   body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--tx);-webkit-font-smoothing:antialiased;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px}
+  /* Honeycomb texture — same as the homepage (warm taupe, behind the card) */
+  body{background-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20width%3D'28'%20height%3D'49'%20viewBox%3D'0%200%2028%2049'%3E%3Cpath%20d%3D'M13.99%209.25l13%207.5v15l-13%207.5L1%2031.75v-15l12.99-7.5zM3%2017.9v12.7l10.99%206.34%2011-6.35V17.9l-11-6.34L3%2017.9zM0%2015l12.98-7.5V0h-2v6.35L0%2012.69v2.3zm0%2018.5L12.98%2041v8h-2v-6.85L0%2035.81v-2.3zM15%200v7.5L27.99%2015H28v-2.31h-.01L17%206.35V0h-2zm0%2049v-8l12.99-7.5H28v2.31h-.01L17%2042.15V49h-2z'%20fill%3D'%23a89878'%20fill-opacity%3D'0.03'%2F%3E%3C%2Fsvg%3E");background-repeat:repeat;background-size:84px auto}
   a{color:var(--ink);font-weight:500}
 
   .card{width:100%;max-width:940px;display:flex;flex-wrap:wrap;border:1px solid #d9d4ca;border-radius:16px;overflow:hidden;background:#fff;box-shadow:0 24px 60px rgba(20,16,8,.10)}
 
   /* Brand panel (grows to full width when it wraps) */
   .brand{flex:1 1 300px;background:var(--ink2);color:var(--paper);padding:34px 30px;display:flex;flex-direction:column}
-  .brand-main{flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center}
+  .brand-main{flex:1;display:flex;flex-direction:column;align-items:center;text-align:center}
+  .brand-pitch{flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;width:100%}
   .logo{display:flex;align-items:center;justify-content:center;gap:11px}
   .logo img{height:46px;width:auto;display:block}
   .logo .word{font-family:'Playfair Display',serif;font-weight:900;font-size:1.85rem;color:var(--paper);line-height:1}
@@ -139,10 +142,12 @@
           <img src="/bee-logo.png" alt="SwarmReply bee logo">
           <span class="word">SwarmReply</span>
         </div>
-        <p class="tag">Your reputation is your best salesperson.<span class="gold">Put it to work.</span></p>
-        <div class="prop"><b>&#10003;</b><span>Reply to every review in your voice</span></div>
-        <div class="prop"><b>&#10003;</b><span>Show up in Google and AI search</span></div>
-        <div class="prop"><b>&#10003;</b><span>No contracts &mdash; cancel anytime</span></div>
+        <div class="brand-pitch">
+          <p class="tag">Your reputation is your best salesperson.<span class="gold">Put it to work.</span></p>
+          <div class="prop"><b>&#10003;</b><span>Reply to every review in your voice</span></div>
+          <div class="prop"><b>&#10003;</b><span>Show up in Google and AI search</span></div>
+          <div class="prop"><b>&#10003;</b><span>No contracts &mdash; cancel anytime</span></div>
+        </div>
       </div>
       <div class="steps">
         <span class="stp on" id="stp1">1 Account</span> &nbsp;&middot;&nbsp;
