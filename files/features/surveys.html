@@ -166,7 +166,7 @@ a{color:inherit}
 .nav-dd-menu a{display:block;padding:9px 14px;border-radius:9px;font-size:.88rem;color:var(--tx);text-decoration:none;white-space:nowrap}
 .nav-dd-menu a:hover{background:var(--cream);color:var(--ink)}
 .mnav-btn{display:none;background:rgba(0,0,0,.03);border:1px solid rgba(0,0,0,.12);border-radius:10px;padding:8px 11px;cursor:pointer;color:#1a1d21;font-size:1.1rem;line-height:1;margin-left:10px;flex-shrink:0}
-.mnav{display:none;position:fixed;top:68px;left:0;right:0;z-index:998;background:rgba(255,255,255,.98);backdrop-filter:blur(10px);border-bottom:1px solid rgba(0,0,0,.08);box-shadow:0 18px 40px rgba(0,0,0,.12);padding:8px 22px 18px;flex-direction:column}
+.mnav{display:none;position:fixed;top:68px;left:0;right:0;z-index:998;background:rgba(255,255,255,.98);backdrop-filter:blur(10px);border-bottom:1px solid rgba(0,0,0,.08);box-shadow:0 18px 40px rgba(0,0,0,.12);padding:8px 22px 18px;flex-direction:column;max-height:calc(100vh - 68px);max-height:calc(100dvh - 68px);overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch}
 .mnav.open{display:flex}
 .mnav a{padding:13px 4px;font-size:1.02rem;color:#1a1d21;text-decoration:none;border-bottom:1px solid rgba(0,0,0,.06);font-weight:600}
 .mnav a:last-child{border-bottom:none}
@@ -401,23 +401,14 @@ a{color:inherit}
     <div class="foot-grid">
       <div>
         <div class="foot-brand"><img src="/bee-logo.png" alt="" width="36" height="36">SwarmReply</div>
-        <p style="font-size:.88rem;margin-top:14px;max-width:270px">AI reputation management and AI search visibility for local businesses — at a third of the price.</p>
+        <p style="font-size:.88rem;margin-top:14px;max-width:270px">AI reputation management and AI search visibility for local businesses.</p>
       </div>
       <div class="foot-col">
         <h4>Product</h4>
-        <a href="/features/">All features</a>
-        <a href="/features/ai-review-replies.html">AI Review Replies</a>
-        <a href="/ai-search-visibility.html">AI Visibility</a>
-        <a href="/features/review-generation.html">Review Generation</a>
-        <a href="/features/listings.html">Listings</a>
+        <a href="/#product">Product tour</a>
+        <a href="/#ai-visibility">AI Visibility</a>
         <a href="/#pricing">Pricing</a>
-      </div>
-      <div class="foot-col">
-        <h4>More tools</h4>
-        <a href="/features/surveys.html">NPS Surveys</a>
-        <a href="/features/webchat.html">Webchat &amp; Widgets</a>
-        <a href="/features/integrations.html">Integrations</a>
-        <a href="/features/onboarding.html">Onboarding</a>
+        <a href="/#compare">Compare</a>
       </div>
       <div class="foot-col">
         <h4>Compare</h4>
@@ -428,10 +419,15 @@ a{color:inherit}
       </div>
       <div class="foot-col">
         <h4>Company</h4>
-        <a href="/why-swarmreply.html">Why SwarmReply</a>
-        <a href="/contact.html">Contact us</a>
+        <a href="/#mission">Our mission</a>
         <a href="/help.html">Help</a>
+        <a href="/login.html">Log in</a>
+      </div>
+      <div class="foot-col">
+        <h4>Get in touch</h4>
+        <a href="/contact.html">Contact us</a>
         <a href="/signup.html">Get started</a>
+        <a href="/contact.html">Agency sales</a>
       </div>
     </div>
     <div class="foot-base">
