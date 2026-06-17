@@ -133,7 +133,7 @@ a{color:inherit}
 .nav-dd-menu a:hover{background:var(--cream);color:var(--ink)}
 .mnav-btn{display:none;background:rgba(0,0,0,.03);border:1px solid rgba(0,0,0,.12);border-radius:10px;padding:8px 11px;cursor:pointer;color:#1a1d21;font-size:1.1rem;line-height:1;margin-left:10px;flex-shrink:0}
 .mnav{display:none;position:fixed;top:68px;left:0;right:0;z-index:998;background:rgba(255,255,255,.98);backdrop-filter:blur(10px);border-bottom:1px solid rgba(0,0,0,.08);box-shadow:0 18px 40px rgba(0,0,0,.12);padding:8px 22px 18px;flex-direction:column;max-height:calc(100vh - 68px);max-height:calc(100dvh - 68px);overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch}
-.mnav.open{display:flex}
+.mnav.open{display:flex}body.mnav-lock{position:fixed;left:0;right:0;width:100%;overflow:hidden}body.mnav-lock .nav{position:fixed;top:0;left:0;right:0;z-index:120}
 .mnav a{padding:13px 4px;font-size:1.02rem;color:#1a1d21;text-decoration:none;border-bottom:1px solid rgba(0,0,0,.06);font-weight:600}
 .mnav a:last-child{border-bottom:none}
 .mnav .mnav-cta{display:flex;gap:10px;margin-top:14px}
@@ -339,14 +339,23 @@ body{background-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww
 (function(){
   var btn=document.getElementById('mnavBtn'),panel=document.getElementById('mnavPanel');
   if(!btn||!panel)return;
-  btn.addEventListener('click',function(){
-    var open=panel.classList.toggle('open');
+  var sy=0;
+  function setOpen(open){
+    panel.classList.toggle('open',open);
     btn.setAttribute('aria-expanded',open?'true':'false');
-    btn.textContent=open?'\u2715':'\u2630';
-  });
-  panel.addEventListener('click',function(e){
-    if(e.target.tagName==='A'){panel.classList.remove('open');btn.setAttribute('aria-expanded','false');btn.textContent='\u2630';}
-  });
+    btn.textContent=open?'✕':'☰';
+    if(open){
+      sy=window.pageYOffset||document.documentElement.scrollTop||0;
+      document.body.style.top=(-sy)+'px';
+      document.body.classList.add('mnav-lock');
+    }else{
+      document.body.classList.remove('mnav-lock');
+      document.body.style.top='';
+      window.scrollTo(0,sy);
+    }
+  }
+  btn.addEventListener('click',function(){setOpen(!panel.classList.contains('open'));});
+  panel.addEventListener('click',function(e){if(e.target.tagName==='A'){setOpen(false);}});
 })();
 </script>
 
