@@ -19,7 +19,8 @@
 <link rel="stylesheet" href="/swarm.css">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{--k:#0a0a0a;--w:#fff;--g:#f5c842;--of:#f8f7f4;--bd:#e4e0d8;--mu:#7a7670;--tx:#1a1a18}
+/* page-local aliases -> canonical tokens in /swarm.css */
+  :root{--k:var(--ink);--w:var(--paper);--g:var(--honey);--of:var(--cream);--bd:var(--line);--mu:var(--taupe)}
 body{font-family:'DM Sans',sans-serif;background:#fff;color:var(--tx);-webkit-font-smoothing:antialiased}
 .nav{background:#fff;border-bottom:1px solid var(--bd);padding:0 28px;height:62px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100}
 .nav-logo{display:inline-flex;align-items:center;gap:0;font-family:'Playfair Display',serif;font-size:1.55rem;font-weight:900;color:var(--k);text-decoration:none;line-height:1;}

@@ -32,7 +32,8 @@
 <link rel="stylesheet" href="/swarm.css">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{--k:#0a0a0a;--w:#fff;--g:#f5c842;--gd:#d4a515;--of:#f8f7f4;--bd:#e4e0d8;--mu:#7a7670;--tx:#1a1a18;--gr:#1a6b45;--re:#c0392b}
+/* page-local aliases -> canonical tokens in /swarm.css */
+  :root{--k:var(--ink);--w:var(--paper);--g:var(--honey);--gd:var(--amber);--of:var(--cream);--bd:var(--line);--mu:var(--taupe);--gr:var(--green);--re:var(--danger)}
 body{font-family:'DM Sans',sans-serif;background:var(--of);color:var(--tx);min-height:100vh;-webkit-font-smoothing:antialiased}
 
 

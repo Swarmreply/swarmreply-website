@@ -36,10 +36,8 @@
 
 <style>
   *{box-sizing:border-box}
-  :root{
-    --ink:#0a0a0a; --ink2:#0f0e0c; --paper:#faf8f3; --bg:#f8f7f4; --line:#e4e0d8;
-    --honey:#f5c842; --amber:#d4a515; --green:#1a6b45; --taupe:#7a7670; --mute:#a39e95; --tx:#3a3a38;
-  }
+  /* page-local aliases -> canonical tokens in /swarm.css */
+  :root{--paper:#faf8f3;--ink2:#0f0e0c;--tx:#3a3a38;--bg:var(--cream)}
   html,body{margin:0}
   body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--tx);-webkit-font-smoothing:antialiased;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px}
   /* Honeycomb texture — same as the homepage (warm taupe, behind the card) */
