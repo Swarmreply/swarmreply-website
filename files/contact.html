@@ -57,8 +57,6 @@ body{font-family:'DM Sans',sans-serif;background:var(--of);color:var(--tx);min-h
 .fi:focus{border-color:var(--k)}
 .frow{margin-bottom:18px}
 
-.btn{width:100%;padding:14px;border-radius:50px;background:var(--g);color:var(--k);border:none;font-size:.95rem;font-weight:700;font-family:'DM Sans',sans-serif;cursor:pointer;transition:all .18s;margin-top:4px}
-.btn:hover{background:var(--gd);transform:translateY(-1px);box-shadow:0 8px 24px rgba(245,200,66,.35)}
 .btn:disabled{background:var(--bd);color:var(--mu);cursor:not-allowed;transform:none;box-shadow:none}
 
 .note{font-size:.78rem;color:var(--mu);text-align:center;margin-top:14px;line-height:1.65}
@@ -77,11 +75,6 @@ body{font-family:'DM Sans',sans-serif;background:var(--of);color:var(--tx);min-h
 .nlinks a{color:inherit;text-decoration:none}
 .nlinks a:hover{color:var(--k)}
 .ncta{display:flex;gap:10px;align-items:center}
-.nbtn{display:inline-flex;align-items:center;border-radius:50px;font-weight:700;cursor:pointer;text-decoration:none;padding:10px 20px;font-size:.86rem;transition:transform .18s,box-shadow .18s,background .18s}
-.nbtn-gold{background:var(--g);color:var(--k)}
-.nbtn-gold:hover{background:var(--gd);transform:translateY(-2px);box-shadow:0 10px 26px rgba(212,165,21,.38)}
-.nbtn-ghost{border:1.5px solid var(--bd);color:var(--k);background:transparent}
-.nbtn-ghost:hover{border-color:var(--k)}
 .nav-dd{position:relative;display:inline-flex}
 .nav-dd>a{display:inline-flex;align-items:center;gap:4px}
 .nav-dd-menu{display:none;position:absolute;top:calc(100% + 8px);left:50%;transform:translateX(-50%);background:#fff;border:1px solid var(--bd);border-radius:14px;box-shadow:0 18px 44px rgba(0,0,0,.12);padding:8px;min-width:175px;z-index:130}
@@ -103,10 +96,10 @@ body{font-family:'DM Sans',sans-serif;background:var(--of);color:var(--tx);min-h
 .mnav .mnav-start{background:linear-gradient(135deg,#f4b400,#e89a00);color:#1a1408}
 @media (max-width:960px){.mnav-btn{display:inline-flex;align-items:center}}
 @media (max-width:960px){
-  .ncta .nbtn{padding:8px 14px!important;font-size:.8rem!important;white-space:nowrap}
+  .ncta .btn{padding:8px 14px!important;font-size:.8rem!important;white-space:nowrap}
 }
 @media (max-width:480px){
-  .ncta .nbtn-ghost{display:none}
+  .ncta .btn-ghost{display:none}
 }
 
 
@@ -172,8 +165,8 @@ body{background-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww
         <a href="/help.html">Help</a>
       </div>
       <div class="ncta">
-        <a href="/login.html" class="nbtn nbtn-ghost">Log in</a>
-        <a href="/signup.html" class="nbtn nbtn-gold">Start now</a>
+        <a href="/login.html" class="btn btn-ghost btn-sm">Log in</a>
+        <a href="/signup.html" class="btn btn-gold btn-sm">Start now</a>
       </div>
       <button class="mnav-btn" id="mnavBtn" aria-label="Open menu" aria-expanded="false" aria-controls="mnavPanel">☰</button>
     </div>
@@ -230,7 +223,7 @@ body{background-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww
           <label class="fl" for="f-msg">How can we help? <span style="color:var(--re)">*</span></label>
           <textarea class="fi" id="f-msg" name="message" rows="4" placeholder="Tell us what's on your mind…" required style="resize:vertical;line-height:1.6"></textarea>
         </div>
-        <button type="submit" class="btn" id="submit-btn">Send message →</button>
+        <button type="submit" class="btn btn-gold btn-block" id="submit-btn">Send message →</button>
       </form>
       <p class="note">We typically respond within one business day. You can also reach us directly at <strong>hello@swarmreply.com</strong></p>
     </div>

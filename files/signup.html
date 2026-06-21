@@ -79,9 +79,6 @@
   .hint{font-size:.72rem;color:var(--mute);margin:0 0 18px}
   .chk{display:flex;gap:10px;align-items:flex-start;cursor:pointer;margin-bottom:13px;font-size:.82rem;color:var(--tx);line-height:1.45}
   .chk input{width:16px;height:16px;margin-top:2px;flex-shrink:0;accent-color:var(--ink)}
-  .cta{width:100%;padding:14px;border:none;border-radius:50px;background:var(--ink);color:#fff;font-weight:600;font-size:.94rem;cursor:pointer;font-family:inherit}
-  .cta:disabled{background:#d8d3c8;cursor:not-allowed}
-  .cta-gold{background:var(--honey);color:var(--ink);display:flex;align-items:center;justify-content:center;gap:8px}
   .ghost{display:inline-block;background:none;border:none;color:var(--taupe);font-size:.82rem;cursor:pointer;font-family:inherit;padding:10px 0;margin-top:6px}
   .err{background:#fee2e2;border:1px solid #fca5a5;border-radius:9px;padding:0;font-size:.84rem;color:#c0392b;line-height:1.5;margin:0 0 14px;max-height:0;overflow:hidden;transition:max-height .15s,padding .15s}
   .err.show{padding:11px 14px;max-height:120px}
@@ -191,7 +188,7 @@
           <span>Send me product updates, tips, and occasional offers &mdash; unsubscribe anytime</span>
         </label>
 
-        <button class="cta" id="btn1">Continue &rarr;</button>
+        <button class="btn btn-dark btn-block" id="btn1">Continue &rarr;</button>
         <p class="foot">Already have an account? <a href="/login">Log in</a></p>
       </div>
 
@@ -218,7 +215,7 @@
         <div class="summary" id="summary"></div>
         <div class="note" id="vol-note"><b>Volume pricing is automatic:</b> $89/location from your 3rd, $79 from your 26th.</div>
 
-        <button class="cta" id="btn2">Continue to payment &rarr;</button>
+        <button class="btn btn-dark btn-block" id="btn2">Continue to payment &rarr;</button>
         <button class="ghost" id="back2">&larr; Back</button>
       </div>
 
@@ -233,7 +230,7 @@
         <label class="fld">Card details</label>
         <div id="payment-element"><div class="pe-loading">Loading secure payment…</div></div>
 
-        <button class="cta cta-gold" id="pay-btn" disabled>
+        <button class="btn btn-gold btn-block" id="pay-btn" disabled>
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#0a0a0a" stroke-width="2.2" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
           <span id="pay-label">Start now</span>
         </button>
