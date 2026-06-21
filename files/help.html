@@ -500,7 +500,7 @@ var categories = {
     title: 'Insights & Analytics',
     desc: 'Understand your reputation data and track what matters.',
     icon: '◎',
-    articles: ['insights-overview','sentiment-score','keyword-tracker','competitor-benchmarking','rating-velocity','monthly-report']
+    articles: ['insights-overview','feedback-report','survey-responses-export','sentiment-score','keyword-tracker','competitor-benchmarking','rating-velocity','monthly-report']
   },
   llm: {
     title: 'AI Visibility Monitoring',
@@ -1207,7 +1207,9 @@ var articles = {
 <h3>A detractor is a gift (really)</h3>
 <p>A customer who scores you 0–6 was probably going to tell someone about their bad experience — the survey makes sure they tell <strong>you</strong> first, privately, so you can make it right.</p>
 <h3>What detractors see</h3>
-<p>They're asked two questions first: what fell short, and what you could do better. They're then also invited to leave a public review, and their answers are saved with their survey response.</p>
+<p>After scoring, a detractor sees whatever follow-up questions you've put on the detractor path of your survey (by default: what fell short, and what you'd do better). Then — exactly like <em>every</em> respondent, whatever their score — they're shown a neutral invitation to leave a public review. Reviews are never gated on sentiment: the same option appears for promoters, passives, and detractors alike, and every answer is saved with the response.</p>
+<h3>Where detractor feedback shows up</h3>
+<p>You don't have to go hunting for it. When an unhappy response comes in, it lands on your <strong>Home</strong> dashboard's action queue — showing the customer's name, their score, and a preview of what they actually wrote. From there, click through to <strong>Reports → Responses</strong> (pre-filtered to detractors) to read every answer, or open <strong>Reports → NPS &amp; loyalty</strong> to see the reasons and per-question results across all your detractors at once.</p>
 <h3>What to do when one comes in</h3>
 <div class="step"><div class="step-n">1</div><div><strong>Respond fast and personally</strong> — a same-day call or email from the owner defuses most situations</div></div>
 <div class="step"><div class="step-n">2</div><div><strong>Fix what you can</strong> — a refund, redo, or sincere apology often turns a detractor into a loyal customer</div></div>
@@ -1468,12 +1470,45 @@ var articles = {
 <h3>Your reputation, measured</h3>
 <p><strong>Reports</strong> in the sidebar is your analytics hub. Everything on the Analytics tab is computed from your real data — reviews, requests, surveys, and campaigns — with no estimates or filler.</p>
 <h3>What you'll find</h3>
-<div class="step"><div class="step-n">1</div><div><strong>Review overview</strong> — total reviews, average rating, and the star-by-star distribution</div></div>
-<div class="step"><div class="step-n">2</div><div><strong>Trends</strong> — your rating over 12 months, review volume by week, and sentiment over the last 8 weeks</div></div>
-<div class="step"><div class="step-n">3</div><div><strong>Requests & surveys</strong> — how many review requests you've sent and how your NPS responses break down</div></div>
-<div class="step"><div class="step-n">4</div><div><strong>Campaigns</strong> — sends and results from your SMS campaigns</div></div>
+<div class="step"><div class="step-n">1</div><div><strong>Review overview & trends</strong> — total reviews, average rating, the star-by-star distribution, and how rating, volume, and sentiment move over time</div></div>
+<div class="step"><div class="step-n">2</div><div><strong>NPS &amp; loyalty</strong> — your NPS score, the promoter / passive / detractor split, the reasons detractors give, and a results chart for every question on your survey</div></div>
+<div class="step"><div class="step-n">3</div><div><strong>Responses</strong> — browse individual survey responses, filter by sentiment, channel, date, or keyword, read every answer, and export the filtered set to a spreadsheet</div></div>
+<div class="step"><div class="step-n">4</div><div><strong>Requests &amp; campaigns</strong> — review requests sent, plus the results of your SMS campaigns</div></div>
 <div class="tip">💡 Use the range picker (7 days / 30 days / 90 days / 12 months) to zoom between "how's this week going" and "how's this year going".</div>
-<p>Competitor tracking, listing accuracy, and Google Posts analytics are coming to Reports soon.</p>
+<p>For more on the survey reports, see <em>Reading your NPS &amp; loyalty report</em> and <em>Filtering &amp; exporting survey responses</em>. Competitor tracking, listing accuracy, and Google Posts analytics are coming to Reports soon.</p>
+    `
+  },
+  'feedback-report': {
+    title: 'Reading your NPS & loyalty report',
+    category: 'Insights & Analytics',
+    readTime: '3 min read',
+    body: `
+<h3>The loyalty picture, at a glance</h3>
+<p>Open <strong>Reports → NPS &amp; loyalty</strong> for everything your surveys are telling you. Set the date range at the top of the page — the whole report respects it.</p>
+<h3>What's on it</h3>
+<div class="step"><div class="step-n">1</div><div><strong>Your NPS score</strong> — the headline number, from −100 to +100, plus how it's changed versus the previous period</div></div>
+<div class="step"><div class="step-n">2</div><div><strong>Promoters · passives · detractors</strong> — how your responses split across the three groups, with counts</div></div>
+<div class="step"><div class="step-n">3</div><div><strong>Top reasons detractors gave</strong> — the themes behind low scores, ranked</div></div>
+<div class="step"><div class="step-n">4</div><div><strong>Survey question results</strong> — a chart for every question on your survey: choice questions broken down by option, rating and scale questions by value with an average</div></div>
+<div class="tip">💡 Open-text answers aren't charted here — they're individual by nature. Read them one by one in <strong>Reports → Responses</strong>.</div>
+<p>Your NPS score also appears on your Home dashboard, so you can keep an eye on it without opening Reports.</p>
+    `
+  },
+  'survey-responses-export': {
+    title: 'Filtering & exporting survey responses',
+    category: 'Insights & Analytics',
+    readTime: '3 min read',
+    body: `
+<h3>Every response, on your terms</h3>
+<p>The <strong>Reports → Responses</strong> view lets you dig into individual survey responses instead of just the totals — useful when you want to find a specific customer, audit a recurring theme, or pull data into a spreadsheet.</p>
+<h3>Filtering</h3>
+<div class="step"><div class="step-n">1</div><div><strong>Sentiment</strong> — show only promoters, passives, or detractors</div></div>
+<div class="step"><div class="step-n">2</div><div><strong>Channel</strong> — email or SMS</div></div>
+<div class="step"><div class="step-n">3</div><div><strong>Date range</strong> — last 30 / 90 days, 12 months, or all time</div></div>
+<div class="step"><div class="step-n">4</div><div><strong>Keyword</strong> — search the text of every answer for a word or phrase (try "wait", "refund", or "rude")</div></div>
+<h3>Reading &amp; exporting</h3>
+<p>Click any row to expand it and read every answer that response gave. Hit <strong>Export CSV</strong> to download the filtered set as a spreadsheet — one row per response, one column per question — ready for Excel, Google Sheets, or your own analysis.</p>
+<div class="tip">💡 Filters and export work together: narrow to "detractors who mentioned 'booking' in the last 90 days," then export exactly that set.</div>
     `
   },
   'sentiment-score': {
