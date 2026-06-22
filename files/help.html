@@ -28,14 +28,16 @@
 <meta name="robots" content="index,follow">
 <link rel="canonical" href="https://swarmreply.com/help">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400;1,700;1,900&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/swarm.css">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#f5c842">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-/* page-local aliases -> canonical tokens in /swarm.css */
-  :root{--k:var(--ink);--w:var(--paper);--g:var(--honey);--gd:var(--amber);--of:var(--cream);--bd:var(--line);--mu:var(--taupe);--gr:var(--green);--re:var(--danger);--max:1100px}
+:root{
+  --k:#0a0a0a;--w:#fff;--g:#f5c842;--gd:#d4a515;
+  --of:#f8f7f4;--bd:#e4e0d8;--mu:#7a7670;--tx:#1a1a18;
+  --gr:#1a6b45;--re:#c0392b;--max:1100px;
+}
 html{scroll-behavior:smooth}
 body{font-family:'DM Sans',sans-serif;background:var(--w);color:var(--tx);-webkit-font-smoothing:antialiased}
 a{text-decoration:none;color:inherit}
@@ -202,6 +204,7 @@ body{background-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 </head>
 <body>
+<script src="/nav.js" data-nav="lean"></script>
 
 <!-- NAV -->
 <nav class="nav">

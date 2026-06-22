@@ -32,8 +32,7 @@
 <link rel="manifest" href="/manifest.json">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400;1,700;1,900&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/swarm.css">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400;1,900&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -70,7 +69,11 @@
 }
 </script>
 <style>
-/* design tokens inherited from /swarm.css */
+:root{
+  --ink:#0a0a0a; --paper:#ffffff; --cream:#f8f7f4; --honey:#f5c842; --amber:#d4a515;
+  --green:#1a6b45; --taupe:#7a7670; --line:#e4e0d8; --tx:#1a1a18;
+  --serif:'Playfair Display',serif; --sans:'DM Sans',system-ui,sans-serif;
+}
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{font-family:var(--sans);background:var(--paper);color:var(--tx);line-height:1.65;-webkit-font-smoothing:antialiased}
@@ -81,7 +84,14 @@ img{max-width:100%;display:block}
 .eyebrow{font-size:.74rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--amber)}
 h1,h2,h3{font-family:var(--serif);font-weight:900;color:var(--ink);letter-spacing:-.015em;line-height:1.06}
 h1 em,h2 em{font-style:italic;color:var(--amber);font-weight:700}
-/* button system in /swarm.css */
+.btn{display:inline-flex;align-items:center;gap:8px;border-radius:50px;font-weight:700;font-family:var(--sans);cursor:pointer;border:none;transition:transform .18s,box-shadow .18s,background .18s;justify-content:center}
+.btn-gold{background:var(--honey);color:var(--ink);padding:15px 30px;font-size:1rem}
+.btn-gold:hover{background:var(--amber);transform:translateY(-2px);box-shadow:0 10px 26px rgba(212,165,21,.38)}
+.btn-ghost{border:1.5px solid var(--line);color:var(--ink);padding:14px 28px;font-size:1rem;background:transparent}
+.btn-ghost:hover{border-color:var(--ink)}
+.btn-sm{padding:10px 20px;font-size:.86rem}
+.btn-light{background:#fff;color:var(--ink);padding:15px 30px;font-size:1rem}
+.btn-light:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(0,0,0,.3)}
 .rv{opacity:0;transform:translateY(20px);transition:opacity .65s ease,transform .65s ease}
 .rv.in{opacity:1;transform:none}
 
@@ -318,6 +328,7 @@ body{background-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww
 </style>
 </head>
 <body>
+<script src="/nav.js"></script>
 
 <nav class="nav" aria-label="Main">
   <div class="nav-inner">
