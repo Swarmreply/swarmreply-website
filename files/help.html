@@ -139,6 +139,8 @@ button{font-family:inherit;cursor:pointer}
 .article-body li{margin-bottom:6px;color:#3a3a38}
 .article-body .tip{background:#e8f5ef;border-left:3px solid var(--gr);border-radius:0 10px 10px 0;padding:12px 16px;margin:16px 0;font-size:.85rem;color:var(--gr)}
 .article-body .warn{background:#fff8e8;border-left:3px solid var(--gd);border-radius:0 10px 10px 0;padding:12px 16px;margin:16px 0;font-size:.85rem;color:#7a5900}
+.article-body .done{background:#eaf6f0;border:1px solid #bfe0cf;border-left:4px solid var(--gr);border-radius:0 10px 10px 0;padding:12px 16px;margin:18px 0;font-size:.85rem;color:#155e3c}
+.article-body .done strong{color:var(--gr)}
 .article-body .step{display:flex;gap:14px;align-items:flex-start;margin-bottom:16px}
 .article-body .step-n{width:28px;height:28px;border-radius:50%;background:var(--k);color:#fff;display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:700;flex-shrink:0;margin-top:1px}
 .article-body .step-n.gold{background:var(--g);color:var(--k)}
@@ -240,7 +242,7 @@ body{background-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww
       <button class="search-clear" id="search-clear" onclick="clearSearch()">✕</button>
       <div class="search-results" id="search-results"></div>
     </div>
-    <p class="search-hint">Popular: <span onclick="doSearch('connect google')">Connect Google</span> · <span onclick="doSearch('review request')">Send review requests</span> · <span onclick="doSearch('billing')">Billing</span> · <span onclick="doSearch('webchat')">Webchat setup</span></p>
+    <p class="search-hint">Popular: <span onclick="doSearch('connect google')">Connect Google</span> · <span onclick="doSearch('review request')">Send review requests</span> · <span onclick="doSearch('billing')">Billing</span> · <span onclick="doSearch('webchat')">Webchat setup</span> · <span onclick="doSearch('pricing')">Pricing</span></p>
   </div>
 </div>
 
@@ -287,6 +289,7 @@ body{background-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww
               <span class="popular-link" onclick="showArticle('embed-webchat')">Adding webchat to your website</span>
               <span class="popular-link" onclick="showArticle('sms-campaign')">Creating an SMS campaign</span>
               <span class="popular-link" onclick="showArticle('billing-faq')">Billing FAQ</span>
+              <span class="popular-link" onclick="showArticle('pricing')">Pricing &amp; plans</span>
             </div>
           </div>
 
@@ -459,13 +462,13 @@ var categories = {
     title: 'Getting started',
     desc: 'Everything you need to go from sign-up to your first review request in under 10 minutes.',
     icon: '🚀',
-    articles: ['welcome','connect-google','first-review-request','onboarding-checklist','invite-team','google-import','results-timeline','mobile-app']
+    articles: ['welcome','limitations','connect-google','first-review-request','onboarding-checklist','invite-team','google-import','results-timeline','mobile-app']
   },
   replies: {
     title: 'AI Replies',
     desc: 'Automatic, on-brand responses to your reviews — launching later this year.',
     icon: '🤖',
-    articles: ['reply-templates','edit-reply','reply-quality','multi-language']
+    articles: ['ai-replies-status','reply-templates','edit-reply','reply-quality','multi-language']
   },
   requests: {
     title: 'Review Generation',
@@ -519,7 +522,7 @@ var categories = {
     title: 'Billing & Plans',
     desc: 'Everything about your subscription, payment, and plan options.',
     icon: '💳',
-    articles: ['billing-faq','upgrade-plan','cancel','update-card','invoices','failed-payment']
+    articles: ['pricing','billing-faq','upgrade-plan','cancel','update-card','invoices','failed-payment']
   },
   settings: {
     title: 'Settings',
@@ -530,6 +533,60 @@ var categories = {
 };
 
 var articles = {
+  'pricing': {
+    title: 'Pricing & plans — what you’ll pay',
+    category: 'Billing & Plans',
+    readTime: '2 min read',
+    keywords: 'pricing price cost how much plan plans fee monthly per location expensive affordable',
+    body: `
+      <h3>Simple, per-location pricing</h3>
+      <p>SwarmReply is priced per location, and every feature is included — no tiers, no add-ons, no setup fees. You only pay for the number of business locations you manage.</p>
+      <div class="step"><div class="step-n">1</div><div>Locations <strong>1–2</strong>: <strong>$99/month</strong> each</div></div>
+      <div class="step"><div class="step-n">2</div><div>Locations <strong>3–25</strong>: <strong>$89/month</strong> each</div></div>
+      <div class="step"><div class="step-n">3</div><div>Locations <strong>26–99</strong>: <strong>$79/month</strong> each</div></div>
+      <div class="step"><div class="step-n">4</div><div><strong>100+</strong> locations or an agency? <a href="/contact.html" style="color:var(--k);font-weight:600">Contact us</a> for Agency pricing.</div></div>
+      <div class="tip">✓ Annual billing saves you 10%. Switch anytime in <strong>Settings → Billing</strong>.</div>
+      <h3>No contracts</h3>
+      <p>There are no contracts and no cancellation fees. You can add or remove locations whenever you like in <strong>Settings → Billing</strong> — changes take effect immediately and Stripe prorates the difference on your next invoice.</p>
+      <div class="done"><strong>✓ Quick check</strong> — your current plan and monthly total are always shown at the top of <strong>Settings → Billing</strong>.</div>
+    `
+  },
+  'ai-replies-status': {
+    title: 'When are AI Replies available?',
+    category: 'AI Replies',
+    readTime: '2 min read',
+    body: `
+      <h3>AI Replies is rolling out</h3>
+      <p>AI Replies drafts an on-brand response to each new Google review so you don’t have to write them by hand. We’re enabling it across accounts in stages, so it may not be switched on for yours just yet.</p>
+      <h3>What you can do today</h3>
+      <div class="step"><div class="step-n">1</div><div>Open <strong>Settings → AI Replies</strong> to see whether it’s active on your account</div></div>
+      <div class="step"><div class="step-n">2</div><div>Set your <strong>tone</strong>, plus any phrases replies should <strong>always</strong> or <strong>never</strong> include — these apply the moment replies start drafting</div></div>
+      <div class="warn">⚠ AI replies currently post in English. Automatic same-language replies are on the near-term roadmap.</div>
+      <h3>Everything else is fully live</h3>
+      <p>Review requests, surveys, webchat, listings guidance, insights, and AI Visibility all work today — you don’t need to wait on AI Replies to get value from SwarmReply.</p>
+      <div class="tip">✓ Don’t see AI Replies in Settings yet and want early access? Email <a href="mailto:hello@swarmreply.com" style="color:var(--k);font-weight:600">hello@swarmreply.com</a>.</div>
+    `
+  },
+  'limitations': {
+    title: 'What SwarmReply can and can’t do (yet)',
+    category: 'Getting started',
+    readTime: '3 min read',
+    keywords: 'limitations limits cant do wont roadmap coming soon not yet unsupported missing feature what does it do',
+    body: `
+      <h3>What’s fully live today</h3>
+      <p>Review requests (email and SMS), NPS surveys, the webchat widget and inbox, Google review monitoring and replies, Insights, AI Visibility monitoring, and direct integrations with Google, Square, HubSpot, Shopify, Mindbody, Calendly, Acuity, Jobber, and Stripe — all live and ready to use.</p>
+      <h3>Rolling out / not live yet</h3>
+      <div class="step"><div class="step-n">1</div><div><strong>Listings sync</strong> is in development. Today you can keep Google, Apple Maps, and Bing accurate manually — see the Listings Sync guides</div></div>
+      <div class="step"><div class="step-n">2</div><div><strong>Native Zapier</strong> isn’t live yet. Direct integrations plus CSV import cover most needs in the meantime</div></div>
+      <div class="step"><div class="step-n">3</div><div><strong>AI Replies</strong> is rolling out and currently English-only — see “When are AI Replies available?”</div></div>
+      <h3>Good to know</h3>
+      <div class="step"><div class="step-n">4</div><div>Review requests need a valid email or <strong>mobile</strong> number — landlines, and anyone who replied STOP, can’t be texted (email still works)</div></div>
+      <div class="step"><div class="step-n">5</div><div>SMS sending requires <strong>A2P 10DLC</strong> registration approval. Until it’s approved, texts are held but email requests go out normally</div></div>
+      <div class="step"><div class="step-n">6</div><div>SwarmReply is a <strong>web app</strong> — add it to your phone’s home screen; there’s no separate App Store download</div></div>
+      <div class="warn">⚠ Billing is monthly with no refunds for partial months — if you cancel mid-month you keep access until the period ends.</div>
+      <div class="tip">✓ Need something that isn’t listed here? Email <a href="mailto:hello@swarmreply.com" style="color:var(--k);font-weight:600">hello@swarmreply.com</a> — we’ll tell you where it stands.</div>
+    `
+  },
   'welcome': {
     title: 'Welcome to SwarmReply',
     category: 'Getting started',
@@ -565,6 +622,7 @@ var articles = {
       <p>Use the Google account that has Owner or Manager access to your Google Business Profile. If you're not sure which one it is, go to business.google.com and check which account you're logged in with.</p>
       <h3>Troubleshooting</h3>
       <p>If the connection fails, the most common reason is that the Google account you logged in with doesn't have access to the Business Profile. Try logging into Google Business Profile directly first to confirm access, then reconnect.</p>
+      <div class="done"><strong>✓</strong> You'll know it worked when Google Business Profile shows <strong>Connected</strong> on your Integrations page — your latest reviews appear under <strong>Reviews</strong> within a few minutes.</div>
     `
   },
   'first-review-request': {
@@ -585,6 +643,7 @@ var articles = {
       <p>To send to a list of customers, go to <strong>Grow → Import Contacts</strong> and upload a CSV file with name, email, and/or phone columns. SwarmReply will import the contacts and you can send to the entire list at once.</p>
       <h3>Choosing which platform to send to</h3>
       <p>Each template can be configured to send customers to a specific review platform. Go to <strong>Grow → Request Templates</strong> to set this per template. If you need Google reviews, set your default to Google. If your Yelp rating needs work, create a separate Yelp template.</p>
+      <div class="done"><strong>✓</strong> You'll know it worked when the request shows a <strong>Sent</strong> status in Grow, and the customer receives the email or text within a few minutes.</div>
     `
   },
   'embed-webchat': {
@@ -608,6 +667,7 @@ var articles = {
       <p>Go to Settings → Advanced → Code Injection. Paste the code in the Footer section and save.</p>
       <h3>On Wix</h3>
       <p>Go to Settings → Advanced → Custom Code. Add the code to the body section and apply to all pages.</p>
+      <div class="done"><strong>✓</strong> You'll know it worked when the chat bubble appears in the corner of your live site (hard-refresh first). Send yourself a test message — it should land in your inbox and ping you by email and SMS.</div>
     `
   },
   'sms-campaign': {
@@ -689,6 +749,7 @@ var articles = {
       <h3>What customer info is used?</h3>
       <p>SwarmReply fetches the customer's name, email, and phone from their Square customer profile (if available). If the customer has no profile attached to the transaction, no request is sent.</p>
       <div class="warn">⚠ Make sure your review request template is set up and connected to a platform before enabling the Square integration.</div>
+      <div class="done"><strong>✓</strong> You'll know it worked when Square shows <strong>Connected</strong> on your Integrations page — the next Square payment sends a review request about 60 minutes later.</div>
     `
   },
   'connect-hubspot': {
@@ -709,6 +770,7 @@ var articles = {
       <h3>What contact details are used?</h3>
       <p>SwarmReply looks up the contacts associated with the closed deal and uses their email address and phone number from HubSpot. If the deal has no associated contacts, no request is sent.</p>
       <div class="tip">✓ SwarmReply requests read-only access to your HubSpot CRM. It cannot create, modify, or delete contacts or deals.</div>
+      <div class="done"><strong>✓</strong> You'll know it worked when HubSpot shows <strong>Connected</strong> on your Integrations page — the next deal you mark Closed Won sends a request about 30 minutes later.</div>
     `
   },
   'connect-shopify': {
@@ -727,6 +789,7 @@ var articles = {
       <h3>When is the request sent?</h3>
       <p>The request fires when Shopify sends a <strong>orders/fulfilled</strong> webhook — meaning when the order status changes to Fulfilled (typically when a tracking number is added). The default delay is 2 hours after fulfilment.</p>
       <div class="warn">⚠ Shopify requires your store URL in the exact format <code>yourstore.myshopify.com</code> — not your custom domain.</div>
+      <div class="done"><strong>✓</strong> You'll know it worked when Shopify shows <strong>Connected</strong> on your Integrations page — the next fulfilled order sends a request about 2 hours later.</div>
     `
   },
   'connect-mindbody': {
@@ -769,6 +832,7 @@ var articles = {
       <h3>Configuring a delay</h3>
       <p>Go to <strong>Integrations → Calendly → Settings</strong>. Set the delay in minutes. For a 60-minute appointment that you want to follow up after, set the delay to 120 minutes (60 min for the appointment + 60 min after).</p>
       <div class="tip">✓ SwarmReply uses the name and email from the Calendly invitee form automatically.</div>
+      <div class="done"><strong>✓</strong> You'll know it worked when Calendly shows <strong>Connected</strong> on your Integrations page — your next booking triggers a request (after any delay you set).</div>
     `
   },
   'connect-acuity': {
@@ -793,6 +857,7 @@ var articles = {
       <div class="step"><div class="step-n">3</div><div>Enter your User ID and API Key</div></div>
       <div class="step"><div class="step-n">4</div><div>Click <strong>Connect</strong> — SwarmReply validates your credentials and registers the webhook</div></div>
       <div class="tip">✓ Your Acuity API Key is encrypted before being stored. It is never visible after saving.</div>
+      <div class="done"><strong>✓</strong> You'll know it worked when Acuity shows <strong>Connected</strong> on your Integrations page — new appointments then send a request 24 hours later.</div>
     `
   },
   'connect-stripe-trigger': {
@@ -896,6 +961,7 @@ var articles = {
       <div class="tip">✓ Invite links expire after 7 days. If a team member hasn't accepted, go to Settings → Team and resend the invite.</div>
       <h3>Removing a team member</h3>
       <p>Go to <strong>Settings → Team</strong>, click the three dots next to the team member, and select <strong>Remove</strong>. Their access is revoked immediately. Only Admins can remove team members.</p>
+      <div class="done"><strong>✓</strong> You'll know it worked when the person appears in <strong>Settings → Team</strong> as <strong>Pending</strong> — they switch to Active once they accept the email invite.</div>
     `
   },
   'onboarding-checklist': {
@@ -1044,6 +1110,7 @@ var articles = {
 <div class="tip">💡 Email is needed for email requests and phone for SMS requests — include both columns when you can so you're free to use either channel.</div>
 <h3>After importing</h3>
 <p>Head to <strong>Grow → Bulk Send</strong> to send review requests to your imported contacts, or send to individuals from <strong>Grow → Review Requests</strong>.</p>
+      <div class="done"><strong>✓</strong> You'll know it worked when your contacts appear in <strong>Grow → Bulk Send</strong> with their names, emails, and phone numbers filled in.</div>
     `
   },
   'review-platforms': {
@@ -1108,6 +1175,7 @@ var articles = {
 <div class="tip">✓ The widget updates automatically as new reviews come in — set it once and forget it.</div>
 <h3>Where to place it</h3>
 <p>The homepage and any page where customers make a decision (pricing, booking, contact) are the highest-impact spots.</p>
+      <div class="done"><strong>✓</strong> You'll know it worked when your star rating and recent reviews appear on your site where you pasted the snippet (hard-refresh first).</div>
     `
   },
   'request-timing': {
@@ -1155,6 +1223,7 @@ var articles = {
 <div class="step"><div class="step-n">3</div><div>Make sure your review links are saved in <strong>Settings → Review Links</strong> — that's where 9s and 10s get sent</div></div>
 <div class="step"><div class="step-n">4</div><div>Send it — every review request includes a personal survey link for each customer</div></div>
 <div class="tip">✓ By default, 9–10 counts as a promoter, 7–8 as passive, and 0–6 as a detractor — the standard NPS bands.</div>
+      <div class="done"><strong>✓</strong> You'll know it worked when you open your own survey link, enter a 9 or 10, and it sends you straight to your Google review page.</div>
     `
   },
   'nps-routing': {
@@ -1596,6 +1665,7 @@ var articles = {
 <div class="step"><div class="step-n">3</div><div>Run a scan — SwarmReply asks ChatGPT, Claude, and Gemini your queries and records whether your business comes up and what's said about it</div></div>
 <div class="step"><div class="step-n">4</div><div>Review the results, then re-scan over time to track your progress</div></div>
 <div class="tip">💡 Monitor 5–10 realistic queries. "Best [your service] in [your city]" and "who should I call for [problem]" are the patterns customers actually use.</div>
+      <div class="done"><strong>✓</strong> You'll know it worked when a scan finishes and each query shows a result (mentioned or not), and a visibility score appears. A 0 to start is completely normal.</div>
     `
   },
   'visibility-score': {
@@ -1657,6 +1727,7 @@ var articles = {
 <div class="step"><div class="step-n">3</div><div><strong>Yelp / Facebook (optional):</strong> paste the URL of your Yelp listing and your Facebook page's Reviews tab</div></div>
 <div class="step"><div class="step-n">4</div><div>Save — your templates and surveys pick up the new links immediately</div></div>
 <div class="tip">✓ Multiple locations? Each keeps its own links, so customers always land on the right listing.</div>
+      <div class="done"><strong>✓</strong> You'll know it worked when the Google button in a request template — and on your survey — opens your business's review page.</div>
     `
   },
   'reply-templates': {
@@ -1727,6 +1798,7 @@ var articles = {
 <div class="step"><div class="step-n">3</div><div>Log into Facebook with an account that <strong>admins your business page</strong> and approve the permissions</div></div>
 <div class="step"><div class="step-n">4</div><div>Pick the page — new reviews start flowing into your Reviews tab automatically</div></div>
 <div class="tip">✓ Also paste your page's review URL into <strong>Settings → Review Links</strong> so happy survey customers can be routed to Facebook too.</div>
+      <div class="done"><strong>✓</strong> You'll know it worked when Facebook shows <strong>Connected</strong> and your existing Facebook recommendations appear in your <strong>Reviews</strong> tab alongside Google.</div>
     `
   },
   'connect-jobber': {
@@ -1742,6 +1814,7 @@ var articles = {
 <div class="step"><div class="step-n">3</div><div>Log into your Jobber account and approve the connection</div></div>
 <div class="step"><div class="step-n">4</div><div>Done — completed jobs now trigger review requests using your default template, with the customer's name and contact details pulled from the job</div></div>
 <div class="tip">💡 Polish your default template in <strong>Grow → Request Templates</strong> first — every automated request will use it. You can disconnect any time from the same Integrations page.</div>
+      <div class="done"><strong>✓</strong> You'll know it worked when Jobber shows <strong>Connected</strong> on your Integrations page — completing a job then sends that customer a request using your default template.</div>
     `
   },
   'zapier-setup': {
@@ -1849,6 +1922,7 @@ var articles = {
     title: 'Webchat isn\'t showing on my site',
     category: 'Webchat & Inbox',
     readTime: '2 min read',
+    keywords: 'not showing missing bubble widget chat invisible disappeared gone',
     body: `
 <h3>Most common causes</h3>
 <div class="step"><div class="step-n">1</div><div><strong>The snippet isn't on the page</strong> — make sure the embed code from Settings → Webchat & AI Agent is pasted into your site's footer (before the closing body tag) on every page you want it</div></div>
@@ -1864,6 +1938,7 @@ var articles = {
     title: 'A review request didn\'t send',
     category: 'Review Generation',
     readTime: '2 min read',
+    keywords: 'not sending didnt send wont send failed deliver delivery text texts sms email stuck pending nothing happened bounce',
     body: `
 <h3>For text (SMS) requests</h3>
 <div class="step"><div class="step-n">1</div><div><strong>Texting may still be pending</strong> — if your A2P 10DLC registration isn't approved yet, texts are held. Email requests still work in the meantime</div></div>
@@ -1881,6 +1956,7 @@ var articles = {
     title: 'A review I got isn\'t showing up',
     category: 'Review Generation',
     readTime: '2 min read',
+    keywords: 'not showing missing review didnt appear where is my review delay delayed late synced',
     body: `
 <h3>Give it a little time</h3>
 <p>SwarmReply pulls new reviews from Google and Facebook on a regular sync, so a brand-new review can take a short while to appear in your <strong>Reviews</strong> tab. It isn't instant.</p>
@@ -1895,6 +1971,7 @@ var articles = {
     title: 'My visibility score is 0 — what now?',
     category: 'AI Visibility',
     readTime: '2 min read',
+    keywords: 'zero no mentions not appearing not showing score dropped nothing low',
     body: `
 <h3>A 0 is a starting point, not a failure</h3>
 <p>A score of 0 means the AI assistants didn't mention your business in this week's test questions — completely normal for a business that's new to AI visibility. The good news: it's the most improvable number on your dashboard, and reviews move it.</p>
@@ -2002,6 +2079,7 @@ var articles = {
     title: 'Disputing a fake or unfair review',
     category: 'Review Generation',
     readTime: '3 min read',
+    keywords: 'remove delete fake bad negative report flag dispute fight respond fraudulent',
     body: `
 <h3>First, respond — publicly and calmly</h3>
 <p>Even when a review is unfair, a calm, professional public reply does more good than the review does harm: it shows future customers how you handle problems. SwarmReply can draft a measured response for you to review and post.</p>
@@ -2019,6 +2097,7 @@ var articles = {
     title: 'A payment failed or was declined',
     category: 'Billing & Plans',
     readTime: '2 min read',
+    keywords: 'declined failed payment card charge past due billing problem expired',
     body: `
 <h3>What happens</h3>
 <p>If a monthly charge fails — an expired card, insufficient funds, or a bank block — Stripe automatically retries it over the following days and emails you. Your account keeps working during this grace period.</p>
@@ -2076,34 +2155,90 @@ var articles = {
   },
 };
 
-// Populate remaining articles as stubs
-var articleStubs = ['reply-templates','facebook-reviews','multi-language','reply-quality','edit-reply','import-contacts','review-platforms','sms-requests','template-customise','review-widget','request-timing','survey-setup','nps-routing','promoter-destination','survey-link','detractor-handling','webchat-setup','ai-agent-setup','knowledge-base','handoff','inbox-manage','sms-bridge','webchat-notifications','contact-import','segments','campaign-limits','tcpa-compliance','opt-outs','sms-best-practices','listings-overview','fix-mismatch','apple-maps','bing-places','insights-overview','sentiment-score','keyword-tracker','competitor-benchmarking','rating-velocity','monthly-report','visibility-score','improve-visibility','llm-setup','google-posts-settings'];
+// ── SEARCH TOKENIZER (mirrors Wallabee) ─────────────────────────────
+var SR_STOP = {};
+['the','a','an','to','of','in','on','for','my','i','do','how','can','is','it','me',
+ 'with','and','or','what','where','when','why','does','am','are','your','our','this',
+ 'that','about','help','need','want','get','set','up','have','please','you','swarmreply',
+ 'work','works','working','use','using','make','new','still','really','just']
+ .forEach(function(w){ SR_STOP[w] = 1; });
 
-var titleMap = {
-  'onboarding-checklist':'Onboarding checklist','invite-team':'Inviting team members','approval-mode':'Using approval mode','reply-templates':'Customising reply templates','facebook-reviews':'Monitoring Facebook reviews','negative-reviews':'Handling negative reviews','multi-language':'Multi-language replies','reply-quality':'Understanding reply quality scores','edit-reply':'Editing a reply before it posts','import-contacts':'Importing contacts from CSV','review-platforms':'Choosing your review platform','sms-requests':'Sending review requests via SMS','template-customise':'Customising review request templates','review-widget':'Setting up the review widget','request-timing':'Scheduling review request timing','survey-setup':'Setting up your NPS survey','nps-routing':'How NPS routing works','promoter-destination':'Setting your promoter destination','survey-link':'Sharing your survey link','detractor-handling':'Handling detractor responses','webchat-setup':'Webchat appearance settings','ai-agent-setup':'Setting up the AI chat agent','knowledge-base':'Building your AI knowledge base','handoff':'How handoffs work','inbox-manage':'Managing your inbox','sms-bridge':'How the SMS bridge works','webchat-notifications':'Webchat notification settings','contact-import':'Importing contacts for campaigns','segments':'Creating audience segments','campaign-limits':'SMS campaign limits','tcpa-compliance':'TCPA compliance guide','opt-outs':'Managing opt-outs','sms-best-practices':'SMS campaign best practices','listings-overview':'How listings sync works','fix-mismatch':'Fixing a listing mismatch','apple-maps':'Connecting Apple Maps','bing-places':'Connecting Bing Places','insights-overview':'Insights dashboard overview','sentiment-score':'Understanding your sentiment score','keyword-tracker':'Using the keyword tracker','competitor-benchmarking':'Competitor benchmarking','rating-velocity':'Rating velocity explained','monthly-report':'Your monthly reputation report','visibility-score':'Understanding your visibility score','improve-visibility':'How to improve your AI visibility','llm-setup':'Setting up AI visibility monitoring','zapier-setup':'Setting up Zapier','connect-square':'Connecting Square','connect-hubspot':'Connecting HubSpot CRM','connect-shopify':'Connecting Shopify','connect-mindbody':'Connecting Mindbody','connect-calendly':'Connecting Calendly','connect-acuity':'Connecting Acuity Scheduling','connect-stripe-trigger':'Setting up the Stripe payment trigger','csv-import':'Importing contacts via CSV','api-key':'Using the API key','upgrade-plan':'Upgrading your plan','cancel':'Cancelling your subscription','update-card':'Updating your payment method','invoices':'Viewing and downloading invoices','account-settings':'Account settings overview','alert-preferences':'Setting alert preferences','google-posts-settings':'Google Posts auto-publisher settings','locations':'Managing multiple locations'
+var SR_SYN = {
+  gbp:'google', gmb:'google', text:'sms', texts:'sms', texting:'sms', texted:'sms',
+  pay:'billing', payment:'billing', card:'billing', credit:'billing', charge:'billing',
+  debit:'billing', price:'plan', pricing:'plan', cost:'plan', subscription:'billing',
+  chat:'webchat', chatbot:'webchat', widget:'webchat', bot:'agent', csv:'import',
+  upload:'import', cancel:'cancelling', email:'request', staff:'team', employee:'team',
+  invite:'team', star:'review', stars:'review', rating:'review', ratings:'review',
+  chatgpt:'ai', facebook:'reviews', nps:'survey', feedback:'survey', stop:'opt-outs',
+  unsubscribe:'opt-outs', ask:'request', asking:'request'
 };
 
-articleStubs.forEach(function(id) {
-  if (!articles[id]) {
-    articles[id] = {
-      title: titleMap[id] || id,
-      category: 'Help',
-      readTime: '3 min read',
-      body: '<p style="color:var(--mu);font-style:italic">This article is coming soon. In the meantime, email us at <a href="mailto:hello@swarmreply.com" style="color:var(--k);font-weight:600">hello@swarmreply.com</a> — we respond to every question.</p>'
-    };
-  }
-});
+function srTokenize(s) {
+  return String(s).toLowerCase()
+    .replace(/&[a-z]+;/g, ' ')
+    .replace(/<[^>]+>/g, ' ')
+    .replace(/[^a-z0-9\s-]/g, ' ')
+    .split(/\s+/)
+    .filter(function(w){ return w.length > 1 && !SR_STOP[w]; })
+    .map(function(w){ return SR_SYN[w] || w; });
+}
 
-// ── ALL ARTICLES SEARCH INDEX ──────────────────────────────────────────────────
+// ── ALL ARTICLES SEARCH INDEX ───────────────────────────────────
+// Now indexes title, category AND body text, so symptom searches
+// ("texts not sending", "bubble missing", "how much") find the right guide.
 var allArticles = [];
 Object.keys(categories).forEach(function(catKey) {
   var cat = categories[catKey];
   cat.articles.forEach(function(artId) {
     if (articles[artId]) {
-      allArticles.push({ id: artId, catKey: catKey, catLabel: cat.title, catIcon: cat.icon, title: articles[artId].title });
+      var a = articles[artId];
+      allArticles.push({
+        id: artId, catKey: catKey, catLabel: cat.title, catIcon: cat.icon, title: a.title,
+        titleTokens: srTokenize(a.title + ' ' + cat.title + ' ' + (a.keywords || '')),
+        bodyTokens: srTokenize(a.body || '')
+      });
     }
   });
 });
+
+function srHit(qt, hay) {
+  for (var i = 0; i < hay.length; i++) {
+    var h = hay[i];
+    if (h === qt || (qt.length >= 4 && h.indexOf(qt) === 0) || (h.length >= 4 && qt.indexOf(h) === 0)) return true;
+  }
+  return false;
+}
+function srScore(a, qTokens, rawQ) {
+  var s = 0;
+  for (var i = 0; i < qTokens.length; i++) {
+    var qt = qTokens[i];
+    if (srHit(qt, a.titleTokens)) s += 3;        // title/category match weighs most
+    else if (srHit(qt, a.bodyTokens)) s += 1;    // body match still counts
+  }
+  if (rawQ && a.title.toLowerCase().indexOf(rawQ) !== -1) s += 5; // direct title hit wins
+  return s;
+}
+
+// ── DYNAMIC ARTICLE COUNTS ─────────────────────────────────────
+// Sidebar + card counts are computed from the data so they never drift.
+function srFillCounts() {
+  document.querySelectorAll('.sidebar-link').forEach(function(l) {
+    var m = (l.getAttribute('onclick') || '').match(/showCategory\('([a-z]+)'\)/);
+    if (m && categories[m[1]]) {
+      var el = l.querySelector('.sl-count');
+      if (el) el.textContent = categories[m[1]].articles.length;
+    }
+  });
+  document.querySelectorAll('.cat-card').forEach(function(card) {
+    var m = (card.getAttribute('onclick') || '').match(/showCategory\('([a-z]+)'\)/);
+    if (m && categories[m[1]]) {
+      var el = card.querySelector('.cat-count');
+      if (el) el.textContent = categories[m[1]].articles.length + ' articles';
+    }
+  });
+}
+srFillCounts();
 
 // ── NAV STATE ─────────────────────────────────────────────────────────────────
 var currentCat = null;
@@ -2190,10 +2325,19 @@ function handleSearch(val) {
   if (!val.trim()) { results.classList.remove('show'); return; }
 
   searchTimer = setTimeout(function() {
-    var q = val.toLowerCase();
-    var matches = allArticles.filter(function(a) {
-      return a.title.toLowerCase().includes(q) || a.catLabel.toLowerCase().includes(q);
-    }).slice(0, 7);
+    var q = val.toLowerCase().trim();
+    var qTokens = srTokenize(q);
+    var matches;
+    if (!qTokens.length) {
+      matches = allArticles.filter(function(a){ return a.title.toLowerCase().indexOf(q) !== -1; });
+    } else {
+      matches = allArticles
+        .map(function(a){ return { a: a, score: srScore(a, qTokens, q) }; })
+        .filter(function(m){ return m.score > 0; })
+        .sort(function(x, y){ return y.score - x.score; })
+        .map(function(m){ return m.a; });
+    }
+    matches = matches.slice(0, 7);
 
     if (!matches.length) {
       var safeVal = val.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
