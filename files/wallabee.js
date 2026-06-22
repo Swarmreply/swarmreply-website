@@ -17,7 +17,7 @@
   var STORE_KEY = 'wallabee_site_v1';
 
   // Help Center catalog — mirrors help.html. Add new articles in both places.
-  var ARTICLES = [
+  var FALLBACK_ARTICLES = [
     { id: 'vs-yext', t: 'SwarmReply vs Yext — own your listings, don\u2019t rent them', c: 'Compare', u: '/compare/yext-alternative.html', k: 'yext alternative listings compare versus rent own sync' },
     { id: 'vs-broadly', t: 'SwarmReply vs Broadly — honest comparison', c: 'Compare', u: '/compare/broadly-alternative.html', k: 'broadly alternative compare versus price affordable onboarding' },
     { id: 'vs-reviewtrackers', t: 'SwarmReply vs ReviewTrackers — honest comparison', c: 'Compare', u: '/compare/reviewtrackers-alternative.html', k: 'reviewtrackers alternative compare versus monitoring' },
@@ -99,6 +99,25 @@
     { id: 'review-links', t: 'Setting up your review links', c: 'Settings' },
   ];
 
+  // ── Single source of truth ───────────────────────────────────────────────
+  // The catalog above is a baked-in fallback. The live list is /help-catalog.json
+  // (same file the in-app Wallabee reads). We fetch it on load; if anything goes
+  // wrong we silently keep FALLBACK_ARTICLES, so the widget never breaks.
+  var CATALOG = FALLBACK_ARTICLES;
+  (function loadCatalog() {
+    try {
+      fetch('/help-catalog.json', { cache: 'default' })
+        .then(function (r) { return r.ok ? r.json() : null; })
+        .then(function (data) {
+          if (data && Array.isArray(data.articles) && data.articles.length &&
+              data.articles[0] && data.articles[0].id) {
+            CATALOG = data.articles;
+          }
+        })
+        .catch(function () { /* offline / blocked — keep fallback */ });
+    } catch (e) { /* no fetch available — keep fallback */ }
+  })();
+
   // ── Matching (same logic as the in-app Wallabee) ──────────────────────────
   var STOP = {};
   ['the','a','an','to','of','in','on','for','my','i','do','how','can','is','it',
@@ -129,7 +148,7 @@
     var qT = tokenize(q);
     if (!qT.length) return [];
     var scored = [];
-    ARTICLES.forEach(function (a) {
+    CATALOG.forEach(function (a) {
       var hay = tokenize(a.t + ' ' + a.c);
       var score = 0;
       qT.forEach(function (qt) {
