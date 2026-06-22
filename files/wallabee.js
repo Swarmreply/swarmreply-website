@@ -149,7 +149,7 @@
     if (!qT.length) return [];
     var scored = [];
     CATALOG.forEach(function (a) {
-      var hay = tokenize(a.t + ' ' + a.c);
+      var hay = tokenize(a.t + ' ' + a.c + ' ' + (a.k || ''));
       var score = 0;
       qT.forEach(function (qt) {
         var hit = hay.some(function (h) {
