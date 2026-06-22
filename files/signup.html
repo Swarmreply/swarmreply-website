@@ -24,8 +24,7 @@
 </script>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400;1,700;1,900&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/swarm.css">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="icon" type="image/x-icon" href="/favicon.ico">
 <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
@@ -36,8 +35,10 @@
 
 <style>
   *{box-sizing:border-box}
-  /* page-local aliases -> canonical tokens in /swarm.css */
-  :root{--paper:#faf8f3;--ink2:#0f0e0c;--tx:#3a3a38;--bg:var(--cream)}
+  :root{
+    --ink:#0a0a0a; --ink2:#0f0e0c; --paper:#faf8f3; --bg:#f8f7f4; --line:#e4e0d8;
+    --honey:#f5c842; --amber:#d4a515; --green:#1a6b45; --taupe:#7a7670; --mute:#a39e95; --tx:#3a3a38;
+  }
   html,body{margin:0}
   body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--tx);-webkit-font-smoothing:antialiased;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px}
   /* Honeycomb texture — same as the homepage (warm taupe, behind the card) */
@@ -49,10 +50,14 @@
   /* Brand panel (grows to full width when it wraps) */
   .brand{flex:1 1 300px;background:var(--ink2);color:var(--paper);padding:34px 30px;display:flex;flex-direction:column}
   .brand-main{flex:1;display:flex;flex-direction:column;align-items:center;text-align:center}
+  .back-site{align-self:flex-start;display:inline-flex;align-items:center;gap:7px;font-size:.82rem;font-weight:600;color:rgba(255,255,255,.68);text-decoration:none;margin-bottom:16px;transition:color .15s}
+  .back-site:hover{color:#fff}
+  .back-site .ar{font-size:1.1em;line-height:1;transition:transform .15s}
+  .back-site:hover .ar{transform:translateX(-2px)}
   .brand-pitch{display:flex;flex-direction:column;align-items:center;width:100%}
   .bspace-t{flex:1.6}
   .bspace-b{flex:1}
-  .logo{display:flex;align-items:center;justify-content:center;gap:11px}
+  .logo{display:flex;align-items:center;justify-content:center;gap:11px;text-decoration:none;color:inherit;cursor:pointer}
   .logo img{height:46px;width:auto;display:block}
   .logo .word{font-family:'Playfair Display',serif;font-weight:900;font-size:1.85rem;color:var(--paper);line-height:1}
   .tag{font-family:'Playfair Display',serif;font-weight:700;font-size:1.625rem;line-height:1.28;color:var(--paper);margin:14px 0 18px;text-align:center}
@@ -79,6 +84,9 @@
   .hint{font-size:.72rem;color:var(--mute);margin:0 0 18px}
   .chk{display:flex;gap:10px;align-items:flex-start;cursor:pointer;margin-bottom:13px;font-size:.82rem;color:var(--tx);line-height:1.45}
   .chk input{width:16px;height:16px;margin-top:2px;flex-shrink:0;accent-color:var(--ink)}
+  .cta{width:100%;padding:14px;border:none;border-radius:50px;background:var(--ink);color:#fff;font-weight:600;font-size:.94rem;cursor:pointer;font-family:inherit}
+  .cta:disabled{background:#d8d3c8;cursor:not-allowed}
+  .cta-gold{background:var(--honey);color:var(--ink);display:flex;align-items:center;justify-content:center;gap:8px}
   .ghost{display:inline-block;background:none;border:none;color:var(--taupe);font-size:.82rem;cursor:pointer;font-family:inherit;padding:10px 0;margin-top:6px}
   .err{background:#fee2e2;border:1px solid #fca5a5;border-radius:9px;padding:0;font-size:.84rem;color:#c0392b;line-height:1.5;margin:0 0 14px;max-height:0;overflow:hidden;transition:max-height .15s,padding .15s}
   .err.show{padding:11px 14px;max-height:120px}
@@ -135,12 +143,13 @@
   <div class="card">
     <!-- Brand panel -->
     <div class="brand">
+      <a href="/" class="back-site"><span class="ar" aria-hidden="true">&larr;</span> Back to site</a>
       <div class="brand-main">
         <div class="bspace-t"></div>
-        <div class="logo">
+        <a href="/" class="logo" aria-label="Back to SwarmReply home">
           <img src="/bee-logo.png" alt="SwarmReply bee logo">
           <span class="word">SwarmReply</span>
-        </div>
+        </a>
         <div class="brand-pitch">
           <p class="tag">Your reputation is your best salesperson.<span class="gold">Put it to work.</span></p>
           <div class="prop"><b>&#10003;</b><span>Reply to every review in your voice</span></div>
@@ -188,7 +197,7 @@
           <span>Send me product updates, tips, and occasional offers &mdash; unsubscribe anytime</span>
         </label>
 
-        <button class="btn btn-dark btn-block" id="btn1">Continue &rarr;</button>
+        <button class="cta" id="btn1">Continue &rarr;</button>
         <p class="foot">Already have an account? <a href="/login">Log in</a></p>
       </div>
 
@@ -215,7 +224,7 @@
         <div class="summary" id="summary"></div>
         <div class="note" id="vol-note"><b>Volume pricing is automatic:</b> $89/location from your 3rd, $79 from your 26th.</div>
 
-        <button class="btn btn-dark btn-block" id="btn2">Continue to payment &rarr;</button>
+        <button class="cta" id="btn2">Continue to payment &rarr;</button>
         <button class="ghost" id="back2">&larr; Back</button>
       </div>
 
@@ -230,7 +239,7 @@
         <label class="fld">Card details</label>
         <div id="payment-element"><div class="pe-loading">Loading secure payment…</div></div>
 
-        <button class="btn btn-gold btn-block" id="pay-btn" disabled>
+        <button class="cta cta-gold" id="pay-btn" disabled>
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#0a0a0a" stroke-width="2.2" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
           <span id="pay-label">Start now</span>
         </button>
