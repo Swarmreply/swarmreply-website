@@ -413,7 +413,7 @@
     } else if (labelTxt === 'Multiple locations') {
       beeSay([{ who: 'bee', type: 'text',
         text: "Running several locations or an agency? Our team sets you up with multi-location pricing and onboarding — the fastest way is to reach them directly.",
-        links: [{ label: 'Talk to our team →', href: '/contact.html' }] }]);
+        links: [{ label: 'Talk to our team →', href: '/contact.html?reason=multi-location' }] }]);
     } else if (INTEGRATION_MAP[labelTxt]) {
       showArticleCards([INTEGRATION_MAP[labelTxt]], "Here’s how to connect " + labelTxt + ":", ['Multiple locations', 'Email our team']);
     } else if (labelTxt === 'Something else') {

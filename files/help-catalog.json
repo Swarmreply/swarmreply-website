@@ -410,6 +410,30 @@
       "id": "review-links",
       "t": "Setting up your review links",
       "c": "Settings"
+    },
+    {
+      "id": "data-security",
+      "t": "Data, privacy & security",
+      "c": "Settings",
+      "k": "security privacy data encryption gdpr soc2 vendor review questionnaire compliance protection"
+    },
+    {
+      "id": "export-delete-data",
+      "t": "Exporting or deleting your data",
+      "c": "Settings",
+      "k": "export delete data download erase remove gdpr account portability"
+    },
+    {
+      "id": "account-security",
+      "t": "Logging in & account security",
+      "c": "Settings",
+      "k": "login password 2fa two factor authentication security access reset"
+    },
+    {
+      "id": "team-roles",
+      "t": "Team roles & permissions",
+      "c": "Settings",
+      "k": "team roles permissions access admin members staff invite owner"
     }
   ]
 }
