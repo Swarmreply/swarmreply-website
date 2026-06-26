@@ -17,7 +17,7 @@
   var STORE_KEY = 'wallabee_site_v1';
 
   // Help Center catalog — mirrors help.html. Add new articles in both places.
-  var ARTICLES = [
+  var FALLBACK_ARTICLES = [
     { id: 'vs-yext', t: 'SwarmReply vs Yext — own your listings, don\u2019t rent them', c: 'Compare', u: '/compare/yext-alternative.html', k: 'yext alternative listings compare versus rent own sync' },
     { id: 'vs-broadly', t: 'SwarmReply vs Broadly — honest comparison', c: 'Compare', u: '/compare/broadly-alternative.html', k: 'broadly alternative compare versus price affordable onboarding' },
     { id: 'vs-reviewtrackers', t: 'SwarmReply vs ReviewTrackers — honest comparison', c: 'Compare', u: '/compare/reviewtrackers-alternative.html', k: 'reviewtrackers alternative compare versus monitoring' },
@@ -99,6 +99,25 @@
     { id: 'review-links', t: 'Setting up your review links', c: 'Settings' },
   ];
 
+  // ── Single source of truth ───────────────────────────────────────────────
+  // The catalog above is a baked-in fallback. The live list is /help-catalog.json
+  // (same file the in-app Wallabee reads). We fetch it on load; if anything goes
+  // wrong we silently keep FALLBACK_ARTICLES, so the widget never breaks.
+  var CATALOG = FALLBACK_ARTICLES;
+  (function loadCatalog() {
+    try {
+      fetch('/help-catalog.json', { cache: 'default' })
+        .then(function (r) { return r.ok ? r.json() : null; })
+        .then(function (data) {
+          if (data && Array.isArray(data.articles) && data.articles.length &&
+              data.articles[0] && data.articles[0].id) {
+            CATALOG = data.articles;
+          }
+        })
+        .catch(function () { /* offline / blocked — keep fallback */ });
+    } catch (e) { /* no fetch available — keep fallback */ }
+  })();
+
   // ── Matching (same logic as the in-app Wallabee) ──────────────────────────
   var STOP = {};
   ['the','a','an','to','of','in','on','for','my','i','do','how','can','is','it',
@@ -129,8 +148,8 @@
     var qT = tokenize(q);
     if (!qT.length) return [];
     var scored = [];
-    ARTICLES.forEach(function (a) {
-      var hay = tokenize(a.t + ' ' + a.c);
+    CATALOG.forEach(function (a) {
+      var hay = tokenize(a.t + ' ' + a.c + ' ' + (a.k || ''));
       var score = 0;
       qT.forEach(function (qt) {
         var hit = hay.some(function (h) {
@@ -152,7 +171,7 @@
   // ── State ──────────────────────────────────────────────────────────────────
   var GREETING = { who: 'bee', type: 'text',
     text: "Hi! I'm Wallabee \uD83D\uDC1D \u2014 SwarmReply's support bee. Ask me anything, like \u201chow do I connect Google\u201d or \u201chow does pricing work\u201d, and I'll point you to the right guide." };
-  var GREETING_CHIPS = { who: 'bee', type: 'chips', chips: ['Email our team'] };
+  var GREETING_CHIPS = { who: 'bee', type: 'chips', chips: ['Looking into SwarmReply', "I'm a customer", 'Just browsing'] };
 
   var state = { open: false, messages: [GREETING, GREETING_CHIPS], lastQuestion: '' };
   try {
@@ -263,13 +282,18 @@
           html += '</div>';
         }
       } else {
-        var mail = '';
+        var mail = '', links = '';
         if (m.mailto) {
           mail = '<a class="wb-mailbtn" href="/contact.html" target="_blank" rel="noopener">Email our team \u2192</a>';
         }
+        if (m.links) {
+          m.links.forEach(function (l) {
+            links += '<a class="wb-mailbtn" href="' + esc(l.href) + '" target="_blank" rel="noopener">' + esc(l.label) + '</a> ';
+          });
+        }
         html += '<div class="wb-row ' + (m.who === 'user' ? 'user' : '') + '">' +
           (m.who === 'bee' ? beeAvatarSm() : '') +
-          '<div class="wb-msg ' + m.who + '">' + esc(m.text) + mail + '</div></div>';
+          '<div class="wb-msg ' + m.who + '">' + esc(m.text) + mail + links + '</div></div>';
       }
     });
     msgsEl.innerHTML = html;
@@ -302,6 +326,27 @@
   function escalate() {
     beeSay([{ who: 'bee', type: 'text', mailto: true,
       text: "Hmm, I couldn't find a guide for that one. Our human team can help \u2014 we read and reply to every message." }]);
+  }
+
+  var INTEGRATION_MAP = {
+    'Google': 'connect-google', 'Square': 'connect-square', 'HubSpot': 'connect-hubspot',
+    'Shopify': 'connect-shopify', 'Mindbody': 'connect-mindbody', 'Calendly': 'connect-calendly',
+    'Acuity': 'connect-acuity', 'Jobber': 'connect-jobber', 'Zapier': 'zapier-setup'
+  };
+
+  function showArticleCards(ids, lead, followChips) {
+    var cards = [];
+    ids.forEach(function (id) {
+      var found = null;
+      CATALOG.forEach(function (x) { if (x.id === id) found = x; });
+      if (found) cards.push({ id: found.id, t: found.t, c: found.c, u: found.u });
+    });
+    var msgs = [];
+    if (lead) msgs.push({ who: 'bee', type: 'text', text: lead });
+    if (cards.length) msgs.push({ who: 'bee', type: 'articles', articles: cards });
+    else msgs.push({ who: 'bee', type: 'text', mailto: true, text: "I couldn’t pull that guide up just now — our team can help." });
+    if (followChips) msgs.push({ who: 'bee', type: 'chips', chips: followChips });
+    beeSay(msgs);
   }
 
   function ask(text) {
@@ -342,6 +387,39 @@
     render();
     if (labelTxt.indexOf('That helped') === 0) {
       beeSay([{ who: 'bee', type: 'text', text: 'Happy to help! Buzz me anytime. \uD83D\uDC1D' }]);
+    } else if (labelTxt === 'Looking into SwarmReply' || labelTxt === 'Just browsing') {
+      beeSay([
+        { who: 'bee', type: 'text', text: "Great — happy to help you figure out if SwarmReply’s a fit. What would you like to know?" },
+        { who: 'bee', type: 'chips', chips: ['Does it integrate?', 'How much is it?', 'Is my data secure?', 'Multiple locations'] }
+      ]);
+    } else if (labelTxt === "I'm a customer") {
+      beeSay([
+        { who: 'bee', type: 'text', text: "Welcome back! Ask me anything — like “how do I connect Google” or “set up a survey” — and I’ll pull up the guide." },
+        { who: 'bee', type: 'chips', chips: ['Email our team'] }
+      ]);
+    } else if (labelTxt === 'Does it integrate?') {
+      beeSay([
+        { who: 'bee', type: 'text', text: "We connect with all of these — pick one and I’ll show you how it works:" },
+        { who: 'bee', type: 'chips', chips: ['Google', 'Square', 'HubSpot', 'Shopify', 'Mindbody', 'Calendly', 'Acuity', 'Jobber', 'Zapier', 'Something else'] }
+      ]);
+    } else if (labelTxt === 'How much is it?') {
+      beeSay([{ who: 'bee', type: 'text',
+        text: "SwarmReply is priced per location, everything included:\n• Locations 1–2: $99/mo each\n• Locations 3–25: $89/mo each\n• Locations 26–99: $79/mo each\nAnnual billing saves 10%, and there are no contracts.",
+        links: [{ label: 'Start free →', href: '/signup' }, { label: 'Full pricing details →', href: '/help#pricing' }] }]);
+    } else if (labelTxt === 'Is my data secure?') {
+      beeSay([{ who: 'bee', type: 'text',
+        text: "Short version: your data is encrypted in transit and at rest, we never sell it, and you can export or delete it anytime. Doing a vendor review? Our team will help with your questionnaire.",
+        links: [{ label: 'Read our security overview →', href: '/help#data-security' }] }]);
+    } else if (labelTxt === 'Multiple locations') {
+      beeSay([{ who: 'bee', type: 'text',
+        text: "Running several locations or an agency? Our team sets you up with multi-location pricing and onboarding — the fastest way is to reach them directly.",
+        links: [{ label: 'Talk to our team →', href: '/contact.html?reason=multi-location' }] }]);
+    } else if (INTEGRATION_MAP[labelTxt]) {
+      showArticleCards([INTEGRATION_MAP[labelTxt]], "Here’s how to connect " + labelTxt + ":", ['Multiple locations', 'Email our team']);
+    } else if (labelTxt === 'Something else') {
+      beeSay([{ who: 'bee', type: 'text',
+        text: "Tell me which tool you use — type its name and I’ll find the guide. If we don’t have a direct integration yet, Zapier or a CSV import usually bridges it.",
+        links: [{ label: 'CSV import guide →', href: '/help#csv-import' }, { label: 'Zapier guide →', href: '/help#zapier-setup' }] }]);
     } else if (labelTxt.indexOf('Email our team') === 0) {
       beeSay([{ who: 'bee', type: 'text', mailto: true,
         text: "Happy to connect you with a human \u2014 we read and reply to every message. Send us a note and we'll get back within one business day." }]);
