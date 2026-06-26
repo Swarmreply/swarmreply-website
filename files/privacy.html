@@ -92,6 +92,7 @@ footer a{color:rgba(255,255,255,.6);margin:0 12px;text-decoration:none}
 <link rel="apple-touch-startup-image" href="/icons/icon-512.svg">
 </head>
 <body>
+<script src="/nav.js"></script>
 <nav class="nav" aria-label="Main">
     <div class="nav-inner">
       <a href="/" class="nav-logo"><img src="/bee-logo.png" alt="SwarmReply bee logo" width="42" height="42" style="width:42px;height:42px;object-fit:contain;display:block;flex-shrink:0"><span>SwarmReply</span></a>
@@ -324,6 +325,5 @@ if ('serviceWorker' in navigator) {
   panel.addEventListener('click',function(e){if(e.target.tagName==='A'){setOpen(false);}});
 })();
 </script>
-<script src="/attribution.js"></script>
 </body>
 </html>

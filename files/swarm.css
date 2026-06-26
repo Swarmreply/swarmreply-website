@@ -155,7 +155,6 @@ p { margin: 0 0 var(--s4); }
 .btn-light { background: #fff; color: var(--ink); }
 .btn-light:hover { transform: translateY(-2px); box-shadow: var(--sh-md); }
 .btn:active { transform: scale(.97); }
-.btn:disabled, .btn[disabled] { opacity: .5; cursor: not-allowed; transform: none; box-shadow: none; }
 .btn-sm  { padding: 9px 18px; font-size: var(--fs-sm); }
 .btn-lg  { padding: 16px 34px; font-size: 1.05rem; }
 .btn-block{ width: 100%; }
