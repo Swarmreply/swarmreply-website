@@ -50,14 +50,10 @@
   /* Brand panel (grows to full width when it wraps) */
   .brand{flex:1 1 300px;background:var(--ink2);color:var(--paper);padding:34px 30px;display:flex;flex-direction:column}
   .brand-main{flex:1;display:flex;flex-direction:column;align-items:center;text-align:center}
-  .back-site{align-self:flex-start;display:inline-flex;align-items:center;gap:7px;font-size:.82rem;font-weight:600;color:rgba(255,255,255,.68);text-decoration:none;margin-bottom:16px;transition:color .15s}
-  .back-site:hover{color:#fff}
-  .back-site .ar{font-size:1.1em;line-height:1;transition:transform .15s}
-  .back-site:hover .ar{transform:translateX(-2px)}
   .brand-pitch{display:flex;flex-direction:column;align-items:center;width:100%}
   .bspace-t{flex:1.6}
   .bspace-b{flex:1}
-  .logo{display:flex;align-items:center;justify-content:center;gap:11px;text-decoration:none;color:inherit;cursor:pointer}
+  .logo{display:flex;align-items:center;justify-content:center;gap:11px}
   .logo img{height:46px;width:auto;display:block}
   .logo .word{font-family:'Playfair Display',serif;font-weight:900;font-size:1.85rem;color:var(--paper);line-height:1}
   .tag{font-family:'Playfair Display',serif;font-weight:700;font-size:1.625rem;line-height:1.28;color:var(--paper);margin:14px 0 18px;text-align:center}
@@ -143,13 +139,12 @@
   <div class="card">
     <!-- Brand panel -->
     <div class="brand">
-      <a href="/" class="back-site"><span class="ar" aria-hidden="true">&larr;</span> Back to site</a>
       <div class="brand-main">
         <div class="bspace-t"></div>
-        <a href="/" class="logo" aria-label="Back to SwarmReply home">
+        <div class="logo">
           <img src="/bee-logo.png" alt="SwarmReply bee logo">
           <span class="word">SwarmReply</span>
-        </a>
+        </div>
         <div class="brand-pitch">
           <p class="tag">Your reputation is your best salesperson.<span class="gold">Put it to work.</span></p>
           <div class="prop"><b>&#10003;</b><span>Reply to every review in your voice</span></div>
@@ -342,7 +337,7 @@
     var btn = $('btn1'); btn.disabled = true; btn.textContent = 'Creating your account…';
     fetch(API + '/customers/register', {
       method:'POST', headers:{'Content-Type':'application/json'},
-      body: JSON.stringify({ name: name, email: email, password: password, marketingOptIn: $('f-optin').checked, agreedToTerms: true })
+      body: JSON.stringify({ name: name, email: email, password: password, marketingOptIn: $('f-optin').checked, agreedToTerms: true, attribution: (window.srAttribution ? window.srAttribution() : {}) })
     }).then(function(res){
       return res.json().catch(function(){ return {}; }).then(function(out){ return { res: res, out: out }; });
     }).then(function(r){
@@ -524,5 +519,6 @@
   });
 })();
 </script>
+<script src="/attribution.js"></script>
 </body>
 </html>
