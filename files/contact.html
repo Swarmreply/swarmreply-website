@@ -133,7 +133,6 @@ body{background-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 </head>
 <body>
-<script src="/nav.js"></script>
 
 
 <nav class="nav" aria-label="Main">
@@ -350,29 +349,6 @@ async function handleSubmit(e) {
   panel.addEventListener('click',function(e){if(e.target.tagName==='A'){setOpen(false);}});
 })();
 </script>
-<script>
-/* Prefill the "What can we help with?" reason from a ?reason= URL param (e.g. links from Wallabee). */
-(function(){
-  try {
-    var r = (new URLSearchParams(window.location.search).get('reason') || '').toLowerCase().trim();
-    if (!r) return;
-    var sel = document.getElementById('f-reason');
-    if (!sel) return;
-    var map = {
-      'multi-location':'Agency / multi-location','agency':'Agency / multi-location','multi':'Agency / multi-location','locations':'Agency / multi-location',
-      'sales':'Sales & pricing','pricing':'Sales & pricing',
-      'support':'Product support','product':'Product support',
-      'billing':'Billing & account','account':'Billing & account',
-      'partnership':'Partnership','partner':'Partnership',
-      'press':'Press & media','media':'Press & media'
-    };
-    var want = map[r];
-    for (var i = 0; i < sel.options.length; i++) {
-      var ov = sel.options[i].value;
-      if ((want && ov === want) || ov.toLowerCase() === r) { sel.value = ov; break; }
-    }
-  } catch (e) {}
-})();
-</script>
+<script src="/attribution.js"></script>
 </body>
 </html>

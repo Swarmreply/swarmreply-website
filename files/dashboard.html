@@ -4,12 +4,14 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>SwarmReply — Dashboard</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400;1,700;1,900&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/swarm.css">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
   *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-  /* page-local aliases -> canonical tokens in /swarm.css */
-  :root{--black:var(--ink);--white:var(--paper);--off:var(--cream);--lg:#f0eeea;--mg:#c8c4bc;--muted:var(--taupe);--border:var(--line);--yellow:var(--honey);--sidebar:220px}
+  :root{
+    --black:#0d0d0d;--white:#ffffff;--off:#f8f7f4;--lg:#f0eeea;
+    --mg:#c8c4bc;--muted:#7a7670;--border:#e4e0d8;--yellow:#f5c842;
+    --sidebar:220px;
+  }
   body{font-family:'DM Sans',sans-serif;background:var(--off);color:var(--black);display:flex;min-height:100vh;font-size:14px;}
 
   /* SIDEBAR */
@@ -438,5 +440,6 @@
   </div>
 </main>
 
+<script src="/attribution.js"></script>
 </body>
 </html>

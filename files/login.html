@@ -17,13 +17,11 @@
 <meta name="robots" content="noindex,follow">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400;1,700;1,900&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/swarm.css">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
 
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-/* page-local aliases -> canonical tokens in /swarm.css */
-  :root{--k:var(--ink);--w:var(--paper);--g:var(--honey);--gd:var(--amber);--of:var(--cream);--bd:var(--line);--mu:var(--taupe);--gr:var(--green);--re:var(--danger)}
+:root{--k:#0a0a0a;--w:#fff;--g:#f5c842;--gd:#d4a515;--of:#f8f7f4;--bd:#e4e0d8;--mu:#7a7670;--tx:#1a1a18;--gr:#1a6b45;--re:#c0392b}
 html{height:100%;-webkit-text-size-adjust:100%}
 body{font-family:'DM Sans',sans-serif;background:var(--of);min-height:100%;display:flex;flex-direction:column;-webkit-font-smoothing:antialiased;color:var(--tx)}
 body{background-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20width%3D'28'%20height%3D'49'%20viewBox%3D'0%200%2028%2049'%3E%3Cpath%20d%3D'M13.99%209.25l13%207.5v15l-13%207.5L1%2031.75v-15l12.99-7.5zM3%2017.9v12.7l10.99%206.34%2011-6.35V17.9l-11-6.34L3%2017.9zM0%2015l12.98-7.5V0h-2v6.35L0%2012.69v2.3zm0%2018.5L12.98%2041v8h-2v-6.85L0%2035.81v-2.3zM15%200v7.5L27.99%2015H28v-2.31h-.01L17%206.35V0h-2zm0%2049v-8l12.99-7.5H28v2.31h-.01L17%2042.15V49h-2z'%20fill%3D'%23a89878'%20fill-opacity%3D'0.03'%2F%3E%3C%2Fsvg%3E");background-repeat:repeat;background-size:84px auto}
@@ -36,6 +34,11 @@ body{background-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww
 .logo .wm{font-family:'Playfair Display',serif;font-weight:900;font-size:1.55rem;color:var(--k);line-height:1}
 .hed{font-family:'Playfair Display',serif;font-size:2rem;font-weight:900;color:var(--k);text-align:center;letter-spacing:-.02em;line-height:1.1;margin-bottom:9px}
 .sub{font-size:.9rem;color:var(--mu);text-align:center;line-height:1.6;margin:0 auto 28px;max-width:30ch}
+.btn-login{width:100%;padding:14px;border-radius:50px;background:linear-gradient(135deg,var(--g),var(--gd));color:var(--k);border:none;font-size:.95rem;font-weight:800;font-family:'DM Sans',sans-serif;cursor:pointer;transition:filter .15s,transform .15s,box-shadow .15s;margin-top:6px;box-shadow:0 8px 22px rgba(212,165,21,.28)}
+.btn-login:hover{filter:brightness(1.05);transform:translateY(-1px);box-shadow:0 12px 26px rgba(212,165,21,.34)}
+.btn-login:disabled{opacity:.5;cursor:not-allowed;transform:none;box-shadow:none}
+.btn-signup{display:block;text-align:center;width:100%;padding:13px;border-radius:50px;background:transparent;color:var(--k);border:1.5px solid var(--k);font-size:.9rem;font-weight:700;font-family:'DM Sans',sans-serif;cursor:pointer;text-decoration:none;transition:all .15s}
+.btn-signup:hover{background:var(--k);color:#fff}
 
 .frow{margin-bottom:17px}
 .fl{display:block;font-size:.67rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--mu);margin-bottom:6px}
@@ -94,11 +97,11 @@ body{background-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww
               <a href="https://app.swarmreply.com/forgot-password" class="forgot-link" id="forgotLink">Forgot password?</a>
             </div>
           </div>
-          <button type="submit" class="btn btn-gold btn-block" id="loginBtn">Sign in to dashboard &rarr;</button>
+          <button type="submit" class="btn-login" id="loginBtn">Sign in to dashboard &rarr;</button>
         </form>
 
         <div class="divider"><span>New to SwarmReply?</span></div>
-        <a href="/signup.html" class="btn btn-ghost btn-block">Get started — from $99/mo &rarr;</a>
+        <a href="/signup.html" class="btn-signup">Get started — from $99/mo &rarr;</a>
         <a href="/" class="back-link">&larr; Back to swarmreply.com</a>
   </div>
 </div>
@@ -170,5 +173,6 @@ async function handleLogin(e) {
 }
 </script>
 <script src="/wallabee.js?v=7" defer></script>
+<script src="/attribution.js"></script>
 </body>
 </html>
