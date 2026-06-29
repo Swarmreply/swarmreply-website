@@ -342,7 +342,7 @@
     var btn = $('btn1'); btn.disabled = true; btn.textContent = 'Creating your account…';
     fetch(API + '/customers/register', {
       method:'POST', headers:{'Content-Type':'application/json'},
-      body: JSON.stringify({ name: name, email: email, password: password, marketingOptIn: $('f-optin').checked, agreedToTerms: true })
+      body: JSON.stringify({ name: name, email: email, password: password, marketingOptIn: $('f-optin').checked, agreedToTerms: true, attribution: (window.srAttribution ? window.srAttribution() : null) })
     }).then(function(res){
       return res.json().catch(function(){ return {}; }).then(function(out){ return { res: res, out: out }; });
     }).then(function(r){
@@ -524,5 +524,6 @@
   });
 })();
 </script>
+<script src="/attribution.js"></script>
 </body>
 </html>
